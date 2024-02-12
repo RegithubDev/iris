@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.resustainability.reisp</groupId>
-  <artifactId>reisp</artifactId>
+  <artifactId>iris</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>reisp</name>
+  <name>iris</name>
   <url>http://maven.apache.org</url>
   
     <properties>
@@ -224,14 +224,14 @@
     </repository>
 </repositories>
   <build>
-   <finalName>reisp</finalName>
+   <finalName>iris</finalName>
      <plugins>
         <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
           <release>18</release>
-          	<warName>reisp</warName>
+          	<warName>iris</warName>
                 <!-- <outputDirectory>D:\jboss-as-7.1.1.Final\standalone\deployments</outputDirectory> -->
                 <outputDirectory>E:\Development\apache-tomcat-9.0.43\webapps</outputDirectory>
         </configuration>
