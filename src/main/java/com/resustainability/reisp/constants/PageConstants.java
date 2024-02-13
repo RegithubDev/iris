@@ -1,6 +1,108 @@
 package com.resustainability.reisp.constants;
 
 public class PageConstants {
+	
+	public static final String irisUsers = "irisUsers";
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public static final String login = "newLoginPage";   
 	public static final String newUserLogin = "newUserLogin";   
@@ -35,5 +137,6 @@ public class PageConstants {
 	public static final String bbSbuForm = "bbSbuForm";
 	public static final String bbbank = "ideabank";
 	public static final String helpCenter = "helpCenter";
+	
 	
 }
