@@ -36,6 +36,15 @@ public class IrisUserController {
 		return model;
 	}
 	
-	
+	@RequestMapping(value = "/sign-up", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView signUp(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.signUp);
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
 
 }

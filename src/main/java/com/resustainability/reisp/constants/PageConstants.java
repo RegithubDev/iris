@@ -3,6 +3,8 @@ package com.resustainability.reisp.constants;
 public class PageConstants {
 	
 	public static final String irisUsers = "irisUsers";
+	
+	public static final String signUp = "signUp";
 
 	
 	
