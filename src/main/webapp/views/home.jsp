@@ -20,7 +20,7 @@
 }
 </style>
 <link rel="manifest" href="/manifest.json">
-<title>Dashboard</title>
+<title>Dashboard</title> 
 <script defer="defer" src="/iris/resources/js1/main.js"></script>
 <link href="/iris/resources/css1/main.css" rel="stylesheet">
 <style data-emotion="css" data-s=""></style>
