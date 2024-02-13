@@ -116,7 +116,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
                         <label class="form-check-label" for="remember-me"> Remember Me</label>
                       </div>
                     </div>
-                    <a class="btn btn-primary w-100 re-text-bg" tabindex="4">Sign in</a>
+                    <a class="btn  w-100 re-text-bg" tabindex="4">Sign in</a>
                   </form>
               <p class="text-center mt-2"><span>New on our platform?</span><a href="auth-register-cover.html"><span>&nbsp;Create an account</span></a></p>
                 </div>

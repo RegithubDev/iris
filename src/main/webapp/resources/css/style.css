@@ -12,7 +12,8 @@ body {
 }
 .re-text-bg{
 	    background: #da0d14!important;
-}
+		color: white!important;
+} 		
 
 .re-text{
 	    color: #da0d14!important;
