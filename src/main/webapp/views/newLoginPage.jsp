@@ -746,8 +746,10 @@ to {
 								</div>
 							</div>
 							<p class="signin_error__dOUFp" data-testid="errorPassword"></p>
-							<span class="signin_forgotLink__UYP1r"> <a
-								href="/forgot-password">Forgot Password?</a></span>
+							<span class="signin_forgotLink__UYP1r  flex justify-between"> <a class="color-blue"
+								href="/forgot-password">Forgot Password?</a>
+								<a class="color-blue"
+								href="/forgot-password">Sign in</a></span>
 							<div class="signin_login__Fkg79">
 								<button type="submit" disabled="">Sign In</button>
 							</div>

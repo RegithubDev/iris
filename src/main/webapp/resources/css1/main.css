@@ -11,6 +11,16 @@
         transform: translateX(100%)
     }
 }
+.color-blue{
+	color:blue!important;
+}
+.flex {
+	display: flex;
+}
+
+.justify-between{
+	    justify-content: space-between
+}
 .css-vubbuv {
     user-select: none;
     width: 1em;
