@@ -130,7 +130,7 @@ public class PageConstants {
 	public static final String roleMapping = "roleMapping";
 	public static final String role_master = "roleMaster";
 	public static final String irmAdd = "irm";
-	public static final String irmMain = "home";
+	public static final String irisHOme = "home";
 	public static final String MSW = "msw";
 	public static final String irmReport = "irmReport";
 	public static final String irmUpdate = "irmUpdate";

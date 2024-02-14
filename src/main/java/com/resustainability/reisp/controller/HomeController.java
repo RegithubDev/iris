@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -36,7 +37,7 @@ import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.model.UserPaginationObject;
 import com.resustainability.reisp.service.UserService;
 
-@Controller
+@RestController
 public class HomeController {
 	
 	@InitBinder
@@ -63,15 +64,13 @@ public class HomeController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(role.equals("Admin") || role.equals("Management")) {
-				 model = new ModelAndView(PageConstants.irmMain);
+			if(role.equals("Super Admin")) {
+				 model = new ModelAndView(PageConstants.irisHOme);
 			}else if(role.equals("User")) {
-				 model = new ModelAndView(PageConstants.irmMain);
+				 model = new ModelAndView(PageConstants.irisHOme);
 			}else {
-				model = new ModelAndView(PageConstants.irmMain);
+				model = new ModelAndView(PageConstants.irisHOme);
 			}
-			//List <User> deptList = service.getDeptList(user);
-			//model.addObject("deptList", deptList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

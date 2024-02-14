@@ -1,14 +1,83 @@
 package com.resustainability.reisp.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User {
 
 	private String user_id,user_name,user_role,user_session_id,minutes,gToken,reporting_to,reporting_to_id,profileImg,current_project,id,	last_login_date_time,totalCount,password,email_id,mobile_number,user_name_new,designation_new,email_new,contact_number,totalUers,count,
 	company_code,	project_code,	project_name,	status,	created_date,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
-	module_name,module_url,timePeriod;
+	module_name,module_url,timePeriod,emp_id,emp_name,phone,city,site,department,category;
 	int session_count,time_period;
 	
+	private MultipartFile user_image;
+	
+	
+	public MultipartFile getUser_image() {
+		return user_image;
+	}
+
+	public void setUser_image(MultipartFile user_image) {
+		this.user_image = user_image;
+	}
+
+	public String getEmp_id() {
+		return emp_id;
+	}
+
+	public String getEmp_name() {
+		return emp_name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public String getSite() {
+		return site;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setEmp_id(String emp_id) {
+		this.emp_id = emp_id;
+	}
+
+	public void setEmp_name(String emp_name) {
+		this.emp_name = emp_name;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setSite(String site) {
+		this.site = site;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public String getTimePeriod() {
 		return timePeriod;
 	}

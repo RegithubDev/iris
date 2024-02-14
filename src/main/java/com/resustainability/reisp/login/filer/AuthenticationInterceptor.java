@@ -1,7 +1,12 @@
 package com.resustainability.reisp.login.filer;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.Inet4Address;
-import java.util.HashMap;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.security.GeneralSecurityException;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,15 +20,15 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.gson.GsonFactory;
 import com.resustainability.reisp.common.UrlGenerator;
-import com.resustainability.reisp.controller.BMWController.LowercasePropertyNamingStrategy;
 import com.resustainability.reisp.dao.UserDao;
-import com.resustainability.reisp.model.BMW;
 import  com.resustainability.reisp.model.User;
 
 
@@ -39,64 +44,46 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request,HttpServletResponse response, Object handler) throws IOException {
 		String requestURI = null;
 		String context_path = null;
-		boolean flag = false;
 		try {
 			requestURI = request.getRequestURI();
 			UrlGenerator ugObj = new UrlGenerator();
 			context_path = ugObj.getContextPath();
-			if(requestURI.equals("/rfid")) {
-				response.sendRedirect("/"+context_path+"/reone/rfid");
-				return true;
-			}
-			
-			if(requestURI.equals("/"+context_path+"/add-new-user") &&  !requestURI.equals("/"+context_path+"/login")) {
-				
-				 return true;
-			}
-			if(requestURI.equals("/"+context_path+"/reone/getNagpurList") &&  !requestURI.equals("/"+context_path+"/login")) {
-				
-				 return true;
-			}
-			if( !requestURI.equals("/"+context_path+"/") && !requestURI.equals("/"+context_path+"/reone/getMSWBilaspurList") ){
-				String Myip = Inet4Address.getLocalHost().getHostAddress();
-				String IP [] = {"10.11.10.102","122.168.198.195","34.93.149.251",Myip}; 
-				if(IP.length > 0) {
-					for(int i=0; i< IP.length; i++) {
-						if(IP[i].contentEquals(Myip) ) {
-							flag =true;
-							//response.sendRedirect("/"+context_path+"/reone/push-bmw-data");
-							return flag;
-						}
-					}
-					if(!flag) {
-						response.sendError(500);
-					}
-				}
-			}else {
-				if( !requestURI.equals("/"+context_path+"/logout")){
-					 User userData = (User) request.getSession().getAttribute("user");
-					 String single_login_session_id = (String)request.getSession().getAttribute("SESSION_ID");
-					 if(userData != null){
-						 int session_count = 0;
-						 try {
-							// session_count =  checkUserLoginDetails(userData);
-							 if(session_count > 1) {
-								 request.getSession().invalidate();
-								 response.sendRedirect("/"+context_path+"/login");
-							 }else {
-								 response.sendRedirect("/"+context_path+"/home");
-							 }
-						 	} finally {}
-					 }
+			// Avoid a redirect loop for some urls
+			if( !requestURI.equals("/"+context_path+"/") && !requestURI.equals("/"+context_path+"/login") 
+					&& !requestURI.equals("/") && !requestURI.equals("/login") 
+					&& !requestURI.equals("/"+context_path+"/someone-login") && !requestURI.equals("/someone-login") 
+					&& !requestURI.equals("/"+context_path+"/access-denied") && !request.getRequestURI().equals("/access-denied")){
+			    User userData = (User) request.getSession().getAttribute("user");
+			    if(userData == null){
+			    	if(request.getRequestURI().contains("/"+context_path+"/")){
+			    		response.sendRedirect("/"+context_path+"/login");
+			    	}else{
+			    		response.sendRedirect("/login");
+			    	}
+				    return false;
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("preHandle : " + e.getMessage());
 			return false;
 		}
 		  return true;
 	}
+	private static boolean checkSignIn(String clientId, String idToken) {
+        try {
+            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(new NetHttpTransport(), new GsonFactory())
+                    .setAudience(Collections.singletonList(clientId))
+                    .build();
 
+            GoogleIdToken token = verifier.verify(idToken);
+            return token != null;
+        } catch (GeneralSecurityException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 	public int checkUserLoginDetails(User obj) throws Exception {
 		int totalRecords = 0;
 		try {

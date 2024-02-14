@@ -268,38 +268,33 @@ public class UserDao {
 		User userDetails = null;
 		try{  
 			con = dataSource.getConnection();
-			String qry = "select up.id,up.user_id,up.user_name,base_role,contact_number,email_id,base_department,base_sbu,base_project,p.project_name,s.sbu_name,reporting_to from [user_profile] up "
-					+ "LEFT JOIN project p on up.base_project = p.project_code  "
-					+ "LEFT JOIN sbu s on up.base_sbu = s.sbu_code  "
-					+ "LEFT JOIN user_accounts ua on up.user_id = ua.user_id  "
-					+ "where  up.user_name <> '' and ua.status = 'Active' and Format( CURRENT_TIMESTAMP,'yyyy-MM-dd') <= end_date ";
-			if(!StringUtils.isEmpty(user.getEmail_id())){
-				qry = qry + "AND email_id = ? "; 
+			String qry = "select id,emp_id,emp_name,email_id,role,password,phone,city,site,department,category,created_by,created_date,modified_by,modified_date "
+					+ "from [user_table] up "
+					+ "where  up.emp_name <> '' and up.status = 'Active' ";
+			if((!StringUtils.isEmpty(user.getEmp_id()) || !StringUtils.isEmpty(user.getEmp_name())) && !StringUtils.isEmpty(user.getPassword())){
+				qry = qry + "AND (emp_id = ? or emp_name = ?)  AND password = ? "; 
 			}
 			stmt = con.prepareStatement(qry);
-			if(!StringUtils.isEmpty(user.getEmail_id())){
-				stmt.setString(1, user.getEmail_id());;
+			if((!StringUtils.isEmpty(user.getEmp_id()) || !StringUtils.isEmpty(user.getEmp_name())) && !StringUtils.isEmpty(user.getPassword())){
+				stmt.setString(1, user.getEmp_id());
+				stmt.setString(2, user.getEmp_name());
+				//stmt.setString(3, EncryptDecrypt.encrypt(user.getPassword()));;
+				stmt.setString(3,(user.getPassword()));;
 			}
 			rs = stmt.executeQuery();  
 			if(rs.next()) {
 				userDetails = new User();
 				userDetails.setId(rs.getString("id"));
-				userDetails.setUser_id(rs.getString("user_id"));
-				userDetails.setUser_name(rs.getString("user_name"));
+				userDetails.setEmp_id(rs.getString("emp_id"));
+				userDetails.setEmp_name(rs.getString("emp_name"));
 				userDetails.setEmail_id(rs.getString("email_id"));
-				userDetails.setContact_number(rs.getString("contact_number"));
-				userDetails.setReporting_to(rs.getString("reporting_to"));
-				userDetails.setBase_role(rs.getString("base_role"));
-				userDetails.setBase_sbu(rs.getString("base_sbu"));
-				userDetails.setBase_project(rs.getString("base_project"));
-				userDetails.setProject_name(rs.getString("project_name"));
-				userDetails.setSbu_name(rs.getString("sbu_name"));
-				userDetails.setBase_department(rs.getString("base_department"));
-				userDetails.setUser_session_id(user.getUser_session_id());
-				//int session_count = checkUserLoginDetails(userDetails);
-				//userDetails.setSession_count(session_count);
-				boolean flag =  setLastLoginTime(userDetails);
-				UserLoginActions(userDetails);
+				userDetails.setRole(rs.getString("role"));
+				userDetails.setPhone(rs.getString("phone"));
+				userDetails.setCity(rs.getString("city"));
+				userDetails.setSite(rs.getString("site"));
+				userDetails.setDepartment(rs.getString("department"));
+				userDetails.setCategory(rs.getString("category"));
+				//UserLoginActions(userDetails);
 			}
 		}catch(Exception e){ 
 			throw new SQLException(e.getMessage());
