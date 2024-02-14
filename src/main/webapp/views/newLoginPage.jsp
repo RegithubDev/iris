@@ -52,6 +52,19 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END: Custom CSS-->
 <style>
 
+@media screen and (max-width: 601px)  {
+    .logo {
+       width: 19rem!important;
+       margin-left: 4rem!important;
+    }
+
+}
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .logo {
+       width: 8rem!important;
+    }
+
+}
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
     animation: input_background_autofill 0s forwards;
     -webkit-text-fill-color: black !important;
@@ -77,24 +90,22 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
         <div class="content-body">
           <div class="auth-wrapper auth-cover">
             <div class="auth-inner row m-0">
-              <!-- Brand logo--><a class="brand-logo" href="index-2.html">
-         			<img src="/iris/resources/images/logo/logo.png" style="
+              <!-- Brand logo--><a class="brand-logo " href="#">
+         			<img src="/iris/resources/images/logo/logo.png" class="logo" style="
     width: 8rem;
 ">
                 </a>
               <!-- /Brand logo-->
               <!-- Left Text-->
-              <div class="d-none d-lg-flex col-lg-8 align-items-center p-5" style="
+              <div class="d-none d-lg-flex col-lg-7 align-items-center p-5" style="
     background-color: white;
 ">
                 <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid-1" src="/iris/resources/images/banner/newbanner.png" alt="Login V2"/></div>
               </div>
               <!-- /Left Text-->
               <!-- Login-->
-              <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5" style="
-    background-color: #f5f2f2;
-">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+              <div class="d-flex col-lg-5 align-items-center auth-bg px-2 p-lg-8" >
+                <div class=" card p-4 col-12 col-sm-8 col-md-6 col-lg-8 px-xl-2 mx-auto">
                   <h1 class="bold re-text fw-bolder">Sign In</h1>
                   <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
                   <form class="auth-login-form mt-2" action="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/horizontal-menu-template/index.html" method="POST">
@@ -104,7 +115,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
                     </div>
                     <div class="mb-1">
                       <div class="d-flex justify-content-between">
-                        <label class="form-label" for="login-password">Password</label><a href="auth-forgot-password-cover.html"><small>Forgot Password?</small></a>
+                        <label class="form-label" for="login-password">Password</label><a href="<%=request.getContextPath() %>/forgot-user"><small>Forgot Password?</small></a>
                       </div>
                       <div class="input-group input-group-merge form-password-toggle">
                         <input class="form-control form-control-merge" id="login-password" type="password" name="login-password" placeholder="············" aria-describedby="login-password" tabindex="2"/><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
@@ -116,9 +127,12 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
                         <label class="form-check-label" for="remember-me"> Remember Me</label>
                       </div>
                     </div>
-                    <a class="btn  w-100 re-text-bg" tabindex="4">Sign in</a>
+                    <div class="text-center">
+                     <a class="btn  w-50 re-text-bg" tabindex="4">Sign in</a>
+                    </div>
+                   
                   </form>
-              <p class="text-center mt-2"><span>New on our platform?</span><a href="auth-register-cover.html"><span>&nbsp;Create an account</span></a></p>
+              <p class="text-center mt-2"><span>New on our platform?</span><a href="<%=request.getContextPath() %>/create-new"><span>&nbsp;Create an account</span></a></p>
                 </div>
               </div>
               <!-- /Login-->

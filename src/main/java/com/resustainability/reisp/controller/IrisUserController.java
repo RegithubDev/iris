@@ -36,7 +36,7 @@ public class IrisUserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/sign-up", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/create-new", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView signUp(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.signUp);
 		try {
