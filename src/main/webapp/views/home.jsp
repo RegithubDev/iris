@@ -23,7 +23,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Email Application - Vuexy - Bootstrap HTML admin template</title>
+    <title>Home</title>
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -59,9 +59,31 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css" href="/iris/resources/css/style.css">
     <!-- END: Custom CSS-->
 <style>
+.badge i, .badge svg {
+    height: 28px!important;
+    width: 28px;
+    font-size: 12px;
+    stroke-width: 3;
+    vertical-align: top;
+    color: black;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    color: #000000;
+    background-color: #FFF;
+    border: 1px solid rgba(34,41,47,.125);
+}
 
+.menu-hide{
+	display:none;
+}
+.show-icon{
+	display:block;
+}
 .horizontal-layout.navbar-floating:not(.blank-page) .app-content {
-    padding: calc(0rem + 2.45rem* 2 + 1.3rem) 2rem 0;
+      padding: calc(0rem + 1.57rem* 2 + 1.3rem) 0rem 0;
 }
 </style>
   </head>
@@ -84,28 +106,75 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="app-content content email-application">
       <div class="content-overlay"></div>
      <!--  <div class="header-navbar-shadow"></div> -->
-      <div class="content-area-wrapper container-xxl p-0">
+      <div class="content-area-wrapper container-xxl p-0" style="
+    height: 100vh;
+">
         <div class="sidebar-left">
           <div class="sidebar">
           <div class="sidebar-content email-app-sidebar" id="menuDiv">
-  <div class="email-app-menu">
-    <div class="form-group-compose text-center compose-btn">
-      <a
+  <div class="email-app-menu shadow-right">
+  <div class="pricing-badge text-end p-2">
+                <a
         type="button"
-        class="compose-email btn btn-primary w-20"
+        class=" badge rounded-pill badge-light-primary"
         data-bs-backdrop="false"
         data-bs-toggle="modal"
         data-bs-target="#compose-mail" onclick="strinkMenu();"
       >
-        <span id="changeIcon"><i data-feather='align-justify'></i></span>
+        <i data-feather='chevrons-left' class="menuList"></i>
+        <i data-feather='align-justify' class="menu-hide showIcon"></i>
+        
       </a>
-    </div>
+              </div>
+   <!--  <div class="form-group-compose text-center compose-btn">
+      <a
+        type="button"
+        class="compose-email   w-20"
+        data-bs-backdrop="false"
+        data-bs-toggle="modal"
+        data-bs-target="#compose-mail" onclick="strinkMenu();"
+      >
+        <i data-feather='x' class="menuList"></i>
+        <i data-feather='align-justify' class="menu-hide showIcon"></i>
+        
+      </a>
+    </div> -->
     <div class="sidebar-menu-list">
-      <div class="list-group list-group-messages">
-        <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action active">
-         <i data-feather='home'></i>
-          <span class="align-middle menu-hide">Home</span>
+      <div class="list-group list-group-messages ">
+        <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action active bghover p-1  ">
+        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo  css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HomeOutlinedIcon"><path d="m12 5.69 5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3 2 12h3v8h6v-6h2v6h6v-8h3L12 3z"></path></svg>
+          <span class="align-middle menuList ">Home</span>
         </a>
+         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action  bghover p-1  ">
+        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo  css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LocationOnOutlinedIcon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
+          <span class="align-middle menuList ">Site Management</span>
+        </a>
+         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action  bghover p-1  ">
+       <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg>
+          <span class="align-middle menuList ">User Management</span>
+        </a>
+         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action  bghover p-1  ">
+     <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="InsertChartOutlinedOutlinedIcon"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg>
+          <span class="align-middle menuList ">Data Management</span>
+        </a>
+         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action  bghover p-1  ">
+         <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="VisibilityOutlinedIcon"><path d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"></path></svg>
+          <span class="align-middle menuList ">Product Catalogue</span>
+        </a>
+         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action  bghover p-1  ">
+        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DesignServicesOutlinedIcon"><path d="M20.97 7.27c.39-.39.39-1.02 0-1.41l-2.83-2.83a.9959.9959 0 0 0-1.41 0l-4.49 4.49-3.89-3.89c-.78-.78-2.05-.78-2.83 0l-1.9 1.9c-.78.78-.78 2.05 0 2.83l3.89 3.89L3 16.76V21h4.24l4.52-4.52 3.89 3.89c.95.95 2.23.6 2.83 0l1.9-1.9c.78-.78.78-2.05 0-2.83l-3.89-3.89 4.48-4.48zM5.04 6.94l1.89-1.9L8.2 6.31 7.02 7.5l1.41 1.41 1.19-1.19 1.2 1.2-1.9 1.9-3.88-3.88zm11.23 7.44-1.19 1.19 1.41 1.41 1.19-1.19 1.27 1.27-1.9 1.9-3.89-3.89 1.9-1.9 1.21 1.21zM6.41 19H5v-1.41l9.61-9.61 1.3 1.3.11.11L6.41 19zm9.61-12.44 1.41-1.41 1.41 1.41-1.41 1.41-1.41-1.41z"></path></svg>
+          <span class="align-middle menuList ">Management Dashboard</span>
+        </a>
+      
+         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action bghover p-1 ">
+        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HelpOutlineOutlinedIcon"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path></svg>
+          <span class="align-middle menuList ">Help Center</span>
+        </a>
+         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action  bghover p-1  ">
+         <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="NotificationsNoneOutlinedIcon"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"></path></svg>
+          <span class="align-middle menuList ">Reminder</span>
+        </a>
+        
       </div>
       <!-- <hr /> -->
     </div>
@@ -117,6 +186,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="content-right">
           <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
+            <div class="sidebar-toggle d-block d-lg-none ms-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu font-medium-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </div>
             </div>
             <div class="content-body"><div class="body-content-overlay"></div>
 <!-- Email list Area -->
@@ -191,23 +263,29 @@ License: You must have a valid license purchased only from themeforest(the above
       })
        document.getElementById("currentYear").innerHTML = new Date().getFullYear();
 
-	 function strinkMenu(){
+	 function strinkMenu(){ 
 		 var menuWidth = $("#menuDiv").width();
 		 if(menuWidth == '260'){
+			 $(".menuList").fadeIn("slow", function() {
+		            $(this).addClass("menu-hide");
+		        });
+			 $(".showIcon").removeClass('menu-hide');
 			 $('#menuDiv').animate({
 			        width: "6rem" // New width you want to animate to
-			    }, 1000);
-			var selectElement = "<i data-feather='align-right'></i>"
-				 $('#changeIcon i').attr("data-feather", "align-justify");.
+			    }, 200);        ''
+			    
+			 
 		 }else{
+			 $(".showIcon").addClass('menu-hide');
+			 $(".menuList").removeClass('menu-hide');
 			 $('#menuDiv').animate({
 			        width: "260px" // New width you want to animate to
-			    }, 1000);
-			 var selectElement = "<i data-feather='align-left'></i>"
-				 $('#changeIcon i').attr("data-feather", "align-left");
+			    }, 200);
+			 
 		 }
 		 
 		 
+		
 
 	}
 		

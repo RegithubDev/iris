@@ -10,6 +10,44 @@ body {
   height: 100%;
   max-height: 100vh;
 }
+.svglogo{
+	width:2rem;
+}
+
+.bghover:hover .svglogo{ 
+	fill: white!important;  
+}
+.bghover.active .svglogo{
+	fill: white!important;
+
+}
+.shadow-right {
+    /* Other styles for your div */
+    width: 200px; /* Example width */
+    height: 100px; /* Example height */
+    background-color: #ffffff; /* Example background color */
+    
+    /* Add a shadow to the right side */
+    box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1); /* Adjust the values as needed */
+}
+.email-application .content-area-wrapper .sidebar .list-group .list-group-item.active {
+    border-color: #da0d14!important;
+}
+.email-application .content-area-wrapper .sidebar .list-group .list-group-item.active{
+	 background: #da0d14!important;
+		color: white!important;
+	
+}
+.bghover:hover{
+	background: #a1a1a1!important;
+    color: #ffffff!important;
+
+}
+.bghover .active{
+	 background: #da0d14!important;
+		color: white!important;
+
+}
 .re-text-bg{
 	    background: #da0d14!important;
 		color: white!important;

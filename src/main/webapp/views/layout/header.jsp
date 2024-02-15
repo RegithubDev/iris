@@ -9,6 +9,7 @@
 <!-- <meta name="google-signin-client_id" content="180023549420-4araucipo8cil4matp902f64cte57md9.apps.googleusercontent.com">
  --> <script src="https://accounts.google.com/gsi/client" onload="initClient()" async defer></script>
 <title>Header</title>
+<script src="/iris/resources/js/jQuery-v.3.5.min.js"  ></script>
 <style type="text/css">
 .horizontal-menu .header-navbar.navbar-brand-center .navbar-header {
     left: calc(3% - 56px) !important;
