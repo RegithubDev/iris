@@ -84,7 +84,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
                   <form class="auth-login-form mt-2" id="loginForm" name="loginForm" action="<%=request.getContextPath() %>/login" method="POST">
                     <div class="mb-1">
                       <label class="form-label" for="emp_name">User Name</label>
-                      <input class="form-control" id="emp_name" type="text" name="emp_name" placeholder="Emp Code/Emp Name" aria-describedby="emp_name" autofocus="" tabindex="1"/>
+                      <input class="form-control" id="emp_name" type="text" name="user_name" placeholder="Emp Name" aria-describedby="emp_name" autofocus="" tabindex="1"/>
                     </div>
                     <div class="mb-1">
                       <div class="d-flex justify-content-between">

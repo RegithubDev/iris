@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,7 +27,7 @@ import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.UserService;
 import com.resustainability.reisp.controller.LoginController;
 import com.resustainability.reisp.dao.UserDao;
-@Controller
+@RestController
 public class LoginController {
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -70,15 +71,15 @@ public class LoginController {
 						model.setViewName("redirect:/home");
 						session.setAttribute("user", userDetails);
 						session.setAttribute("USER_ID", userDetails.getEmp_id());
-						session.setAttribute("USER_NAME", userDetails.getEmp_name());
-						session.setAttribute("EMP_EMAIL", userDetails.getEmail_id());
+						session.setAttribute("USER_NAME", userDetails.getUser_name());
+						session.setAttribute("EMAIL_ID", userDetails.getEmail_id());
 						session.setAttribute("BASE_ROLE", userDetails.getRole());
+						session.setAttribute("BASE_SBU", userDetails.getSbu());
 						session.setAttribute("USER_IMAGE", user.getUser_image());
-						session.setAttribute("CITY", userDetails.getCity());
-						session.setAttribute("SITE", userDetails.getSite());
+						session.setAttribute("SITE", userDetails.getSite_name());
 						session.setAttribute("DEPARTMENT", userDetails.getDepartment());
-					//	List<User> menuList = service.getMenuList();
-						//session.setAttribute("menuList", menuList);
+						List<User> menuList = service.getMenuList();
+						session.setAttribute("menuList", menuList);
 						attributes.addFlashAttribute("welcome", "welcome "+userDetails.getUser_name());
 				}else{
 					model.addObject("invalidEmail",invalidUserName);

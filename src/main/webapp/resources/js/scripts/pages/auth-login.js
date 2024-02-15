@@ -34,7 +34,7 @@ $(function () {
 		 'emp_id': {
           required: true
         },
-		 'emp_name': {
+		 'user_name': {
           required: true
         },
         'password': {

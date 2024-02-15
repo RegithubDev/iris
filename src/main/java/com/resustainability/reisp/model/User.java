@@ -8,12 +8,36 @@ public class User {
 	company_code,	project_code,	project_name,	status,	created_date,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
-	module_name,module_url,timePeriod,emp_id,emp_name,phone,city,site,department,category;
+	module_name,module_url,timePeriod,emp_id,emp_name,phone,city,site,sbu,department,category,site_name,main_menu;
 	int session_count,time_period;
 	
 	private MultipartFile user_image;
 	
 	
+	public String getMain_menu() {
+		return main_menu;
+	}
+
+	public void setMain_menu(String main_menu) {
+		this.main_menu = main_menu;
+	}
+
+	public String getSite_name() {
+		return site_name;
+	}
+
+	public void setSite_name(String site_name) {
+		this.site_name = site_name;
+	}
+
+	public String getSbu() {
+		return sbu;
+	}
+
+	public void setSbu(String sbu) {
+		this.sbu = sbu;
+	}
+
 	public MultipartFile getUser_image() {
 		return user_image;
 	}

@@ -268,32 +268,42 @@ public class UserDao {
 		User userDetails = null;
 		try{  
 			con = dataSource.getConnection();
-			String qry = "select id,emp_id,emp_name,email_id,role,password,phone,city,site,department,category,created_by,created_date,modified_by,modified_date "
-					+ "from [user_table] up "
-					+ "where  up.emp_name <> '' and up.status = 'Active' ";
-			if((!StringUtils.isEmpty(user.getEmp_id()) || !StringUtils.isEmpty(user.getEmp_name())) && !StringUtils.isEmpty(user.getPassword())){
-				qry = qry + "AND (emp_id = ? or emp_name = ?)  AND password = ? "; 
+			String qry = "select [id]"
+					+ "      ,[user_name]"
+					+ "      ,[email_id]"
+					+ "      ,[password]"
+					+ "      ,[mobile_number]"
+					+ "      ,[sbu]"
+					+ "      ,[categories]"
+					+ "      ,[roles]"
+					+ "      ,[site_name]"
+					+ "      ,[notfilled_datadates]"
+					+ "      ,[created_by]"
+					+ "      ,[created_date]"
+					+ "      ,[modified_by]"
+					+ "      ,[modified_date] "
+					+ "from [user_management] up "
+					+ "where  up.user_name <> '' and up.status = 'Active' ";
+			if((!StringUtils.isEmpty(user.getUser_name())) && !StringUtils.isEmpty(user.getPassword())){
+				qry = qry + "AND (user_name = ?)  AND password = ? "; 
 			}
 			stmt = con.prepareStatement(qry);
-			if((!StringUtils.isEmpty(user.getEmp_id()) || !StringUtils.isEmpty(user.getEmp_name())) && !StringUtils.isEmpty(user.getPassword())){
-				stmt.setString(1, user.getEmp_id());
-				stmt.setString(2, user.getEmp_name());
-				//stmt.setString(3, EncryptDecrypt.encrypt(user.getPassword()));;
-				stmt.setString(3,(user.getPassword()));;
+			if((!StringUtils.isEmpty(user.getUser_name())) && !StringUtils.isEmpty(user.getPassword())){
+				stmt.setString(1, user.getUser_name());
+				//stmt.setString(2, EncryptDecrypt.encrypt(user.getPassword()));;
+				stmt.setString(2,(user.getPassword()));;
 			}
 			rs = stmt.executeQuery();  
 			if(rs.next()) {
 				userDetails = new User();
 				userDetails.setId(rs.getString("id"));
-				userDetails.setEmp_id(rs.getString("emp_id"));
-				userDetails.setEmp_name(rs.getString("emp_name"));
+				userDetails.setUser_name(rs.getString("user_name"));
 				userDetails.setEmail_id(rs.getString("email_id"));
-				userDetails.setRole(rs.getString("role"));
-				userDetails.setPhone(rs.getString("phone"));
-				userDetails.setCity(rs.getString("city"));
-				userDetails.setSite(rs.getString("site"));
-				userDetails.setDepartment(rs.getString("department"));
-				userDetails.setCategory(rs.getString("category"));
+				userDetails.setRole(rs.getString("roles"));
+				userDetails.setPhone(rs.getString("mobile_number"));
+				userDetails.setSite(rs.getString("site_name"));
+				userDetails.setSbu(rs.getString("sbu"));
+				userDetails.setCategory(rs.getString("categories"));
 				//UserLoginActions(userDetails);
 			}
 		}catch(Exception e){ 
@@ -628,7 +638,7 @@ public class UserDao {
 	public List<User> getMenuList() throws SQLException {
 		List<User> menuList = null;
 		try{  
-			String qry = "select id, module_name, module_url from [form_menu] order by priority asc";
+			String qry = "select id, module_name, module_url,main_menu,status from [form_menu] order by priority asc";
 			menuList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<User>(User.class));
 			
 		}catch(Exception e){ 
