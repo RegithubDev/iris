@@ -107,7 +107,7 @@ License: You must have a valid license purchased only from themeforest(the above
       <div class="content-overlay"></div>
      <!--  <div class="header-navbar-shadow"></div> -->
       <div class="content-area-wrapper container-xxl p-0" style="
-    height: 100vh;
+    height: 100%;
 ">
         <div class="sidebar-left">
           <div class="sidebar">
@@ -186,26 +186,20 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="content-right">
           <div class="content-wrapper container-xxl p-0">
             <div class="content-header row">
-            <div class="sidebar-toggle d-block d-lg-none ms-1">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu font-medium-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-    </div>
+									            <div class="sidebar-toggle d-block d-lg-none ms-1">
+											      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu font-medium-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+											    </div>
             </div>
             <div class="content-body"><div class="body-content-overlay"></div>
-<!-- Email list Area -->
-<div class="email-app-list">
-  <!-- Email search starts -->
-  <!-- Email search ends -->
-
-  <!-- Email actions starts -->
-  <!-- Email actions ends -->
-
-  <!-- Email list starts -->
-  <div class="email-user-list">
-    <ul class="email-media-list">
-
-    </ul>
-  </div>
-</div>
+<div class="col-12 p-2" id="bigDiv">
+      <div class="card">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer"><div class="card-header border-bottom p-1"><div class="head-label"><h6 class="mb-0">DataTable with Buttons</h6></div><div class="dt-action-buttons text-end"><div class="dt-buttons d-inline-flex"> <button class="dt-button buttons-collection btn btn-outline-secondary dropdown-toggle me-2" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="true"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share font-small-4 me-50"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>Export</span></button> <button class="dt-button create-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="modal" data-bs-target="#modals-slide-in"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus me-50 font-small-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>Add New Record</span></button> </div></div></div><div class="d-flex justify-content-between align-items-center mx-0 row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_0_length"><label>Show <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="7">7</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="75">75</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control" placeholder="" aria-controls="DataTables_Table_0"></label></div></div></div><table class="datatables-basic table dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1298px;">
+          <thead>
+            <tr role="row"><th class="control sorting_disabled" rowspan="1" colspan="1" style="width: 41px; display: none;" aria-label=""></th><th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 41px;" data-col="1" aria-label=""><div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="checkboxSelectAll"><label class="form-check-label" for="checkboxSelectAll"></label></div></th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 128px;" aria-label="Name: activate to sort column ascending">Name</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 132px;" aria-label="Email: activate to sort column ascending">Email</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 119px;" aria-label="Date: activate to sort column ascending">Date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 152px;" aria-label="Salary: activate to sort column ascending">Salary</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 147px;" aria-label="Status: activate to sort column ascending">Status</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 157px;" aria-label="Actions">Actions</th></tr>
+          </thead>
+        <tbody><tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">Loading...</td></tr></tbody></table><div class="d-flex justify-content-between mx-0 row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">&nbsp;</a></li><li class="paginate_button page-item next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">&nbsp;</a></li></ul></div></div></div></div>
+      </div>
+    </div>
 
 
             </div>
@@ -272,7 +266,10 @@ License: You must have a valid license purchased only from themeforest(the above
 			 $(".showIcon").removeClass('menu-hide');
 			 $('#menuDiv').animate({
 			        width: "6rem" // New width you want to animate to
-			    }, 200);        ''
+			    }, 200); 
+			 $('#bigDiv').animate({
+			        width: "90rem" // New width you want to animate to
+			    }, 200); ''
 			    
 			 
 		 }else{
@@ -281,7 +278,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			 $('#menuDiv').animate({
 			        width: "260px" // New width you want to animate to
 			    }, 200);
-			 
+			 $('#bigDiv').animate({
+			        width: "78rem" // New width you want to animate to
+			    }, 200); ''
 		 }
 		 
 		 
