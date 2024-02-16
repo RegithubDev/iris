@@ -64,7 +64,7 @@ public class LoginController {
 		ModelAndView model = new ModelAndView(PageConstants.login);
 		User userDetails = null;
 		try {
-			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getPassword())){
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getEmail_id())){
 				user.setUser_session_id(user.getUser_session_id());
 				userDetails = service.validateUser(user);
 				if(!StringUtils.isEmpty(userDetails)) {

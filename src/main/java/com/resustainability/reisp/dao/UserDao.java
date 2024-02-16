@@ -284,14 +284,14 @@ public class UserDao {
 					+ "      ,[modified_date] "
 					+ "from [user_management] up "
 					+ "where  up.user_name <> '' and up.status = 'Active' ";
-			if((!StringUtils.isEmpty(user.getUser_name())) && !StringUtils.isEmpty(user.getPassword())){
-				qry = qry + "AND (user_name = ?)  AND password = ? "; 
+			if((!StringUtils.isEmpty(user.getEmail_id()))){
+				qry = qry + " and email_id = ? "; 
 			}
 			stmt = con.prepareStatement(qry);
-			if((!StringUtils.isEmpty(user.getUser_name())) && !StringUtils.isEmpty(user.getPassword())){
-				stmt.setString(1, user.getUser_name());
+			if((!StringUtils.isEmpty(user.getEmail_id()))){
+				stmt.setString(1, user.getEmail_id());
 				//stmt.setString(2, EncryptDecrypt.encrypt(user.getPassword()));;
-				stmt.setString(2,(user.getPassword()));;
+				//stmt.setString(2,(user.getPassword()));;
 			}
 			rs = stmt.executeQuery();  
 			if(rs.next()) {

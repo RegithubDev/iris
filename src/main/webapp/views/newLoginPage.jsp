@@ -23,6 +23,14 @@
     <link rel="stylesheet" type="text/css" href="/iris/resources/css/plugins/forms/form-validation.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources/css/pages/authentication.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//css/style.css">
+     <script src="https://accounts.google.com/gsi/client" async defer></script>
+       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+      <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;display=swap"
+      rel="stylesheet"
+    />
 <style>
 
 @media screen and (max-width: 601px)  {
@@ -81,8 +89,8 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
                 <div class=" card p-4 col-12 col-sm-8 col-md-6 col-lg-8 px-xl-2 mx-auto">
                   <h1 class="bold re-text fw-bolder">Sign In</h1>
                   <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
-                  <form class="auth-login-form mt-2" id="loginForm" name="loginForm" action="<%=request.getContextPath() %>/login" method="POST">
-                    <div class="mb-1">
+                 <%--  <form class="auth-login-form mt-2" id="loginForm" name="loginForm" action="<%=request.getContextPath() %>/login" method="POST"> --%>
+                   <%--  <div class="mb-1">
                       <label class="form-label" for="emp_name">User Name</label>
                       <input class="form-control" id="emp_name" type="text" name="user_name" placeholder="Emp Name" aria-describedby="emp_name" autofocus="" tabindex="1"/>
                     </div>
@@ -102,9 +110,24 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
                     </div>
                     <div class="text-center">
                      <a onclick="login();" class="btn  w-50 re-text-bg" tabindex="4">Sign in</a>
-                    </div>
-                   
-                  </form>
+                    </div> --%>
+                   <div id="g_id_onload" 
+					     data-client_id="180023549420-57imk7usicj28m4489imvf0spmk3v7l7.apps.googleusercontent.com"
+					     data-context="use"
+					     data-ux_mode="popup"
+					     data-callback="handleCredentialResponse"
+					     data-nonce=""
+					     data-itp_support="true">
+					</div>
+					<div class="g_id_signin justify-content-center mt-1"
+					     data-type="standard" 
+					     data-shape="rectangular"
+					     data-theme="filled_blue"
+					     data-text="signin_with"
+					     data-size="large"
+					     data-logo_alignment="left">
+					</div>
+                 <!--  </form> -->
 <%--               <p class="text-center mt-2"><span>New on our platform?</span><a href="<%=request.getContextPath() %>/create-new"><span>&nbsp;Create an account</span></a></p>
  --%>                </div>
               </div>
@@ -134,7 +157,13 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     <!-- BEGIN: Page JS-->
     <script src="/iris/resources/js/scripts/pages/auth-login.js"></script>
     <!-- END: Page JS-->
-
+  <form action="<%=request.getContextPath() %>/login" name="loginForm" id="loginForm" method="post">
+		<input type="hidden" name="email_id" id="email_id"/>
+		<input type="hidden" name="user_name" id="user_name"/>
+		<input id="profileImg" name="profileImg" type="hidden" />
+		<input id="gToken" name="user_session_id" type="hidden" />
+		<input id="device_type" name="device_type" type="hidden" />
+	</form>
     <script>
       $(window).on('load',  function(){
         if (feather) {
@@ -149,6 +178,65 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 			  $('#loginForm').submit();
 		  }
       }
+      var client;
+      var access_token;
+
+      function initClient() { 
+    	  
+        client = google.accounts.oauth2.initTokenClient({
+          client_id: '180023549420-4araucipo8cil4matp902f64cte57md9.apps.googleusercontent.com',
+          scope: 'https://www.googleapis.com/auth/calendar.readonly \
+                  https://www.googleapis.com/auth/contacts.readonly',
+          callback: (tokenResponse) => {
+            access_token = tokenResponse.access_token;
+          },
+        });
+      }
+    	function decodeJwtResponse(token) {
+            let base64Url = token.split('.')[1]
+            let base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            let jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload)
+        }
+
+        let responsePayload;
+        
+    	window.handleCredentialResponse = (response) => {
+    		  // decodeJwtResponse() is a custom function defined by you
+    		  // to decode the credential response.
+    		  responsePayload = decodeJwtResponse(response.credential);
+
+    		  console.log("ID: " + responsePayload.sub);
+    		  console.log('Full Name: ' + responsePayload.name);
+    		  console.log('Given Name: ' + responsePayload.given_name);
+    		  console.log('Family Name: ' + responsePayload.family_name);
+    		  console.log("Image URL: " + responsePayload.picture);
+    		  console.log("Email: " + responsePayload.email);
+    		  if('${success}' == null || '${success}' == ''){
+	    		  if('${invalidEmail}' == null || '${invalidEmail}' == ''){
+	    			  $("#email_id").val(responsePayload.email);
+	    			  $("#user_name").val(responsePayload.name);
+	    			  $("#profileImg").val(responsePayload.picture);
+	    			  $("#gToken").val(responsePayload.sub);
+		    		  $("#loginForm").submit();
+	    		  }else{
+	    			 alert(profile.getEmail()+" do not have access to login. Please try with registered mail account (or) contact to admin.");
+	    			 signOut();
+			      }
+		      }else if('${success}' == 'Successfully logged out'){
+		    	  if('${invalidEmail}' == null || '${invalidEmail}' == ''){
+		    		  $("#email_id").val(responsePayload.email);
+	    			  $("#user_name").val(responsePayload.name);
+	    			  $("#profileImg").val(responsePayload.picture);
+	    			  $("#gToken").val(responsePayload.sub);
+		    		  $("#loginForm").submit();
+	    		  }
+		      }else{
+			      signOut();
+		      }
+    		}
     </script>
   </body>
   <!-- END: Body-->
