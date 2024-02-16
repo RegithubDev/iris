@@ -36,6 +36,17 @@ public class IrisUserController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/iris-usermanagement", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView irisusermanagement(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.irisusermanagement);
+		try {
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
 	@RequestMapping(value = "/create-new", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView signUp(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.signUp);

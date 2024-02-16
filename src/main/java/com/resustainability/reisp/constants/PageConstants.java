@@ -3,10 +3,9 @@ package com.resustainability.reisp.constants;
 public class PageConstants {
 	
 	public static final String irisUsers = "irisUsers";
-	
 	public static final String signUp = "signUp";
+	public static final String irisusermanagement = "irisusermanagement";
 
-	
 	
 	
 	
@@ -139,6 +138,8 @@ public class PageConstants {
 	public static final String bbSbuForm = "bbSbuForm";
 	public static final String bbbank = "ideabank";
 	public static final String helpCenter = "helpCenter";
+
+
 	
 	
 }
