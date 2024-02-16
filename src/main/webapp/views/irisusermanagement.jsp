@@ -185,45 +185,57 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="content-body"><div class="body-content-overlay"></div>
             
             
-           <div class="card-body">
+           <div class="card-body" id="filterDiv">
           <div class="row">
           
-          <div class="col-xl-4 col-md-6 col-12" >
+          <div class="col-xl-2 col-md-6 col-12" style="
+    padding-right: calc(var(--bs-gutter-x) * 0);
+" >
            <div class="mb-1">
-              <label class="form-label" for="select2-basic">Basic</label>
+              <label class="form-label" for="select2-basic">Department</label>
               <div class="position-relative" ><select class="select2 form-select select2-hidden-accessible" id="select2-basic" data-select2-id="select2-basic1" tabindex="1" aria-hidden="true">
-                <option value="AK" >Alaska</option>
+                <option value="" >Select Department</option>
                 <option value="HI" >Hawaii</option>
                 <option value="CA" >California</option>
-              
               </select>
               </div></div>
             </div>
-            <div class="col-xl-4 col-md-6 col-12">
+            <div class="col-xl-2 col-md-6 col-12" style="
+    padding-right: calc(var(--bs-gutter-x) * 0);
+">
              <div class="mb-1">
-              <label class="form-label" for="select2-basic">Basic</label>
-              <div class="position-relative" ><select class="select2 form-select select2-hidden-accessible" id="select2-basic1" data-select2-id="select2-basic" tabindex="-1" aria-hidden="true">
-               <option value="" >Select status</option>
+              <label class="form-label" for="select2-basic">Site</label>
+              <div class="position-relative" ><select class="select2 form-select select2-hidden-accessible" id="select2-basic1" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
+               <option value="" >Select Site</option>
                 <option value="LA" >Louisiana</option>
                 <option value="MN" >Minnesota</option>
-               
               </select></div>
             </div>
             </div>
-            <div class="re-text col-xl-4 col-md-3 col-3">
-             <div class="demo-inline-spacing">
-            
-            <div class="icon-wrapper btn  btn-outline-danger waves-effect">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+             <div class="col-xl-2 col-md-6 col-12" style="
+    padding-right: calc(var(--bs-gutter-x) * 0);
+">
+             <div class="mb-1">
+              <label class="form-label" for="select2-basic">Role</label>
+              <div class="position-relative" ><select class="select2 form-select select2-hidden-accessible" id="select2-basic2" data-select2-id="select2-basic" tabindex="0" aria-hidden="true">
+               <option value="" >Select Role</option>
+                <option value="LA" >Louisiana</option>
+                <option value="MN" >Minnesota</option>
+              </select></div>
             </div>
-           <div class="icon-wrapper btn  btn-outline-danger waves-effect">
-<i data-feather='refresh-ccw'></i>            </div>
-            <div class="icon-wrapper btn  btn-outline-danger waves-effect">
-<i data-feather='download-cloud'></i>         
-   </div>
-         
+            </div>
+            <div class="re-text col-xl-2 col-md-3 col-3">
+             <div class="demo-inline-spacing">
+            <a type="button" class="btn btn-gradient-danger re-text-bg">Filter</a>
+          <%--    <a type="button" href="<%=request.getContextPath() %>/iris-usermanagement" class="btn btn-gradient-danger re-text-bg"><i data-feather='refresh-ccw'></i></a> --%>
+          
           </div>
             </div>
+             <div class="re-text col-xl-4 col-md-3 col-3 mt-2">
+              <a type="button" class="btn btn-gradient-danger re-text-bg">Add User</a>
+               <a type="button" class="btn btn-gradient-danger re-text-bg">Add Role</a>
+               <a type="button" class="btn btn-gradient-danger re-text-bg"><i data-feather='download-cloud'></i>  </a>
+             </div>
           </div>
         </div> 
             <br>
@@ -306,6 +318,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			 $('#bigDiv').animate({
 			        width: "90rem" // New width you want to animate to
 			    }, 200); ''
+			 $('#filterDiv').animate({
+			        width: "102rem" // New width you want to animate to
+			    }, 200); ''
 			    
 			 
 		 }else{
@@ -316,6 +331,9 @@ License: You must have a valid license purchased only from themeforest(the above
 			    }, 200);
 			 $('#bigDiv').animate({
 			        width: "78rem" // New width you want to animate to
+			    }, 200); ''
+			 $('#filterDiv').animate({
+			        width: "83rem" // New width you want to animate to
 			    }, 200); ''
 		 }
 		 
