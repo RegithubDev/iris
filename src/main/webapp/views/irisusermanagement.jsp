@@ -346,7 +346,7 @@ tr td:last-child {
 										</div>
 										<div>
 											<div class="dt-buttons d-inline-flex">
-												  <a type="button" class="btn btn-gradient-danger re-text-bg">Add New User</a>
+												  <a href="<%=request.getContextPath() %>/iris-adduser" type="button" class="btn btn-gradient-danger re-text-bg">Add New User</a>
 												  <a type="button" class="btn btn-gradient-danger re-text-bg">Add New Role</a>
 											</div>
 										</div>
