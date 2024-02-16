@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -24,6 +25,8 @@ import com.google.gson.GsonBuilder;
 import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.model.UserPaginationObject;
+import com.resustainability.reisp.service.IrisUserService;
+import com.resustainability.reisp.service.UserService;
 
 @Controller
 public class IrisUserController {
@@ -33,7 +36,8 @@ public class IrisUserController {
     }
 	Logger logger = Logger.getLogger(IrisUserController.class);
 	
-	
+	@Autowired
+	IrisUserService service;
 	
 	@RequestMapping(value = "/iris-users", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView irmReport(@ModelAttribute User user, HttpSession session) {
@@ -68,7 +72,7 @@ public class IrisUserController {
 		return model;
 	}
 
-	@RequestMapping(value = "/ajax/get-users", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/ajax/get-users-iris", method = { RequestMethod.POST, RequestMethod.GET })
 	public void getUsersList(@ModelAttribute User obj, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException {
 		PrintWriter pw = null;
