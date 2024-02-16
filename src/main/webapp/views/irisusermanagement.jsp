@@ -27,8 +27,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>User Management</title>
-    <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
-    <link rel="shortcut icon" type="image/x-icon" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/ico/favicon.ico">
+     <link rel="apple-touch-icon" href="/iris/resources/images/logo/logo.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
@@ -363,37 +363,9 @@ tr td:last-child {
 												<th >Categories</th>
 												<th >Roles</th>
 												<th >Site Name</th>
-              </tr>
-            </thead>
-          </table>
-									<!-- <table
-										class="datatables-basic table dataTable no-footer dtr-column mdl-data-table"
-										id="datatable-user"  role="grid"
-										aria-describedby="DataTables_Table_0_info"
-										style="width: 1298px;">
-										<thead> 
-											<tr role="row">
-												<th >#</th>
-												<th >Actions</th>
-												<th >Name</th>
-												<th >Email</th>
-												<th >Mobile</th>
-												<th >Department</th>
-												<th >Categories</th>
-												<th >Roles</th>
-												<th >Site
-													Name</th>
-												<th class="sorting" tabindex="0"
-													aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-													style="width: 147px;"
-													aria-label="Status: activate to sort column ascending">Not Filled Data Dates</th>
-
-											</tr>
-										</thead>
-										<tbody>
-											
-										</tbody>
-									</table> -->
+			              </tr>
+			            </thead>
+			          </table>
 								</div>
 							</div>
     </div>

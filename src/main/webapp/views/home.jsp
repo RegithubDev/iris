@@ -25,7 +25,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="author" content="PIXINVENT">
     <title>Home</title>
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
-    <link rel="shortcut icon" type="image/x-icon" href="https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/app-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
