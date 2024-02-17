@@ -75,7 +75,55 @@
 
 <!-- Complex Headers -->
 <section id="complex-header-datatable">
+<div class="content-header row">
+          <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+              <div class="col-12">
+                <h2 class="content-header-title float-start mb-0"></h2>
+                <div class="breadcrumb-wrapper">
+                  <ol class="breadcrumb">
+                    <li class=""><a href="index-2.html"></a>
+                    </li>
+                    <li class=""><a href="#"></a>
+                    </li>
+                    <li class=" ">
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-header-right text-md-end col-md-3 col-12 ">
+            <div class="mb-1 breadcrumb-right">
+              <div class="dropdown">
+              <button type="button" class="btn btn-icon btn-icon rounded-circle re-text-bg btn-warning waves-effect waves-float waves-light">
+				<i data-feather='upload' class="fw-bolder"></i>
+            </button>
+              	 
+                </div>
+            </div>
+          </div>
+        </div>
   <div class="row">
+    <div class="col-md-6 col-xl-6">
+      <div class="card re-text-bg">
+        <div class="card-body">
+          <h4 class="card-title text-white text-center">Total Sites</h4>
+          <h2 class="text-white text-center">11</h2>
+        </div> 
+      </div>
+    </div>
+    <div class="col-md-6 col-xl-6">
+      <div class="card re-text-bg">
+        <div class="card-body">
+          <h4 class="card-title text-white text-center">Total Users</h4>
+          <h2 class="text-white text-center">6</h2>
+        </div>
+      </div>
+    </div>
+    
+    
+    
     
   </div>
 </section>
@@ -106,7 +154,7 @@
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
-      <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT  © 2021<a class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-end d-none d-md-block">Hand-crafted &amp; Made with<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span></p>
+      <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT  &copy;  <span id="currentYear"></span> ,| Powered by<a class="ms-25" href="https://ramkyenviroengineers.com/" target="_blank">Re Sustainability Limited</a><span class="d-none d-sm-inline-block"> . All Rights Reserved.</span></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top waves-effect waves-float waves-light" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
     <!-- END: Footer-->
@@ -143,12 +191,23 @@
     <!-- END: Page JS-->
 
     <script>
-      $(window).on('load',  function(){
+ $(window).on('load',  function(){
+    	
         if (feather) {
           feather.replace({ width: 14, height: 14 });
         }
       })
+       document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+
+		
     </script>
+     <script async>
+        var link = document.createElement( 'link' );
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-light.min.css';
+        link.rel = 'stylesheet';document.getElementsByTagName( 'head' )[0].appendChild( link );
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+      <script async>hljs.initHighlightingOnLoad();</script>
   
   
 

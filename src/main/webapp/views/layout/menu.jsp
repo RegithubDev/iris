@@ -42,7 +42,7 @@ div.main-menu-content {
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
 
 
-				<li class=" nav-item"><a class="d-flex align-items-center"
+				<li class=" nav-item bghover"><a class="d-flex align-items-center"
 					href="app-email.html"><svg xmlns="http://www.w3.org/2000/svg"
 							width="14" height="14" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -51,7 +51,7 @@ div.main-menu-content {
 								d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
 							<polyline points="22,6 12,13 2,6"></polyline></svg><span
 						class="menu-title text-truncate" data-i18n="Email">Emaefeil</span></a></li>
-				<li class=" nav-item"><a class="d-flex align-items-center"
+				<li class=" nav-item bghover"><a class="d-flex align-items-center"
 					href="app-chat.html"><svg xmlns="http://www.w3.org/2000/svg"
 							width="14" height="14" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -59,7 +59,7 @@ div.main-menu-content {
 							<path
 								d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span
 						class="menu-title text-truncate" data-i18n="Chat">Chat</span></a></li>
-				<li class=" nav-item"><a class="d-flex align-items-center"
+				<li class=" nav-item bghover"><a class="d-flex align-items-center"
 					href="app-todo.html"><svg xmlns="http://www.w3.org/2000/svg"
 							width="14" height="14" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -68,7 +68,7 @@ div.main-menu-content {
 							<path
 								d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span
 						class="menu-title text-truncate" data-i18n="Todo">Todo</span></a></li>
-				<li class=" nav-item"><a class="d-flex align-items-center"
+				<li class=" nav-item bghover"><a class="d-flex align-items-center"
 					href="app-calendar.html"><svg
 							xmlns="http://www.w3.org/2000/svg" width="14" height="14"
 							viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -80,7 +80,7 @@ div.main-menu-content {
 							<line x1="3" y1="10" x2="21" y2="10"></line></svg><span
 						class="menu-title text-truncate" data-i18n="Calendar">Calendar</span></a>
 				</li>
-				<li class=" nav-item"><a class="d-flex align-items-center"
+				<li class=" nav-item bghover"><a class="d-flex align-items-center"
 					href="app-kanban.html"><svg xmlns="http://www.w3.org/2000/svg"
 							width="14" height="14" viewBox="0 0 24 24" fill="none"
 							stroke="currentColor" stroke-width="2" stroke-linecap="round"
