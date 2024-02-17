@@ -1,42 +1,22 @@
-
-<!DOCTYPE html>
-<!--
-Template Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-Author: PixInvent
-Website: http://www.pixinvent.com/
-Contact: hello@pixinvent.com
-Follow: www.twitter.com/pixinvents
-Like: www.facebook.com/pixinvents
-Purchase: https://1.envato.market/vuexy_admin
-Renew Support: https://1.envato.market/vuexy_admin
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
-
--->
-<html class="loading" lang="en" data-textdirection="ltr">
-  <!-- BEGIN: Head-->
-  
-<!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/horizontal-menu-template/app-email.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:35:38 GMT -->
-<head>
+<html class="loaded light-layout" lang="en" data-textdirection="ltr" style="--vh: 3.54px;"><!-- BEGIN: Head--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Home</title>
+    <title>IRIS - Home</title>
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/vendors.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/editors/quill/katex.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/editors/quill/monokai-sublime.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/editors/quill/quill.snow.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/extensions/toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/forms/select/select2.min.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com/">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Inconsolata&amp;family=Roboto+Slab&amp;family=Slabo+27px&amp;family=Sofia&amp;family=Ubuntu+Mono&amp;display=swap">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/buttons.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/pickers/flatpickr/flatpickr.min.css">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -49,48 +29,21 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" type="text/css" href="/iris/resources//css/themes/semi-dark-layout.min.css">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="/iris/resources//css/core/menu/menu-types/horizontal-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//css/plugins/forms/form-quill-editor.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//css/plugins/extensions/ext-component-toastr.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources//css/pages/app-email.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/core/menu/menu-types/vertical-menu.min.css">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="/iris/resources/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//assets/css/style.css">
     <!-- END: Custom CSS-->
-<style>
-.badge i, .badge svg {
-    height: 28px!important;
-    width: 28px;
-    font-size: 12px;
-    stroke-width: 3;
-    vertical-align: top;
-    color: black;
-}
-.list-group-item {
-    position: relative;
-    display: block;
-    padding: 0.75rem 1.25rem;
-    color: #000000;
-    background-color: #FFF;
-    border: 1px solid rgba(34,41,47,.125);
-}
 
-.menu-hide{
-	display:none;
-}
-.show-icon{
-	display:block;
-}
-.horizontal-layout.navbar-floating:not(.blank-page) .app-content {
-      padding: calc(0rem + 1.57rem* 2 + 1.3rem) 0rem 0;
-}
-</style>
   </head>
   <!-- END: Head-->
 
   <!-- BEGIN: Body-->
-  <body class="horizontal-layout horizontal-menu content-left-sidebar navbar-floating footer-static  " data-open="hover" data-menu="horizontal-menu" data-col="content-left-sidebar">
+  <body class="pace-done vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-open="click" data-menu="vertical-menu-modern" data-col="" style=""><div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <div class="pace-progress-inner"></div>
+</div>
+<div class="pace-activity"></div></div>
 
     <!-- BEGIN: Header-->
     <jsp:include page="../views/layout/header.jsp"></jsp:include>
@@ -98,112 +51,105 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
     <!-- BEGIN: Main Menu-->
-    <div class="horizontal-menu-wrapper">
+    <div class="main-menu menu-fixed menu-accordion menu-shadow expanded menu-light" data-scroll-to-active="true" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+      <div class="navbar-header expanded">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item me-auto"><a class=" nav-item" href="index-2.html"><span class="">
+              		<img src="/iris/resources/images/logo/logo.png" class="logo" style="
+    width: 10rem;
+"></span>
+              </a></li>
+          <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x d-block d-xl-none text-primary toggle-icon font-medium-4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-disc d-none d-xl-block collapse-toggle-icon primary font-medium-4"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg></a></li>
+        </ul>
+      </div>
+      <div class="shadow-bottom" style="display: none;"></div>
+      <div class="main-menu-content ps" style="height: 291.625px;margin-top: 4rem;">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+          
+          
+          <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>
+          </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg><span class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
+          </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>
+          </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span class="menu-title text-truncate" data-i18n="Calendar">Calendar</span></a>
+          </li>
+          <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>
+          </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+        </ul>
+      <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 292px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
     </div>
     <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
-    <div class="app-content content email-application">
+    <div class="app-content content ">
       <div class="content-overlay"></div>
-     <!--  <div class="header-navbar-shadow"></div> -->
-      <div class="content-area-wrapper container-xxl p-0" style="
-    height: 100%;
-">
-        <div class="sidebar-left">
-          <div class="sidebar">
-          <div class="sidebar-content email-app-sidebar" id="menuDiv">
-  <div class="email-app-menu shadow-right">
-  <div class="pricing-badge text-end p-2">
-                <a
-        type="button"
-        class=" badge rounded-pill badge-light-primary"
-        data-bs-backdrop="false"
-        data-bs-toggle="modal"
-        data-bs-target="#compose-mail" onclick="strinkMenu();"
-      >
-        <i data-feather='chevrons-left' class="menuList"></i>
-        <i data-feather='align-justify' class="menu-hide showIcon"></i>
-        
-      </a>
-              </div>
-   <!--  <div class="form-group-compose text-center compose-btn">
-      <a
-        type="button"
-        class="compose-email   w-20"
-        data-bs-backdrop="false"
-        data-bs-toggle="modal"
-        data-bs-target="#compose-mail" onclick="strinkMenu();"
-      >
-        <i data-feather='x' class="menuList"></i>
-        <i data-feather='align-justify' class="menu-hide showIcon"></i>
-        
-      </a>
-    </div> -->
-    <div class="sidebar-menu-list">
-      <div class="list-group list-group-messages ">
-        <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action active bghover p-1  ">
-        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo  css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HomeOutlinedIcon"><path d="m12 5.69 5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3 2 12h3v8h6v-6h2v6h6v-8h3L12 3z"></path></svg>
-          <span class="align-middle menuList ">Home</span>
-        </a>
-         <a href="<%=request.getContextPath() %>/" class="list-group-item list-group-item-action  bghover p-1  ">
-        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo  css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LocationOnOutlinedIcon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"></path><circle cx="12" cy="9" r="2.5"></circle></svg>
-          <span class="align-middle menuList ">Site Management</span>
-        </a>
-         <a href="<%=request.getContextPath() %>/iris-usermanagement" class="list-group-item list-group-item-action  bghover p-1  ">
-       <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg>
-          <span class="align-middle menuList ">User Management</span>
-        </a>
-         <a href="<%=request.getContextPath() %>/" class="list-group-item list-group-item-action  bghover p-1  ">
-     <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="InsertChartOutlinedOutlinedIcon"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg>
-          <span class="align-middle menuList ">Data Management</span>
-        </a>
-         <a href="<%=request.getContextPath() %>/" class="list-group-item list-group-item-action  bghover p-1  ">
-         <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="VisibilityOutlinedIcon"><path d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"></path></svg>
-          <span class="align-middle menuList ">Product Catalogue</span>
-        </a>
-         <a href="<%=request.getContextPath() %>/" class="list-group-item list-group-item-action  bghover p-1  ">
-        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DesignServicesOutlinedIcon"><path d="M20.97 7.27c.39-.39.39-1.02 0-1.41l-2.83-2.83a.9959.9959 0 0 0-1.41 0l-4.49 4.49-3.89-3.89c-.78-.78-2.05-.78-2.83 0l-1.9 1.9c-.78.78-.78 2.05 0 2.83l3.89 3.89L3 16.76V21h4.24l4.52-4.52 3.89 3.89c.95.95 2.23.6 2.83 0l1.9-1.9c.78-.78.78-2.05 0-2.83l-3.89-3.89 4.48-4.48zM5.04 6.94l1.89-1.9L8.2 6.31 7.02 7.5l1.41 1.41 1.19-1.19 1.2 1.2-1.9 1.9-3.88-3.88zm11.23 7.44-1.19 1.19 1.41 1.41 1.19-1.19 1.27 1.27-1.9 1.9-3.89-3.89 1.9-1.9 1.21 1.21zM6.41 19H5v-1.41l9.61-9.61 1.3 1.3.11.11L6.41 19zm9.61-12.44 1.41-1.41 1.41 1.41-1.41 1.41-1.41-1.41z"></path></svg>
-          <span class="align-middle menuList ">Management Dashboard</span>
-        </a>
-      
-         <a href="<%=request.getContextPath() %>/" class="list-group-item list-group-item-action bghover p-1 ">
-        <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HelpOutlineOutlinedIcon"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path></svg>
-          <span class="align-middle menuList ">Help Center</span>
-        </a>
-         <a href="<%=request.getContextPath() %>/home" class="list-group-item list-group-item-action  bghover p-1  ">
-         <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="NotificationsNoneOutlinedIcon"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"></path></svg>
-          <span class="align-middle menuList ">Reminder</span>
-        </a>
-        
-      </div>
-      <!-- <hr /> -->
-    </div>
-  </div>
+      <div class="header-navbar-shadow"></div>
+      <div class="content-wrapper container-xxl p-0">
+   
+        <div class="content-body"><div class="row">
 </div>
+<!-- Basic table -->
+<section id="basic-datatable">
+<div class="row">
+						<div class="col-12">
+							<div class="card">
+							</div>
+						</div>
+					</div>
+</section>
+<!--/ Basic table -->
 
-          </div>
-        </div>
-        <div class="content-right">
-          <div class="content-wrapper container-xxl p-0">
-            <div class="content-header row">
-									            <div class="sidebar-toggle d-block d-lg-none ms-1">
-											      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu font-medium-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-											    </div>
-            </div>
-            <div class="content-body"><div class="body-content-overlay"></div>
-<div class="col-12 p-2" id="bigDiv">
-      <div class="card">
-        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer"><div class="card-header border-bottom p-1"><div class="head-label"><h6 class="mb-0">DataTable with Buttons</h6></div><div class="dt-action-buttons text-end"><div class="dt-buttons d-inline-flex"> <button class="dt-button buttons-collection btn btn-outline-secondary dropdown-toggle me-2" tabindex="0" aria-controls="DataTables_Table_0" type="button" aria-haspopup="true"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share font-small-4 me-50"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg>Export</span></button> <button class="dt-button create-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="modal" data-bs-target="#modals-slide-in"><span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus me-50 font-small-4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>Add New Record</span></button> </div></div></div><div class="d-flex justify-content-between align-items-center mx-0 row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="DataTables_Table_0_length"><label>Show <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-select"><option value="7">7</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="75">75</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control" placeholder="" aria-controls="DataTables_Table_0"></label></div></div></div><table class="datatables-basic table dataTable no-footer dtr-column" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1298px;">
-          <thead>
-            <tr role="row"><th class="control sorting_disabled" rowspan="1" colspan="1" style="width: 41px; display: none;" aria-label=""></th><th class="sorting_disabled dt-checkboxes-cell dt-checkboxes-select-all" rowspan="1" colspan="1" style="width: 41px;" data-col="1" aria-label=""><div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="checkboxSelectAll"><label class="form-check-label" for="checkboxSelectAll"></label></div></th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 128px;" aria-label="Name: activate to sort column ascending">Name</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 132px;" aria-label="Email: activate to sort column ascending">Email</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 119px;" aria-label="Date: activate to sort column ascending">Date</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 152px;" aria-label="Salary: activate to sort column ascending">Salary</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 147px;" aria-label="Status: activate to sort column ascending">Status</th><th class="sorting_disabled" rowspan="1" colspan="1" style="width: 157px;" aria-label="Actions">Actions</th></tr>
-          </thead>
-        <tbody><tr class="odd"><td valign="top" colspan="7" class="dataTables_empty">Loading...</td></tr></tbody></table><div class="d-flex justify-content-between mx-0 row"><div class="col-sm-12 col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 0 to 0 of 0 entries</div></div><div class="col-sm-12 col-md-6"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">&nbsp;</a></li><li class="paginate_button page-item next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">&nbsp;</a></li></ul></div></div></div></div>
-      </div>
-    </div>
+<!-- Complex Headers -->
+<section id="complex-header-datatable">
+  <div class="row">
+    
+  </div>
+</section>
+<!--/ Complex Headers -->
 
+<!-- Row grouping -->
 
-            </div>
-          </div>
+<!--/ Row grouping -->
+
+<!-- Multilingual -->
+
+<!--/ Multilingual -->
+
         </div>
       </div>
     </div>
@@ -211,17 +157,19 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
     <!-- BEGIN: Customizer-->
+    
     <!-- End: Customizer-->
 
     <!-- Buynow Button-->
-    <div class="sidenav-overlay"></div>
-    <div class="drag-target"></div>
+    
+    <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+    <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
 
     <!-- BEGIN: Footer-->
-   <footer class="footer footer-static footer-light">
-      <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT  &copy;  <span id="currentYear"></span> ,| Powered by<a class="ms-25" href="https://ramkyenviroengineers.com/" target="_blank">Re Sustainability Limited</a><span class="d-none d-sm-inline-block"> . All Rights Reserved.</span></span></p>
+    <footer class="footer footer-static footer-light">
+      <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT  © 2021<a class="ms-25" href="https://1.envato.market/pixinvent_portfolio" target="_blank">Pixinvent</a><span class="d-none d-sm-inline-block">, All rights Reserved</span></span><span class="float-md-end d-none d-md-block">Hand-crafted &amp; Made with<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></span></p>
     </footer>
-    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+    <button class="btn btn-primary btn-icon scroll-top waves-effect waves-float waves-light" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
     <!-- END: Footer-->
 
 
@@ -230,12 +178,19 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-    <script src="/iris/resources//vendors/js/ui/jquery.sticky.js"></script>
-    <script src="/iris/resources//vendors/js/editors/quill/katex.min.js"></script>
-    <script src="/iris/resources//vendors/js/editors/quill/highlight.min.js"></script>
-    <script src="/iris/resources//vendors/js/editors/quill/quill.min.js"></script>
-    <script src="/iris/resources//vendors/js/extensions/toastr.min.js"></script>
-    <script src="/iris/resources//vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/responsive.bootstrap5.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/datatables.checkboxes.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/datatables.buttons.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/jszip.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/pdfmake.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/vfs_fonts.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/buttons.html5.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/buttons.print.min.js"></script>
+    <script src="/iris/resources//vendors/js/tables/datatable/dataTables.rowGroup.min.js"></script>
+    <script src="/iris/resources//vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
@@ -245,60 +200,22 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="/iris/resources//js/scripts/pages/app-email.min.js"></script>
+    <script src="/iris/resources//js/scripts/tables/table-datatables-basic.min.js"></script>
     <!-- END: Page JS-->
 
     <script>
-	 $(window).on('load',  function(){
-    	
+      $(window).on('load',  function(){
         if (feather) {
           feather.replace({ width: 14, height: 14 });
         }
       })
-       document.getElementById("currentYear").innerHTML = new Date().getFullYear();
-
-	 function strinkMenu(){ 
-		 var menuWidth = $("#menuDiv").width();
-		 if(menuWidth == '260'){
-			 $(".menuList").fadeIn("slow", function() {
-		            $(this).addClass("menu-hide");
-		        });
-			 $(".showIcon").removeClass('menu-hide');
-			 $('#menuDiv').animate({
-			        width: "6rem" // New width you want to animate to
-			    }, 200); 
-			 $('#bigDiv').animate({
-			        width: "90rem" // New width you want to animate to
-			    }, 200); ''
-			    
-			 
-		 }else{
-			 $(".showIcon").addClass('menu-hide');
-			 $(".menuList").removeClass('menu-hide');
-			 $('#menuDiv').animate({
-			        width: "260px" // New width you want to animate to
-			    }, 200);
-			 $('#bigDiv').animate({
-			        width: "78rem" // New width you want to animate to
-			    }, 200); ''
-		 }
-		 
-		 
-		
-
-	}
-		
     </script>
-     <script async>
-        var link = document.createElement( 'link' );
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-light.min.css';
-        link.rel = 'stylesheet';document.getElementsByTagName( 'head' )[0].appendChild( link );
-      </script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-      <script async>hljs.initHighlightingOnLoad();</script>
-   
-  </body>
-  <!-- END: Body-->
+  
+  
 
-<!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/horizontal-menu-template/app-email.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:35:41 GMT -->
-</html>
+
+<div class="flatpickr-calendar animate" tabindex="-1"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><span class="cur-month">February </span><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
+      <span class="flatpickr-weekday">
+        Sun</span><span class="flatpickr-weekday">Mon</span><span class="flatpickr-weekday">Tue</span><span class="flatpickr-weekday">Wed</span><span class="flatpickr-weekday">Thu</span><span class="flatpickr-weekday">Fri</span><span class="flatpickr-weekday">Sat
+      </span>
+      </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day prevMonthDay" aria-label="January 28, 2024" tabindex="-1">28</span><span class="flatpickr-day prevMonthDay" aria-label="January 29, 2024" tabindex="-1">29</span><span class="flatpickr-day prevMonthDay" aria-label="January 30, 2024" tabindex="-1">30</span><span class="flatpickr-day prevMonthDay" aria-label="January 31, 2024" tabindex="-1">31</span><span class="flatpickr-day " aria-label="February 1, 2024" tabindex="-1">1</span><span class="flatpickr-day " aria-label="February 2, 2024" tabindex="-1">2</span><span class="flatpickr-day " aria-label="February 3, 2024" tabindex="-1">3</span><span class="flatpickr-day " aria-label="February 4, 2024" tabindex="-1">4</span><span class="flatpickr-day " aria-label="February 5, 2024" tabindex="-1">5</span><span class="flatpickr-day " aria-label="February 6, 2024" tabindex="-1">6</span><span class="flatpickr-day " aria-label="February 7, 2024" tabindex="-1">7</span><span class="flatpickr-day " aria-label="February 8, 2024" tabindex="-1">8</span><span class="flatpickr-day " aria-label="February 9, 2024" tabindex="-1">9</span><span class="flatpickr-day " aria-label="February 10, 2024" tabindex="-1">10</span><span class="flatpickr-day " aria-label="February 11, 2024" tabindex="-1">11</span><span class="flatpickr-day " aria-label="February 12, 2024" tabindex="-1">12</span><span class="flatpickr-day " aria-label="February 13, 2024" tabindex="-1">13</span><span class="flatpickr-day " aria-label="February 14, 2024" tabindex="-1">14</span><span class="flatpickr-day " aria-label="February 15, 2024" tabindex="-1">15</span><span class="flatpickr-day " aria-label="February 16, 2024" tabindex="-1">16</span><span class="flatpickr-day today" aria-label="February 17, 2024" aria-current="date" tabindex="-1">17</span><span class="flatpickr-day " aria-label="February 18, 2024" tabindex="-1">18</span><span class="flatpickr-day " aria-label="February 19, 2024" tabindex="-1">19</span><span class="flatpickr-day " aria-label="February 20, 2024" tabindex="-1">20</span><span class="flatpickr-day " aria-label="February 21, 2024" tabindex="-1">21</span><span class="flatpickr-day " aria-label="February 22, 2024" tabindex="-1">22</span><span class="flatpickr-day " aria-label="February 23, 2024" tabindex="-1">23</span><span class="flatpickr-day " aria-label="February 24, 2024" tabindex="-1">24</span><span class="flatpickr-day " aria-label="February 25, 2024" tabindex="-1">25</span><span class="flatpickr-day " aria-label="February 26, 2024" tabindex="-1">26</span><span class="flatpickr-day " aria-label="February 27, 2024" tabindex="-1">27</span><span class="flatpickr-day " aria-label="February 28, 2024" tabindex="-1">28</span><span class="flatpickr-day " aria-label="February 29, 2024" tabindex="-1">29</span><span class="flatpickr-day nextMonthDay" aria-label="March 1, 2024" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="March 2, 2024" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="March 3, 2024" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="March 4, 2024" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="March 5, 2024" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="March 6, 2024" tabindex="-1">6</span><span class="flatpickr-day nextMonthDay" aria-label="March 7, 2024" tabindex="-1">7</span><span class="flatpickr-day nextMonthDay" aria-label="March 8, 2024" tabindex="-1">8</span><span class="flatpickr-day nextMonthDay" aria-label="March 9, 2024" tabindex="-1">9</span></div></div></div></div></div></body><!-- END: Body--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --></html>

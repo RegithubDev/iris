@@ -22,4 +22,8 @@ public class IrisUserService {
 	public List<User> getUserList(User obj, int startIndex, int offset, String searchParameter) throws Exception {
 		return dao.getUserList(obj,searchParameter,offset,searchParameter);
 	}
+
+	public boolean addUserIris(User obj) throws Exception {
+		return dao.addUserIris(obj);
+	}
 }

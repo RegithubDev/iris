@@ -83,7 +83,9 @@ public class LoginController {
 						attributes.addFlashAttribute("welcome", "welcome "+userDetails.getUser_name());
 				}else{
 					model.addObject("invalidEmail",invalidUserName);
-					model.setViewName(PageConstants.login);
+					model.setViewName(PageConstants.newUserLogin);
+					model.addObject("email", user.getEmail_id());
+					model.addObject("name", user.getUser_name());
 				}
 			}else {
 				model.addObject("message", "");

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -180,5 +181,30 @@ public class IrisUserController {
 			logger.error("createPaginationData : " + e.getMessage());
 		}
 		return objList;
+	}
+	
+	@RequestMapping(value = "/add-user-iris", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addUserIris(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/iris-usermanagement");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setCreated_by(userId);
+			obj.setModified_date(null);
+			flag = service.addUserIris(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "User Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding User is failed. Try again.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
 	}
 }

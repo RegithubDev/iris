@@ -75,7 +75,9 @@
 
 </head>
 <body >
-
+<!-- BEGIN: Header-->
+    <jsp:include page="../views/layout/header.jsp"></jsp:include>
+    <!-- END: Header-->
 <div class="col-12">
       <div class="card">
         <div class="card-header">

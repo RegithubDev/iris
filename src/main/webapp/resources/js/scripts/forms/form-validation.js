@@ -81,35 +81,28 @@ $(function () {
         'basic-default-password': {
           required: true
         },
-		 'confirm-password': {
+        'confirm-password': {
           required: true,
           equalTo: '#basic-default-password'
         },
-        'select-department': {
-          required: true,
-         
+        'select-country': {
+          required: true
         },
-		'Select-Category': {
-          required: true,
-         
+        dob: {
+          required: true
         },
-		'select-role': {
-          required: true,
-         
+        customFile: {
+          required: true
         },
-		'Select-City': {
-          required: true,
-         
+        validationRadiojq: {
+          required: true
         },
-		'select-site': {
-          required: true,
-         
+        validationBiojq: {
+          required: true
         },
-		'basic-number': {
-          required: true,
-         
-        },
-        
+        validationCheck: {
+          required: true
+        }
       }
     });
   }
