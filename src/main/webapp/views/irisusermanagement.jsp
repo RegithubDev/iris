@@ -548,8 +548,8 @@ tr td:last-child {
 	 								var input = $('.dataTables_filter input ')
 	 										.unbind()
 	 										.bind('keyup',function(e){
-	 										    if (e.which == 13){
-	 										    	self.search(input.val()).draw();
+	 										    if (e.which == 0){
+	 										    	self.search(input.val());
 	 										    }
 	 										}), self = this.api(), $searchButton = $(
 	 										'<i class="fa fa-search" title="Go" >')

@@ -68,72 +68,7 @@
         </ul>
       </div>
     </nav>
-	    <%-- <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center hides" data-nav="brand-center">
-      <div class="navbar-header d-xl-block d-none">
-        <ul class="nav navbar-nav">
-          <li class="nav-item"><a class="navbar-brand" href="<%=request.getContextPath()%>/home"><span class="brand-logo">
-                <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
-                  <defs>
-                    <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
-                      <stop stop-color="#000000" offset="0%"></stop>
-                      <stop stop-color="#FFFFFF" offset="100%"></stop>
-                    </lineargradient>
-                    <lineargradient id="linearGradient-2" x1="64.0437835%" y1="46.3276743%" x2="37.373316%" y2="100%">
-                      <stop stop-color="#EEEEEE" stop-opacity="0" offset="0%"></stop>
-                      <stop stop-color="#FFFFFF" offset="100%"></stop>
-                    </lineargradient>
-                  </defs>
-                  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="Artboard" transform="translate(-400.000000, -178.000000)">
-			         <img src="<%=request.getContextPath() %>/resources/images/logo/logo.png" width="50" height="" class="card-img">
-                    </g>
-                  </g>
-                </svg></span>
-        </ul>
-      </div>
-      
-      <div class="navbar-container d-flex content">
-       <div class="bookmark-wrapper d-flex align-items-center">
-          <ul class="nav navbar-nav d-xl-none">
-            <li class="nav-item"><a class="nav-link menu-toggle" href="#"><i class="ficon" data-feather="menu"></i></a></li>
-          </ul>
-         
-          <ul class="nav navbar-nav">
-           
-          </ul>
-        </div> 
-        <ul class="nav navbar-nav align-items-center ms-auto">
-         
-          <li class="nav-item "><a href="<%=request.getContextPath() %>/irm-add-incident" class="nav-link " data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="+ Submit Incident" aria-label="+ Submit Incident"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit ficon text-danger"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>
-              <div class="bookmark-input search-input">
-                <div class="bookmark-input-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
-                <input class="form-control input" type="text" placeholder="Bookmark" tabindex="0" data-search="search">
-                <ul class="search-list search-list-bookmark ps"><div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></ul>
-              </div>
-         </li>
-         
-         
-         <!--  <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="moon"></i></a></li>
-          <li class="nav-item nav-search "><a class="nav-link nav-link-search"><i class="ficon" data-feather="search"></i></a>
-            <div class="search-input">
-              <div class="search-input-icon"><i data-feather="search"></i></div>
-              <input class="form-control input" type="text" placeholder="Explore Safety..." tabindex="-1" data-search="search">
-              <div class="search-input-close"><i data-feather="x"></i></div>
-              <ul class="search-list search-list-main"></ul>
-            </div>
-          </li> -->
-    
-       
-          <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">${sessionScope.USER_NAME } | <span class="badge badge-light-secondary">${sessionScope.BASE_ROLE }</span><br><span>[${sessionScope.BASE_SBU }]</span></span><span class="user-status"></span></div><span class="avatar"><img class="round" src=${sessionScope.USER_IMAGE } alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span></a>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
-             <a class="dropdown-item"  href="<%=request.getContextPath() %>/update-user-details" ><i class="me-50" data-feather="user"></i> Profile</a>
-               <a class="dropdown-item g_id_signout" href="#"  id="signout_button" ><i class="me-50" data-feather="power"></i> Logout</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav> --%>
+	    
      <form action="<%=request.getContextPath() %>/logout" name="logoutForm" id="logoutForm" method="post">
 		<input type="hidden" name="email" id="email"/>
 	</form>
