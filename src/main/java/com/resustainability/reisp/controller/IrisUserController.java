@@ -51,7 +51,7 @@ public class IrisUserController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/iris-usermanagement", method = {RequestMethod.POST, RequestMethod.GET})
+	@RequestMapping(value = "/usermanagement", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView irisusermanagement(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.irisusermanagement);
 		try {
