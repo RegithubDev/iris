@@ -31,7 +31,9 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//css/core/menu/menu-types/vertical-menu.min.css">
     <!-- END: Page CSS-->
-
+  <link rel="stylesheet" type="text/css" href="/iris/resources/css/plugins/forms/pickers/form-flat-pickr.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources/css/plugins/forms/pickers/form-pickadate.min.css">
+    <!-- END: Page CSS-->
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//assets/css/style.css">
     <!-- END: Custom CSS-->
@@ -126,6 +128,14 @@
     
     
   </div>
+  <div class="row">
+  		<div class="col-md-6 mb-1">
+        </div>
+        <div class="col-md-6 mb-1">
+         <label class="form-label" for="fp-range">Range</label>
+          <input type="text" id="fp-range" class="form-control flatpickr-range flatpickr-input active" placeholder="YYYY-MM-DD to YYYY-MM-DD" readonly="readonly"> </div>
+        
+      </div>
 </section>
 <!--/ Complex Headers -->
 
@@ -189,7 +199,12 @@
     <!-- BEGIN: Page JS-->
     <script src="/iris/resources//js/scripts/tables/table-datatables-basic.min.js"></script>
     <!-- END: Page JS-->
-
+    <script src="/iris/resources/vendors/js/pickers/pickadate/picker.js"></script>
+    <script src="/iris/resources/vendors/js/pickers/pickadate/picker.date.js"></script>
+    <script src="/iris/resources/vendors/js/pickers/pickadate/picker.time.js"></script>
+    <script src="/iris/resources/vendors/js/pickers/pickadate/legacy.js"></script>
+    <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+        <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
     <script>
  $(window).on('load',  function(){
     	
