@@ -131,9 +131,7 @@
       <div class="card">
 								<div >
 									<div class="card-header border-bottom p-1">
-										<div class="head-label">
-											<h6 class="mb-0"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg> Users</h6>
-										</div>
+										
 										<div>
 											<div class="dt-buttons d-inline-flex">
 												  <a href="<%=request.getContextPath() %>/iris-adduser" type="button" class="btn btn-gradient-danger re-text-bg m-1">Add New User</a>
@@ -357,9 +355,9 @@
 		         		
 		         		var user_data = "'"+data.user_id+"','"+data.user_name+"','"+data.designation+"','"+data.email+"','"+data.mobile_number+"'";
 	                    var actions = '<div class="btn-group" role="group" aria-label="Basic example">'
-	                    +' <a  href="javascript:void(0);"  onclick="getUser('+user_data+');" class="btn btn-outline-primary waves-effect"><i data-feather="edit"></i></a>'
+	                    +' <button type="button" class="btn btn-outline-danger waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></button>'
 		                
-		                +'<a onclick="deleteUser('+user_data+');" class="btn btn-outline-primary waves-effect"><i data-feather="trash-2"></i></a>'
+		                +'<button type="button" class="btn btn-outline-danger waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></button>'
 		                +' </div>'
 	                    
 		            	return actions;
