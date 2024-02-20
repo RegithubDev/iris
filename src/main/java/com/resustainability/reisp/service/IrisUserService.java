@@ -26,4 +26,12 @@ public class IrisUserService {
 	public boolean addUserIris(User obj) throws Exception {
 		return dao.addUserIris(obj);
 	}
+
+	public User getUserDetails(User user)throws Exception {
+		return dao.getUserDetails(user);
+	}
+
+	public boolean updateUserIris(User obj) throws Exception {
+		return dao.updateUserIris(obj);
+	}
 }

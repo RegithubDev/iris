@@ -73,6 +73,21 @@ public class IrisUserController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/get-user-details", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView getUserDetails(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.irisadduser);
+		try {
+			//List <User> departmentsList = service.getDepartmentsList(null);
+			//model.addObject("departmentsList", departmentsList);
+			
+			User UserDetails = service.getUserDetails(user);
+			model.addObject("UserDetails", UserDetails);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
 	@RequestMapping(value = "/create-new", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView signUp(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.signUp);
@@ -190,7 +205,7 @@ public class IrisUserController {
 		String userName = null;
 		ModelAndView model = new ModelAndView();
 		try {
-			model.setViewName("redirect:/iris-usermanagement");
+			model.setViewName("redirect:/usermanagement");
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			obj.setCreated_by(userId);
@@ -201,6 +216,31 @@ public class IrisUserController {
 			}
 			else {
 				attributes.addFlashAttribute("error","Adding User is failed. Try again.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/update-user-iris", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateUserIris(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/usermanagement");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setModified_by(userId);
+			obj.setModified_date(null);
+			flag = service.updateUserIris(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "User Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Updating User is failed. Try again.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
