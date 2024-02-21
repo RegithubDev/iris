@@ -37,10 +37,51 @@ public class IrisUserDao {
 			int arrSize = 0;
 			String qry = "select count(DISTINCT um.email_id) as total_records FROM [user_management] um "
 			+ " where um.email_id <> '' ";
-			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				qry = qry + " and  um.sbu = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				qry = qry + " and um.site_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				qry = qry + " and um.roles = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(searchParameter)) {
+				qry = qry + " and (um.user_name like ? or um.roles like ?"
+						+ " or um.email_id like ? or um.sbu like ? or um.categories like ? or um.site_name like ? "
+						+ "or um.status like ? )";
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+			}	
 			
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				pValues[i++] = obj.getSbu();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				pValues[i++] = obj.getSite_name();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				pValues[i++] = obj.getRoles();
+			}
+			if(!StringUtils.isEmpty(searchParameter)) {
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+			}
 			
 			totalRecords = jdbcTemplate.queryForObject( qry,pValues,Integer.class);
 		}catch(Exception e){ 
