@@ -81,20 +81,20 @@ $(function () {
         'basic-default-password': {
           required: true
         },
-        'confirm-password': {
+        'confirm-password': { 
           required: true,
           equalTo: '#basic-default-password'
         },
-        'sbu1': {
+        'sbu': {
           required: true
         },
         'city': {
           required: true
         },
-        'roles1': {
+        'roles': {
           required: true
         },
-        'site_name1': {
+        'site_name': {
           required: true
         },
         'mobile_number': {

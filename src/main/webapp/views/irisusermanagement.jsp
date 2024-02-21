@@ -91,7 +91,7 @@ font-size: 1rem!important;
     padding-right: calc(var(--bs-gutter-x) * 0);" >
            <div class="mb-1">
               <label class="form-label" for="select2-basic">SBU</label>
-              <div class="position-relative" ><select  class="select2  select2-hidden-accessible" id="sbuID" data-select2-id="select2-basic1" tabindex="1" aria-hidden="true">
+              <div class="position-relative" ><select  class="searchable form-select " id="sbuID" data-select2-id="select2-basic1" tabindex="1" aria-hidden="true">
                 <option value="" >Select SBU</option>
                
               </select>
@@ -102,7 +102,7 @@ font-size: 1rem!important;
 ">
              <div class="mb-1">
               <label class="form-label" for="select2-basic">Site</label>
-              <div class="position-relative" ><select  class="select2  select2-hidden-accessible" id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
+              <div class="position-relative" ><select  class="searchable form-select " id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
                <option value="" >Select Site</option>
                
               </select></div>
@@ -111,7 +111,7 @@ font-size: 1rem!important;
              <div class="col-xl-2 col-md-6 col-12" style="padding-right: calc(var(--bs-gutter-x) * 0);">
              <div class="mb-1">
               <label class="form-label" for="select2-basic">Role</label>
-              <div class="position-relative" ><select  class="select2  select2-hidden-accessible" id="rolesId" data-select2-id="select2-basic" tabindex="0" aria-hidden="true">
+              <div class="position-relative" ><select  class="searchable form-select " id="rolesId" data-select2-id="select2-basic" tabindex="0" aria-hidden="true">
                <option value="" >Select Role</option>
                
               </select></div>
@@ -120,7 +120,7 @@ font-size: 1rem!important;
             <div class="re-text col-xl-4 col-md-3 col-12">
              <div class="demo-inline-spacing">
             <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getUserList();"><i data-feather='search'></i> Filter </a>
-           <a type="button" href="<%=request.getContextPath() %>/usermanagement" class="btn btn-gradient-danger re-text-bg"><i data-feather='refresh-ccw'></i> Refresh </a> 
+           <a  onclick="clearFilters();" class="btn btn-gradient-danger re-text-bg"> Clear Filter </a> 
           </div>
             </div>
              <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
@@ -155,7 +155,8 @@ font-size: 1rem!important;
                      <form id="jquery-val-form" method="post" novalidate="novalidate">
 			                <div class="mb-1">
 			              <label class="form-label" for="select-country">SBU</label>
-			              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
+			              <div class="position-relative">
+			              <select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
 			                <option value="">Select Country</option>
 			                <option value="usa">USA</option>
 			                <option value="uk">UK</option>
@@ -221,8 +222,8 @@ font-size: 1rem!important;
      <script src="/iris/resources/vendors/js/forms/select/select2.full.min.js"></script>
   
      <script src="/iris/resources/js/scripts/forms/form-validation.js"></script>
-    <!-- BEGIN Vendor JS-->
-     <script src="/iris/resources/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <!-- BEGIN Vendor JS--> 
+    <script src="/iris/resources/vendors/js/forms/validation/jquery.validate.min.js"></script> 
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="/iris/resources//vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
@@ -278,15 +279,20 @@ font-size: 1rem!important;
       
      
   });
- 
+ function clearFilters(){
+	    $("#sbuID").val("");
+		$("#site_nameID").val("");
+		$("#rolesId").val("");
+		getUserList();
+}
 
  function getDepartmentFilterList() {
-	 var sbu1 = $("#sbuID").val();
+		var sbu = $("#sbuID").val();
 		var site_name = $("#site_nameID").val();
 		var roles = $("#rolesId").val();
-       if ($.trim(status) == "") {
+       if ($.trim(sbu) == "") {
        	$("#sbuID option:not(:first)").remove();
-       	var myParams = { sbu1: sbu1, site_name: site_name, roles : roles };
+       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
            $.ajax({
                url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterListForUser",
                data: myParams, cache: false,async: false,
@@ -308,7 +314,7 @@ font-size: 1rem!important;
 	 var sbu = $("#sbuID").val();
 		var site_name = $("#site_nameID").val();
 		var roles = $("#rolesId").val();
-       if ($.trim(status) == "") {
+       if ($.trim(site_name) == "") {
        	$("#site_nameID option:not(:first)").remove();
        	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
            $.ajax({
@@ -329,10 +335,10 @@ font-size: 1rem!important;
    }
  
  function getRoleFilterList() {
-	 var sbu = $("#sbu").val();
+	 var sbu = $("#sbuID").val();
 		var site_name = $("#site_nameID").val();
 		var roles = $("#rolesId").val();
-       if ($.trim(status) == "") {
+       if ($.trim(roles) == "") {
        	$("#rolesId option:not(:first)").remove();
        	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
            $.ajax({
@@ -356,7 +362,7 @@ font-size: 1rem!important;
 		getDepartmentFilterList('');
 		getSiteFilterList('');
 		getRoleFilterList('');
-		var sbu = $("#sbu").val();
+		var sbu = $("#sbuID").val();
 		var site_name = $("#site_nameID").val();
 		var roles = $("#rolesId").val();
 	   	table = $('#datatable-user').DataTable();
@@ -395,23 +401,21 @@ font-size: 1rem!important;
 								//for the first page you will see 0 second page 1 third page 2...
 								//Un-comment below alert to see page number
 								//alert("Current page number: "+this.fnPagingInfo().iPage);
-							var cou = $('#datatable-user tbody tr:visible').length
-							 $('#count').text(cou);
 							},
 							//"sDom": 'l<"toolbar">frtip',
 							"initComplete" : function() {
-								$('.dataTables_filter input[type="search"] ')
+								$('.dataTables_filter input[type="search"]')
 										.attr('placeholder', 'Search')
 										.css({
 											'width' : '350px ',
 											'display' : 'inline-block'
 										});
 
-								var input = $('.dataTables_filter input ')
+								var input = $('.dataTables_filter input')
 										.unbind()
 										.bind('keyup',function(e){
-										    if (e.which == 0){
-										    	self.search(input.val());
+										    if (e.which == 13){
+										    	self.search(input.val()).draw();
 										    }
 										}), self = this.api(), $searchButton = $(
 										'<i class="fa fa-search" title="Go" >')
@@ -430,7 +434,6 @@ font-size: 1rem!important;
 								$('.dataTables_filter div').append(
 										$searchButton, $clearButton);
 								rowLen = $('#datatable-user tbody tr:visible').length
-							
 								/* var input = $('.dataTables_filter input').unbind(),
 								self = this.api(),
 								$searchButton = $('<i class="fa fa-search">')
@@ -442,11 +445,9 @@ font-size: 1rem!important;
 							}
 							,
 							columnDefs : [ {
-								"targets" : 'no-sort',
+								"targets" : '',
 								"orderable" : false,
-							},{targets:[2,3,4],
-			                       className: 'hideCOl td-align-right'},{ targets: [0], className: 'no-sort'  }
-			                       ,{ targets: [1], className: 'td-align-center'  }
+							}
 			                ],
 							"sScrollX" : "100%",
 							"sScrollXInner" : "100%",

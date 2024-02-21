@@ -50,7 +50,7 @@ public class IrisUserDao {
 		return totalRecords;
 	}
 
-	public List<User> getUserList(User obj, String searchParameter, int offset, String searchParameter2) throws Exception {
+	public List<User> getUserList(User obj, int startIndex, int offset, String searchParameter) throws Exception {
 		List<User> objsList = null;
 		try {
 			int arrSize = 0;
@@ -83,7 +83,23 @@ public class IrisUserDao {
 				qry = qry + " and um.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.user_name asc";
+			if(!StringUtils.isEmpty(searchParameter)) {
+				qry = qry + " and (um.user_name like ? or um.roles like ?"
+						+ " or um.email_id like ? or um.sbu like ? or um.categories like ? or um.site_name like ? "
+						+ "or um.status like ? )";
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+				arrSize++;
+			}	
+			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
+				qry = qry + " ORDER BY um.user_name asc offset ? rows  fetch next ? rows only";	
+				arrSize++;
+				arrSize++;
+			}
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
@@ -94,6 +110,19 @@ public class IrisUserDao {
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
 				pValues[i++] = obj.getRoles();
+			}
+			if(!StringUtils.isEmpty(searchParameter)) {
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+				pValues[i++] = "%"+searchParameter+"%";
+			}
+			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
+				pValues[i++] = startIndex;
+				pValues[i++] = offset;
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
 		} catch (Exception e) {
