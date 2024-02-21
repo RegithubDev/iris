@@ -16,13 +16,25 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 .bghover:hover .MuiSvgIcon-fontSizeMedium{ 
 	fill: white!important;  
 }
+.bghover:hover .menu-title{ 
+	color: white!important;  
+}
 .bghover.active .MuiSvgIcon-fontSizeMedium{
 	fill: white!important;
 
 }
+
 .bghover:hover{
-	background: #a1a1a1!important;
+	background: #a1a1a1;
     color: #ffffff!important;
+
+}
+.active:hover{
+	background: linear-gradient(118deg,#da0d14,rgba(240 106 103))!important;
+    box-shadow: 0 0 10px 1px rgba(220 152 150)!important;
+    color: #FFF!important;
+    font-weight: 400;
+    border-radius: 0px; 
 
 }
 .bghover .active{

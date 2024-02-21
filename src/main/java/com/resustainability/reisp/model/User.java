@@ -8,12 +8,36 @@ public class User {
 	company_code,	project_code,	project_name,	status,	created_date,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
-	module_name,module_url,timePeriod,emp_id,emp_name,phone,city,site,sbu,department,category,site_name,main_menu;
+	module_name,module_url,timePeriod,emp_id,notfilled_datadates,emp_name,categories,phone,roles,city,site,sbu,department,category,site_name,main_menu;
 	int session_count,time_period;
 	
 	private MultipartFile user_image;
 	
 	
+	public String getNotfilled_datadates() {
+		return notfilled_datadates;
+	}
+
+	public void setNotfilled_datadates(String notfilled_datadates) {
+		this.notfilled_datadates = notfilled_datadates;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+
+	public String getCategories() {
+		return categories;
+	}
+
+	public void setCategories(String categories) {
+		this.categories = categories;
+	}
+
 	public String getMain_menu() {
 		return main_menu;
 	}

@@ -11,14 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/vendors.min.css">
+     <link rel="stylesheet" type="text/css" href="/iris/resources/vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources/vendors/css/forms/select/select2.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/responsive.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/buttons.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/rowGroup.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/pickers/flatpickr/flatpickr.min.css">
     <!-- END: Vendor CSS-->
-
+  <link rel="stylesheet" type="text/css" href="/iris/resources/css/plugins/forms/form-validation.css">
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//css/bootstrap-extended.min.css">
@@ -37,7 +38,12 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//assets/css/style.css">
     <!-- END: Custom CSS-->
+<style>
+td{
+font-size: 1rem!important;
+}
 
+</style>
   </head>
   <!-- END: Head-->
 
@@ -70,11 +76,11 @@
 <!-- Complex Headers -->
 <section id="complex-header-datatable">
           <div class="content-wrapper container-xxl p-0">
-            <div class="content-header row">
+         <!--    <div class="content-header row">
 									            <div class="sidebar-toggle d-block d-lg-none ms-1">
 											      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu font-medium-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
 											    </div>
-            </div>
+            </div> -->
             <div class="content-body"><div class="body-content-overlay"></div>
             
             
@@ -84,9 +90,9 @@
           <div class="col-xl-2 col-md-6 col-12" style="
     padding-right: calc(var(--bs-gutter-x) * 0);" >
            <div class="mb-1">
-              <label class="form-label" for="select2-basic">Department</label>
-              <div class="position-relative" ><select onchange="getUserList();" class="select2 form-select select2-hidden-accessible" id="department" data-select2-id="select2-basic1" tabindex="1" aria-hidden="true">
-                <option value="" >Select Department</option>
+              <label class="form-label" for="select2-basic">SBU</label>
+              <div class="position-relative" ><select  class="select2  select2-hidden-accessible" id="sbuID" data-select2-id="select2-basic1" tabindex="1" aria-hidden="true">
+                <option value="" >Select SBU</option>
                
               </select>
               </div></div>
@@ -96,39 +102,36 @@
 ">
              <div class="mb-1">
               <label class="form-label" for="select2-basic">Site</label>
-              <div class="position-relative" ><select onchange="getUserList();" class="select2 form-select select2-hidden-accessible" id="site" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
+              <div class="position-relative" ><select  class="select2  select2-hidden-accessible" id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
                <option value="" >Select Site</option>
                
               </select></div>
             </div>
             </div>
-             <div class="col-xl-2 col-md-6 col-12" style="
-    padding-right: calc(var(--bs-gutter-x) * 0);
-">
+             <div class="col-xl-2 col-md-6 col-12" style="padding-right: calc(var(--bs-gutter-x) * 0);">
              <div class="mb-1">
               <label class="form-label" for="select2-basic">Role</label>
-              <div class="position-relative" ><select onchange="getUserList();" class="select2 form-select select2-hidden-accessible" id="role" data-select2-id="select2-basic" tabindex="0" aria-hidden="true">
+              <div class="position-relative" ><select  class="select2  select2-hidden-accessible" id="rolesId" data-select2-id="select2-basic" tabindex="0" aria-hidden="true">
                <option value="" >Select Role</option>
                
               </select></div>
             </div>
             </div>
-            <div class="re-text col-xl-4 col-md-3 col-3">
+            <div class="re-text col-xl-4 col-md-3 col-12">
              <div class="demo-inline-spacing">
-            <a type="button" class="btn btn-gradient-danger re-text-bg">Filter <i data-feather='search'></i></a>
-           <a type="button" href="<%=request.getContextPath() %>/usermanagement" class="btn btn-gradient-danger re-text-bg">Refresh <i data-feather='refresh-ccw'></i></a> 
-          
+            <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getUserList();"><i data-feather='search'></i> Filter </a>
+           <a type="button" href="<%=request.getContextPath() %>/usermanagement" class="btn btn-gradient-danger re-text-bg"><i data-feather='refresh-ccw'></i> Refresh </a> 
           </div>
             </div>
-             <div class="re-text col-xl-2 col-md-3 col-3 mt-2">
-               <a type="button" class="btn btn-gradient-danger re-text-bg">Export <i data-feather='download-cloud'></i>  </a>
+             <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
+               <a type="button" class="btn btn-gradient-danger re-text-bg" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Export to Excel">Export <img src="/iris/resources/images/icons/Excel.png" class="logo" style="width: 2rem;">  </a>
              </div>
           </div>
         </div> 
             <br>
-<div class="col-12 p-2" id="bigDiv">
+<div class="col-12" id="bigDiv">
 
-      <div class="card">
+      <div class="card" style="border: 1px solid black;padding: 4px;">
 								<div >
 									<div class="card-header border-bottom p-1">
 										<div class="head-label">
@@ -136,41 +139,74 @@
 										</div>
 										<div>
 											<div class="dt-buttons d-inline-flex">
-												  <a href="<%=request.getContextPath() %>/iris-adduser" type="button" class="btn btn-gradient-danger re-text-bg m-1">Add New User</a>
-												  <a type="button" class="btn btn-gradient-danger re-text-bg m-1">Add New Role</a>
-											</div>
-										</div>
-									</div>
-									 <table id="datatable-user" class="invoice-list-table table">
-								            <thead>
-								              <tr>
-								                <th >#</th>
-												<th >Actions</th>
-												<th >Name</th>
-												<th >Email</th>
-												<th >Mobile</th>
-												<th >Department</th>
-												<th >Categories</th>
-												<th >Roles</th>
-												<th >Site Name</th>
-			              </tr>
+											 <a href="<%=request.getContextPath() %>/iris-adduser" type="button" class="btn btn-gradient-danger re-text-bg m-1"><i data-feather='user-plus'></i> Add New User</a> 
+										<div class="modal-size-default d-inline-block">
+              <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
+             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='user-check'></i> Add New Role</a>
+              <!-- Modal -->
+              <div class="modal fade text-start" id="defaultSize" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18"> Add New Role</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form" method="post" novalidate="novalidate">
+			                <div class="mb-1">
+			              <label class="form-label" for="select-country">SBU</label>
+			              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
+			                <option value="">Select Country</option>
+			                <option value="usa">USA</option>
+			                <option value="uk">UK</option>
+			        
+			              </select></div>
+			            </div>
+			              
+			            <div class="mb-1">
+			              <label class="form-label" for="basic-default-name">Add New Role</label>
+			              <input type="text" class="form-control" id="roles" name="roles" placeholder="New Role">
+			            </div>
+			           
+			            
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div>
+					  </div>
+					 </div>
+					</div>
+					 <table id="datatable-user" class="invoice-list-table table">
+				            <thead>
+				              <tr>
+				                <th >#</th>
+								<th >Actions</th>
+								<th >Name</th>
+								<th >Email</th>
+								<th >Mobile</th>
+								<th >SBU</th>
+								<th >Categories</th>
+								<th >Roles</th>
+								<th >Site Name</th>
+             				</tr>
 			            </thead>
 			          </table>
-								</div>
-							</div>
-    </div>
-
-
+					</div>
+				</div>
+    		</div>
             </div>
           </div>
-  
-</section>
-
-        </div>
-      </div>
+	</section>
     </div>
-
-    
+  </div>
+</div>
     <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
     <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
 
@@ -179,12 +215,14 @@
       <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT  &copy;  <span id="currentYear"></span> ,| Powered by<a class="ms-25" href="https://ramkyenviroengineers.com/" target="_blank">Re Sustainability Limited</a><span class="d-none d-sm-inline-block"> . All Rights Reserved.</span></span></p>
     </footer>
     <button class="btn btn-primary btn-icon scroll-top waves-effect waves-float waves-light" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
-    <!-- END: Footer-->
-
-
-    <!-- BEGIN: Vendor JS-->
-    <script src="/iris/resources//vendors/js/vendors.min.js"></script>
+   
+   
+     <script src="/iris/resources/vendors/js/vendors.min.js"></script>
+     <script src="/iris/resources/vendors/js/forms/select/select2.full.min.js"></script>
+  
+     <script src="/iris/resources/js/scripts/forms/form-validation.js"></script>
     <!-- BEGIN Vendor JS-->
+     <script src="/iris/resources/vendors/js/forms/validation/jquery.validate.min.js"></script>
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="/iris/resources//vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
@@ -210,6 +248,7 @@
     <script src="/iris/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
     <script src="/iris/resources/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
     <!-- BEGIN: Theme JS-->
+    
     <script src="/iris/resources//js/core/app-menu.min.js"></script>
     <script src="/iris/resources//js/core/app.min.js"></script>
     <script src="/iris/resources//js/scripts/customizer.min.js"></script>
@@ -234,24 +273,98 @@
        document.getElementById("currentYear").innerHTML = new Date().getFullYear();
  $(document).ready(function () {
   	 // $('select:not(.searchable)').formSelect();
-      //  $('.searchable').select2();
+       $('.searchable').select2();
         getUserList();
       
      
   });
  
+
+ function getDepartmentFilterList() {
+	 var sbu1 = $("#sbuID").val();
+		var site_name = $("#site_nameID").val();
+		var roles = $("#rolesId").val();
+       if ($.trim(status) == "") {
+       	$("#sbuID option:not(:first)").remove();
+       	var myParams = { sbu1: sbu1, site_name: site_name, roles : roles };
+           $.ajax({
+               url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterListForUser",
+               data: myParams, cache: false,async: false,
+               success: function (data) {
+                   if (data.length > 0) {
+                       $.each(data, function (i, val) {
+                            $("#sbuID").append('<option value="' + val.sbu + '">' + $.trim(val.sbu) +'</option>');
+                       });
+                   }
+               },error: function (jqXHR, exception) {
+   	   			      $(".page-loader").hide();
+      	          	  getErrorMessage(jqXHR, exception);
+      	     	  }
+           });
+       }
+   }
+ 
+ function getSiteFilterList() {
+	 var sbu = $("#sbuID").val();
+		var site_name = $("#site_nameID").val();
+		var roles = $("#rolesId").val();
+       if ($.trim(status) == "") {
+       	$("#site_nameID option:not(:first)").remove();
+       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+           $.ajax({
+               url: "<%=request.getContextPath()%>/ajax/getSiteFilterListForUser",
+               data: myParams, cache: false,async: false,
+               success: function (data) {
+                   if (data.length > 0) {
+                       $.each(data, function (i, val) {
+                            $("#site_nameID").append('<option value="' + val.site_name + '">' + $.trim(val.site_name) +'</option>');
+                       });
+                   }
+               },error: function (jqXHR, exception) {
+   	   			      $(".page-loader").hide();
+      	          	  getErrorMessage(jqXHR, exception);
+      	     	  }
+           });
+       }
+   }
+ 
+ function getRoleFilterList() {
+	 var sbu = $("#sbu").val();
+		var site_name = $("#site_nameID").val();
+		var roles = $("#rolesId").val();
+       if ($.trim(status) == "") {
+       	$("#rolesId option:not(:first)").remove();
+       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+           $.ajax({
+               url: "<%=request.getContextPath()%>/ajax/getRoleFilterListForUser",
+               data: myParams, cache: false,async: false,
+               success: function (data) {
+                   if (data.length > 0) {
+                       $.each(data, function (i, val) {
+                            $("#rolesId").append('<option value="' + val.roles + '">' + $.trim(val.roles) +'</option>');
+                       });
+                   }
+               },error: function (jqXHR, exception) {
+   	   			      $(".page-loader").hide();
+      	          	  getErrorMessage(jqXHR, exception);
+      	     	  }
+           });
+       }
+   }
+ 
  function getUserList() {
-		//getDesignationFilterList('');
-		var department = $("#department").val();
-		var site = $("#site").val();
-		var role = $("#role").val();
-		
+		getDepartmentFilterList('');
+		getSiteFilterList('');
+		getRoleFilterList('');
+		var sbu = $("#sbu").val();
+		var site_name = $("#site_nameID").val();
+		var roles = $("#rolesId").val();
 	   	table = $('#datatable-user').DataTable();
 		table.destroy();
 		var i = 1;
 		$.fn.dataTable.moment('DD-MMM-YYYY');
 		var rowLen = 0;
-		var myParams =  "department="+ department+ "&site="+ site+ "&role="+ role ;
+		var myParams =  "sbu="+ sbu+ "&site_name="+ site_name+ "&roles="+ roles ;
 
 		/***************************************************************************************************/
 
@@ -354,7 +467,7 @@
                       if($.trim(data.user_name) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var user_data = "'"+data.user_id+"','"+data.user_name+"','"+data.designation+"','"+data.email+"','"+data.mobile_number+"'";
+							var user_data = "'"+data.user_id+"','"+data.user_name+"','"+data.sbu+"','"+data.email_id+"','"+data.mobile_number+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'

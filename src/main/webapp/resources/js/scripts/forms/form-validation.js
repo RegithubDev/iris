@@ -71,10 +71,10 @@ $(function () {
   if (jqForm.length) {
     jqForm.validate({
       rules: {
-        'basic-default-name': {
+        'user_name': {
           required: true
         },
-        'basic-default-email': {
+        'email_id': {
           required: true,
           email: true
         },
@@ -85,10 +85,22 @@ $(function () {
           required: true,
           equalTo: '#basic-default-password'
         },
-        'select-country': {
+        'sbu1': {
           required: true
         },
-        dob: {
+        'city': {
+          required: true
+        },
+        'roles1': {
+          required: true
+        },
+        'site_name1': {
+          required: true
+        },
+        'mobile_number': {
+          required: true
+        },
+        'categories': {
           required: true
         },
         customFile: {

@@ -13,7 +13,14 @@ body {
 .svglogo{
 	width:2rem;
 }
-
+.table_tableHeader__aWo3s {
+    align-items: center;
+    background: #606060;
+    border-bottom: 1px solid #bababa;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
 .bghover:hover .svglogo{ 
 	fill: white!important;  
 }

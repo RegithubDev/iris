@@ -69,12 +69,32 @@ public class IrisUserDao {
 					+ "      ,[created_by]"
 					+ "      ,[created_date]"
 					+ "      ,[modified_by]"
-					+ "      ,[modified_date] from [user_management] um ";
+					+ "      ,[modified_date] from [user_management] um where sbu is not null ";
 			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				qry = qry + " and  um.sbu = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				qry = qry + " and um.site_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				qry = qry + " and um.roles = ? ";
+				arrSize++;
+			}
 			qry = qry + " order by um.user_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-		
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				pValues[i++] = obj.getSbu();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				pValues[i++] = obj.getSite_name();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				pValues[i++] = obj.getRoles();
+			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -99,7 +119,7 @@ public class IrisUserDao {
 					+ "      ,roles"
 					+ "      ,site_name"
 					+ "      ,notfilled_datadates"
-					+ "      ,status,created_by,created_by) "
+					+ "      ,status,created_by,created_date) "
 					+ "		VALUES "
 					+ "		( :user_name"
 					+ "      ,:email_id"
@@ -192,6 +212,124 @@ public class IrisUserDao {
 			throw new Exception(e);
 		}
 		return flag;
+	}
+
+	public List<User> getDepartmentFilterListForUser(User obj) throws Exception {
+		List<User> objsList = null;
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "SELECT [sbu],sbu_name from [user_management] um "
+					+ "left join sbu s on um.sbu = s.sbu_code where sbu is not null ";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				qry = qry + " and  um.sbu = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				qry = qry + " and um.site_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				qry = qry + " and um.roles = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by um.sbu asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				pValues[i++] = obj.getSbu();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				pValues[i++] = obj.getSite_name();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				pValues[i++] = obj.getRoles();
+			}
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getSiteFilterListForUser(User obj) throws Exception {
+		List<User> objsList = null;
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "SELECT site_name from [user_management] um where site_name is not null ";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				qry = qry + " and  um.sbu = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				qry = qry + " and um.site_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				qry = qry + " and um.roles = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by um.site_name asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				pValues[i++] = obj.getSbu();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				pValues[i++] = obj.getSite_name();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				pValues[i++] = obj.getRoles();
+			}
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<User> getRoleFilterListForUser(User obj) throws Exception {
+		List<User> objsList = null;
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "SELECT roles from [user_management] um where roles is not null ";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				qry = qry + " and  um.sbu = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				qry = qry + " and um.site_name = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				qry = qry + " and um.roles = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by um.roles asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+				pValues[i++] = obj.getSbu();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
+				pValues[i++] = obj.getSite_name();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				pValues[i++] = obj.getRoles();
+			}
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
 	}
 	
 	

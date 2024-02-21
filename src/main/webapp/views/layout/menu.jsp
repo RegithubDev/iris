@@ -24,7 +24,7 @@ div.main-menu-content {
 </style>
 </head>
 <body>
-    <div class="main-menu menu-fixed menu-accordion menu-shadow expanded menu-light" data-scroll-to-active="true" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+    <div class="main-menu menu-fixed menu-accordion menu-shadow menu-light" data-scroll-to-active="true" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
       <div class="navbar-header expanded">
         <ul class="nav navbar-nav flex-row">
           <li class="nav-item me-auto"><a class=" nav-item" href="index-2.html"><span class="">
@@ -54,6 +54,10 @@ div.main-menu-content {
 					href="<%=request.getContextPath() %>/datamanagement"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="InsertChartOutlinedOutlinedIcon"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg><span
 						class="menu-title text-truncate" data-i18n="Calendar">Data Management</span></a>
 				</li>
+				<li class=" nav-item bghover" id="datamanagement"><a class="d-flex align-items-center"
+					href="<%=request.getContextPath() %>/datamanagement"><svg  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings spinner MuiSvgIcon-fontSizeMedium"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span
+						class="menu-title text-truncate " data-i18n="Calendar">Admin Settings</span></a>
+				</li>
 				<li class=" nav-item bghover" id="productcatalogue"><a class="d-flex align-items-center"
 					href="<%=request.getContextPath() %>/productcatalogue"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="VisibilityOutlinedIcon"><path d="M12 6c3.79 0 7.17 2.13 8.82 5.5C19.17 14.87 15.79 17 12 17s-7.17-2.13-8.82-5.5C4.83 8.13 8.21 6 12 6m0-2C7 4 2.73 7.11 1 11.5 2.73 15.89 7 19 12 19s9.27-3.11 11-7.5C21.27 7.11 17 4 12 4zm0 5c1.38 0 2.5 1.12 2.5 2.5S13.38 14 12 14s-2.5-1.12-2.5-2.5S10.62 9 12 9m0-2c-2.48 0-4.5 2.02-4.5 4.5S9.52 16 12 16s4.5-2.02 4.5-4.5S14.48 7 12 7z"></path></svg><span
 						class="menu-title text-truncate" data-i18n="Kanban">Product Catalogue</span></a>
@@ -79,15 +83,15 @@ div.main-menu-content {
        		var url = $(location).attr('href');
        		if(option != 'undefined' && option != null){
            		$('li.active').removeClass('active');
-           		if(url.indexOf('/usermanagement') != -1){
+           		if(url.indexOf('user') != -1){
           			 $('#usermanagement').addClass('active');
-	           		}else if(url.indexOf('/sitemanagement') != -1 || url.indexOf('/update-irm-form') != -1){
+	           		}else if(url.indexOf('site') != -1 || url.indexOf('/update-irm-form') != -1){
 	           			$('#sitemanagement').addClass('active');
-	           		}else if(url.indexOf('/datamanagement') != -1){
+	           		}else if(url.indexOf('data') != -1){
 	           			$('#datamanagement').addClass('active');
-	           		}else if(url.indexOf('/productcatalogue') != -1){
+	           		}else if(url.indexOf('product') != -1){
 	           			$('#productcatalogue').addClass('active');
-	           		}else if(url.indexOf('/managementdasboard') != -1){
+	           		}else if(url.indexOf('management') != -1){
 	           			$('#managementdasboard').addClass('active');
 	           		}else if(url.indexOf('/helpdesk') != -1){
 	           			$('#helpdesk').addClass('active');

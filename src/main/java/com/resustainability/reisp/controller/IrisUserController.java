@@ -12,18 +12,22 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.resustainability.reisp.common.DateParser;
 import com.resustainability.reisp.constants.PageConstants;
+import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.model.UserPaginationObject;
 import com.resustainability.reisp.service.IrisUserService;
@@ -99,6 +103,73 @@ public class IrisUserController {
 		return model;
 	}
 
+	@RequestMapping(value = "/ajax/getDepartmentFilterListForUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getDepartmentFilterListForUser(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setUser_id(userId);
+			obj.setRole(role);
+			
+			companiesList = service.getDepartmentFilterListForUser(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDepartmentFilterListForUser : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	@RequestMapping(value = "/ajax/getSiteFilterListForUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getSiteFilterListForUser(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setUser_id(userId);
+			obj.setRole(role);
+			
+			companiesList = service.getSiteFilterListForUser(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getSiteFilterListForUser : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	@RequestMapping(value = "/ajax/getRoleFilterListForUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<User> getRoleFilterListForUser(@ModelAttribute User obj,HttpSession session) {
+		List<User> companiesList = null;
+		String userId = null;
+		String userName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setUser_id(userId);
+			obj.setRole(role);
+			
+			companiesList = service.getRoleFilterListForUser(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getRoleFilterListForUser : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	
 	@RequestMapping(value = "/ajax/get-users-iris", method = { RequestMethod.POST, RequestMethod.GET })
 	public void getUsersList(@ModelAttribute User obj, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws IOException {

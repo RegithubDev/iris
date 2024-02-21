@@ -5,7 +5,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>IRIS - Home</title> 
+    <title>IRIS - Add New User</title> 
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -65,16 +65,31 @@
         <div class="content-body"><div class="row">
 </div>
 <!-- Basic table -->
-<section id="basic-datatable">
-<div class="row">
-						<div class="col-12">
-							<div class="card">
-							</div>
-						</div>
-					</div>
-</section>
-<!--/ Basic table -->
 
+<!--/ Basic table -->
+<div class="content-header row">
+          <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+              <div class="col-12">
+                <h2 class="content-header-title float-start mb-0">Add User</h2>
+                <div class="breadcrumb-wrapper">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/usermanagement">User Management</a>
+                    </li>
+                    <li class="breadcrumb-item"><a>Add User Form</a>
+                    </li>
+                   
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+            <div class="mb-1 breadcrumb-right">
+              
+            </div>
+          </div>
+        </div>
 <!-- Complex Headers -->
 <section id="complex-header-datatable">
 
@@ -82,28 +97,35 @@
    <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Add New User</h4>
+          <h2 class="card-title fw-bolder"><button type="button" class="btn btn-icon btn-icon rounded-circle btn btn-relief-dark">
+              <i data-feather='users'></i>
+            </button> New User </h2>
         </div>
        <div class="card-body">
+       <div class="col-md-12 col-12">
+      <div class="card">
+        <div class="card-body p-2">
           <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-user-iris" method="post" novalidate="novalidate">
-          
           <div class="row">
             <div class="mb-1 col-md-6">
              <label class="form-label" for="basic-default-name">Name</label>
-              <input type="text" class="form-control" id="basic-default-name" name="user_name" placeholder="Name">
+              <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Name">
             </div>
             <div class="mb-1 col-md-6">
                <label class="form-label" for="basic-default-email">Email</label>
-              <input type="text" id="basic-default-email" name="email_id" class="form-control" placeholder="RE@email.com">
+              <input type="text" id="email_id" name="email_id" class="form-control" placeholder="RE@email.com">
             
             </div>
           </div>
-
-          
-           <div class="row">
+          <div class="row">
+            <div class="mb-1 col-md-6">
+            <label class="form-label" for="basic-number">Mobile Number</label>
+              <input type="password" id="mobile_number" name="mobile_number" class="form-control" placeholder="999-999-9999">
+            
+            </div>
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select SBU</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="select-department" name="sbu" data-select2-id="select-department" tabindex="1" aria-hidden="true">
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-department" tabindex="1" aria-hidden="true">
                 <option value="" data-select2-id="1">Select </option>
                 <option value="usa">USA</option>
                 <option value="uk">UK</option>
@@ -113,10 +135,13 @@
               </select>
               </div>
             </div>
-            <div class="mb-1 col-md-6">
+            
+          </div>
+          <div class="row">
+          <div class="mb-1 col-md-6">
              <label class="form-label" for="select-country">Select Category</label>
               <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="Select-Category" name="categories" data-select2-id="Select-Category" tabindex="2" aria-hidden="true">
+              <select class="form-select select2 select2-hidden-accessible" id="categories" name="categories" data-select2-id="Select-Category" tabindex="2" aria-hidden="true">
                 <option value="" data-select2-id="2">Select </option>
                 <option value="usa">USA</option>
                 <option value="uk">UK</option>
@@ -126,11 +151,9 @@
               </select>
               </div>
             </div>
-          </div>
-           <div class="row">
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select Role</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="select-role" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
                 <option value="" data-select2-id="1">Select </option>
                 <option value="usa">USA</option>
                 <option value="uk">UK</option>
@@ -140,10 +163,13 @@
               </select>
               </div>
             </div>
+          
+          </div>
+          <div class="row">
             <div class="mb-1 col-md-6">
              <label class="form-label" for="select-country">Select City</label>
               <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="Select-City" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
+              <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="2">Select </option>
                 <option value="usa">USA</option>
                 <option value="uk">UK</option>
@@ -153,11 +179,9 @@
               </select>
               </div>
             </div>
-          </div>
-             <div class="row">
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Site Name</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="select-site" name="site_name" data-select2-id="select-site" tabindex="5" aria-hidden="true">
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="site_name" name="site_name" data-select2-id="select-site" tabindex="5" aria-hidden="true">
                 <option value="" data-select2-id="1">Select </option>
                 <option value="usa">USA</option>
                 <option value="uk">UK</option>
@@ -167,21 +191,17 @@
               </select>
               </div>
             </div>
-            <div class="mb-1 col-md-6">
-            <label class="form-label" for="basic-number">Mobile Number</label>
-              <input type="password" id="basic-number" name="mobile_number" class="form-control" placeholder="999-999-9999">
-            
-            </div>
+          
           </div>
+       <div class="col-md-12 col-12 text-center mt-2">
+               <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
+                <a href="<%=request.getContextPath() %>/usermanagement" class="btn btn-dark waves-effect waves-float waves-light"><i data-feather='chevrons-left'></i>Back</a>
+              </div>
            
-           <div class="row">
-      <div class="col-12 text-center mt-4">
-        		<button type="submit" class="btn  waves-effect waves-float waves-light re-text-bg" name="submit" value="Submit">Submit</button>
-                <a href="<%=request.getContextPath() %>/iris-usermanagement" class="btn btn-outline-secondary waves-effect">Back</a>
+          </form>
+        </div>
       </div>
     </div>
-    
-          </form>
         </div>
       </div>
     </div>
@@ -333,7 +353,6 @@
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources/css/core/menu/menu-types/horizontal-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="/iris/resources/css/plugins/forms/form-validation.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources/css/plugins/forms/pickers/form-flat-pickr.min.css">
     <!-- END: Page CSS-->
 
@@ -356,7 +375,6 @@ nav {
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
-  <script src="/iris/resources/vendors/js/vendors.min.js"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
@@ -399,7 +417,6 @@ nav {
     <!-- END: Theme JS-->
 
     <!-- BEGIN: Page JS-->
-    <script src="/iris/resources/js/scripts/forms/form-validation.js"></script>
     <!-- END: Page JS-->
     <!-- END: Page JS-->
 </body>

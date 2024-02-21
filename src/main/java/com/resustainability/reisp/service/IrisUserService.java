@@ -34,4 +34,16 @@ public class IrisUserService {
 	public boolean updateUserIris(User obj) throws Exception {
 		return dao.updateUserIris(obj);
 	}
+
+	public List<User> getDepartmentFilterListForUser(User obj)throws Exception {
+		return dao.getDepartmentFilterListForUser(obj);
+	}
+
+	public List<User> getSiteFilterListForUser(User obj) throws Exception {
+		return dao.getSiteFilterListForUser(obj);
+	}
+
+	public List<User> getRoleFilterListForUser(User obj)throws Exception {
+		return dao.getRoleFilterListForUser(obj);
+	}
 }
