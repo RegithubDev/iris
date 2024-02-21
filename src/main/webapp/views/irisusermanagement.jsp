@@ -120,7 +120,8 @@ font-size: 1rem!important;
             <div class="re-text col-xl-4 col-md-3 col-12">
              <div class="demo-inline-spacing">
             <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getUserList();"><i data-feather='search'></i> Filter </a>
-           <a  onclick="clearFilters();" class="btn btn-gradient-danger re-text-bg"> Clear Filter </a> 
+           <a  onclick="clearFilters();" id="clearFilterBtn"  class="btn btn-gradient-danger re-text-bg "> Clear Filter </a> 
+           <button class="btn btn-outline-primary toast-stacked-toggler waves-effect">Staked Toast</button>
           </div>
             </div>
              <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
@@ -128,6 +129,11 @@ font-size: 1rem!important;
              </div>
           </div>
         </div> 
+        <div class="toast-container position-fixed top-0 end-0 p-2" style="z-index: 15">
+  
+
+ 
+</div>
             <br>
 <div class="col-12" id="bigDiv">
 
@@ -205,6 +211,15 @@ font-size: 1rem!important;
             </div>
           </div>
 	</section>
+	 <div class="toast toast-stacked fade hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="../../../app-assets/images/logo/logo.png" class="me-1" alt="Toast Image" height="18" width="25">
+      <strong class="me-auto">Vue Admin</strong>
+      <small class="text-muted">2 seconds ago</small>
+      <button type="button" class="ms-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">No Filters Selected.</div>
+  </div>
     </div>
   </div>
 </div>
@@ -249,7 +264,7 @@ font-size: 1rem!important;
     <script src="/iris/resources/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
     <script src="/iris/resources/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
     <!-- BEGIN: Theme JS-->
-    
+     <script src="/iris/resources/js/scripts/components/components-bs-toast.min.js"></script>
     <script src="/iris/resources//js/core/app-menu.min.js"></script>
     <script src="/iris/resources//js/core/app.min.js"></script>
     <script src="/iris/resources//js/scripts/customizer.min.js"></script>
@@ -276,14 +291,25 @@ font-size: 1rem!important;
   	 // $('select:not(.searchable)').formSelect();
        $('.searchable').select2();
         getUserList();
-      
+        $('#clearFilterBtn').tooltip({
+            trigger: 'manual' // Set the trigger to 'manual'
+          });
      
   });
  function clearFilters(){
-	    $("#sbuID").val("");
-		$("#site_nameID").val("");
-		$("#rolesId").val("");
-		getUserList();
+		var sbu = $("#sbuID").val();
+		var site_name = $("#site_nameID").val();
+		var roles = $("#rolesId").val();
+		if(sbu != "" || site_name != "" || roles != ""){
+		    $("#sbuID").val("");
+			$("#site_nameID").val("");
+			$("#rolesId").val("");
+			$(this).removeAttr("data-bs-toggle data-bs-placement title data-bs-original-title");
+			getUserList();
+		}else{
+			 $('#clearFilterBtn').tooltip('show');
+		}
+	  
 }
 
  function getDepartmentFilterList() {
