@@ -47,7 +47,7 @@
   <!-- END: Head-->
 
   <!-- BEGIN: Body-->
-  <body class="pace-done vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-open="click" data-menu="vertical-menu-modern" data-col="" style=""><div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <body class="pace-done vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-open="Go To" data-menu="vertical-menu-modern" data-col="" style=""><div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
   <div class="pace-progress-inner"></div>
 </div>
 <div class="pace-activity"></div></div>
@@ -111,7 +111,7 @@
         <div class="card-body">
           <h4 class="card-title">SBU</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="<%=request.getContextPath() %>/iris-sbu" class="btn btn-outline-primary waves-effect">Click</a>
+          <a href="<%=request.getContextPath() %>/iris-sbu" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
@@ -119,7 +119,7 @@
         <div class="card-body">
           <h4 class="card-title">Category</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="<%=request.getContextPath() %>/iris-category" class="btn btn-outline-primary waves-effect">Click</a>
+          <a href="<%=request.getContextPath() %>/iris-category" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
@@ -127,7 +127,7 @@
         <div class="card-body">
           <h4 class="card-title">City</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="<%=request.getContextPath() %>/iris-city" class="btn btn-outline-primary waves-effect">Click</a>
+          <a href="<%=request.getContextPath() %>/iris-city" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
@@ -135,7 +135,7 @@
         <div class="card-body">
           <h4 class="card-title">State</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="<%=request.getContextPath() %>/iris-state" class="btn btn-outline-primary waves-effect">Click</a>
+          <a href="<%=request.getContextPath() %>/iris-state" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div>
@@ -144,7 +144,7 @@
         <div class="card-body">
           <h4 class="card-title">Role</h4>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="<%=request.getContextPath() %>/iris-role" class="btn btn-outline-primary waves-effect">Click</a>
+          <a href="<%=request.getContextPath() %>/iris-role" class="btn btn-outline-primary waves-effect">Go To   <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div>
