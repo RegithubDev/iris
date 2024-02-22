@@ -122,7 +122,7 @@
       </div>
     </div><div class="col-md-6 col-lg-4">
       <div class="card text-center mb-3 p-2">
-        <div class="card-body">
+        <div class="card-body"> 
           <h4 class="card-title">IRIS-City</h4>
           <a href="<%=request.getContextPath() %>/iris-city" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
