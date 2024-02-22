@@ -202,24 +202,24 @@ font-size: 1rem!important;
 	</section>
 	 <div class="modal-size-default d-inline-block">
               <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
-             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='user-check'></i> Add New SBU</a>
+             data-bs-toggle="modal" data-bs-target="#dupdatemodel"><i data-feather='user-check'></i> Update SBU</a>
               <!-- Modal -->
               <div class="modal fade text-start" id="defaultSize" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header re-text-bg">
-                      <h4 class="modal-title text-white" id="myModalLabel18">Add SBU</h4>
+                      <h4 class="modal-title text-white" id="myModalLabel18">Update SBU</h4>
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-sbu-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form" action="<%=request.getContextPath() %>/update-sbu-iris" method="post" novalidate="novalidate">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">SBU Code</label>
-			              <input type="text" class="form-control" id="sbu_code" name="sbu_code" placeholder="Sbu Code">
+			              <input type="text" class="form-control" id="sbu_code_edit" name="sbu_code" placeholder="Sbu Code">
 			            </div>
 			            <div class="mb-1">
 			              <label class="form-label" for="sbu_name">SBU Name</label>
-			              <input type="text" class="form-control" id="sbu_name" name="sbu_name" placeholder="Sbu Name">
+			              <input type="text" class="form-control" id="sbu_name_edit" name="sbu_name" placeholder="Sbu Name">
 			            </div>
 			                <div class="mb-1">
 			              <label class="form-label" for="status">Status</label>
@@ -231,7 +231,7 @@ font-size: 1rem!important;
 			              </select></div>
 			            </div>
 			 				<div class="col-md-12 col-12 text-center mt-2">
-			               		<button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
+			               		<button onclick="updateSBU(); type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
 			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
 			              </div>         
 			          </form>
