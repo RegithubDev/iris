@@ -106,28 +106,40 @@ $(function () {
         customFile: {
           required: true
         },
-        validationRadiojq: {
+        'validationRadiojq': {
           required: true
         },
-        validationBiojq: {
+        'validationBiojq': {
           required: true
         },
-        validationCheck: {
+        'validationCheck': {
           required: true
         },
-		sbu_code:{
+		'sbu_code':{
           required: true
         },
-		sbu_name:{
+		'sbu_name':{
           required: true
         },
-		status:{
+		'status':{
           required: true
         },
-		category_name:{
+		'category_name':{
           required: true
         },
-		category_code:{
+		'category_code':{
+          required: true
+        },
+		'state_name':{
+          required: true
+        },
+		'state_code':{
+          required: true
+        },
+		'state':{
+          required: true
+        },
+		'city_name':{
           required: true
         },
 		

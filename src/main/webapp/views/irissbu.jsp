@@ -94,7 +94,7 @@ font-size: 1rem!important;
              <div class="mb-1">
               <label class="form-label" for="select2-basic">SBU</label>
               <div class="position-relative" ><select  class="searchable form-select " id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
-               <option value="" >Select SBUName</option>
+               <option value="" >Select SBU</option>
                
               </select></div>
             </div>
@@ -150,11 +150,11 @@ font-size: 1rem!important;
                      <form id="jquery-val-form" method="post" novalidate="novalidate">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">SBU Code</label>
-			              <input type="text" class="form-control" id="sbu_code" name="sbu_code" placeholder="SBU CODE">
+			              <input type="text" class="form-control" id="sbu_code" name="sbu_code" placeholder="Sbu Code">
 			            </div>
 			            <div class="mb-1">
 			              <label class="form-label" for="sbu_name">SBU Name</label>
-			              <input type="text" class="form-control" id="sbu_name" name="sbu_name" placeholder="SBU NAME">
+			              <input type="text" class="form-control" id="sbu_name" name="sbu_name" placeholder="Sbu Name">
 			            </div>
 			                <div class="mb-1">
 			              <label class="form-label" for="status">Status</label>

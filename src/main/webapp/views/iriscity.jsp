@@ -5,7 +5,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>IRIS-Category</title>
+    <title>IRIS-city</title>
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -87,14 +87,13 @@ font-size: 1rem!important;
            <div class="card-body" id="filterDiv">
           <div class="row">
           
-   
-            <div class="col-xl-2 col-md-6 col-12" style="
+   <div class="col-xl-2 col-md-6 col-12" style="
     padding-right: calc(var(--bs-gutter-x) * 0);
 ">
              <div class="mb-1">
-              <label class="form-label" for="select2-basic">SBU</label>
+              <label class="form-label" for="select2-basic">State</label>
               <div class="position-relative" ><select  class="searchable form-select " id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
-               <option value="" >Select SBU</option>
+               <option value="" >Select State</option>
                
               </select></div>
             </div>
@@ -103,9 +102,9 @@ font-size: 1rem!important;
     padding-right: calc(var(--bs-gutter-x) * 0);
 ">
              <div class="mb-1">
-              <label class="form-label" for="select2-basic">Category</label>
+              <label class="form-label" for="select2-basic">City</label>
               <div class="position-relative" ><select  class="searchable form-select " id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
-               <option value="" >Select Category</option>
+               <option value="" >Select City</option>
                
               </select></div>
             </div>
@@ -148,28 +147,24 @@ font-size: 1rem!important;
 											
 										<div class="modal-size-default d-inline-block">
               <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
-             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='user-check'></i> Add New Category</a>
+             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='user-check'></i> Add New City</a>
               <!-- Modal -->
               <div class="modal fade text-start" id="defaultSize" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header re-text-bg">
-                      <h4 class="modal-title text-white" id="myModalLabel18">Add SBU</h4>
+                      <h4 class="modal-title text-white" id="myModalLabel18">Add City</h4>
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                      <form id="jquery-val-form" method="post" novalidate="novalidate">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">SBU Code</label>
-			              <input type="text" class="form-control" id="sbu_code" name="sbu_code" placeholder="Sbu Code">
+			              <label class="form-label" for="state">State</label>
+			              <input type="text" class="form-control" id="state" name="state" placeholder="State">
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="category_code">Category Code</label>
-			              <input type="text" class="form-control" id="category_code" name="category_code" placeholder="Category Code">
-			            </div>
-			             <div class="mb-1">
-			              <label class="form-label" for="category_name">Category Name</label>
-			              <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Category Name">
+			              <label class="form-label" for="sbu_name">City</label>
+			              <input type="text" class="form-control" id="city_name" name="city_name" placeholder="City">
 			            </div>
 			                <div class="mb-1">
 			              <label class="form-label" for="status">Status</label>
@@ -204,13 +199,14 @@ font-size: 1rem!important;
 				              <tr>
 				                <th >#</th>
 								<th >Actions</th>
-								<th >Category Name</th>
-								<th >SBU Name</th>
+								<th >State</th>
+								<th >City</th>
 								<th >Status</th>
 								 <th >Created By</th>
 								<th >Created Date</th>
 								<th >Modified By </th>
 								<th >Modified Date</th>
+								
              				</tr>
 			            </thead>
 			          </table>
