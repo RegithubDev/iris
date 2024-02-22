@@ -114,7 +114,26 @@ $(function () {
         },
         validationCheck: {
           required: true
-        }
+        },
+		sbu_code:{
+          required: true
+        },
+		sbu_name:{
+          required: true
+        },
+		status:{
+          required: true
+        },
+		category_name:{
+          required: true
+        },
+		category_code:{
+          required: true
+        },
+		
+		
+		
+		
       }
     });
   }

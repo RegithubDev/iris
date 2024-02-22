@@ -6,9 +6,9 @@ public class PageConstants {
 	public static final String signUp = "signUp";
 	public static final String irisusermanagement = "irisusermanagement";
 	public static final String irisadduser = "irisadduser";
-	
-	
-	
+	public static final String irissbu = "irissbu";
+	public static final String iriscategory = "iriscategory";
+
 	
 	
 	
@@ -138,6 +138,7 @@ public class PageConstants {
 	public static final String bbSbuForm = "bbSbuForm";
 	public static final String bbbank = "ideabank";
 	public static final String helpCenter = "helpCenter";
+	
 
 
 	
