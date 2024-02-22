@@ -121,7 +121,6 @@ font-size: 1rem!important;
              <div class="demo-inline-spacing">
             <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getUserList();"><i data-feather='search'></i> Filter </a>
            <a  onclick="clearFilters();" id="clearFilterBtn"  class="btn btn-gradient-danger re-text-bg "> Clear Filter </a> 
-           <button class="btn btn-outline-primary toast-stacked-toggler waves-effect">Staked Toast</button>
           </div>
             </div>
              <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
@@ -211,15 +210,7 @@ font-size: 1rem!important;
             </div>
           </div>
 	</section>
-	 <div class="toast toast-stacked fade hide" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="../../../app-assets/images/logo/logo.png" class="me-1" alt="Toast Image" height="18" width="25">
-      <strong class="me-auto">Vue Admin</strong>
-      <small class="text-muted">2 seconds ago</small>
-      <button type="button" class="ms-1 btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">No Filters Selected.</div>
-  </div>
+	 
     </div>
   </div>
 </div>
@@ -279,6 +270,9 @@ font-size: 1rem!important;
     <script src="/iris/resources/vendors/js/pickers/pickadate/legacy.js"></script>
     <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
         <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
+         <form id="getUser" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/get-user-details" method="post" class="form-horizontal" role="form" >
+         	 <input type="text" id="idVal" name="id" />
+         </form>
     <script>
  $(window).on('load',  function(){
     	
@@ -494,7 +488,7 @@ font-size: 1rem!important;
                       if($.trim(data.user_name) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var user_data = "'"+data.user_id+"','"+data.user_name+"','"+data.sbu+"','"+data.email_id+"','"+data.mobile_number+"'";
+							var user_data = "'"+data.id+"','"+data.user_name+"','"+data.sbu+"','"+data.email_id+"','"+data.mobile_number+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
@@ -552,6 +546,10 @@ function getErrorMessage(jqXHR, exception) {
 	    console.log(msg);
 }
 		
+		function getUser(id,name,sbu,email_id,mobile_number){
+			$('#idVal').val(id);
+			document.getElementById("getUser").submit();	
+		}
     </script>
      <script async>
         var link = document.createElement( 'link' );

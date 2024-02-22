@@ -232,7 +232,7 @@ public class IrisUserDao {
 					+ "      ,[created_by]"
 					+ "      ,FORMAT (um.created_date, 'dd-MMM-yy') as[created_date]"
 					+ "      ,[modified_by]"
-					+ "      ,FORMAT (um.modified_date, 'dd-MMM-yy') as[modified_date] FROM [user_management] um  ";
+					+ "      ,FORMAT (um.modified_date, 'dd-MMM-yy') as[modified_date] FROM [user_management] um  where um.id is not null ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
 				qry = qry + " and um.id = ? ";

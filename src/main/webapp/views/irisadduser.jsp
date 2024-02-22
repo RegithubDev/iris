@@ -103,24 +103,25 @@
         </div>
        <div class="card-body">
        <div class="col-md-12 col-12">
+       <input type="hidden" id="user_name" name="user_name" value="${UserDetails.id }" />
       <div class="card">
         <div class="card-body p-2">
           <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-user-iris" method="post" novalidate="novalidate">
           <div class="row">
             <div class="mb-1 col-md-6">
              <label class="form-label" for="basic-default-name">Name</label>
-              <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Name">
+              <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Name" value="${UserDetails.user_name }">
             </div>
             <div class="mb-1 col-md-6">
                <label class="form-label" for="basic-default-email">Email</label>
-              <input type="text" id="email_id" name="email_id" class="form-control" placeholder="RE@email.com">
+              <input type="text" id="email_id" name="email_id" class="form-control" placeholder="RE@email.com" value="${UserDetails.email_id }">
             
             </div>
           </div>
           <div class="row">
             <div class="mb-1 col-md-6">
             <label class="form-label" for="basic-number">Mobile Number</label>
-              <input type="password" id="mobile_number" name="mobile_number" class="form-control" placeholder="999-999-9999">
+              <input type="number" id="mobile_number" name="mobile_number" class="form-control" placeholder="999-999-9999" value="${UserDetails.mobile_number }">
             
             </div>
             <div class="mb-1 col-md-6">
