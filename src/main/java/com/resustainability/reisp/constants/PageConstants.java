@@ -11,8 +11,9 @@ public class PageConstants {
 	public static final String irisstate = "irisstate";
 	public static final String iriscity = "iriscity";
 	public static final String irisrole = "irisrole";
+	public static final String irissettings = "irissettings";	
 	
-	
+
 	
 	
 	
@@ -140,6 +141,7 @@ public class PageConstants {
 	public static final String bbSbuForm = "bbSbuForm";
 	public static final String bbbank = "ideabank";
 	public static final String helpCenter = "helpCenter";
+
 
 	
 	
