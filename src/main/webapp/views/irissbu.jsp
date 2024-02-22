@@ -160,16 +160,11 @@ font-size: 1rem!important;
 			              <label class="form-label" for="status">Status</label>
 			              <div class="position-relative">
 			              <select class="form-select select2 select2-hidden-accessible" id="status" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
-			                <option value="">Select Status</option>
 			                <option value="Active">Active</option>
 			                <option value="Inactive">Inactive</option>
 			        
 			              </select></div>
 			            </div>
-			              
-			           
-			           
-			            
 			 				<div class="col-md-12 col-12 text-center mt-2">
 			               		<button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
 			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
@@ -205,7 +200,47 @@ font-size: 1rem!important;
             </div>
           </div>
 	</section>
-	 
+	 <div class="modal-size-default d-inline-block">
+              <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
+             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='user-check'></i> Add New SBU</a>
+              <!-- Modal -->
+              <div class="modal fade text-start" id="defaultSize" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Add SBU</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-sbu-iris" method="post" novalidate="novalidate">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">SBU Code</label>
+			              <input type="text" class="form-control" id="sbu_code" name="sbu_code" placeholder="Sbu Code">
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_name">SBU Name</label>
+			              <input type="text" class="form-control" id="sbu_name" name="sbu_name" placeholder="Sbu Name">
+			            </div>
+			                <div class="mb-1">
+			              <label class="form-label" for="status">Status</label>
+			              <div class="position-relative">
+			              <select class="form-select select2 select2-hidden-accessible" id="status" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
+			                <option value="Active">Active</option>
+			                <option value="Inactive">Inactive</option>
+			        
+			              </select></div>
+			            </div>
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div>
     </div>
   </div>
 </div>
@@ -464,7 +499,7 @@ font-size: 1rem!important;
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteSBU('+sbu_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getSBU('+sbu_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#defaultSize" onclick="getSBU('+sbu_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
 			                +' <a onclick="deleteSBU('+sbu_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
               +'</div>'
