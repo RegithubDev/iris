@@ -54,7 +54,7 @@ div.main-menu-content {
 					href="<%=request.getContextPath() %>/datamanagement"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="InsertChartOutlinedOutlinedIcon"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg><span
 						class="menu-title text-truncate" data-i18n="Calendar">Data Management</span></a>
 				</li>
-				<li class=" nav-item bghover" id="datamanagement"><a class="d-flex align-items-center"
+				<li class=" nav-item bghover" id="settings"><a class="d-flex align-items-center"
 					href="<%=request.getContextPath() %>/iris-settings"><svg  xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings spinner MuiSvgIcon-fontSizeMedium"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg><span
 						class="menu-title text-truncate " data-i18n="Calendar">Admin Settings</span></a>
 				</li>
@@ -90,7 +90,9 @@ div.main-menu-content {
 	           		}else if(url.indexOf('data') != -1){
 	           			$('#datamanagement').addClass('active');
 	           		}else if(url.indexOf('product') != -1){
-	           			$('#productcatalogue').addClass('active');
+	           			$('#settings').addClass('active');
+	           		}else if(url.indexOf('settings') != -1){
+	           			$('#settings').addClass('active');
 	           		}else if(url.indexOf('management') != -1){
 	           			$('#managementdasboard').addClass('active');
 	           		}else if(url.indexOf('/helpdesk') != -1){

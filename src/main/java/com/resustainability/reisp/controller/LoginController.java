@@ -70,7 +70,7 @@ public class LoginController {
 				if(!StringUtils.isEmpty(userDetails)) {
 						model.setViewName("redirect:/home");
 						session.setAttribute("user", userDetails);
-						session.setAttribute("USER_ID", userDetails.getEmp_id());
+						session.setAttribute("USER_ID", userDetails.getId());
 						session.setAttribute("USER_NAME", userDetails.getUser_name());
 						session.setAttribute("EMAIL_ID", userDetails.getEmail_id());
 						session.setAttribute("BASE_ROLE", userDetails.getRole());

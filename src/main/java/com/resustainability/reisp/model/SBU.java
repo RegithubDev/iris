@@ -4,7 +4,47 @@ public class SBU {
 
 	private String id	,transaction_no,vehicle_no,user_ip,company_code,company_name,project,TransactionNo,VehicleNo,repulled,PTC_status,PTCDT,MSG	,sbu_code	,sbu_name,status,from_date,user_id,password,
 	
-	all_sbu,active_sbu,inActive_sbu;
+	all_sbu,active_sbu,inActive_sbu,created_by,modified_date,created_date,modified_by,sbu;
+
+	public String getSbu() {
+		return sbu;
+	}
+
+	public void setSbu(String sbu) {
+		this.sbu = sbu;
+	}
+
+	public String getCreated_by() {
+		return created_by;
+	}
+
+	public String getModified_date() {
+		return modified_date;
+	}
+
+	public String getCreated_date() {
+		return created_date;
+	}
+
+	public String getModified_by() {
+		return modified_by;
+	}
+
+	public void setCreated_by(String created_by) {
+		this.created_by = created_by;
+	}
+
+	public void setModified_date(String modified_date) {
+		this.modified_date = modified_date;
+	}
+
+	public void setCreated_date(String created_date) {
+		this.created_date = created_date;
+	}
+
+	public void setModified_by(String modified_by) {
+		this.modified_by = modified_by;
+	}
 
 	public String getUser_ip() {
 		return user_ip;
