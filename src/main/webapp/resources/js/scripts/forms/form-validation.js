@@ -142,6 +142,9 @@ $(function () {
 		'city_name':{
           required: true
         },
+		'role_name':{
+          required: true
+        },
 		
 		
 		
