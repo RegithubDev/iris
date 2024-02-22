@@ -109,32 +109,28 @@
     <div class="col-md-6 col-lg-4">
       <div class="card text-center mb-3 p-2">
         <div class="card-body">
-          <h4 class="card-title">SBU</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <h4 class="card-title">IRIS-SBU</h4>
           <a href="<%=request.getContextPath() %>/iris-sbu" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
       <div class="card text-center mb-3 p-2">
         <div class="card-body">
-          <h4 class="card-title">Category</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <h4 class="card-title">IRIS-Category</h4>
           <a href="<%=request.getContextPath() %>/iris-category" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
       <div class="card text-center mb-3 p-2">
         <div class="card-body">
-          <h4 class="card-title">City</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <h4 class="card-title">IRIS-City</h4>
           <a href="<%=request.getContextPath() %>/iris-city" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
       <div class="card text-center mb-3 p-2">
         <div class="card-body">
-          <h4 class="card-title">State</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <h4 class="card-title">IRIS-State</h4>
           <a href="<%=request.getContextPath() %>/iris-state" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
         </div>
       </div>
@@ -142,8 +138,7 @@
     <div class="col-md-6 col-lg-4">
       <div class="card text-center mb-3 p-2">
         <div class="card-body">
-          <h4 class="card-title">Role</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <h4 class="card-title">IRIS-Role</h4>
           <a href="<%=request.getContextPath() %>/iris-role" class="btn btn-outline-primary waves-effect">Go To   <i data-feather='arrow-right'></i></a>
         </div>
       </div>
