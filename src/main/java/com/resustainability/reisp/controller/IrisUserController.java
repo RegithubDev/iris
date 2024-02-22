@@ -43,18 +43,7 @@ public class IrisUserController {
 	
 	@Autowired
 	IrisUserService service;
-	
-	@RequestMapping(value = "/iris-users", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView irmReport(@ModelAttribute User user, HttpSession session) {
-		ModelAndView model = new ModelAndView(PageConstants.irisUsers);
-		try {
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return model;
-	}
-	
+
 	@RequestMapping(value = "/usermanagement", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView irisusermanagement(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.irisusermanagement);
