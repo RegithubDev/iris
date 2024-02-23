@@ -85,7 +85,7 @@ font-size: 1rem!important;
                 <h2 class="content-header-title float-start mb-0">Category</h2>
                 <div class="breadcrumb-wrapper">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/iris/iris-settings">Masters</a>
+                    <li class="breadcrumb-item"><a href="/iris/iris-settings"><i data-feather='settings'></i> Masters</a>
                     </li>
                     <li class="breadcrumb-item"><a> Category</a>
                     </li>
@@ -169,7 +169,7 @@ font-size: 1rem!important;
 								<div >
 									<div class="card-header border-bottom p-1">
 										<div class="head-label">
-											<h6 class="mb-0"><i data-feather='command'></i> Category</h6>
+											<h6 class="mb-0"><i data-feather='sliders'></i> Category</h6>
 										</div>
 										<div>
 											
