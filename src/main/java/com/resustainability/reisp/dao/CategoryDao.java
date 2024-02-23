@@ -21,7 +21,7 @@ import org.springframework.util.StringUtils;
 import com.resustainability.reisp.model.Category;
 
 @Repository
-public class SBUDao {
+public class CategoryDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
@@ -35,14 +35,15 @@ public class SBUDao {
 		int totalRecords = 0;
 		try {
 			int arrSize = 0;
-			String qry = "select count(DISTINCT um.sbu_name) as total_records FROM [sbu] um "
-			+ " where um.sbu_name <> '' ";
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+			String qry = "select count(DISTINCT um.sbu_code) as total_records FROM [category] um "
+					+ "left join sbu s on um.sbu_code = s.sbu_code  "
+			+ " where s.sbu_name <> '' ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				qry = qry + " and  um.sbu_code = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				qry = qry + " and  um.category_code = ? ";
 				arrSize++;
 			}
 		
@@ -51,23 +52,25 @@ public class SBUDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
-				qry = qry + " and (um.sbu_name like ? or um.status like ?)";
+				qry = qry + " and (s.sbu_code like ? or s.status like ? or s.category_name like ?)";
+				arrSize++;
 				arrSize++;
 				arrSize++;
 			}	
 			
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				pValues[i++] = obj.getCategory_code();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				pValues[i++] = obj.getStatus();
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
+				pValues[i++] = "%"+searchParameter+"%";
 				pValues[i++] = "%"+searchParameter+"%";
 				pValues[i++] = "%"+searchParameter+"%";
 			}
@@ -86,23 +89,23 @@ public class SBUDao {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			String qry = "SELECT s.[id]"
-					+ "        ,s.[sbu_code]"
-					+ "      ,s.[sbu_name]"
+					+ "        ,s.[sbu_code],category_code,category_name"
+					+ "      ,ss.[sbu_name]"
 					+ "      ,s.[status]"
 					+ "      ,um.user_name as [created_by]"
 					+ "      ,FORMAT (s.created_date, 'dd-MMM-yy') as [created_date]"
 					+ "      ,um1.user_name as [modified_by]"
-					+ "      ,FORMAT (s.modified_date, 'dd-MMM-yy') as [modified_date] FROM [sbu] s  "
-					+ " left join user_management um on s.created_by = um.id   "
+					+ "      ,FORMAT (s.modified_date, 'dd-MMM-yy') as [modified_date] FROM [category] s  "
+					+ " left join user_management um on s.created_by = um.id   left join sbu ss on s.sbu_code = ss.sbu_code "
 					+ " left join user_management um1 on s.modified_by = um1.id  "
 					+ "where s.id is not null  ";
 			
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  s.sbu_code = ? ";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				qry = qry + " and  s.sbu_code = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				qry = qry + " and  s.category_code = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
@@ -110,7 +113,8 @@ public class SBUDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
-				qry = qry + " and (s.sbu_code like ? or s.status like ?)";
+				qry = qry + " and (s.sbu_code like ? or s.status like ? or s.category_name like ?)";
+				arrSize++;
 				arrSize++;
 				arrSize++;
 			}	
@@ -121,16 +125,17 @@ public class SBUDao {
 			}
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				pValues[i++] = obj.getCategory_code();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				pValues[i++] = obj.getStatus();
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
+				pValues[i++] = "%"+searchParameter+"%";
 				pValues[i++] = "%"+searchParameter+"%";
 				pValues[i++] = "%"+searchParameter+"%";
 			}
@@ -153,14 +158,14 @@ public class SBUDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [sbu] "
+			String insertQry = "INSERT INTO [category] "
 					+ "		( sbu_code"
-					+ "      ,sbu_name"
+					+ "      ,category_code,category_name"
 					+ "      ,status"
 					+ "      ,created_by,created_date) "
 					+ "		VALUES "
 					+ "		( :sbu_code"
-					+ "      ,:sbu_name"
+					+ "     ,:category_code,:category_name"
 					+ "      ,:status"
 					+ "      ,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
@@ -186,8 +191,8 @@ public class SBUDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "UPDATE [sbu] set "
-					+ "      sbu_name= :sbu_name"
+			String insertQry = "UPDATE [category] set "
+					+ "      sbu_code= :sbu_code,category_name= :category_name"
 					+ "      ,status= :status,modified_date= getdate(),modified_by= :modified_by"
 					+ " where id =  '"+obj.getId()+"'";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
@@ -209,28 +214,28 @@ public class SBUDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT um.[sbu_code],sbu_name from [sbu] um  where um.sbu_code is not null ";
+			String qry = "SELECT um.[category_code],category_name from [category] um  where um.sbu_code is not null ";
 			
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				qry = qry + " and  um.sbu_code = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				qry = qry + " and  um.category_code = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				qry = qry + " and um.status = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.sbu_code asc";
+			qry = qry + " order by um.category_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				pValues[i++] = obj.getCategory_code();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				pValues[i++] = obj.getStatus();
@@ -243,19 +248,19 @@ public class SBUDao {
 		return objsList;
 	}
 
-	public List<Category> getCategoryFilterListForCategory(Category obj) throws Exception {
+	public List<Category> getSBUFilterListForCategory(Category obj) throws Exception {
 		List<Category> objsList = null;
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT um.[sbu_code],sbu_name from [sbu] um  where um.sbu_code is not null ";
+			String qry = "SELECT distinct(um.[sbu_code]),sbu_name from [category] um left join sbu s on um.sbu_code = s.sbu_code where um.sbu_code is not null ";
 			
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				qry = qry + " and  um.sbu_code = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				qry = qry + " and  um.category_code = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
@@ -265,11 +270,11 @@ public class SBUDao {
 			qry = qry + " order by um.sbu_code asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				pValues[i++] = obj.getCategory_code();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				pValues[i++] = obj.getStatus();
@@ -287,14 +292,14 @@ public class SBUDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT status from [sbu] um where status is not null ";
+			String qry = "SELECT distinct(status) from [category] um where status is not null ";
 			
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				qry = qry + " and  um.sbu_code = ? ";
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				qry = qry + " and  um.category_code = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
@@ -304,15 +309,45 @@ public class SBUDao {
 			qry = qry + " order by um.status asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				pValues[i++] = obj.getSbu();
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
+				pValues[i++] = obj.getCategory_code();
 			}
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				pValues[i++] = obj.getStatus();
+			}
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<Category>(Category.class));	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<Category> checkUniqueIfForCategory(Category obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Category> getSBUList(Category obj) throws Exception {
+		List<Category> objsList = null;
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "SELECT sbu_code,sbu_name from [sbu] um where status <> 'Inactive' ";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				qry = qry + " and  um.sbu_code = ? ";
+				arrSize++;
+			}
+			qry = qry + " order by um.sbu_code asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<Category>(Category.class));	
 		} catch (Exception e) {

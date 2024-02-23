@@ -372,7 +372,7 @@ font-size: 1rem!important;
 		var sbu = $("#sbuID").val();
 		
 		var roles = $("#rolesId").val();
-		if(sbu != "" || site_name != "" || roles != ""){
+		if(sbu != "" || roles != ""){
 		    $("#sbuID").val("");
 			$("#rolesId").val("");
 			$(this).removeAttr("data-bs-toggle data-bs-placement title data-bs-original-title");

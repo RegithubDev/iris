@@ -8,7 +8,7 @@ public class PageConstants2 {
 	public static final String irisusermanagement = "irisusermanagement";
 	public static final String irisadduser = "irisadduser";
 	public static final String irisaddsite = "irisaddsite";
-	
+	public static final String iriscategory = "iriscategory";
 	
 	
 	

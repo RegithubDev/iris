@@ -263,7 +263,7 @@ public class IrisSBUDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT status from [sbu] um where status is not null ";
+			String qry = "SELECT distinct([status]) from [sbu] um where status is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
 				qry = qry + " and  um.sbu_code = ? ";
