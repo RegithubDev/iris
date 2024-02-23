@@ -93,6 +93,16 @@ div.main-menu-content {
 	           			$('#settings').addClass('active');
 	           		}else if(url.indexOf('settings') != -1){
 	           			$('#settings').addClass('active');
+	           		}else if(url.indexOf('sbu') != -1){
+	           			$('#settings').addClass('active');
+	           		}else if(url.indexOf('category') != -1){
+	           			$('#settings').addClass('active');
+	           		}else if(url.indexOf('city') != -1){
+	           			$('#settings').addClass('active');
+	           		}else if(url.indexOf('state') != -1){
+	           			$('#settings').addClass('active');
+	           		}else if(url.indexOf('role') != -1){
+	           			$('#settings').addClass('active');
 	           		}else if(url.indexOf('management') != -1){
 	           			$('#managementdasboard').addClass('active');
 	           		}else if(url.indexOf('/helpdesk') != -1){

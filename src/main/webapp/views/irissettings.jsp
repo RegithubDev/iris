@@ -5,7 +5,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>IRIS - Home</title>
+    <title>IRIS - Masters</title>
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -42,7 +42,13 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//assets/css/style.css">
     <!-- END: Custom CSS-->
+<style>
 
+#cardS {
+    box-shadow: 0 4px 24px 0 rgb(0 0 0 / 10%)!important;
+        margin: 18px;
+}
+</style>
   </head>
   <!-- END: Head-->
 
@@ -64,119 +70,61 @@
     <!-- BEGIN: Content-->
     <div class="app-content content ">
       <div class="content-overlay"></div>
-      <div class="header-navbar-shadow"></div>
-      <div class="content-wrapper container-xxl p-0">
-   
-        <div class="content-body"><div class="row">
-</div>
-<!-- Basic table -->
-<section id="basic-datatable">
-<div class="row">
-						<div class="col-12">
-							<div class="card">
-							</div>
-						</div>
-					</div>
-</section>
-<!--/ Basic table -->
 
-<!-- Complex Headers -->
-<section id="complex-header-datatable">
-<div class="content-header row">
-          <div class="content-header-left col-md-9 col-12 mb-2">
-            <div class="row breadcrumbs-top">
-              <div class="col-12">
-                <h2 class="content-header-title float-start mb-0"></h2>
-                <div class="breadcrumb-wrapper">
-                  <ol class="breadcrumb">
-                    <li class=""><a href="index-2.html"></a>
-                    </li>
-                    <li class=""><a href="#"></a>
-                    </li>
-                    <li class=" ">
-                    </li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="content-wrapper container-xxl p-0">
-        
-        <div class="content-body">
-        <section id="card-text-alignment">
+      <div class="content-wrapper container-xxl p-0">
+   <div class="row">
+    
+    
+    <div class="col-md-6 col-lg-12">
+      <div class="card text-center">
+        <div class="card-header">Masters</div>
+        <div class="card-body">
+         <div class="row">
   
-  <div class="row">
-    <div class="col-md-6 col-lg-4">
-      <div class="card text-center mb-3 p-2">
+    <div class="col-md-6 col-lg-4 col-sm-2">
+      <div class="card text-center  p-2" id="cardS">
         <div class="card-body">
           <h4 class="card-title">IRIS-SBU</h4>
-          <a href="<%=request.getContextPath() %>/iris-sbu" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
+          <a href="/iris/iris-sbu" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
-      <div class="card text-center mb-3 p-2">
+      <div class="card text-center  p-2" id="cardS">
         <div class="card-body">
           <h4 class="card-title">IRIS-Category</h4>
-          <a href="<%=request.getContextPath() %>/iris-category" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
+          <a href="/iris/iris-category" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
-      <div class="card text-center mb-3 p-2">
+      <div class="card text-center  p-2" id="cardS">
         <div class="card-body"> 
           <h4 class="card-title">IRIS-City</h4>
-          <a href="<%=request.getContextPath() %>/iris-city" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
+          <a href="/iris/iris-city" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
       </div>
     </div><div class="col-md-6 col-lg-4">
-      <div class="card text-center mb-3 p-2">
+      <div class="card text-center  p-2" id="cardS">
         <div class="card-body">
           <h4 class="card-title">IRIS-State</h4>
-          <a href="<%=request.getContextPath() %>/iris-state" class="btn btn-outline-primary waves-effect">Go To <i data-feather='arrow-right'></i></a>
+          <a href="/iris/iris-state" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
       </div>
     </div>
     <div class="col-md-6 col-lg-4">
-      <div class="card text-center mb-3 p-2">
+      <div class="card text-center  p-2" id="cardS">
         <div class="card-body">
           <h4 class="card-title">IRIS-Role</h4>
-          <a href="<%=request.getContextPath() %>/iris-role" class="btn btn-outline-primary waves-effect">Go To   <i data-feather='arrow-right'></i></a>
+          <a href="/iris/iris-role" class="btn btn-outline-primary waves-effect">Go To   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
         </div>
       </div>
     </div>
     
   </div>
-</section>
-
-
-
-
-
         </div>
-      </div>
-        </div>
- 
- 
-      <div class="row">
-    <!--Bar Chart Start -->
-    <div class="col-xl-6 col-12">
-      <div class="card">
-      
+        
       </div>
     </div>
-    <!-- Bar Chart End -->
-
-    <!-- Horizontal Bar Chart Start -->
-    
-    <div class="col-xl-6 col-12">
-      <div class="card">
-      </div>
-    </div>
-    <!-- Horizontal Bar Chart End -->
   </div>
-</section>
-
-
-        </div>
       </div>
     </div>
  

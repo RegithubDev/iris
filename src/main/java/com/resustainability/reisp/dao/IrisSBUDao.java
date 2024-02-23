@@ -207,8 +207,7 @@ public class IrisSBUDao {
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String insertQry = "UPDATE [sbu] set "
-					+ "      ,sbu_code= :sbu_code"
-					+ "      ,sbu_name= :sbu_name"
+					+ "      sbu_name= :sbu_name"
 					+ "      ,status= :status,modified_date= getdate(),modified_by= :modified_by"
 					+ " where id =  '"+obj.getId()+"'";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
