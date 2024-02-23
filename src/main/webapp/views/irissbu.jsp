@@ -235,7 +235,7 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form"  action="<%=request.getContextPath() %>/update-sbu-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-sbu-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">SBU Code</label>
