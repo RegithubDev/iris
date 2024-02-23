@@ -17,7 +17,7 @@ import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.User;
 
 @Controller
-public class IrisCityController {
+public class IrisCityController { 
 	@InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
