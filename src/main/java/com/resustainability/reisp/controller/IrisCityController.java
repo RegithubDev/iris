@@ -27,7 +27,7 @@ public class IrisCityController {
 	public ModelAndView iriscity(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.iriscity);
 		SBU obj = null;
-		try {
+		try { 
 		
 			
 		} catch (Exception e) {
