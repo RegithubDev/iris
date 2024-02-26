@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html class="loaded light-layout" lang="en" data-textdirection="ltr" style="--vh: 3.54px;">
 <!-- BEGIN: Head--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,role-scalable=0,minimal-ui">
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
@@ -115,8 +118,8 @@ font-size: 1rem!important;
     padding-right: calc(var(--bs-gutter-x) * 0);
 ">
              <div class="mb-1">
-              <label class="form-label" for="select2-basic">State</label>
-              <div class="position-relative" ><select  class="searchable form-select " id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
+              <label class="form-label" for="select2-basic">SBU</label>
+              <div class="position-relative" ><select  class="searchable form-select " id="sbuID" data-select2-id="select2-basic1" tabindex="-11" aria-hidden="true">
                <option value="" >Select SBU</option>
                
               </select></div>
@@ -126,7 +129,7 @@ font-size: 1rem!important;
     padding-right: calc(var(--bs-gutter-x) * 0);
 ">
              <div class="mb-1">
-              <label class="form-label" for="select2-basic">City</label>
+              <label class="form-label" for="select2-basic">Role</label>
               <div class="position-relative" ><select  class="searchable form-select " id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
                <option value="" >Select Role</option>
                
@@ -144,13 +147,13 @@ font-size: 1rem!important;
             </div>
             <div class="re-text col-xl-4 col-md-3 col-12">
              <div class="demo-inline-spacing">
-            <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getUserList();"><i data-feather='search'></i> Filter </a>
+            <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getRoleList();"><i data-feather='search'></i> Filter </a>
            <a  onclick="clearFilters();" id="clearFilterBtn"  class="btn btn-gradient-danger re-text-bg "> Clear Filter </a> 
           </div>
             </div>
-             <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
+             <!-- <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
                <a type="button" class="btn btn-gradient-danger re-text-bg" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Export to Excel">Export <img src="/iris/resources/images/icons/Excel.png" class="logo" style="width: 2rem;">  </a>
-             </div>
+             </div> -->
           </div>
         </div> 
         <div class="toast-container position-fixed top-0 end-0 p-2" style="z-index: 15">
@@ -165,26 +168,35 @@ font-size: 1rem!important;
 								<div >
 									<div class="card-header border-bottom p-1">
 										<div class="head-label">
-											<h6 class="mb-0"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg> Users</h6>
+											<h6 class="mb-0"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg> Roles</h6>
 										</div>
 										<div>
 											
 										<div class="modal-size-default d-inline-block">
               <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
-             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='user-check'></i> Add New Role</a>
+             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='role-check'></i> Add New Role</a>
               <!-- Modal -->
               <div class="modal fade text-start" id="defaultSize" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header re-text-bg">
-                      <h4 class="modal-title text-white" id="myModalLabel18">Add ROle</h4>
+                      <h4 class="modal-title text-white" id="myModalLabel18">Add Role</h4>
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-role-iris" method="post" novalidate="novalidate">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">SBU</label>
-			              <input type="text" class="form-control" id="sbu_code" name="sbu_code" placeholder="Sbu">
+			              <select
+				            	class="form-select select2 select2-hidden-accessible state_edit" id="sbu_code"
+				              name="sbu_code"
+				              aria-label="Default select example"
+				            >
+				              <option value="">Select SBU</option>
+				              <c:forEach var="obj" items="${objList}">
+									<option value="${obj.sbu_code }" > ${obj.sbu_name }</option>
+								</c:forEach>
+				            </select>
 			            </div>
 			            <div class="mb-1">
 			              <label class="form-label" for="role_name">Role</label>
@@ -194,9 +206,8 @@ font-size: 1rem!important;
 			              <label class="form-label" for="status">Status</label>
 			              <div class="position-relative">
 			              <select class="form-select select2 select2-hidden-accessible" id="status" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
-			                <option value="">Select Status</option>
-			                <option value="usa">Active</option>
-			                <option value="uk">In Active</option>
+			                <option value="Active">Active</option>
+			                <option value="Inactive">Inactive</option>
 			        
 			              </select></div>
 			            </div>
@@ -218,7 +229,7 @@ font-size: 1rem!important;
 					
 					 </div>
 					</div>
-					 <table id="datatable-user" class="invoice-list-table table">
+					 <table id="datatable-role" class="invoice-list-table table">
 				            <thead>
 				              <tr>
 				                <th >#</th>
@@ -240,12 +251,66 @@ font-size: 1rem!important;
             </div>
           </div>
 	</section>
-	 
+	 <div class="modal-size-default d-inline-block">
+             <!--  <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
+             data-bs-toggle="modal" data-bs-target="#updateCat"><i data-feather='role-check'></i> Update Role</a> -->
+              <!-- Modal -->
+              <div class="modal fade text-start" id="updateCat" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Update Role</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form" action="<%=request.getContextPath() %>/update-role-iris" method="post" novalidate="novalidate">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">SBU</label>
+			              <input type="hidden" class="form-control" id="idVal" name="id" />
+			               <select
+				            	class="form-select select2 select2-hidden-accessible sbu_code_edit" id="sbu_code_edit"
+				              name="sbu_code"
+				              aria-label="Default select example"
+				            >
+				              <option value="">Select SBU</option>
+				              <c:forEach var="obj" items="${objList}">
+									<option value="${obj.sbu_code }" > ${obj.sbu_name }</option>
+								</c:forEach>
+				            </select>
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="role_name">Role</label>
+			              <input type="text" class="form-control" id="role_name_edit" name="role_name" placeholder="Role">
+			            </div>
+			                <div class="mb-1">
+			              <label class="form-label" for="status">Status</label>
+			              <div class="position-relative">
+			              <select class="form-select select2 select2-hidden-accessible status_edit" id="status_edit" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
+			                <option value="Active">Active</option>
+			                <option value="Inactive">Inactive</option>
+			        
+			              </select></div>
+			            </div>
+			              
+			           
+			           
+			            
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div>
     </div>
   </div>
 </div>
-    <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
-    <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+    <div class="sidenav-overlay" style="touch-action: pan-y; role-select: none; -webkit-role-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+    <div class="drag-target" style="touch-action: pan-y; role-select: none; -webkit-role-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
 
     <!-- BEGIN: Footer-->
     <footer class="footer footer-static footer-light">
@@ -300,9 +365,7 @@ font-size: 1rem!important;
     <script src="/iris/resources/vendors/js/pickers/pickadate/legacy.js"></script>
     <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
         <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
-         <form id="getUser" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/get-user-details" method="post" class="form-horizontal" role="form" >
-         	
-         </form>
+      
     <script>
  $(window).on('load',  function(){
     	
@@ -314,66 +377,42 @@ font-size: 1rem!important;
  $(document).ready(function () {
   	 // $('select:not(.searchable)').formSelect();
        $('.searchable').select2();
-        getUserList();
+        getRoleList();
         $('#clearFilterBtn').tooltip({
             trigger: 'manual' // Set the trigger to 'manual'
           });
      
   });
  function clearFilters(){
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-		if(sbu != "" || site_name != "" || roles != ""){
+		var sbu_code = $("#sbuID").val();
+		var role_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+		if(sbu_code != "" || role_name != "" || status != ""){
 		    $("#sbuID").val("");
 			$("#site_nameID").val("");
 			$("#rolesId").val("");
 			$(this).removeAttr("data-bs-toggle data-bs-placement title data-bs-original-title");
-			getUserList();
+			getRoleList();
 		}else{
 			 $('#clearFilterBtn').tooltip('show');
 		}
 	  
 }
 
- function getDepartmentFilterList() {
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(sbu) == "") {
+ function getSBUFilterList() {
+		var sbu_code = $("#sbuID").val();
+		var role_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+       if ($.trim(sbu_code) == "") {
        	$("#sbuID option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = { sbu_code: sbu_code, role_name: role_name, status : status };
            $.ajax({
-               url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterListForUser",
+               url: "<%=request.getContextPath()%>/ajax/getSBUFilterListForRole",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#sbuID").append('<option value="' + val.sbu + '">' + $.trim(val.sbu) +'</option>');
-                       });
-                   }
-               },error: function (jqXHR, exception) {
-   	   			      $(".page-loader").hide();
-      	          	  getErrorMessage(jqXHR, exception);
-      	     	  }
-           });
-       }
-   }
- 
- function getSiteFilterList() {
-	 var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(site_name) == "") {
-       	$("#site_nameID option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
-           $.ajax({
-               url: "<%=request.getContextPath()%>/ajax/getSiteFilterListForUser",
-               data: myParams, cache: false,async: false,
-               success: function (data) {
-                   if (data.length > 0) {
-                       $.each(data, function (i, val) {
-                            $("#site_nameID").append('<option value="' + val.site_name + '">' + $.trim(val.site_name) +'</option>');
+                            $("#sbuID").append('<option value="' + val.sbu_code + '">' + $.trim(val.sbu_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -385,19 +424,19 @@ font-size: 1rem!important;
    }
  
  function getRoleFilterList() {
-	 var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(roles) == "") {
-       	$("#rolesId option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+	 var sbu_code = $("#sbuID").val();
+		var role_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+       if ($.trim(role_name) == "") {
+       	$("#site_nameID option:not(:first)").remove();
+       	var myParams = { sbu_code: sbu_code, role_name: role_name, status : status };
            $.ajax({
-               url: "<%=request.getContextPath()%>/ajax/getRoleFilterListForUser",
+               url: "<%=request.getContextPath()%>/ajax/getRoleFilterListForRole",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#rolesId").append('<option value="' + val.roles + '">' + $.trim(val.roles) +'</option>');
+                            $("#site_nameID").append('<option value="' + val.role_name + '">' + $.trim(val.role_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -408,23 +447,47 @@ font-size: 1rem!important;
        }
    }
  
- function getUserList() {
-		getDepartmentFilterList('');
-		getSiteFilterList('');
+ function getStatusFilterList() {
+	 var sbu_code = $("#sbuID").val();
+		var role_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+       if ($.trim(status) == "") {
+       	$("#rolesId option:not(:first)").remove();
+       	var myParams = { sbu_code: sbu_code, role_name: role_name, status : status };
+           $.ajax({
+               url: "<%=request.getContextPath()%>/ajax/getStatusFilterListForRole",
+               data: myParams, cache: false,async: false,
+               success: function (data) {
+                   if (data.length > 0) {
+                       $.each(data, function (i, val) {
+                            $("#rolesId").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
+                       });
+                   }
+               },error: function (jqXHR, exception) {
+   	   			      $(".page-loader").hide();
+      	          	  getErrorMessage(jqXHR, exception);
+      	     	  }
+           });
+       }
+   }
+ 
+ function getRoleList() {
+		getSBUFilterList('');
+		getStatusFilterList('');
 		getRoleFilterList('');
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-	   	table = $('#datatable-user').DataTable();
+		var sbu_code = $("#sbuID").val();
+		var role_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+	   	table = $('#datatable-role').DataTable();
 		table.destroy();
 		var i = 1;
 		$.fn.dataTable.moment('DD-MMM-YYYY');
 		var rowLen = 0;
-		var myParams =  "sbu="+ sbu+ "&site_name="+ site_name+ "&roles="+ roles ;
+		var myParams =  "sbu_code="+ sbu_code+ "&role_name="+ role_name+ "&status="+ status ;
 
 		/***************************************************************************************************/
 
-		$("#datatable-user")
+		$("#datatable-role")
 				.DataTable(
 						{
 							"bProcessing" : true,
@@ -483,7 +546,7 @@ font-size: 1rem!important;
 										'<div class="right-btns"></div>');
 								$('.dataTables_filter div').append(
 										$searchButton, $clearButton);
-								rowLen = $('#datatable-user tbody tr:visible').length
+								rowLen = $('#datatable-role tbody tr:visible').length
 								/* var input = $('.dataTables_filter input').unbind(),
 								self = this.api(),
 								$searchButton = $('<i class="fa fa-search">')
@@ -512,50 +575,71 @@ font-size: 1rem!important;
 							},
 							
 							"bDestroy" : true,
-							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-users-iris?"+myParams,
+							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-role-iris?"+myParams,
 		        "aoColumns": [
 		        	 { "mData": function(data,type,row){
-                      if($.trim(data.user_name) == ''){ return '-'; }else{ return i++ ; }
+                      if($.trim(data.role_name) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var user_data = "'"+data.id+"','"+data.user_name+"','"+data.sbu+"','"+data.email_id+"','"+data.mobile_number+"'";
+							var role_data = "'"+data.id+"','"+data.role_name+"','"+data.sbu_code+"','"+data.status+"','"+data.created_by+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
-			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
-			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getRole('+role_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteRole('+role_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  onclick="getRole('+role_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
-			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+			                +' <a onclick="deleteRole('+role_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
               +'</div>'
 		            	return actions;
 		            } },
 		            { "mData": function(data,type,row){
-                      if($.trim(data.user_name) == ''){ return '-'; }else{ return data.user_name ; }
+                      if($.trim(data.sbu_name) == ''){ return '-'; }else{ return data.sbu_name ; }
 		            } },
 		         	{ "mData": function(data,type,row){
-                      if($.trim(data.email_id) == ''){ return '-'; }else{ return data.email_id ; }
+                      if($.trim(data.role_name) == ''){ return '-'; }else{ return data.role_name ; }
 		            } },
 		       
 		            { "mData": function(data,type,row){ 
-		            	if($.trim(data.mobile_number) == ''){ return '-'; }else{ return data.mobile_number; }
+		            	if($.trim(data.status) == ''){ return '-'; }else{ return data.status; }
+		            } },
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.created_by) == ''){ return '-'; }else{ return data.created_by; }
 		            } },
 		         	{ "mData": function(data,type,row){
-		            	if($.trim(data.sbu) == ''){ return '-'; }else{ return data.sbu; }
+		            	if($.trim(data.created_date) == ''){ return '-'; }else{ return data.created_date; }
 		            } },
 		            { "mData": function(data,type,row){
-		            	if($.trim(data.categories) == ''){ return '-'; }else{ return data.categories; } 
+		            	if($.trim(data.modified_by) == ''){ return '-'; }else{ return data.modified_by; } 
 		            } },
+		          
 		           { "mData": function(data,type,row){
-		            	if($.trim(data.roles) == ''){ return '-'; }else{ return data.roles; } 
-		            } },
-		           { "mData": function(data,type,row){
-		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; } 
+		            	if($.trim(data.modified_date) == ''){ return '-'; }else{ return data.modified_date; } 
 		            } }
 		        ]
 		    });
 }
-
+ function getRole(id,role_name,sbu_code,status,state){
+	 $('#role_name_edit').val('');
+	 $('.status_edit').each(function(){
+	      $(this).find('option').removeAttr('selected');
+	    });
+	 $('.sbu_code_edit').each(function(){
+	      $(this).find('option').removeAttr('selected');
+	    });
+      $('#idVal').val($.trim(id));
+     
+      $('#updateCat #role_name_edit').val($.trim(role_name)).focus();
+      if(status != null   && status != "undefined"){
+    	  $('.status_edit').val('"'+ status +'"');
+    	  $('.status_edit option[value="'+ status +'"]').attr('selected', true);
+    	  $('.sbu_code_edit').val('"'+ sbu_code +'"');
+    	  $('.sbu_code_edit option[value="'+ sbu_code +'"]').attr('selected', true);
+    	  $('select').select2();
+      }
+      $('#updateCat').modal('show');
+ 
+ }
 function getErrorMessage(jqXHR, exception) {
 	    var msg = '';
 	    if (jqXHR.status === 0) {
@@ -575,11 +659,6 @@ function getErrorMessage(jqXHR, exception) {
 	    }
 	    console.log(msg);
 }
-		
-		function getUser(id,name,sbu,email_id,mobile_number){
-			$('#idVal').val(id);
-			document.getElementById("getUser").submit();	
-		}
     </script>
      <script async>
         var link = document.createElement( 'link' );
@@ -592,8 +671,4 @@ function getErrorMessage(jqXHR, exception) {
   
 
 
-<div class="flatpickr-calendar animate" tabindex="-1"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><span class="cur-month">February </span><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
-      <span class="flatpickr-weekday">
-        Sun</span><span class="flatpickr-weekday">Mon</span><span class="flatpickr-weekday">Tue</span><span class="flatpickr-weekday">Wed</span><span class="flatpickr-weekday">Thu</span><span class="flatpickr-weekday">Fri</span><span class="flatpickr-weekday">Sat
-      </span>
-      </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day prevMonthDay" aria-label="January 28, 2024" tabindex="-1">28</span><span class="flatpickr-day prevMonthDay" aria-label="January 29, 2024" tabindex="-1">29</span><span class="flatpickr-day prevMonthDay" aria-label="January 30, 2024" tabindex="-1">30</span><span class="flatpickr-day prevMonthDay" aria-label="January 31, 2024" tabindex="-1">31</span><span class="flatpickr-day " aria-label="February 1, 2024" tabindex="-1">1</span><span class="flatpickr-day " aria-label="February 2, 2024" tabindex="-1">2</span><span class="flatpickr-day " aria-label="February 3, 2024" tabindex="-1">3</span><span class="flatpickr-day " aria-label="February 4, 2024" tabindex="-1">4</span><span class="flatpickr-day " aria-label="February 5, 2024" tabindex="-1">5</span><span class="flatpickr-day " aria-label="February 6, 2024" tabindex="-1">6</span><span class="flatpickr-day " aria-label="February 7, 2024" tabindex="-1">7</span><span class="flatpickr-day " aria-label="February 8, 2024" tabindex="-1">8</span><span class="flatpickr-day " aria-label="February 9, 2024" tabindex="-1">9</span><span class="flatpickr-day " aria-label="February 10, 2024" tabindex="-1">10</span><span class="flatpickr-day " aria-label="February 11, 2024" tabindex="-1">11</span><span class="flatpickr-day " aria-label="February 12, 2024" tabindex="-1">12</span><span class="flatpickr-day " aria-label="February 13, 2024" tabindex="-1">13</span><span class="flatpickr-day " aria-label="February 14, 2024" tabindex="-1">14</span><span class="flatpickr-day " aria-label="February 15, 2024" tabindex="-1">15</span><span class="flatpickr-day " aria-label="February 16, 2024" tabindex="-1">16</span><span class="flatpickr-day today" aria-label="February 17, 2024" aria-current="date" tabindex="-1">17</span><span class="flatpickr-day " aria-label="February 18, 2024" tabindex="-1">18</span><span class="flatpickr-day " aria-label="February 19, 2024" tabindex="-1">19</span><span class="flatpickr-day " aria-label="February 20, 2024" tabindex="-1">20</span><span class="flatpickr-day " aria-label="February 21, 2024" tabindex="-1">21</span><span class="flatpickr-day " aria-label="February 22, 2024" tabindex="-1">22</span><span class="flatpickr-day " aria-label="February 23, 2024" tabindex="-1">23</span><span class="flatpickr-day " aria-label="February 24, 2024" tabindex="-1">24</span><span class="flatpickr-day " aria-label="February 25, 2024" tabindex="-1">25</span><span class="flatpickr-day " aria-label="February 26, 2024" tabindex="-1">26</span><span class="flatpickr-day " aria-label="February 27, 2024" tabindex="-1">27</span><span class="flatpickr-day " aria-label="February 28, 2024" tabindex="-1">28</span><span class="flatpickr-day " aria-label="February 29, 2024" tabindex="-1">29</span><span class="flatpickr-day nextMonthDay" aria-label="March 1, 2024" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="March 2, 2024" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="March 3, 2024" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="March 4, 2024" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="March 5, 2024" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="March 6, 2024" tabindex="-1">6</span><span class="flatpickr-day nextMonthDay" aria-label="March 7, 2024" tabindex="-1">7</span><span class="flatpickr-day nextMonthDay" aria-label="March 8, 2024" tabindex="-1">8</span><span class="flatpickr-day nextMonthDay" aria-label="March 9, 2024" tabindex="-1">9</span></div></div></div></div></div></body><!-- END: Body--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --></html>
+</body><!-- END: Body--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --></html>
