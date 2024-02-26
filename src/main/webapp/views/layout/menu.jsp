@@ -27,7 +27,7 @@ div.main-menu-content {
     <div class="main-menu menu-fixed menu-accordion menu-shadow menu-light" data-scroll-to-active="true" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
       <div class="navbar-header expanded">
         <ul class="nav navbar-nav flex-row">
-          <li class="nav-item me-auto"><a class=" nav-item" href="index-2.html"><span class="">
+          <li class="nav-item me-auto"><a class=" nav-item" href="<%=request.getContextPath() %>/home"><span class="">
               		<img src="/iris/resources/images/logo/logo.png" class="logo" style="
     width: 10rem;
 "></span>

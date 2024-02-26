@@ -65,94 +65,13 @@
         <div class="content-body"><div class="row">
 </div>
 <!-- Basic table -->
-<section id="basic-datatable">
-<div class="row">
-						<div class="col-12">
-							<div class="card">
-							</div>
-						</div>
-					</div>
-</section>
+
 <!--/ Basic table -->
 
 <!-- Complex Headers -->
 <section id="complex-header-datatable">
-<div class="content-header row">
-          <div class="content-header-left col-md-9 col-12 mb-2">
-            <div class="row breadcrumbs-top">
-              <div class="col-12">
-                <h2 class="content-header-title float-start mb-0"></h2>
-                <div class="breadcrumb-wrapper">
-                  <ol class="breadcrumb">
-                    <li class=""><a href="index-2.html"></a>
-                    </li>
-                    <li class=""><a href="#"></a>
-                    </li>
-                    <li class=" ">
-                    </li>
-                  </ol>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="content-header-right text-md-end col-md-3 col-12 ">
-            <div class="mb-1 breadcrumb-right">
-              <div class="dropdown">
-              <button type="button" class="btn btn-icon btn-icon rounded-circle re-text-bg btn-warning waves-effect waves-float waves-light">
-				<i data-feather='upload' class="fw-bolder"></i>
-            </button>
-              	 
-                </div>
-            </div>
-          </div>
-        </div>
-  <div class="row">
-    <div class="col-md-6 col-xl-6">
-      <div class="card re-text-bg">
-        <div class="card-body">
-          <h4 class="card-title text-white text-center  mt-2">Total Sites</h4>
-          <h2 class="text-white text-center">11</h2>
-        </div> 
-      </div>
-    </div>
-    <div class="col-md-6 col-xl-6">
-      <div class="card re-text-bg">
-        <div class="card-body">
-          <h4 class="card-title text-white text-center  mt-2">Total Users</h4>
-          <h2 class="text-white text-center">6</h2>
-        </div>
-      </div>
-    </div>
-    
-    
-    
-    
-  </div>
-  <div class="row">
-  		<div class="col-md-6 mb-1">
-        </div>
-        <div class="col-md-6 mb-1">
-         <label class="form-label" for="fp-range">Range</label>
-          <input type="text" id="fp-range" class="form-control flatpickr-range flatpickr-input active" placeholder="YYYY-MM-DD to YYYY-MM-DD" readonly="readonly"> </div>
-        
-      </div>
-      <div class="row">
-    <!--Bar Chart Start -->
-    <div class="col-xl-6 col-12">
-      <div class="card">
-      
-      </div>
-    </div>
-    <!-- Bar Chart End -->
+		<img src="/iris/resources/images/logo/logo.png" class="logo" >
 
-    <!-- Horizontal Bar Chart Start -->
-    
-    <div class="col-xl-6 col-12">
-      <div class="card">
-      </div>
-    </div>
-    <!-- Horizontal Bar Chart End -->
-  </div>
 </section>
 
 
