@@ -76,53 +76,101 @@
     
     
     <div class="col-md-6 col-lg-12">
-      <div class="card text-center">
-        <div class="card-header">Masters</div>
-        <div class="card-body">
-         <div class="row">
-  
-    <div class="col-md-6 col-lg-4 col-sm-2">
-      <div class="card text-center  p-2" id="cardS">
-        <div class="card-body">
-          <h4 class="card-title">IRIS-SBU</h4>
-          <a href="/iris/iris-sbu" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+     <div class="content-body"><section class="form-control-repeater">
+  <div class="row">
+   
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="fw-bolder mb-0">Master</h4>
         </div>
-      </div>
-    </div><div class="col-md-6 col-lg-4">
-      <div class="card text-center  p-2" id="cardS">
         <div class="card-body">
-          <h4 class="card-title">IRIS-Category</h4>
-          <a href="/iris/iris-category" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-        </div>
-      </div>
-    </div><div class="col-md-6 col-lg-4">
-      <div class="card text-center  p-2" id="cardS">
-        <div class="card-body"> 
-          <h4 class="card-title">IRIS-City</h4>
-          <a href="/iris/iris-city" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
-        </div>
-      </div>
-    </div><div class="col-md-6 col-lg-4">
-      <div class="card text-center  p-2" id="cardS">
-        <div class="card-body">
-          <h4 class="card-title">IRIS-State</h4>
-          <a href="/iris/iris-state" class="btn btn-outline-primary waves-effect">Go To <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <form action="#" class="invoice-repeater">
+            <div data-repeater-list="invoice">
+              
+            </div>
+            <div class="row">
+              
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-lg-4">
-      <div class="card text-center  p-2" id="cardS">
-        <div class="card-body">
-          <h4 class="card-title">IRIS-Role</h4>
-          <a href="/iris/iris-role" class="btn btn-outline-primary waves-effect">Go To   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+   <div class="row">
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">SBU</h2>
+          </div>
+          <div class="avatar bg-light-primary p-50 m-0">
+            <div class="avatar-content">
+<a  href="/iris/iris-sbu" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+ </div>
+          </div>
         </div>
       </div>
     </div>
-    
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Category</h2>
+          </div>
+          <div class="avatar bg-light-primary p-50 m-0">
+            <div class="avatar-content">
+<a  href="/iris/iris-category" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+   </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">State</h2>
+          </div>
+        <div class="avatar bg-light-primary p-50 m-0">
+            <div class="avatar-content">
+<a  href="/iris/iris-state" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+   </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">City</h2>
+          </div>
+          <div class="avatar bg-light-primary p-50 m-0">
+            <div class="avatar-content">
+<a  href="/iris/iris-city" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+     </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="col-lg-3 col-sm-6 col-12">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="card-title">Role</h2>
+          </div>
+          <div class="avatar bg-light-primary p-50 m-0">
+            <div class="avatar-content">
+<a  href="/iris/iris-role" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+     </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
         </div>
-        
-      </div>
     </div>
   </div>
       </div>
