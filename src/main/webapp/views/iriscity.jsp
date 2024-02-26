@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html class="loaded light-layout" lang="en" data-textdirection="ltr" style="--vh: 3.54px;"><!-- BEGIN: Head--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -5,7 +8,7 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>IRIS-city</title>
+    <title>IRIS - City</title>
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
@@ -115,7 +118,7 @@ font-size: 1rem!important;
 ">
              <div class="mb-1">
               <label class="form-label" for="select2-basic">State</label>
-              <div class="position-relative" ><select  class="searchable form-select " id="site_nameID" data-select2-id="select2-basic0" tabindex="-1" aria-hidden="true">
+              <div class="position-relative" ><select  class="searchable form-select " id="sbuID" data-select2-id="select2-basic1" tabindex="-2" aria-hidden="true">
                <option value="" >Select State</option>
                
               </select></div>
@@ -143,7 +146,7 @@ font-size: 1rem!important;
             </div>
             <div class="re-text col-xl-4 col-md-3 col-12">
              <div class="demo-inline-spacing">
-            <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getUserList();"><i data-feather='search'></i> Filter </a>
+            <a type="button" class="btn btn-gradient-danger re-text-bg" onclick="getCityList();"><i data-feather='search'></i> Filter </a>
            <a  onclick="clearFilters();" id="clearFilterBtn"  class="btn btn-gradient-danger re-text-bg "> Clear Filter </a> 
           </div>
             </div>
@@ -164,7 +167,7 @@ font-size: 1rem!important;
 								<div >
 									<div class="card-header border-bottom p-1">
 										<div class="head-label">
-											<h6 class="mb-0"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg> Users</h6>
+											<h6 class="mb-0"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg> Citys</h6>
 										</div>
 										<div>
 											
@@ -180,36 +183,39 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-city-iris"  method="post" novalidate="novalidate">
                       <div class="mb-1">
 			              <label class="form-label" for="state">State</label>
-			              <input type="text" class="form-control" id="state" name="state" placeholder="State">
+			               <select
+				            	class="select2 form-select formSelect" id="state"
+				              name="state"
+				              aria-label="Default select example"
+				            >
+				              <option value="">Select State</option>
+				              <c:forEach var="obj" items="${objList}">
+									<option value="${obj.id }" >${obj.state_name }</option>
+								</c:forEach>
+				            </select>
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">City</label>
-			              <input type="text" class="form-control" id="city_name" name="city_name" placeholder="City">
+			              <label class="form-label" for="city_name">City</label>
+			              <input type="text" class="form-control" id="city_name" name="city_name" placeholder="City Name">
 			            </div>
 			                <div class="mb-1">
 			              <label class="form-label" for="status">Status</label>
 			              <div class="position-relative">
 			              <select class="form-select select2 select2-hidden-accessible" id="status" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
-			                <option value="">Select Status</option>
-			                <option value="usa">Active</option>
-			                <option value="uk">In Active</option>
+			                <option value="Active">Active</option>
+			                <option value="Inactive">Inactive</option>
 			        
 			              </select></div>
 			            </div>
-			              
-			           
-			           
-			            
 			 				<div class="col-md-12 col-12 text-center mt-2">
 			               		<button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
 			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
 			              </div>         
 			          </form>
 			                    </div>
-			                   
 			                  </div>
 			                </div>
 			              </div>
@@ -217,7 +223,7 @@ font-size: 1rem!important;
 					
 					 </div>
 					</div>
-					 <table id="datatable-user" class="invoice-list-table table">
+					 <table id="datatable-city" class="invoice-list-table table">
 				            <thead>
 				              <tr>
 				                <th >#</th>
@@ -239,7 +245,56 @@ font-size: 1rem!important;
             </div>
           </div>
 	</section>
-	 
+	 <div class="modal-size-default d-inline-block">
+             <!--  <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
+             data-bs-toggle="modal" data-bs-target="#defaultSize"><i data-feather='city-check'></i> Update City</a> -->
+              <!-- Modal -->
+              <div class="modal fade text-start" id="updateCat" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Add City</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form2" action="<%=request.getContextPath() %>/update-city-iris" method="post" novalidate="novalidate">
+                      <div class="mb-1">
+                       <input type="hidden" class="form-control" id="idVal" name="id">
+			              <label class="form-label" for="sbu_code">SBU Code</label>
+			               <select
+				            	class="form-select select2 select2-hidden-accessible state_edit" id="state_edit"
+				              name="state"
+				              aria-label="Default select example"
+				            >
+				              <option value="">Select State</option>
+				              <c:forEach var="obj" items="${objList}">
+									<option value="${obj.id }" > ${obj.state_name }</option>
+								</c:forEach>
+				            </select>
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="city_name">City Name</label>
+			              <input type="text" class="form-control" id="city_name_edit" name="city_name" placeholder="City Name">
+			            </div>
+			                <div class="mb-1">
+			              <label class="form-label" for="status">Status</label>
+			              <div class="position-relative">
+			              <select class="form-select select2 select2-hidden-accessible status_edit" id="status_edit" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
+			                <option value="Active">Active</option>
+			                <option value="Inactive">Inactive</option>
+			        
+			              </select></div>
+			            </div>
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                  </div>
+			                </div>
+			              </div>
+			            </div>
     </div>
   </div>
 </div>
@@ -299,7 +354,7 @@ font-size: 1rem!important;
     <script src="/iris/resources/vendors/js/pickers/pickadate/legacy.js"></script>
     <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
         <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
-         <form id="getUser" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/get-user-details" method="post" class="form-horizontal" role="form" >
+         <form id="getCity" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/get-city-details" method="post" class="form-horizontal" role="form" >
          	
          </form>
     <script>
@@ -313,42 +368,62 @@ font-size: 1rem!important;
  $(document).ready(function () {
   	 // $('select:not(.searchable)').formSelect();
        $('.searchable').select2();
-        getUserList();
+        getCityList();
         $('#clearFilterBtn').tooltip({
             trigger: 'manual' // Set the trigger to 'manual'
           });
      
   });
+ function getCity(id,cat_name,sbu_code,status,state){
+	 $('#city_name_edit').val('');
+	 $('.status_edit').each(function(){
+	      $(this).find('option').removeAttr('selected');
+	    });
+	 $('.state_edit').each(function(){
+	      $(this).find('option').removeAttr('selected');
+	    });
+      $('#idVal').val($.trim(id));
+     
+      $('#updateCat #city_name_edit').val($.trim(sbu_code)).focus();
+      if(status != null   && status != "undefined"){
+    	  $('.status_edit').val('"'+ status +'"');
+    	  $('.status_edit option[value="'+ status +'"]').attr('selected', true);
+    	  $('.state_edit').val('"'+ state +'"');
+    	  $('.state_edit option[value="'+ state +'"]').attr('selected', true);
+    	  $('select').select2();
+      }
+      $('#updateCat').modal('show');
+ }
  function clearFilters(){
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-		if(sbu != "" || site_name != "" || roles != ""){
+		var state = $("#sbcity").val();
+		var city_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+		if(state != "" || city_name != "" || status != ""){
 		    $("#sbuID").val("");
 			$("#site_nameID").val("");
 			$("#rolesId").val("");
 			$(this).removeAttr("data-bs-toggle data-bs-placement title data-bs-original-title");
-			getUserList();
+			getCityList();
 		}else{
 			 $('#clearFilterBtn').tooltip('show');
 		}
 	  
 }
 
- function getDepartmentFilterList() {
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(sbu) == "") {
+ function getStateFilterListForCity() {
+		var state = $("#sbuID").val();
+		var city_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+       if ($.trim(state) == "") {
        	$("#sbuID option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = { state: state, city_name: city_name, status : status };
            $.ajax({
-               url: "<%=request.getContextPath()%>/ajax/getDepartmentFilterListForUser",
+               url: "<%=request.getContextPath()%>/ajax/getStateFilterListForCity",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#sbuID").append('<option value="' + val.sbu + '">' + $.trim(val.sbu) +'</option>');
+                            $("#sbuID").append('<option value="' + val.state + '">' + $.trim(val.state_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -359,20 +434,20 @@ font-size: 1rem!important;
        }
    }
  
- function getSiteFilterList() {
-	 var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(site_name) == "") {
+ function getCityFilterListForCity() {
+	 var state = $("#sbuID").val();
+		var city_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+       if ($.trim(city_name) == "") {
        	$("#site_nameID option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = { state: state, city_name: city_name, status : status };
            $.ajax({
-               url: "<%=request.getContextPath()%>/ajax/getSiteFilterListForUser",
+               url: "<%=request.getContextPath()%>/ajax/getCityFilterListForCity",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#site_nameID").append('<option value="' + val.site_name + '">' + $.trim(val.site_name) +'</option>');
+                            $("#site_nameID").append('<option value="' + val.city_name + '">' + $.trim(val.city_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -383,20 +458,20 @@ font-size: 1rem!important;
        }
    }
  
- function getRoleFilterList() {
-	 var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(roles) == "") {
+ function getStatusFilterListForCity() {
+	 var state = $("#sbuID").val();
+		var city_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+       if ($.trim(status) == "") {
        	$("#rolesId option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = { state: state, city_name: city_name, status : status };
            $.ajax({
-               url: "<%=request.getContextPath()%>/ajax/getRoleFilterListForUser",
+               url: "<%=request.getContextPath()%>/ajax/getStatusFilterListForCity",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#rolesId").append('<option value="' + val.roles + '">' + $.trim(val.roles) +'</option>');
+                            $("#rolesId").append('<option value="' + val.status + '">' + $.trim(val.status) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -407,23 +482,23 @@ font-size: 1rem!important;
        }
    }
  
- function getUserList() {
-		getDepartmentFilterList('');
-		getSiteFilterList('');
-		getRoleFilterList('');
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-	   	table = $('#datatable-user').DataTable();
+ function getCityList() {
+		getStateFilterListForCity('');
+		getCityFilterListForCity('');
+		getStatusFilterListForCity('');
+		var state = $("#sbuID").val();
+		var city_name = $("#site_nameID").val();
+		var status = $("#rolesId").val();
+	   	table = $('#datatable-city').DataTable();
 		table.destroy();
 		var i = 1;
 		$.fn.dataTable.moment('DD-MMM-YYYY');
 		var rowLen = 0;
-		var myParams =  "sbu="+ sbu+ "&site_name="+ site_name+ "&roles="+ roles ;
+		var myParams =  "state="+ state+ "&city_name="+ city_name+ "&status="+ status ;
 
 		/***************************************************************************************************/
 
-		$("#datatable-user")
+		$("#datatable-city")
 				.DataTable(
 						{
 							"bProcessing" : true,
@@ -482,7 +557,7 @@ font-size: 1rem!important;
 										'<div class="right-btns"></div>');
 								$('.dataTables_filter div').append(
 										$searchButton, $clearButton);
-								rowLen = $('#datatable-user tbody tr:visible').length
+								rowLen = $('#datatable-city tbody tr:visible').length
 								/* var input = $('.dataTables_filter input').unbind(),
 								self = this.api(),
 								$searchButton = $('<i class="fa fa-search">')
@@ -511,45 +586,46 @@ font-size: 1rem!important;
 							},
 							
 							"bDestroy" : true,
-							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-users-iris?"+myParams,
+							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-city-iris?"+myParams,
 		        "aoColumns": [
 		        	 { "mData": function(data,type,row){
-                      if($.trim(data.user_name) == ''){ return '-'; }else{ return i++ ; }
+                      if($.trim(data.state_name) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var user_data = "'"+data.id+"','"+data.user_name+"','"+data.sbu+"','"+data.email_id+"','"+data.mobile_number+"'";
+							var city_data = "'"+data.id+"','"+data.state_name+"','"+data.city_name+"','"+data.status+"','"+data.state+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
-			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
-			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCity('+city_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteCity('+city_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  onclick="getCity('+city_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
-			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+			                +' <a onclick="deleteCity('+city_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
               +'</div>'
 		            	return actions;
 		            } },
 		            { "mData": function(data,type,row){
-                      if($.trim(data.user_name) == ''){ return '-'; }else{ return data.user_name ; }
+                      if($.trim(data.state_name) == ''){ return '-'; }else{ return data.state_name ; }
 		            } },
 		         	{ "mData": function(data,type,row){
-                      if($.trim(data.email_id) == ''){ return '-'; }else{ return data.email_id ; }
+                      if($.trim(data.city_name) == ''){ return '-'; }else{ return data.city_name ; }
 		            } },
 		       
 		            { "mData": function(data,type,row){ 
-		            	if($.trim(data.mobile_number) == ''){ return '-'; }else{ return data.mobile_number; }
+		            	if($.trim(data.status) == ''){ return '-'; }else{ return data.status; }
+		            } },
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.created_by) == ''){ return '-'; }else{ return data.created_by; }
 		            } },
 		         	{ "mData": function(data,type,row){
-		            	if($.trim(data.sbu) == ''){ return '-'; }else{ return data.sbu; }
+		            	if($.trim(data.created_date) == ''){ return '-'; }else{ return data.created_date; }
 		            } },
 		            { "mData": function(data,type,row){
-		            	if($.trim(data.categories) == ''){ return '-'; }else{ return data.categories; } 
+		            	if($.trim(data.modified_by) == ''){ return '-'; }else{ return data.modified_by; } 
 		            } },
+		          
 		           { "mData": function(data,type,row){
-		            	if($.trim(data.roles) == ''){ return '-'; }else{ return data.roles; } 
-		            } },
-		           { "mData": function(data,type,row){
-		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; } 
+		            	if($.trim(data.modified_date) == ''){ return '-'; }else{ return data.modified_date; } 
 		            } }
 		        ]
 		    });
@@ -574,11 +650,7 @@ function getErrorMessage(jqXHR, exception) {
 	    }
 	    console.log(msg);
 }
-		
-		function getUser(id,name,sbu,email_id,mobile_number){
-			$('#idVal').val(id);
-			document.getElementById("getUser").submit();	
-		}
+
     </script>
      <script async>
         var link = document.createElement( 'link' );

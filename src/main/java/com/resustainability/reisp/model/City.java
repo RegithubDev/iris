@@ -2,9 +2,17 @@ package com.resustainability.reisp.model;
 
 public class City {
 
-	private String id,state,city_name,status,created_by,modified_date,created_date,modified_by,
+	private String id,state,state_name,city_name,status,created_by,modified_date,created_date,modified_by,
 	
 	sbu,sbu_code,sbu_name;
+
+	public String getState_name() {
+		return state_name;
+	}
+
+	public void setState_name(String state_name) {
+		this.state_name = state_name;
+	}
 
 	public String getId() {
 		return id;
