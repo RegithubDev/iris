@@ -139,9 +139,9 @@ font-size: 1rem!important;
            <a  onclick="clearFilters();" id="clearFilterBtn"  class="btn btn-gradient-danger re-text-bg "> Clear Filter </a> 
           </div>
             </div>
-             <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
+            <!--  <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
                <a type="button" class="btn btn-gradient-danger re-text-bg" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Export to Excel">Export <img src="/iris/resources/images/icons/Excel.png" class="logo" style="width: 2rem;">  </a>
-             </div>
+             </div> -->
           </div>
         </div> 
         <div class="toast-container position-fixed top-0 end-0 p-2" style="z-index: 15">

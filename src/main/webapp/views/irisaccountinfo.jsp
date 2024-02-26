@@ -5,15 +5,34 @@
     <meta name="description" content="Vuexy admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>IRIS - Masters</title>
+    <title>IRIS - Home</title>
     <link rel="apple-touch-icon" href="/iris/resources//images/ico/apple-icon-120.html">
     <link rel="shortcut icon" type="image/x-icon" href="/iris/resources/images/logo/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
 
-  
+ <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/forms/select/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/extensions/sweetalert2.min.css">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/components.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/themes/dark-layout.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/themes/bordered-layout.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/themes/semi-dark-layout.min.css">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/core/menu/menu-types/vertical-menu.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/plugins/extensions/ext-component-sweet-alerts.min.css">
+    <link rel="stylesheet" type="text/css" href="/iris/resources//css/plugins/forms/form-validation.css">
+    <!-- END: Page CSS-->
+
     <!-- BEGIN: Vendor CSS-->
-        <link rel="stylesheet" type="text/css" href="iris/resources/vendors/css/extensions/dragula.min.css">
-    
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/vendors.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//vendors/css/tables/datatable/responsive.bootstrap5.min.css">
@@ -32,8 +51,6 @@
     <link rel="stylesheet" type="text/css" href="/iris/resources//css/themes/semi-dark-layout.min.css">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="iris/resources/css/core/menu/menu-types/vertical-menu.min.css">
-    <link rel="stylesheet" type="text/css" href="iris/resources/css/plugins/extensions/ext-component-drag-drop.min.css">
     <link rel="stylesheet" type="text/css" href="/iris/resources//css/core/menu/menu-types/vertical-menu.min.css">
     <!-- END: Page CSS-->
   <link rel="stylesheet" type="text/css" href="/iris/resources/css/plugins/forms/pickers/form-flat-pickr.min.css">
@@ -42,18 +59,12 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//assets/css/style.css">
     <!-- END: Custom CSS-->
-<style>
 
-#cardS {
-    box-shadow: 0 4px 24px 0 rgb(0 0 0 / 10%)!important;
-        margin: 18px;
-}
-</style>
   </head>
   <!-- END: Head-->
 
   <!-- BEGIN: Body-->
-  <body class="pace-done vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-open="Go To" data-menu="vertical-menu-modern" data-col="" style=""><div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+  <body class="pace-done vertical-layout vertical-menu-modern navbar-floating footer-static menu-expanded" data-open="click" data-menu="vertical-menu-modern" data-col="" style=""><div class="pace pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
   <div class="pace-progress-inner"></div>
 </div>
 <div class="pace-activity"></div></div>
@@ -70,167 +81,74 @@
     <!-- BEGIN: Content-->
     <div class="app-content content ">
       <div class="content-overlay"></div>
-
+      <div class="header-navbar-shadow"></div>
       <div class="content-wrapper container-xxl p-0">
-   <div class="row">
-    
-    
-    <div class="col-md-6 col-lg-12">
-     <div class="content-body"><section class="form-control-repeater">
-  <div class="row">
    
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="fw-bolder mb-0">Master</h4>
-        </div>
-        <div class="card-body">
-          <form action="#" class="invoice-repeater">
-            <div data-repeater-list="invoice">
-              
+        <div class="content-body"><div class="row">
+</div>
+<!-- Basic table -->
+
+<!--/ Basic table -->
+
+<!-- Complex Headers -->
+<div class="card">
+      <div class="card-header border-bottom">
+        <h4 class="card-title">Profile Details</h4>
+      </div>
+      <div class="card-body py-2 my-25">
+        <!-- header section -->
+        <div class="d-flex">
+          <a href="#" class="me-25">
+            <img src="/iris/resources//images/portrait/small/avatar-s-11.jpg" id="account-upload-img" class="uploadedAvatar rounded me-50" alt="profile image" height="100" width="100">
+          </a>
+          <!-- upload and reset button -->
+          <div class="d-flex align-items-end mt-75 ms-1">
+            <div>
+              <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75 waves-effect waves-float waves-light">Upload</label>
+              <input type="file" id="account-upload" hidden="" accept="image/*">
+              <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75 waves-effect">Reset</button>
+              <p class="mb-0">Allowed file types: png, jpg, jpeg.</p>
             </div>
-            <div class="row">
-              
+          </div>
+          <!--/ upload and reset button -->
+        </div>
+        <!--/ header section -->
+
+        <!-- form -->
+        <form class="validate-form mt-2 pt-50" novalidate="novalidate">
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountFirstName">First Name</label>
+              <input type="text" class="form-control" id="accountFirstName" name="firstName" placeholder="John" value="John" data-msg="Please enter first name">
             </div>
-          </form>
-        </div>
+            
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountEmail">Email</label>
+              <input type="email" class="form-control" id="accountEmail" name="email" placeholder="Email" value="johndoe@gmail.com">
+            </div>
+            
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="accountPhoneNumber">Phone Number</label>
+              <input type="text" class="form-control account-number-mask" id="accountPhoneNumber" name="phoneNumber" placeholder="Phone Number" value="457 657 1237">
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary mt-1 me-1 waves-effect waves-float waves-light">Save changes</button>
+              <button type="reset" class="btn btn-outline-secondary mt-1 waves-effect">Discard</button>
+            </div>
+          </div>
+        </form>
+        <!--/ form -->
       </div>
     </div>
-   <div class="row">
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">SBU</h2>
-          </div>
-          <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-<a  href="/iris/iris-sbu" class="re-text"><i data-feather='arrow-up-right'></i></a>   
- </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Category</h2>
-          </div>
-          <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-<a  href="/iris/iris-category" class="re-text"><i data-feather='arrow-up-right'></i></a>   
-   </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">State</h2>
-          </div>
-        <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-<a  href="/iris/iris-state" class="re-text"><i data-feather='arrow-up-right'></i></a>   
-   </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">City</h2>
-          </div>
-          <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-<a  href="/iris/iris-city" class="re-text"><i data-feather='arrow-up-right'></i></a>   
-     </div>
-          </div>
-        </div>
-      </div>
-    </div>
-     <div class="col-lg-3 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Role</h2>
-          </div>
-          <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-<a  href="/iris/iris-role" class="re-text"><i data-feather='arrow-up-right'></i></a>   
-     </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
         </div>
-    </div>
-     <div class="col-md-6 col-lg-12">
-     <div class="content-body"><section class="form-control-repeater">
-  <div class="row">
-   
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="fw-bolder mb-0">Management</h4>
-        </div>
-        <div class="card-body">
-          <form action="#" class="invoice-repeater">
-            <div data-repeater-list="invoice">
-              
-            </div>
-            <div class="row">
-              
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-   <div class="row">
-    <div class="col-lg-4 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">Site Management</h2>
-          </div>
-          <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-<a  href="/iris/sitemanagement" class="re-text"><i data-feather='arrow-up-right'></i></a>   
- </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-sm-6 col-12">
-      <div class="card">
-        <div class="card-header">
-          <div>
-            <h2 class="card-title">User Management</h2>
-          </div>
-          <div class="avatar bg-light-primary p-50 m-0">
-            <div class="avatar-content">
-<a  href="/iris/usermanagement" class="re-text"><i data-feather='arrow-up-right'></i></a>   
-   </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-     
-  </div>
-</section>
-
-        </div>
-    </div>
-  </div>
       </div>
     </div>
  
@@ -238,7 +156,33 @@
     <div class="sidenav-overlay" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
     <div class="drag-target" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
 
- 
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-static footer-light">
+      <p class="clearfix mb-0"><span class="float-md-start d-block d-md-inline-block mt-25">COPYRIGHT  &copy;  <span id="currentYear"></span> ,| Powered by<a class="ms-25" href="https://ramkyenviroengineers.com/" target="_blank">Re Sustainability Limited</a><span class="d-none d-sm-inline-block"> . All Rights Reserved.</span></span></p>
+    </footer>
+    <button class="btn btn-primary btn-icon scroll-top waves-effect waves-float waves-light" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></button>
+    <!-- END: Footer-->
+    <!-- BEGIN: Vendor JS-->
+    <script src="/iris/resources//vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="/iris/resources//vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="/iris/resources//vendors/js/extensions/sweetalert2.all.min.js"></script>
+    <script src="/iris/resources//vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="/iris/resources//vendors/js/forms/cleave/cleave.min.js"></script>
+    <script src="/iris/resources//vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>
+    <!-- END: Page Vendor JS-->
+
+    <!-- BEGIN: Theme JS-->
+    <script src="/iris/resources//js/core/app-menu.min.js"></script>
+    <script src="/iris/resources//js/core/app.min.js"></script>
+    <script src="/iris/resources//js/scripts/customizer.min.js"></script>
+    <!-- END: Theme JS-->
+
+    <!-- BEGIN: Page JS-->
+    <script src="/iris/resources//js/scripts/pages/page-account-settings-account.min.js"></script>
+    <!-- END: Page JS-->
 
 
     <!-- BEGIN: Vendor JS-->
@@ -266,14 +210,6 @@
     <script src="/iris/resources//js/core/app.min.js"></script>
     <script src="/iris/resources//js/scripts/customizer.min.js"></script>
     <!-- END: Theme JS-->
-    
-       <!-- BEGIN: Page Vendor JS-->
-    <script src="iris/resources/vendors/js/extensions/dragula.min.js"></script>
-    <!-- END: Page Vendor JS-->
-    
-      <!-- BEGIN: Page JS-->
-    <script src="iris/resources/js/scripts/extensions/ext-component-drag-drop.min.js"></script>
-    <!-- END: Page JS-->
 
     <!-- BEGIN: Page JS-->
     <script src="/iris/resources//js/scripts/tables/table-datatables-basic.min.js"></script>
@@ -292,6 +228,13 @@
         }
       })
        document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+
+ 
+ $(window).on('load',  function(){
+   if (feather) {
+     feather.replace({ width: 14, height: 14 });
+   }
+ })
 
 		
     </script>

@@ -44,14 +44,14 @@ div.main-menu-content {
 				<li class=" nav-item bghover active" id="home"><a class="d-flex align-items-center"
 					href="<%=request.getContextPath() %>/home"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="HomeOutlinedIcon"><path d="m12 5.69 5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3 2 12h3v8h6v-6h2v6h6v-8h3L12 3z"></path></svg><span
 						class="menu-title text-truncate" data-i18n="Email">Home</span></a></li>
-				<li class=" nav-item bghover" id="sitemanagement"> <a class="d-flex align-items-center"
+				<%-- <li class=" nav-item bghover" id="sitemanagement"> <a class="d-flex align-items-center"
 					href="<%=request.getContextPath() %>/sitemanagement"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LocationOnOutlinedIcon"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z"></path><circle cx="12" cy="9" r="2.5"></circle></svg><span
 						class="menu-title text-truncate" data-i18n="Chat">Site Management</span></a></li>
 				<li class=" nav-item bghover" id="usermanagement"><a class="d-flex align-items-center"
 					href="<%=request.getContextPath() %>/usermanagement"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg><span
-						class="menu-title text-truncate" data-i18n="Todo">User Management</span></a></li>
+						class="menu-title text-truncate" data-i18n="Todo">User Management</span></a></li> --%>
 				<li class=" nav-item bghover" id="datamanagement"><a class="d-flex align-items-center"
-					href="<%=request.getContextPath() %>/datamanagement"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="InsertChartOutlinedOutlinedIcon"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg><span
+					href="<%=request.getContextPath() %>/iris-datamanagement"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="InsertChartOutlinedOutlinedIcon"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2 2H5V5h14v14zm0-16H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></svg><span
 						class="menu-title text-truncate" data-i18n="Calendar">Data Management</span></a>
 				</li>
 				<li class=" nav-item bghover" id="settings"><a class="d-flex align-items-center"

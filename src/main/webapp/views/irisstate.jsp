@@ -81,9 +81,9 @@ font-size: 1rem!important;
                 <h2 class="content-header-title float-start mb-0">State</h2>
                 <div class="breadcrumb-wrapper">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/iris/iris-settings">Masters</a>
+                    <li class="breadcrumb-item"><a href="/iris/iris-settings"><i data-feather='settings'></i> Masters</a>
                     </li>
-                    <li class="breadcrumb-item"><a> State</a>
+                    <li class="breadcrumb-item"><a>State</a>
                     </li>
                    
                   </ol>
@@ -137,9 +137,9 @@ font-size: 1rem!important;
            <a  onclick="clearFilters();" id="clearFilterBtn"  class="btn btn-gradient-danger re-text-bg "> Clear Filter </a> 
           </div>
             </div>
-             <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
+             <!-- <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
                <a type="button" class="btn btn-gradient-danger re-text-bg" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Export to Excel">Export <img src="/iris/resources/images/icons/Excel.png" class="logo" style="width: 2rem;">  </a>
-             </div>
+             </div> -->
           </div>
         </div> 
         <div class="toast-container position-fixed top-0 end-0 p-2" style="z-index: 15">
