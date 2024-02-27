@@ -221,7 +221,7 @@ public class IrisStateDao {
 		return flag;
 	}
 
-	public List<State> getStateFilterListForState(State obj) throws Exception {
+	public List<State> getStateFilterListForState(State obj) throws Exception { 
 		List<State> objsList = null;
 		try {
 			int arrSize = 0;
