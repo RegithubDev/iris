@@ -91,7 +91,7 @@
 <!--/ Basic table -->
 
 <!-- Complex Headers -->
-<div class="card">
+<div class="card p-2">
       <div class="card-header border-bottom">
         <h4 class="card-title">Profile Details</h4>
       </div>

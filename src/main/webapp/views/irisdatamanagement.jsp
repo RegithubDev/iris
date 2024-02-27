@@ -193,6 +193,30 @@ font-size: 1rem!important;
 					</div>
 				</div>
     		</div>
+    		
+    		<div class="col-12" id="bigDiv">
+
+      <div class="card" style="border: 1px solid black;padding: 4px;">
+								<div >
+									
+					 <table id="datatable-category" class="invoice-list-table table">
+				            <thead>
+				              <tr>
+				                <th >S.No</th>
+								<th >Waste Type</th>
+								<th >Quantity</th>
+								<th >Quantity Measure</th>
+								<th >Date</th>
+								 <th >Site Name</th>
+								<th >Comments</th>
+								<th >Action</th>
+             				</tr>
+			            </thead>
+			          </table>
+					</div>
+				</div>
+    		</div>
+    		
             </div>
           </div>
 	</section>
