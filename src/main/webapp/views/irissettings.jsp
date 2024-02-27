@@ -80,20 +80,11 @@
   <div class="row">
    
     <div class="col-12">
-      <div class="card">
+      <div class="card re-text-bg">
         <div class="card-header">
-          <h4 class="fw-bolder mb-0">Master</h4>
+          <h4 class="fw-bolder mb-0 text-white"><i data-feather='zap'></i> Masters</h4>
         </div>
-        <div class="card-body">
-          <form action="#" class="invoice-repeater">
-            <div data-repeater-list="invoice">
-              
-            </div>
-            <div class="row">
-              
-            </div>
-          </form>
-        </div>
+   
       </div>
     </div>
    <div class="row">
@@ -103,11 +94,12 @@
           <div>
             <h2 class="card-title">SBU</h2>
           </div>
+          <a  href="/iris/iris-sbu" class="re-text">
           <div class="avatar bg-light-primary p-50 m-0">
             <div class="avatar-content">
-<a  href="/iris/iris-sbu" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+<i data-feather='arrow-up-right'></i>   
  </div>
-          </div>
+          </div></a>
         </div>
       </div>
     </div>
@@ -177,20 +169,11 @@
   <div class="row">
    
     <div class="col-12">
-      <div class="card">
+      <div class="card re-text-bg">
         <div class="card-header">
-          <h4 class="fw-bolder mb-0">Management</h4>
+          <h4 class="fw-bolder mb-0 text-white"><i data-feather='columns'></i> Management</h4>
         </div>
-        <div class="card-body">
-          <form action="#" class="invoice-repeater">
-            <div data-repeater-list="invoice">
-              
-            </div>
-            <div class="row">
-              
-            </div>
-          </form>
-        </div>
+   
       </div>
     </div>
    <div class="row">
