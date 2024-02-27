@@ -109,11 +109,12 @@
           <div>
             <h2 class="card-title">Category</h2>
           </div>
+          <a  href="/iris/iris-category" class="re-text">
           <div class="avatar bg-light-primary p-50 m-0">
             <div class="avatar-content">
-<a  href="/iris/iris-category" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+<i data-feather='arrow-up-right'></i>  
    </div>
-          </div>
+          </div></a> 
         </div>
       </div>
     </div>
@@ -123,11 +124,12 @@
           <div>
             <h2 class="card-title">State</h2>
           </div>
+          <a  href="/iris/iris-state" class="re-text">
         <div class="avatar bg-light-primary p-50 m-0">
             <div class="avatar-content">
-<a  href="/iris/iris-state" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+<i data-feather='arrow-up-right'></i>
    </div>
-          </div>
+          </div></a>   
         </div>
       </div>
     </div>
@@ -137,11 +139,12 @@
           <div>
             <h2 class="card-title">City</h2>
           </div>
+          <a  href="/iris/iris-city" class="re-text">
           <div class="avatar bg-light-primary p-50 m-0">
             <div class="avatar-content">
-<a  href="/iris/iris-city" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+<i data-feather='arrow-up-right'></i>
      </div>
-          </div>
+          </div></a>   
         </div>
       </div>
     </div>
@@ -151,11 +154,12 @@
           <div>
             <h2 class="card-title">Role</h2>
           </div>
+          <a  href="/iris/iris-role" class="re-text">
           <div class="avatar bg-light-primary p-50 m-0">
             <div class="avatar-content">
-<a  href="/iris/iris-role" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+<i data-feather='arrow-up-right'></i> 
      </div>
-          </div>
+          </div></a>  
         </div>
       </div>
     </div>
@@ -183,11 +187,13 @@
           <div>
             <h2 class="card-title">Site Management</h2>
           </div>
+          <a  href="/iris/sitemanagement" class="re-text">
           <div class="avatar bg-light-primary p-50 m-0">
             <div class="avatar-content">
-<a  href="/iris/sitemanagement" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+<i data-feather='arrow-up-right'></i>  
  </div>
-          </div>
+          </div></a>   
+ 
         </div>
       </div>
     </div>
@@ -197,11 +203,12 @@
           <div>
             <h2 class="card-title">User Management</h2>
           </div>
+          <a  href="/iris/usermanagement" class="re-text">
           <div class="avatar bg-light-primary p-50 m-0">
             <div class="avatar-content">
-<a  href="/iris/usermanagement" class="re-text"><i data-feather='arrow-up-right'></i></a>   
+<i data-feather='arrow-up-right'></i> 
    </div>
-          </div>
+          </div></a>  
         </div>
       </div>
     </div>
