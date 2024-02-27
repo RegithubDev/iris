@@ -27,9 +27,21 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.resustainability.reisp.common.DateParser;
 import com.resustainability.reisp.constants.PageConstants;
+import com.resustainability.reisp.model.Category;
+import com.resustainability.reisp.model.City;
 import com.resustainability.reisp.model.IRM;
+import com.resustainability.reisp.model.Role;
+import com.resustainability.reisp.model.SBU;
+import com.resustainability.reisp.model.Site;
+import com.resustainability.reisp.model.State;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.model.UserPaginationObject;
+import com.resustainability.reisp.service.CategoryService;
+import com.resustainability.reisp.service.IrisCityService;
+import com.resustainability.reisp.service.IrisRoleService;
+import com.resustainability.reisp.service.IrisSBUService;
+import com.resustainability.reisp.service.IrisSiteService;
+import com.resustainability.reisp.service.IrisStateService;
 import com.resustainability.reisp.service.IrisUserService;
 import com.resustainability.reisp.service.UserService;
 
@@ -43,12 +55,58 @@ public class IrisUserController {
 	
 	@Autowired
 	IrisUserService service;
+	
+	@Autowired
+	IrisRoleService roleService;
 
+	@Autowired
+	IrisSBUService sbuService;
+	
+	@Autowired
+	IrisStateService stateService;
+	
+	@Autowired
+	CategoryService catService;
+
+	@Autowired
+	IrisCityService cityService;
+	
+	@Autowired
+	IrisSiteService siteService;
+	
 	@RequestMapping(value = "/usermanagement", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView irisusermanagement(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.irisusermanagement);
 		try {
-			
+			Role obj = new Role();
+			List<Role> objList = roleService.getSBUList(obj);
+			model.addObject("objList", objList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/add-role-iris-user", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView addRoleIris(@ModelAttribute Role obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String siteName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/usermanagement");
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			obj.setCreated_by(userId);
+			obj.setModified_date(null);
+			obj.setStatus("Active");
+			flag = roleService.addRoleIris(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Role Added Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Adding Role is failed. Try again.");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -71,6 +129,33 @@ public class IrisUserController {
 	public ModelAndView irisadduser(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.irisadduser);
 		try {
+			model.addObject("action", "add");
+			
+			SBU obj = new SBU();
+			obj.setStatus("Active");
+			List<SBU> sbuList = sbuService.getSBUFilterListForSBU(obj);
+			model.addObject("sbuList", sbuList);
+		
+			Category cat = new Category();
+			cat.setStatus("Active");
+			List<Category> catList = catService.getCategoryFilterListForCategory(cat);
+			model.addObject("catList", catList);
+			
+			Role role = new Role();
+			role.setStatus("Active");
+			List<Role> roleList = roleService.getRoleFilterListForRole(role);
+			model.addObject("roleList", roleList);
+			
+			City city = new City();
+			city.setStatus("Active");
+			List<City> cityList = cityService.getCityFilterListForCity(city);
+			model.addObject("cityList", cityList);
+			
+			Site site = new Site();
+			site.setStatus("Active");
+			List<Site> siteList = siteService.getSiteList(site);
+			model.addObject("siteList", siteList);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,13 +163,101 @@ public class IrisUserController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/ajax/getSiteFilterListWithCityForUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Site> getSiteList(@ModelAttribute Site obj,HttpSession session) {
+		List<Site> companiesList = null;
+		String userId = null;
+		String siteName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setStatus("Active");
+			companiesList = siteService.getSiteList(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCategoryFilterListForCategory : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	
+	@RequestMapping(value = "/ajax/getCategoryFilterListWithSBUForUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Category> getCityFilterListWithStateForState(@ModelAttribute Category obj,HttpSession session) {
+		List<Category> companiesList = null;
+		String userId = null;
+		String siteName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setStatus("Active");
+			obj.setSbu_code(obj.getSbu());
+			companiesList = catService.getCategoryFilterListForCategory(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCategoryFilterListForCategory : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	@RequestMapping(value = "/ajax/getRolesFilterListWithSBUForUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<Role> getRolesFilterListWithSBUForUser(@ModelAttribute Role obj,HttpSession session) {
+		List<Role> companiesList = null;
+		String userId = null;
+		String siteName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setStatus("Active");
+			obj.setSbu_code(obj.getSbu());
+			companiesList = roleService.getRoleFilterListForRole(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCategoryFilterListForCategory : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	
 	@RequestMapping(value = "/get-user-details", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView getUserDetails(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.irisadduser);
 		try {
-			//List <User> departmentsList = service.getDepartmentsList(null);
-			//model.addObject("departmentsList", departmentsList);
 			
+			model.addObject("action", "edit");
+			
+			SBU obj = new SBU();
+			obj.setStatus("Active");
+			List<SBU> sbuList = sbuService.getSBUFilterListForSBU(obj);
+			model.addObject("sbuList", sbuList);
+		
+			Category cat = new Category();
+			cat.setStatus("Active");
+			List<Category> catList = catService.getCategoryFilterListForCategory(cat);
+			model.addObject("catList", catList);
+			
+			Role role = new Role();
+			role.setStatus("Active");
+			List<Role> roleList = roleService.getRoleFilterListForRole(role);
+			model.addObject("roleList", roleList);
+			
+			City city = new City();
+			city.setStatus("Active");
+			List<City> cityList = cityService.getCityFilterListForCity(city);
+			model.addObject("cityList", cityList);
+			
+			Site site = new Site();
+			site.setStatus("Active");
+			List<Site> siteList = siteService.getSiteList(site, 0, 1000, null);
+			model.addObject("siteList", siteList);
 			User UserDetails = service.getUserDetails(user);
 			model.addObject("UserDetails", UserDetails);
 		} catch (Exception e) {

@@ -184,7 +184,7 @@ public class IrisUserDao {
 					+ "		( user_name"
 					+ "      ,email_id"
 					+ "      ,mobile_number"
-					+ "      ,sbu"
+					+ "      ,sbu,city"
 					+ "      ,categories"
 					+ "      ,roles"
 					+ "      ,site_name"
@@ -194,7 +194,7 @@ public class IrisUserDao {
 					+ "		( :user_name"
 					+ "      ,:email_id"
 					+ "      ,:mobile_number"
-					+ "      ,:sbu"
+					+ "      ,:sbu,:city"
 					+ "      ,:categories"
 					+ "      ,:roles"
 					+ "      ,:site_name"
@@ -222,7 +222,7 @@ public class IrisUserDao {
 					+ "      ,[email_id]"
 					+ "      ,[password]"
 					+ "      ,[mobile_number]"
-					+ "      ,[sbu]"
+					+ "      ,[sbu],city"
 					+ "      ,[categories]"
 					+ "      ,[roles]"
 					+ "      ,[city]"
@@ -263,7 +263,7 @@ public class IrisUserDao {
 					+ "		user_name= :user_name"
 					+ "      ,email_id= :email_id"
 					+ "      ,mobile_number= :mobile_number"
-					+ "      ,sbu= :sbu"
+					+ "      ,sbu= :sbu,city= :city"
 					+ "      ,categories= :categories"
 					+ "      ,roles= :roles"
 					+ "      ,site_name= :site_name"
@@ -382,7 +382,7 @@ public class IrisUserDao {
 				qry = qry + " and um.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.roles asc";
+			qry = qry + " group by roles order by um.roles asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {

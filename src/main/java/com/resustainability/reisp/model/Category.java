@@ -7,9 +7,17 @@ public class Category {
     ,category_name
     ,sbu_code,sbu_name
     ,created_by
-    ,modified_date
+    ,modified_date,sbu
     ,created_date
     ,modified_by,status;
+
+	public String getSbu() {
+		return sbu;
+	}
+
+	public void setSbu(String sbu) {
+		this.sbu = sbu;
+	}
 
 	public String getSbu_name() {
 		return sbu_name;

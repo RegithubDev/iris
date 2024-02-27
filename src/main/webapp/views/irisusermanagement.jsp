@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html class="loaded light-layout" lang="en" data-textdirection="ltr" style="--vh: 3.54px;"><!-- BEGIN: Head--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -180,21 +183,22 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form"  action="<%=request.getContextPath() %>/add-role-iris-user" method="post" novalidate="novalidate">
 			                <div class="mb-1">
 			              <label class="form-label" for="select-country">SBU</label>
 			              <div class="position-relative">
-			              <select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
-			                <option value="">Select Country</option>
-			                <option value="usa">USA</option>
-			                <option value="uk">UK</option>
+			              <select class="form-select select2 select2-hidden-accessible" id="sbu_code" name="sbu_code" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
+			                <option value="">Select SBU</option>
+			                <c:forEach var="obj" items="${objList}">
+									<option value="${obj.sbu_code }" > ${obj.sbu_name }</option>
+								</c:forEach>
 			        
 			              </select></div>
 			            </div>
 			              
 			            <div class="mb-1">
 			              <label class="form-label" for="basic-default-name">Add New Role</label>
-			              <input type="text" class="form-control" id="roles" name="roles" placeholder="New Role">
+			              <input type="text" class="form-control" id="role_name" name="role_name" placeholder="New Role">
 			            </div>
 			           
 			            
@@ -294,7 +298,7 @@ font-size: 1rem!important;
     <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
         <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
          <form id="getUser" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/get-user-details" method="post" class="form-horizontal" role="form" >
-         	
+         	  <input type="hidden" id="idVal" name="id"  />
          </form>
     <script>
  $(window).on('load',  function(){

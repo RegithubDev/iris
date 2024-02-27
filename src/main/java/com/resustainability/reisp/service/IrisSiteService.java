@@ -46,4 +46,8 @@ public class IrisSiteService {
 	public List<Site> getCityFilterListForSite(Site obj)throws Exception {
 		return dao.getCityFilterListForSite(obj);
 	}
+
+	public List<Site> getSiteList(Site site) throws Exception {
+		return dao.getSiteList(site);
+	}
 }

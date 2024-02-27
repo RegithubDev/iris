@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html class="loaded light-layout" lang="en" data-textdirection="ltr" style="--vh: 3.54px;"><!-- BEGIN: Head--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,14 +74,26 @@
           <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
               <div class="col-12">
-                <h2 class="content-header-title float-start mb-0">Add User</h2>
+                <h2 class="content-header-title float-start mb-0">
+                  <c:if test="${action eq 'add' }">
+ 				Add User
+		        </c:if>
+		        <c:if test="${action eq 'edit' }">
+		 				 Update User
+		        </c:if>
+                </h2>
                 <div class="breadcrumb-wrapper">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/usermanagement">User Management</a>
                     </li>
-                    <li class="breadcrumb-item"><a>Add User Form</a>
+                      <c:if test="${action eq 'add' }">
+ 				 <li class="breadcrumb-item"><a>Add User Form</a>
                     </li>
-                   
+		        </c:if>
+		        <c:if test="${action eq 'edit' }">
+		 				 <li class="breadcrumb-item"><a>AUpdatedd User</a>
+                    </li> 
+		        </c:if>
                   </ol>
                 </div>
               </div>
@@ -99,16 +114,30 @@
         <div class="card-header">
           <h2 class="card-title fw-bolder"><button type="button" class="btn btn-icon btn-icon rounded-circle btn btn-relief-dark">
               <i data-feather='users'></i>
-            </button> New User </h2>
+            </button>
+              <c:if test="${action eq 'add' }">
+ 				New User
+		        </c:if>
+		        <c:if test="${action eq 'edit' }">
+		 				 Update User
+		        </c:if>
+            </h2>
         </div>
        <div class="card-body">
        <div class="col-md-12 col-12">
-       <input type="hidden" id="user_name" name="user_name" value="${UserDetails.id }" />
+      
       <div class="card">
         <div class="card-body p-2">
-          <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-user-iris" method="post" novalidate="novalidate">
+          <c:if test="${action eq 'add' }">
+ 				 <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-user-iris" method="post" novalidate="novalidate">
+ 		 </c:if>
+		        <c:if test="${action eq 'edit' }">
+		 		 <form id="jquery-val-form" action="<%=request.getContextPath() %>/update-user-iris" method="post" novalidate="novalidate">
+		        </c:if>
+         
           <div class="row">
             <div class="mb-1 col-md-6">
+             <input type="hidden" id="id" name="id" value="${UserDetails.id }" />
              <label class="form-label" for="basic-default-name">Name</label>
               <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Name" value="${UserDetails.user_name }">
             </div>
@@ -126,58 +155,52 @@
             </div>
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select SBU</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-department" tabindex="1" aria-hidden="true">
-                <option value="" data-select2-id="1">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+              <div class="position-relative">
+              <select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-department" 
+               onchange="getCategoryFilterListWithSBUForUser();getRolesFilterListWithSBUForUser();" tabindex="1" aria-hidden="true">
+                <option value="" data-select2-id="1">Select SBU</option>
+               			<c:forEach var="obj" items="${sbuList}">
+									<option value="${obj.sbu_code }"  <c:if test="${UserDetails.sbu == obj.sbu_code }">selected</c:if>>[${obj.sbu_code }] - ${obj.sbu_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
-            
           </div>
           <div class="row">
         
-            <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Select Role</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
-                <option value="" data-select2-id="1">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
-              </select>
-              </div>
-            </div> 
+           
            <div class="mb-1 col-md-6">
              <label class="form-label" for="select-country">Select Category</label>
               <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
-                <option value="" data-select2-id="1">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+              <select class="form-select select2 select2-hidden-accessible" id="categories" name="categories" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
+                <option value="" data-select2-id="1">Select Category</option>
+               			<c:forEach var="obj" items="${catList}">
+										<option value="${obj.category_code }"  <c:if test="${UserDetails.categories == obj.category_code }">selected</c:if>> ${obj.category_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
-          
+           <div class="mb-1 col-md-6">
+            <label class="form-label" for="select-country">Select Role</label>
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
+                <option value="" data-select2-id="1">Select Role</option>
+              			<c:forEach var="obj" items="${roleList}">
+									<option value="${obj.role_name }"  <c:if test="${UserDetails.roles == obj.role_name }">selected</c:if>> ${obj.role_name }</option>
+						</c:forEach>
+              </select>
+              </div>
+            </div> 
           </div>
           <div class="row">
             <div class="mb-1 col-md-6">
              <label class="form-label" for="select-country">Select City</label>
               <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
+              <select class="form-select select2 select2-hidden-accessible" id="city" name="city" 
+               onchange="getSiteFilterListWithCityForUser();" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="2">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+               			<c:forEach var="obj" items="${cityList}">
+									<option value="${obj.city_name }"  <c:if test="${UserDetails.city == obj.city_name }">selected</c:if>>${obj.city_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
@@ -185,11 +208,9 @@
             <label class="form-label" for="select-country">Site Name</label>
               <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="site_name" name="site_name" data-select2-id="select-site" tabindex="5" aria-hidden="true">
                 <option value="" data-select2-id="1">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+               			<c:forEach var="obj" items="${siteList}">
+									<option value="${obj.site_name }"  <c:if test="${UserDetails.site_name == obj.site_name }">selected</c:if>> ${obj.site_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
@@ -270,7 +291,70 @@
       })
        document.getElementById("currentYear").innerHTML = new Date().getFullYear();
 
-		
+ function getCategoryFilterListWithSBUForUser() {
+   	 var sbu = $("#sbu").val();
+          if ($.trim(sbu) != "") {
+          	$("#categories option:not(:first)").remove();
+          	var myParams = { sbu: sbu};
+              $.ajax({
+                  url: "<%=request.getContextPath()%>/ajax/getCategoryFilterListWithSBUForUser",
+                  data: myParams, cache: false,async: false,
+                  success: function (data) {
+                      if (data.length > 0) {
+                          $.each(data, function (i, val) {
+                               $("#categories").append('<option value="' + val.category_code + '">' + $.trim(val.category_name) +'</option>');
+                          });
+                      }
+                  },error: function (jqXHR, exception) {
+      	   			      $(".page-loader").hide();
+         	          	  getErrorMessage(jqXHR, exception);
+         	     	  }
+              });
+          }
+      }
+ 
+ function getRolesFilterListWithSBUForUser() {
+   	 var sbu = $("#sbu").val();
+          if ($.trim(sbu) != "") {
+          	$("#roles option:not(:first)").remove();
+          	var myParams = { sbu: sbu};
+              $.ajax({
+                  url: "<%=request.getContextPath()%>/ajax/getRolesFilterListWithSBUForUser",
+                  data: myParams, cache: false,async: false,
+                  success: function (data) {
+                      if (data.length > 0) {
+                          $.each(data, function (i, val) {
+                               $("#roles").append('<option value="' + val.role_name + '">' + $.trim(val.role_name) +'</option>');
+                          });
+                      }
+                  },error: function (jqXHR, exception) {
+      	   			      $(".page-loader").hide();
+         	          	  getErrorMessage(jqXHR, exception);
+         	     	  }
+              });
+          }
+      }
+ function getSiteFilterListWithCityForUser() {
+   	 var city = $("#city").val();
+          if ($.trim(city) != "") {
+          	$("#site_name option:not(:first)").remove();
+          	var myParams = { city: city};
+              $.ajax({
+                  url: "<%=request.getContextPath()%>/ajax/getSiteFilterListWithCityForUser",
+                  data: myParams, cache: false,async: false,
+                  success: function (data) {
+                      if (data.length > 0) {
+                          $.each(data, function (i, val) {
+                               $("#site_name").append('<option value="' + val.site_name + '">' + $.trim(val.site_name) +'</option>');
+                          });
+                      }
+                  },error: function (jqXHR, exception) {
+      	   			      $(".page-loader").hide();
+         	          	  getErrorMessage(jqXHR, exception);
+         	     	  }
+              });
+          }
+      }
     </script>
      <script async>
         var link = document.createElement( 'link' );
