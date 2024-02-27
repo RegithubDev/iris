@@ -84,9 +84,9 @@ div.main-menu-content {
        		if(option != 'undefined' && option != null){
            		$('li.active').removeClass('active');
            		if(url.indexOf('user') != -1){
-          			 $('#usermanagement').addClass('active');
+          			 $('#settings').addClass('active');
 	           		}else if(url.indexOf('site') != -1 || url.indexOf('/update-irm-form') != -1){
-	           			$('#sitemanagement').addClass('active');
+	           			$('#settings').addClass('active');
 	           		}else if(url.indexOf('data') != -1){
 	           			$('#datamanagement').addClass('active');
 	           		}else if(url.indexOf('product') != -1){
