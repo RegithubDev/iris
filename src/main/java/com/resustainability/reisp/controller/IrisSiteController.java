@@ -86,6 +86,11 @@ public class IrisSiteController {
 			List<State> stateList = stateService.getStateFilterListForState(state);
 			model.addObject("stateList", stateList);
 			
+			City city = new City();
+			city.setStatus("Active");
+			List<City> cityList = cityService.getCityFilterListForCity(city);
+			model.addObject("cityList", cityList);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,6 +125,19 @@ public class IrisSiteController {
 			//List <Site> departmentsList = service.getDepartmentsList(null);
 			//model.addObject("departmentsList", departmentsList);
 			model.addObject("action", "edit");
+			SBU sbu = new SBU();
+			List<SBU> sbuList = sbuService.getSBUFilterListForSBU(sbu);
+			model.addObject("sbuList", sbuList);
+			
+			State state = new State();
+			state.setStatus("Active");
+			List<State> stateList = stateService.getStateFilterListForState(state);
+			model.addObject("stateList", stateList);
+			
+			City city = new City();
+			city.setStatus("Active");
+			List<City> cityList = cityService.getCityFilterListForCity(city);
+			model.addObject("cityList", cityList);
 			Site SiteDetails = service.getSiteDetails(site);
 			model.addObject("SiteDetails", SiteDetails);
 		} catch (Exception e) {

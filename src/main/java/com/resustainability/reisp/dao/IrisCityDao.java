@@ -246,7 +246,7 @@ public class IrisCityDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT um.[city_name],city_name from [city] um  where um.city_name is not null ";
+			String qry = "SELECT um.id,um.[city_name],city_name from [city] um  where um.city_name is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCity_name())) {
 				qry = qry + " and  um.city_name = ? ";

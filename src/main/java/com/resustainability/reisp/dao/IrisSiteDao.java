@@ -231,7 +231,7 @@ public class IrisSiteDao {
 					+ "where um.id is not null  ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
-				qry = qry + " and um.id = ? ";
+				qry = qry + " and s.id = ? ";
 				arrSize++;
 			}
 			Object[] pValues = new Object[arrSize];
@@ -261,7 +261,7 @@ public class IrisSiteDao {
 					+ "      ,sbu_code= :sbu_code"
 					+ "      ,site_name= :site_name"
 					+ "      ,status= :status,modified_date= getdate(),modified_by= :modified_by"
-					+ " where id =  '"+obj.getId()+"'";
+					+ " where id =  '"+obj.getIdVal()+"'";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

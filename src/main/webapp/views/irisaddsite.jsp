@@ -75,13 +75,26 @@
           <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
               <div class="col-12">
-                <h2 class="content-header-title float-start mb-0">Add Site</h2>
+              <c:if test="${action eq 'add' }">
+ 				 <h2 class="content-header-title float-start mb-0">Add Site</h2>
+		        </c:if>
+		        <c:if test="${action eq 'edit' }">
+		 				 <h2 class="content-header-title float-start mb-0">Update Site</h2>
+		        </c:if>
+               
                 <div class="breadcrumb-wrapper">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/sitemanagement">Site Management</a>
                     </li>
-                    <li class="breadcrumb-item"><a>Add Site Form</a>
+                      <c:if test="${action eq 'add' }">
+ 				   <li class="breadcrumb-item"><a>Add Site Form</a>
                     </li>
+		        </c:if>
+		        <c:if test="${action eq 'edit' }">
+		 				   <li class="breadcrumb-item"><a>Update Site Form</a>
+                    </li>
+		        </c:if>
+                  
                    
                   </ol>
                 </div>
@@ -103,11 +116,18 @@
         <div class="card-header">
           <h2 class="card-title fw-bolder"><button type="button" class="btn btn-icon btn-icon rounded-circle btn btn-relief-dark">
               <i data-feather='disc'></i>
-            </button> New Site </h2>
+            </button>
+            <c:if test="${action eq 'add' }">
+ 				New Site
+		        </c:if>
+		        <c:if test="${action eq 'edit' }">
+		 				 Update Site
+		        </c:if>
+             </h2>
         </div>
        <div class="card-body">
        <div class="col-md-12 col-12">
-       <input type="hidden" id="user_name" name="user_name" value="${SiteDetails.id }" />
+      
       <div class="card">
         <div class="card-body p-2">
         <c:if test="${action eq 'add' }">
@@ -118,6 +138,7 @@
         </c:if>
          
           <div class="row">
+           <input type="hidden" id="idVal" name="idVal" value="${SiteDetails.id }" />
             <div class="mb-1 col-md-6">
              <label class="form-label" for="basic-default-name">Site Name</label>
               <input type="text" class="form-control" id="site_name" name="site_name" placeholder="Name" value="${SiteDetails.site_name }">
@@ -128,7 +149,7 @@
               <select class="form-select select2 select2-hidden-accessible" id="sbu_code" name="sbu_code" data-select2-id="select-department" tabindex="1" aria-hidden="true">
                 <option value="" data-select2-id="1">Select SBU</option>
                 <c:forEach var="obj" items="${sbuList}">
-									<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
+									<option value="${obj.sbu_code }"  <c:if test="${SiteDetails.sbu_code == obj.sbu_code }">selected</c:if>>[${obj.sbu_code }] - ${obj.sbu_name }</option>
 								</c:forEach>
               </select>
               </div>
@@ -142,7 +163,7 @@
               id="state" name="state" data-select2-id="select-site" tabindex="5" aria-hidden="true">
                 <option value="" data-select2-id="1">Select State</option>
                  <c:forEach var="obj" items="${stateList}">
-									<option value="${obj.id }" <c:if test="${SiteDetails.state_name == obj.state_name }">selected</c:if>> ${obj.state_name }</option>
+									<option value="${obj.id }" <c:if test="${SiteDetails.state == obj.id }">selected</c:if>> ${obj.state_name }</option>
 								</c:forEach>
               </select>
               </div>
@@ -152,6 +173,9 @@
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="2">Select City</option>
+                    <c:forEach var="obj" items="${cityList}">
+									<option value="${obj.id }" <c:if test="${SiteDetails.city == obj.city_name }">selected</c:if>> ${obj.city_name }</option>
+								</c:forEach>
               </select>
               </div>
             </div>
