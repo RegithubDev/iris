@@ -27,10 +27,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.resustainability.reisp.common.DateParser;
 import com.resustainability.reisp.constants.PageConstants2;
+import com.resustainability.reisp.model.City;
 import com.resustainability.reisp.model.IRM;
+import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.Site;
 import com.resustainability.reisp.model.SitePaginationObject;
+import com.resustainability.reisp.model.State;
+import com.resustainability.reisp.service.IrisCityService;
+import com.resustainability.reisp.service.IrisSBUService;
 import com.resustainability.reisp.service.IrisSiteService;
+import com.resustainability.reisp.service.IrisStateService;
 import com.resustainability.reisp.service.IrisSiteService;
 
 @Controller
@@ -43,6 +49,16 @@ public class IrisSiteController {
 	
 	@Autowired
 	IrisSiteService service;
+	
+	
+	@Autowired
+	IrisSBUService sbuService;
+	
+	@Autowired
+	IrisStateService stateService;
+	
+	@Autowired
+	IrisCityService cityService;
 	
 	@RequestMapping(value = "/sitemanagement", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView sitemanagement(@ModelAttribute Site site, HttpSession session) {
@@ -57,14 +73,44 @@ public class IrisSiteController {
 	
 	
 	@RequestMapping(value = "/iris-addsite", method = {RequestMethod.POST, RequestMethod.GET})
-	public ModelAndView irisaddsite(@ModelAttribute Site site, HttpSession session) {
+	public ModelAndView irisaddsite(@ModelAttribute SBU obj, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants2.irisaddsite);
 		try {
+			model.addObject("action", "add");
+			obj.setStatus("Active");
+			List<SBU> sbuList = sbuService.getSBUFilterListForSBU(obj);
+			model.addObject("sbuList", sbuList);
+			
+			State state = new State();
+			state.setStatus("Active");
+			List<State> stateList = stateService.getStateFilterListForState(state);
+			model.addObject("stateList", stateList);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return model;
+	}
+	
+	@RequestMapping(value = "/ajax/getCityFilterListWithStateForState", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<City> getCityFilterListWithStateForState(@ModelAttribute City obj,HttpSession session) {
+		List<City> companiesList = null;
+		String userId = null;
+		String siteName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setStatus("Active");
+			companiesList = cityService.getCityFilterListForCity(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCityFilterListForSite : " + e.getMessage());
+		}
+		return companiesList;
 	}
 	
 	@RequestMapping(value = "/get-site-details", method = {RequestMethod.POST, RequestMethod.GET})
@@ -73,7 +119,7 @@ public class IrisSiteController {
 		try {
 			//List <Site> departmentsList = service.getDepartmentsList(null);
 			//model.addObject("departmentsList", departmentsList);
-			
+			model.addObject("action", "edit");
 			Site SiteDetails = service.getSiteDetails(site);
 			model.addObject("SiteDetails", SiteDetails);
 		} catch (Exception e) {

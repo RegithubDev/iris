@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding = "UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<!DOCTYPE html>
 <html class="loaded light-layout" lang="en" data-textdirection="ltr" style="--vh: 3.54px;"><!-- BEGIN: Head--><!-- Mirrored from pixinvent.com/demo/vuexy-html-bootstrap-admin-template/html/ltr/vertical-menu-template/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Aug 2022 05:42:05 GMT --><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,50 +107,43 @@
         </div>
        <div class="card-body">
        <div class="col-md-12 col-12">
-       <input type="hidden" id="user_name" name="user_name" value="${UserDetails.id }" />
+       <input type="hidden" id="user_name" name="user_name" value="${SiteDetails.id }" />
       <div class="card">
         <div class="card-body p-2">
-          <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-user-iris" method="post" novalidate="novalidate">
+        <c:if test="${action eq 'add' }">
+ 				<form id="jquery-val-form" action="<%=request.getContextPath() %>/add-site-iris" method="post" novalidate="novalidate">
+        </c:if>
+        <c:if test="${action eq 'edit' }">
+ 				<form id="jquery-val-form" action="<%=request.getContextPath() %>/update-site-iris" method="post" novalidate="novalidate">
+        </c:if>
+         
           <div class="row">
             <div class="mb-1 col-md-6">
              <label class="form-label" for="basic-default-name">Site Name</label>
-              <input type="text" class="form-control" id="site_name" name="site_name" placeholder="Name" value="${UserDetails.site_name }">
+              <input type="text" class="form-control" id="site_name" name="site_name" placeholder="Name" value="${SiteDetails.site_name }">
             </div>
-            <div class="mb-1 col-md-6">
-               <label class="form-label" for="basic-default-email">Latitude, Longitude</label>
-              <input type="text" id="latlon" name="latlon" class="form-control" placeholder="Latitude, Longitude" value="${UserDetails.latlon }">
-            </div>
-          </div>
-          <div class="row">
-            <div class="mb-1 col-md-6">
+              <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select SBU</label>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="sbu_code" name="sbu_code" data-select2-id="select-department" tabindex="1" aria-hidden="true">
                 <option value="" data-select2-id="1">Select SBU</option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
-              </select>
-              </div>
-            </div>
-             <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Select Status</label>
-              <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="status" name="status" data-select2-id="select-department" tabindex="1" aria-hidden="true">
-                <option value="" data-select2-id="1">Select Status</option>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
+                <c:forEach var="obj" items="${sbuList}">
+									<option value="${obj.sbu_code }" >[${obj.sbu_code }] - ${obj.sbu_name }</option>
+								</c:forEach>
               </select>
               </div>
             </div>
           </div>
           <div class="row">
-          <div class="mb-1 col-md-6">
+            <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select State</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="state" name="state" data-select2-id="select-site" tabindex="5" aria-hidden="true">
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" 
+              onchange="getCityFilterListWithStateForState();"
+              id="state" name="state" data-select2-id="select-site" tabindex="5" aria-hidden="true">
                 <option value="" data-select2-id="1">Select State</option>
+                 <c:forEach var="obj" items="${stateList}">
+									<option value="${obj.id }" <c:if test="${SiteDetails.state_name == obj.state_name }">selected</c:if>> ${obj.state_name }</option>
+								</c:forEach>
               </select>
               </div>
             </div>
@@ -155,6 +152,25 @@
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="2">Select City</option>
+              </select>
+              </div>
+            </div>
+           
+          </div>
+          <div class="row">
+         
+            
+            <div class="mb-1 col-md-6">
+               <label class="form-label" for="basic-default-email">Latitude, Longitude</label>
+              <input type="text" id="latlon" name="latlon" class="form-control" placeholder="Latitude, Longitude" value="${SiteDetails.latlon }">
+            </div>
+            
+             <div class="mb-1 col-md-6">
+            <label class="form-label" for="select-country">Select Status</label>
+              <div class="position-relative">
+              <select class="form-select select2 select2-hidden-accessible" id="status" name="status" data-select2-id="select-department" >
+                <option value="Active" <c:if test="${SiteDetails.status == 'Active' }">selected</c:if>>Active</option>
+                <option value="Inactive" <c:if test="${SiteDetails.status == 'Inactive' }">selected</c:if>>Inactive</option>
               </select>
               </div>
             </div>
@@ -384,5 +400,29 @@ nav {
     <!-- BEGIN: Page JS-->
     <!-- END: Page JS-->
     <!-- END: Page JS-->
+    <script>
+    
+    function getCityFilterListWithStateForState() {
+   	 var state = $("#state").val();
+          if ($.trim(state) != "") {
+          	$("#city option:not(:first)").remove();
+          	var myParams = { state: state};
+              $.ajax({
+                  url: "<%=request.getContextPath()%>/ajax/getCityFilterListWithStateForState",
+                  data: myParams, cache: false,async: false,
+                  success: function (data) {
+                      if (data.length > 0) {
+                          $.each(data, function (i, val) {
+                               $("#city").append('<option value="' + val.city_name + '">' + $.trim(val.city_name) +'</option>');
+                          });
+                      }
+                  },error: function (jqXHR, exception) {
+      	   			      $(".page-loader").hide();
+         	          	  getErrorMessage(jqXHR, exception);
+         	     	  }
+              });
+          }
+      }
+    </script>
 </body>
 </html>

@@ -2,7 +2,23 @@ package com.resustainability.reisp.model;
 
 public class Site {
 
-private String id,state,city,sbu_code,site_name,created_by,latlon,modified_date,created_date,modified_by;
+private String id,state,city,sbu_code,site_name,status,created_by,latlon,modified_date,created_date,modified_by,sbu_name;
+
+public String getSbu_name() {
+	return sbu_name;
+}
+
+public void setSbu_name(String sbu_name) {
+	this.sbu_name = sbu_name;
+}
+
+public String getStatus() {
+	return status;
+}
+
+public void setStatus(String status) {
+	this.status = status;
+}
 
 public String getLatlon() {
 	return latlon;

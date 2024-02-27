@@ -471,7 +471,7 @@ font-size: 1rem!important;
 		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; }
 		            } },
 		         	{ "mData": function(data,type,row){
-		            	if($.trim(data.sbu) == ''){ return '-'; }else{ return data.sbu; }
+		            	if($.trim(data.sbu_code) == ''){ return '-'; }else{ return /* '[ '+data.sbu_code +' ] - ' + */data.sbu_name; }
 		            } },
 		            { "mData": function(data,type,row){
 		            	if($.trim(data.state) == ''){ return '-'; }else{ return data.state; } 

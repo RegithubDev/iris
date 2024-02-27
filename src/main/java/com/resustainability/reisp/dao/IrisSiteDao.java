@@ -36,6 +36,10 @@ public class IrisSiteDao {
 		try {
 			int arrSize = 0;
 			String qry = "select count(DISTINCT um.site_name) as total_records FROM [site] um "
+					+ " left join state st on um.state = st.id   "
+					+ " left join user_management um1 on um.created_by = um1.id   "
+					+ " left join sbu sb on um.sbu_code = sb.sbu_code   "
+					+ " left join user_management um1 on um.modified_by = um1.id  "
 			+ " where um.site_name <> '' ";
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
@@ -50,7 +54,7 @@ public class IrisSiteDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
-				qry = qry + " and (um.user_name like ? or um.city like ?"
+				qry = qry + " and (um1.user_name like ? or um.city like ?"
 						+ " or um.email_id like ? or um.sbu_code like ? or um.categories like ? or um.state like ? "
 						+ "or um.status like ? )";
 				arrSize++;
@@ -97,9 +101,9 @@ public class IrisSiteDao {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			String qry = "SELECT s.[id]"
-					+ "        ,s.[state]"
+					+ "        ,st.state_name as [state]"
 					+ "      ,s.[city]"
-					+ "      ,s.[sbu_code]"
+					+ "      ,s.[sbu_code],sbu_name"
 					+ "      ,[sbu_name],latlon"
 					+ "      ,s.[site_name]"
 					+ "      ,s.[status]"
@@ -107,6 +111,7 @@ public class IrisSiteDao {
 					+ "      ,FORMAT (um.created_date, 'dd-MMM-yy') as[created_date]"
 					+ "      ,um1.user_name as [modified_by]"
 					+ "      ,FORMAT (um.modified_date, 'dd-MMM-yy') as[modified_date] FROM [site] s  "
+					+ " left join state st on s.state = st.id   "
 					+ " left join user_management um on s.created_by = um.id   "
 					+ " left join sbu sb on s.sbu_code = sb.sbu_code   "
 					+ " left join user_management um1 on s.modified_by = um1.id  "
