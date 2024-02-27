@@ -83,7 +83,7 @@
       <div class="card re-text-bg">
         <div class="card-header">
           <h4 class="fw-bolder mb-0 text-white"><i data-feather='zap'></i> Masters</h4>
-        </div>
+        </div> 
    
       </div>
     </div>
