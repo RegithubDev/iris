@@ -321,7 +321,7 @@ public class IrisSiteDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT state from [site] um where state is not null ";
+			String qry = "SELECT state,state_name from [site] um left join state st on um.state = st.id  where state is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";

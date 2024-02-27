@@ -179,7 +179,7 @@ public class IrisStateDao {
 					+ "where um.id is not null  ";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getId())) {
-				qry = qry + " and um.id = ? ";
+				qry = qry + " and s.id = ? ";
 				arrSize++;
 			}
 			Object[] pValues = new Object[arrSize];
@@ -221,7 +221,7 @@ public class IrisStateDao {
 		return flag;
 	}
 
-	public List<State> getStateFilterListForState(State obj) throws Exception { 
+	public List<State> getStateFilterListForState(State obj) throws Exception {
 		List<State> objsList = null;
 		try {
 			int arrSize = 0;
