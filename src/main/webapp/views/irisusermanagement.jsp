@@ -74,6 +74,29 @@ font-size: 1rem!important;
 <!--/ Basic table -->
 
 <!-- Complex Headers -->
+<div class="content-header row">
+          <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+              <div class="col-12">
+                <h2 class="content-header-title float-start mb-0">User Management</h2>
+                <div class="breadcrumb-wrapper">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/iris/iris-settings"><i data-feather='settings'></i> Masters</a>
+                    </li>
+                    <li class="breadcrumb-item"><a>User Management</a>
+                    </li>
+                   
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+            <div class="mb-1 breadcrumb-right">
+              
+            </div>
+          </div>
+        </div>
 <section id="complex-header-datatable">
           <div class="content-wrapper container-xxl p-0">
          <!--    <div class="content-header row">
