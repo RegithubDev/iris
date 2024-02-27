@@ -91,7 +91,7 @@
                     </li>
 		        </c:if>
 		        <c:if test="${action eq 'edit' }">
-		 				 <li class="breadcrumb-item"><a>AUpdatedd User</a>
+		 				 <li class="breadcrumb-item"><a>Updated User</a>
                     </li> 
 		        </c:if>
                   </ol>
@@ -216,6 +216,30 @@
             </div>
           
           </div>
+          
+          
+          
+          
+           <div class="row">
+            <div class="mb-1 col-md-4">
+             <label class="form-label" for="select-status">Select Status</label>
+              <div class="position-relative">
+              <select class="form-select select2 select2-hidden-accessible" id="status" name="status" 
+               onchange="getSiteFilterListWithCityForUser();" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
+                <option value="" >Select Status</option>
+               	<option value="Active" <c:if test="${UserDetails.status == 'Active' }">selected</c:if> >Active</option>
+               	<option value="Inactive" <c:if test="${UserDetails.status == 'Inactive' }">selected</c:if> >Inactive</option>		
+              </select>
+              </div>
+            </div>
+           
+          
+          </div>
+          
+          
+          
+          
+          
        <div class="col-md-12 col-12 text-center mt-2">
                <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
                 <a href="<%=request.getContextPath() %>/usermanagement" class="btn btn-dark waves-effect waves-float waves-light"><i data-feather='chevrons-left'></i>Back</a>
