@@ -274,10 +274,10 @@ font-size: 1rem!important;
      
   });
  function clearFilters(){
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-		if(sbu != "" || site_name != "" || roles != ""){
+		var sbu_code = $("#sbuID").val();
+		var state = $("#site_nameID").val();
+		var city = $("#rolesId").val();
+		if(sbu_code != "" || state != "" || city != ""){
 		    $("#sbuID").val("");
 			$("#site_nameID").val("");
 			$("#rolesId").val("");
@@ -290,19 +290,19 @@ font-size: 1rem!important;
 }
 
  function getSBUFilterList() {
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(sbu) == "") {
+		var sbu_code = $("#sbuID").val();
+		var state = $("#site_nameID").val();
+		var city = $("#rolesId").val();
+       if ($.trim(sbu_code) == "") {
        	$("#sbuID option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = { sbu_code: sbu_code, state: state, city : city };
            $.ajax({
                url: "<%=request.getContextPath()%>/ajax/getSBUFilterListForSite",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#sbuID").append('<option value="' + val.sbu + '">' + $.trim(val.sbu) +'</option>');
+                            $("#sbuID").append('<option value="' + val.sbu_code + '">' + $.trim(val.sbu_code) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -314,19 +314,19 @@ font-size: 1rem!important;
    }
  
  function getStateFilterList() {
-	 var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(site_name) == "") {
+	 var sbu_code = $("#sbuID").val();
+		var state = $("#site_nameID").val();
+		var city = $("#rolesId").val();
+       if ($.trim(state) == "") {
        	$("#site_nameID option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = { sbu_code: sbu_code, state: state, city : city };
            $.ajax({
                url: "<%=request.getContextPath()%>/ajax/getStateFilterListForSite",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#site_nameID").append('<option value="' + val.site_name + '">' + $.trim(val.site_name) +'</option>');
+                            $("#site_nameID").append('<option value="' + val.state + '">' + $.trim(val.state_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -338,19 +338,19 @@ font-size: 1rem!important;
    }
  
  function getCityFilterList() {
-	 var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
-       if ($.trim(roles) == "") {
+	 var sbu_code = $("#sbuID").val();
+		var state = $("#site_nameID").val();
+		var city = $("#rolesId").val();
+       if ($.trim(city) == "") {
        	$("#rolesId option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = { sbu_code: sbu_code, state: state, city : city };
            $.ajax({
                url: "<%=request.getContextPath()%>/ajax/getCityFilterListForSite",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#rolesId").append('<option value="' + val.roles + '">' + $.trim(val.roles) +'</option>');
+                            $("#rolesId").append('<option value="' + val.city + '">' + $.trim(val.city) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -365,15 +365,15 @@ font-size: 1rem!important;
 		getSBUFilterList('');
 		getStateFilterList('');
 		getCityFilterList('');
-		var sbu = $("#sbuID").val();
-		var site_name = $("#site_nameID").val();
-		var roles = $("#rolesId").val();
+		var sbu_code = $("#sbuID").val();
+		var state = $("#site_nameID").val();
+		var city = $("#rolesId").val();
 	   	table = $('#datatable-site').DataTable();
 		table.destroy();
 		var i = 1;
 		$.fn.dataTable.moment('DD-MMM-YYYY');
 		var rowLen = 0;
-		var myParams =  "sbu="+ sbu+ "&site_name="+ site_name+ "&roles="+ roles ;
+		var myParams =  "sbu_code="+ sbu_code+ "&state="+ state+ "&city="+ city ;
 
 		/***************************************************************************************************/
 
@@ -468,10 +468,10 @@ font-size: 1rem!important;
 							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-site-iris?"+myParams,
 		        "aoColumns": [
 		        	 { "mData": function(data,type,row){
-                      if($.trim(data.site_name) == ''){ return '-'; }else{ return i++ ; }
+                      if($.trim(data.state) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var site_data = "'"+data.id+"','"+data.site_name+"','"+data.sbu+"','"+data.state+"','"+data.city+"'";
+							var site_data = "'"+data.id+"','"+data.state+"','"+data.sbu_code+"','"+data.state+"','"+data.city+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getSite('+site_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteSite('+site_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
@@ -529,7 +529,7 @@ function getErrorMessage(jqXHR, exception) {
 	    console.log(msg);
 }
 		
-		function getSite(id,name,sbu,email_id,mobile_number){
+		function getSite(id,name,sbu_code,email_id,mobile_number){
 			$('#idVal').val(id);
 			document.getElementById("getSite").submit();	
 		}

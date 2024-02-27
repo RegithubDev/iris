@@ -2,7 +2,15 @@ package com.resustainability.reisp.model;
 
 public class Site {
 
-private String id,state,city,sbu_code,site_name,status,created_by,latlon,modified_date,created_date,modified_by,sbu_name;
+private String id,state,city,sbu_code,site_name,status,created_by,latlon,state_name,modified_date,created_date,modified_by,sbu_name;
+
+public String getState_name() {
+	return state_name;
+}
+
+public void setState_name(String state_name) {
+	this.state_name = state_name;
+}
 
 public String getSbu_name() {
 	return sbu_name;
