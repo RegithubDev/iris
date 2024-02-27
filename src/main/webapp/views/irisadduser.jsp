@@ -139,11 +139,11 @@
             
           </div>
           <div class="row">
-          <div class="mb-1 col-md-6">
-             <label class="form-label" for="select-country">Select Category</label>
-              <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="categories" name="categories" data-select2-id="Select-Category" tabindex="2" aria-hidden="true">
-                <option value="" data-select2-id="2">Select </option>
+        
+            <div class="mb-1 col-md-6">
+            <label class="form-label" for="select-country">Select Role</label>
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
+                <option value="" data-select2-id="1">Select </option>
                 <option value="usa">USA</option>
                 <option value="uk">UK</option>
                 <option value="france">France</option>
@@ -151,10 +151,11 @@
                 <option value="spain">Spain</option>
               </select>
               </div>
-            </div>
-            <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Select Role</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
+            </div> 
+           <div class="mb-1 col-md-6">
+             <label class="form-label" for="select-country">Select Category</label>
+              <div class="position-relative">
+              <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="1">Select </option>
                 <option value="usa">USA</option>
                 <option value="uk">UK</option>

@@ -84,7 +84,7 @@ font-size: 1rem!important;
                 <h2 class="content-header-title float-start mb-0">City</h2>
                 <div class="breadcrumb-wrapper">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/iris/iris-settings">Masters</a>
+                    <li class="breadcrumb-item"><a href="/iris/iris-settings"><i data-feather='settings'></i> Masters</a>
                     </li>
                     <li class="breadcrumb-item"><a> City</a>
                     </li>

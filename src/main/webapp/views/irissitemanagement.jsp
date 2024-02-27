@@ -74,6 +74,29 @@ font-size: 1rem!important;
 <!--/ Basic table -->
 
 <!-- Complex Headers -->
+<div class="content-header row">
+          <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+              <div class="col-12">
+                <h2 class="content-header-title float-start mb-0">Site Management</h2>
+                <div class="breadcrumb-wrapper">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/iris/iris-settings"><i data-feather='settings'></i> Masters</a>
+                    </li>
+                    <li class="breadcrumb-item"><a> Site Management</a>
+                    </li>
+                   
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+            <div class="mb-1 breadcrumb-right">
+              
+            </div>
+          </div>
+        </div>
 <section id="complex-header-datatable">
           <div class="content-wrapper container-xxl p-0">
          <!--    <div class="content-header row">
@@ -123,9 +146,9 @@ font-size: 1rem!important;
            <a  onclick="clearFilters();" id="clearFilterBtn"  class="btn btn-gradient-danger re-text-bg "> Clear Filter </a> 
           </div>
             </div>
-             <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
+            <!--  <div class="re-text col-xl-2 col-md-3 col-12 mt-2 text-end">
                <a type="button" class="btn btn-gradient-danger re-text-bg" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Export to Excel">Export <img src="/iris/resources/images/icons/Excel.png" class="logo" style="width: 2rem;">  </a>
-             </div>
+             </div> -->
           </div>
         </div> 
         <div class="toast-container position-fixed top-0 end-0 p-2" style="z-index: 15">
