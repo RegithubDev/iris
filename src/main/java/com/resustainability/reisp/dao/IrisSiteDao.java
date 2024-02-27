@@ -39,7 +39,7 @@ public class IrisSiteDao {
 					+ " left join state st on um.state = st.id   "
 					+ " left join user_management um1 on um.created_by = um1.id   "
 					+ " left join sbu sb on um.sbu_code = sb.sbu_code   "
-					+ " left join user_management um1 on um.modified_by = um1.id  "
+					+ " left join user_management um2 on um.modified_by = um2.id  "
 			+ " where um.site_name <> '' ";
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
@@ -54,8 +54,8 @@ public class IrisSiteDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
-				qry = qry + " and (um1.user_name like ? or um.city like ?"
-						+ " or um.email_id like ? or um.sbu_code like ? or um.categories like ? or um.state like ? "
+				qry = qry + " and (um.site_name like ? or um.city like ?"
+						+ " or um.sbu_code like ? or sb.sbu_name like ? or um.latlon like ? or st.state_name like ? "
 						+ "or um.status like ? )";
 				arrSize++;
 				arrSize++;
@@ -130,8 +130,8 @@ public class IrisSiteDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
-				qry = qry + " and (s.state like ? or s.city like ?"
-						+ " or s.sbu_code like ? or s.sbu_code like ? or s.categories like ? or s.state like ? "
+				qry = qry + " and (s.site_name like ? or s.city like ?"
+						+ " or s.sbu_code like ? or sb.sbu_name like ? or s.latlon like ? or st.state_name like ? "
 						+ "or s.status like ? )";
 				arrSize++;
 				arrSize++;
