@@ -225,7 +225,7 @@
              <label class="form-label" for="select-status">Select Status</label>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="status" name="status" 
-               onchange="getSiteFilterListWithCityForUser();" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
+               data-select2-id="Select-City" tabindex="4" aria-hidden="true">
                 <option value="" >Select Status</option>
                	<option value="Active" <c:if test="${UserDetails.status == 'Active' }">selected</c:if> >Active</option>
                	<option value="Inactive" <c:if test="${UserDetails.status == 'Inactive' }">selected</c:if> >Inactive</option>		

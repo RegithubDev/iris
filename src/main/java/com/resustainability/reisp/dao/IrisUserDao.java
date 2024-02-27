@@ -304,7 +304,7 @@ public class IrisUserDao {
 				qry = qry + " and um.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.sbu asc";
+			qry = qry + " group by [sbu],sbu_name order by um.sbu asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
@@ -343,7 +343,7 @@ public class IrisUserDao {
 				qry = qry + " and um.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.site_name asc";
+			qry = qry + "group by site_name order by um.site_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
