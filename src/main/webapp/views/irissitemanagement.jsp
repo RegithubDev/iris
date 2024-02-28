@@ -253,9 +253,7 @@ font-size: 1rem!important;
     <script src="/iris/resources/vendors/js/pickers/pickadate/legacy.js"></script>
     <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
         <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
-         <form id="getSite" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/get-site-details" method="post" class="form-horizontal" role="form" >
-         	 <input type="text" id="idVal" name="id" />
-         </form>
+       
     <script>
  $(window).on('load',  function(){
     	
