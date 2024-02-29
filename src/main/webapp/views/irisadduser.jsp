@@ -138,23 +138,23 @@
           <div class="row">
             <div class="mb-1 col-md-6">
              <input type="hidden" id="id" name="id" value="${UserDetails.id }" />
-             <label class="form-label" for="basic-default-name">Name</label>
+             <label class="form-label" for="basic-default-name">Name</label>  <span class=re-text>*</span>
               <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Name" value="${UserDetails.user_name }">
             </div>
             <div class="mb-1 col-md-6">
-               <label class="form-label" for="basic-default-email">Email</label>
+               <label class="form-label" for="basic-default-email">Email</label>  <span class=re-text>*</span>
               <input type="text" id="email_id" name="email_id" class="form-control" placeholder="RE@email.com" value="${UserDetails.email_id }">
             
             </div>
           </div>
           <div class="row">
             <div class="mb-1 col-md-6">
-            <label class="form-label" for="basic-number">Mobile Number</label>
+            <label class="form-label" for="basic-number">Mobile Number</label>  <span class=re-text>*</span>
               <input type="number" id="mobile_number" name="mobile_number" class="form-control" placeholder="999-999-9999" value="${UserDetails.mobile_number }">
             
             </div>
             <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Select SBU</label>
+            <label class="form-label" for="select-country">Select SBU</label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-department" 
                onchange="getCategoryFilterListWithSBUForUser();getRolesFilterListWithSBUForUser();" tabindex="1" aria-hidden="true">
@@ -170,7 +170,7 @@
         
            
            <div class="mb-1 col-md-6">
-             <label class="form-label" for="select-country">Select Category</label>
+             <label class="form-label" for="select-country">Select Category</label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="categories" name="categories" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="1">Select Category</option>
@@ -181,7 +181,7 @@
               </div>
             </div>
            <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Select Role</label>
+            <label class="form-label" for="select-country">Select Role</label>  <span class=re-text>*</span>
               <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
                 <option value="" data-select2-id="1">Select Role</option>
               			<c:forEach var="obj" items="${roleList}">
@@ -192,8 +192,8 @@
             </div> 
           </div>
           <div class="row">
-            <div class="mb-1 col-md-6">
-             <label class="form-label" for="select-country">Select City</label>
+            <div class="mb-1 col-md-6"> 
+             <label class="form-label" for="select-country">Select City</label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="city" name="city" 
                onchange="getSiteFilterListWithCityForUser();" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
@@ -205,7 +205,7 @@
               </div>
             </div>
             <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Site Name</label>
+            <label class="form-label" for="select-country">Site Name</label>  <span class=re-text>*</span>  
               <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="site_name" name="site_name" data-select2-id="select-site" tabindex="5" aria-hidden="true">
                 <option value="" data-select2-id="1">Select </option>
                			<c:forEach var="obj" items="${siteList}">
@@ -222,11 +222,10 @@
           
            <div class="row">
             <div class="mb-1 col-md-4">
-             <label class="form-label" for="select-status">Select Status</label>
+             <label class="form-label" for="select-status">Select Status</label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="status" name="status" 
                data-select2-id="Select-City" tabindex="4" aria-hidden="true">
-                <option value="" >Select Status</option>
                	<option value="Active" <c:if test="${UserDetails.status == 'Active' }">selected</c:if> >Active</option>
                	<option value="Inactive" <c:if test="${UserDetails.status == 'Inactive' }">selected</c:if> >Inactive</option>		
               </select>

@@ -174,11 +174,11 @@ font-size: 1rem!important;
                     <div class="modal-body">
                      <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-sbu-iris" method="post" novalidate="novalidate">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">SBU Code</label>
+			              <label class="form-label" for="sbu_code">SBU Code</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="sbu_code" name="sbu_code" placeholder="Sbu Code">
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">SBU Name</label>
+			              <label class="form-label" for="sbu_name">SBU Name</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="sbu_name" name="sbu_name" placeholder="Sbu Name">
 			            </div>
 			                <div class="mb-1">

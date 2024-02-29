@@ -176,7 +176,7 @@ font-size: 1rem!important;
 			              <input type="text" class="form-control" id="state_code" name="state_code" placeholder="State Code">
 			            </div> -->
 			            <div class="mb-1">
-			              <label class="form-label" for="state_name">State Name</label>
+			              <label class="form-label" for="state_name">State Name</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="state_name" name="state_name" placeholder="State Name">
 			            </div>
 			                <div class="mb-1">

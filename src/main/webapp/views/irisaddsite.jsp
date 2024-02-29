@@ -140,11 +140,11 @@
           <div class="row">
            <input type="hidden" id="idVal" name="idVal" value="${SiteDetails.id }" />
             <div class="mb-1 col-md-6">
-             <label class="form-label" for="basic-default-name">Site Name</label>
+             <label class="form-label" for="basic-default-name">Site Name</label> <span class=re-text>*</span>
               <input type="text" class="form-control" id="site_name" name="site_name" placeholder="Name" value="${SiteDetails.site_name }">
             </div>
               <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Select SBU</label>
+            <label class="form-label" for="select-country">Select SBU</label> <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="sbu_code" name="sbu_code" data-select2-id="select-department" tabindex="1" aria-hidden="true">
                 <option value="" data-select2-id="1">Select SBU</option>
@@ -157,7 +157,7 @@
           </div>
           <div class="row">
             <div class="mb-1 col-md-6">
-            <label class="form-label" for="select-country">Select State</label>
+            <label class="form-label" for="select-country">Select State</label>  <span class=re-text>*</span>
               <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" 
               onchange="getCityFilterListWithStateForState();"
               id="state" name="state" data-select2-id="select-site" tabindex="5" aria-hidden="true">
@@ -169,7 +169,7 @@
               </div>
             </div>
             <div class="mb-1 col-md-6">
-             <label class="form-label" for="select-country">Select City</label>
+             <label class="form-label" for="select-country">Select City</label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="2">Select City</option>

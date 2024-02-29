@@ -187,7 +187,7 @@ font-size: 1rem!important;
                     <div class="modal-body">
                      <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-category-iris" method="post" novalidate="novalidate">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">SBU Code</label>
+			              <label class="form-label" for="sbu_code">SBU Code</label> <span class=re-text>*</span>
 			               <select
 				            	class="select2 form-select formSelect" id="sbu_code"
 				              name="sbu_code"
@@ -200,11 +200,11 @@ font-size: 1rem!important;
 				            </select>
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="category_code">Category Code</label>
+			              <label class="form-label" for="category_code">Category Code</label> <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="category_code" name="category_code" placeholder="Category Code">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="category_name">Category Name</label>
+			              <label class="form-label" for="category_name">Category Name</label>   <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Category Name">
 			            </div>
 			                <div class="mb-1">

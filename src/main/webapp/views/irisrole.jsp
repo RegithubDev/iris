@@ -186,7 +186,7 @@ font-size: 1rem!important;
                     <div class="modal-body">
                      <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-role-iris" method="post" novalidate="novalidate">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">SBU</label>
+			              <label class="form-label" for="sbu_code">SBU</label>  <span class=re-text>*</span>
 			              <select
 				            	class="form-select select2 select2-hidden-accessible state_edit" id="sbu_code"
 				              name="sbu_code"
@@ -199,7 +199,7 @@ font-size: 1rem!important;
 				            </select>
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="role_name">Role</label>
+			              <label class="form-label" for="role_name">Role</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="role_name" name="role_name" placeholder="Role">
 			            </div>
 			                <div class="mb-1">

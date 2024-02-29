@@ -185,7 +185,7 @@ font-size: 1rem!important;
                     <div class="modal-body">
                      <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-city-iris"  method="post" novalidate="novalidate">
                       <div class="mb-1">
-			              <label class="form-label" for="state">State</label>
+			              <label class="form-label" for="state">State</label> <span class=re-text>*</span>
 			               <select
 				            	class="select2 form-select formSelect" id="state"
 				              name="state"
@@ -198,7 +198,7 @@ font-size: 1rem!important;
 				            </select>
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="city_name">City</label>
+			              <label class="form-label" for="city_name">City</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="city_name" name="city_name" placeholder="City Name">
 			            </div>
 			                <div class="mb-1">
