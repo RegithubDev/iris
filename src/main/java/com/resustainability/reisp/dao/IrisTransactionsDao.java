@@ -38,13 +38,13 @@ public class IrisTransactionsDao {
 		TransactionDefinition def = new DefaultTransactionDefinition();
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
-			if(!StringUtils.isEmpty(obj.getQuantity_measure())) {
+			if(StringUtils.isEmpty(obj.getQuantity_measure())) {
 				obj.setQuantity_measure("MT");
 			}
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String insertQry = "INSERT INTO [collect_table] (sbu_code,quantity,quantity_measure,date,site_name,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:quantity,:quantity_measure,:site_name,:date,:comments,:created_by,getdate())";
+					+ "(:sbu_code,:quantity,:quantity_measure,:date,:site_name,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

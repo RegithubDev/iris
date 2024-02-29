@@ -73,7 +73,7 @@ public class IrisTransactionsController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			obj.setCreated_by(userId);
+			//obj.setCreated_by(userId);
 			flag = service.uploadCollectData(obj);
 			if(flag == true) {
 				msg ="Collect Data Uploaded Succesfully.";
