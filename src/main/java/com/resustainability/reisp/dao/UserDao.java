@@ -283,7 +283,7 @@ public class UserDao {
 					+ "      ,[modified_by]"
 					+ "      ,[modified_date] "
 					+ "from [user_management] up "
-					+ "where  up.user_name <> '' and up.status = 'Active' ";
+					+ "where  up.user_name <> '' and up.status <> 'Inactive' ";
 			if((!StringUtils.isEmpty(user.getEmail_id()))){
 				qry = qry + " and email_id = ? "; 
 			}

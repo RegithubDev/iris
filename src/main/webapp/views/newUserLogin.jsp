@@ -98,7 +98,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="content-body"><div class="auth-wrapper auth-basic px-2">
   <div class="auth-inner my-2">
     <!-- Register basic -->
-    <div class="card mb-0">
+    <div class="card mb-0 p-3">
       <div class="card-body">
         <a  class="brand-logo">
           <svg
@@ -142,18 +142,7 @@ License: You must have a valid license purchased only from themeforest(the above
             
             </div>
           </div>
-     <!--        <div class="row">
-            <div class="mb-1 col-md-6">
-             <label class="form-label" for="basic-default-password">Password</label>
-              <input type="password" id="basic-default-password" name="password" class="form-control" placeholder="*******">
-           
-            </div>
-            <div class="mb-1 col-md-6">
-                <label class="form-label" for="confirm-password">Confirm Password</label>
-              <input type="password" id="confirm-password" name="confirm-password" class="form-control" placeholder="*********">
-            
-            </div>
-          </div> -->
+    
           
            <div class="row">
             <div class="mb-1 col-md-6">
@@ -224,7 +213,7 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
             <div class="mb-1 col-md-6">
             <label class="form-label" for="basic-number">Mobile Number</label>
-              <input type="password" id="basic-number" name="mobile_number" class="form-control" placeholder="999-999-9999">
+              <input type="number" id="basic-number" name="mobile_number" class="form-control" placeholder="999-999-9999">
             
             </div>
           </div>
