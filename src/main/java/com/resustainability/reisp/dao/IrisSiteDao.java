@@ -102,7 +102,7 @@ public class IrisSiteDao {
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			String qry = "SELECT s.[id]"
 					+ "        ,st.state_name as [state]"
-					+ "      ,s.[city]"
+					+ "      ,s.[city],c.city_name "
 					+ "      ,s.[sbu_code],sbu_name"
 					+ "      ,[sbu_name],latlon"
 					+ "      ,s.[site_name]"
@@ -112,6 +112,7 @@ public class IrisSiteDao {
 					+ "      ,um1.user_name as [modified_by]"
 					+ "      ,FORMAT (um.modified_date, 'dd-MMM-yy') as[modified_date] FROM [site] s  "
 					+ " left join state st on s.state = st.id   "
+					+ " left join city c on s.city = c.id   "
 					+ " left join user_management um on s.created_by = um.id   "
 					+ " left join sbu sb on s.sbu_code = sb.sbu_code   "
 					+ " left join user_management um1 on s.modified_by = um1.id  "
@@ -401,7 +402,7 @@ public class IrisSiteDao {
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			String qry = "SELECT s.[id]"
 					+ "        ,st.state_name as [state]"
-					+ "      ,s.[city]"
+					+ "      ,s.[city],c.city_name"
 					+ "      ,s.[sbu_code],sbu_name"
 					+ "      ,[sbu_name],latlon"
 					+ "      ,s.[site_name]"
@@ -411,6 +412,7 @@ public class IrisSiteDao {
 					+ "      ,um1.user_name as [modified_by]"
 					+ "      ,FORMAT (um.modified_date, 'dd-MMM-yy') as[modified_date] FROM [site] s  "
 					+ " left join state st on s.state = st.id   "
+					+ " left join city c on s.city = c.id   "
 					+ " left join user_management um on s.created_by = um.id   "
 					+ " left join sbu sb on s.sbu_code = sb.sbu_code   "
 					+ " left join user_management um1 on s.modified_by = um1.id  "

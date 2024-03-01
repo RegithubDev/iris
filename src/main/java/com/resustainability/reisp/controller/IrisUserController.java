@@ -233,6 +233,8 @@ public class IrisUserController {
 		try {
 			
 			model.addObject("action", "edit");
+			User UserDetails = service.getUserDetails(user);
+			model.addObject("UserDetails", UserDetails);
 			
 			SBU obj = new SBU();
 			obj.setStatus("Active");
@@ -241,11 +243,13 @@ public class IrisUserController {
 		
 			Category cat = new Category();
 			cat.setStatus("Active");
+			cat.setSbu_code(UserDetails.getSbu());
 			List<Category> catList = catService.getCategoryFilterListForCategory(cat);
 			model.addObject("catList", catList);
 			
 			Role role = new Role();
 			role.setStatus("Active");
+			role.setSbu_code(UserDetails.getSbu());
 			List<Role> roleList = roleService.getRoleFilterListForRole(role);
 			model.addObject("roleList", roleList);
 			
@@ -258,8 +262,7 @@ public class IrisUserController {
 			site.setStatus("Active");
 			List<Site> siteList = siteService.getSiteList(site, 0, 1000, null);
 			model.addObject("siteList", siteList);
-			User UserDetails = service.getUserDetails(user);
-			model.addObject("UserDetails", UserDetails);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -253,7 +253,9 @@ font-size: 1rem!important;
     <script src="/iris/resources/vendors/js/pickers/pickadate/legacy.js"></script>
     <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
         <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
-       
+             <form id="getSite" class="row gy-1 pt-75" action="<%=request.getContextPath() %>/get-site-details" method="post" class="form-horizontal" role="form" >
+         	  <input type="hidden" id="idVal" name="id"  />
+         </form>
     <script>
  $(window).on('load',  function(){
     	
@@ -499,7 +501,7 @@ font-size: 1rem!important;
 		            	if($.trim(data.state) == ''){ return '-'; }else{ return data.state; } 
 		            } },
 		           { "mData": function(data,type,row){
-		            	if($.trim(data.city) == ''){ return '-'; }else{ return data.city; } 
+		            	if($.trim(data.city_name) == ''){ return '-'; }else{ return data.city_name; } 
 		            } },
 		           { "mData": function(data,type,row){
 		            	if($.trim(data.latlon) == ''){ return '-'; }else{ return data.latlon; } 

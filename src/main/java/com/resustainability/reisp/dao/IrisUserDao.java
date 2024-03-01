@@ -96,21 +96,24 @@ public class IrisUserDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT [id]"
+			String qry = "SELECT um.[id]"
 					+ "      ,[user_name]"
 					+ "      ,[email_id]"
-					+ "      ,[password]"
 					+ "      ,[mobile_number]"
-					+ "      ,[sbu]"
+					+ "      ,um.[sbu],sbu_name,st.site_name,c.category_name,r.role_name"
 					+ "      ,[categories]"
-					+ "      ,[roles]"
-					+ "      ,[site_name]"
+					+ "      ,um.[roles]"
 					+ "      ,[notfilled_datadates]"
-					+ "      ,[status]"
-					+ "      ,[created_by]"
-					+ "      ,[created_date]"
-					+ "      ,[modified_by]"
-					+ "      ,[modified_date] from [user_management] um where sbu is not null ";
+					+ "      ,um.[status]"
+					+ "      ,um.[created_by]"
+					+ "      ,um.[created_date]"
+					+ "      ,um.[modified_by]"
+					+ "      ,um.[modified_date] from [user_management] um "
+					+ " left join site st on um.site_name = st.id   "
+					+ " left join category c on um.categories = c.category_code   "
+					+ " left join roles r on um.roles = r.id   "
+					+ " left join sbu sb on um.sbu = sb.sbu_code   "
+					+ "where um.sbu is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
 				qry = qry + " and  um.sbu = ? ";

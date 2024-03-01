@@ -539,13 +539,13 @@ font-size: 1rem!important;
 		            	if($.trim(data.mobile_number) == ''){ return '-'; }else{ return data.mobile_number; }
 		            } },
 		         	{ "mData": function(data,type,row){
-		            	if($.trim(data.sbu) == ''){ return '-'; }else{ return data.sbu; }
+		            	if($.trim(data.sbu) == ''){ return '-'; }else{ return data.sbu_name; }
 		            } },
 		            { "mData": function(data,type,row){
-		            	if($.trim(data.categories) == ''){ return '-'; }else{ return data.categories; } 
+		            	if($.trim(data.categories) == ''){ return '-'; }else{ return data.category_name; } 
 		            } },
 		           { "mData": function(data,type,row){
-		            	if($.trim(data.roles) == ''){ return '-'; }else{ return data.roles; } 
+		            	if($.trim(data.roles) == ''){ return '-'; }else{ return data.role_name; } 
 		            } },
 		           { "mData": function(data,type,row){
 		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; } 

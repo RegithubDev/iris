@@ -245,7 +245,7 @@ public class IrisRoleDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT role_name from [roles] um  where um.role_name is not null ";
+			String qry = "SELECT id,role_name from [roles] um  where um.role_name is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRole_name())) {
 				qry = qry + " and  um.role_name = ? ";
@@ -259,7 +259,7 @@ public class IrisRoleDao {
 				qry = qry + " and um.status = ? ";
 				arrSize++;
 			}
-			qry = qry + " group by role_name order by um.role_name asc";
+			qry = qry + " group by id,role_name order by um.role_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRole_name())) {

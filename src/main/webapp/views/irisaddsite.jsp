@@ -174,7 +174,7 @@
               <select class="form-select select2 select2-hidden-accessible" id="city" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="2">Select City</option>
                     <c:forEach var="obj" items="${cityList}">
-									<option value="${obj.city_name }" <c:if test="${SiteDetails.city == obj.city_name }">selected</c:if>> ${obj.city_name }</option>
+									<option value="${obj.id }" <c:if test="${SiteDetails.city == obj.id }">selected</c:if>> ${obj.city_name }</option>
 								</c:forEach>
               </select>
               </div>
