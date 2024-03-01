@@ -160,7 +160,8 @@
                onchange="getCategoryFilterListWithSBUForUser();getRolesFilterListWithSBUForUser();" tabindex="1" aria-hidden="true">
                 <option value="" data-select2-id="1">Select SBU</option>
                			<c:forEach var="obj" items="${sbuList}">
-									<option value="${obj.sbu_code }"  <c:if test="${UserDetails.sbu == obj.sbu_code }">selected</c:if>>[${obj.sbu_code }] - ${obj.sbu_name }</option>
+									<option value="${obj.sbu_code }" 
+									 <c:if test="${UserDetails.sbu == obj.sbu_code }">selected</c:if>>[${obj.sbu_code }] - ${obj.sbu_name }</option>
 						</c:forEach>
               </select>
               </div>

@@ -15,10 +15,11 @@ public class PageConstants {
 	public static final String irisdatamanagement = "irisdatamanagement";	
 	public static final String irisaccountinfo = "irisaccountinfo";	
 
+	public static final String inactiveuserpage = "inactiveuserpage";	
+
 	
 	
-	
-	
+
 	
 	
 	

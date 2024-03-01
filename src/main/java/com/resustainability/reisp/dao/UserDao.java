@@ -727,4 +727,57 @@ public class UserDao {
 		return menuList;
 	}
 
+	public User EmailVerification(User user) throws SQLException {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		User userDetails = null;
+		try{  
+			con = dataSource.getConnection();
+			String qry = "select [id]"
+					+ "      ,[user_name]"
+					+ "      ,[email_id]"
+					+ "      ,[password]"
+					+ "      ,[mobile_number]"
+					+ "      ,[sbu]"
+					+ "      ,[categories]"
+					+ "      ,[roles]"
+					+ "      ,[site_name]"
+					+ "      ,[notfilled_datadates]"
+					+ "      ,[created_by]"
+					+ "      ,[created_date]"
+					+ "      ,[modified_by]"
+					+ "      ,[modified_date] "
+					+ "from [user_management] up "
+					+ "where  up.user_name <> ''  ";
+			if((!StringUtils.isEmpty(user.getEmail_id()))){
+				qry = qry + " and email_id = ? "; 
+			}
+			stmt = con.prepareStatement(qry);
+			if((!StringUtils.isEmpty(user.getEmail_id()))){
+				stmt.setString(1, user.getEmail_id());
+				//stmt.setString(2, EncryptDecrypt.encrypt(user.getPassword()));;
+				//stmt.setString(2,(user.getPassword()));;
+			}
+			rs = stmt.executeQuery();  
+			if(rs.next()) {
+				userDetails = new User();
+				userDetails.setId(rs.getString("id"));
+				userDetails.setUser_name(rs.getString("user_name"));
+				userDetails.setEmail_id(rs.getString("email_id"));
+				userDetails.setRole(rs.getString("roles"));
+				userDetails.setPhone(rs.getString("mobile_number"));
+				userDetails.setSite(rs.getString("site_name"));
+				userDetails.setSbu(rs.getString("sbu"));
+				userDetails.setCategory(rs.getString("categories"));
+				//UserLoginActions(userDetails);
+			}
+		}catch(Exception e){ 
+			throw new SQLException(e.getMessage());
+		}finally {
+			DBConnectionHandler.closeJDBCResoucrs(con, stmt, rs);
+		}
+		return userDetails;
+	}
+
 }

@@ -147,13 +147,13 @@ License: You must have a valid license purchased only from themeforest(the above
            <div class="row">
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select SBU</label>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="select-department" name="sbu" data-select2-id="select-department" tabindex="1" aria-hidden="true">
-                <option value="" data-select2-id="1">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="select-department" 
+              onchange="getCategoryFilterListWithSBUForUser();getRolesFilterListWithSBUForUser();" name="sbu" data-select2-id="select-department" tabindex="1" aria-hidden="true">
+                 <option value="" data-select2-id="1">Select SBU</option>
+               			<c:forEach var="obj" items="${sbuList}">
+									<option value="${obj.sbu_code }" 
+		            <c:if test="${UserDetails.sbu == obj.sbu_code }">selected</c:if>>[${obj.sbu_code }] - ${obj.sbu_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
@@ -161,12 +161,10 @@ License: You must have a valid license purchased only from themeforest(the above
              <label class="form-label" for="select-country">Select Category</label>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="Select-Category" name="categories" data-select2-id="Select-Category" tabindex="2" aria-hidden="true">
-                <option value="" data-select2-id="2">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+                <option value="" data-select2-id="1">Select Category</option>
+               			<c:forEach var="obj" items="${catList}">
+										<option value="${obj.category_code }"  <c:if test="${UserDetails.categories == obj.category_code }">selected</c:if>> ${obj.category_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
@@ -175,25 +173,22 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select Role</label>
               <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="select-role" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
-                <option value="" data-select2-id="1">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+                <option value="" data-select2-id="1">Select Role</option>
+              			<c:forEach var="obj" items="${roleList}">
+									<option value="${obj.role_name }"  <c:if test="${UserDetails.roles == obj.role_name }">selected</c:if>> ${obj.role_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
             <div class="mb-1 col-md-6">
              <label class="form-label" for="select-country">Select City</label>
               <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="Select-City" name="city" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
-                <option value="" data-select2-id="2">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+              <select class="form-select select2 select2-hidden-accessible" id="Select-City" name="city"
+              onchange="getSiteFilterListWithCityForUser();  data-select2-id="Select-City" tabindex="4" aria-hidden="true">
+                 <option value="" data-select2-id="2">Select </option>
+               			<c:forEach var="obj" items="${cityList}">
+									<option value="${obj.city_name }"  <c:if test="${UserDetails.city == obj.city_name }">selected</c:if>>${obj.city_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
@@ -202,12 +197,10 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Site Name</label>
               <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="select-site" name="site_name" data-select2-id="select-site" tabindex="5" aria-hidden="true">
-                <option value="" data-select2-id="1">Select </option>
-                <option value="usa">USA</option>
-                <option value="uk">UK</option>
-                <option value="france">France</option>
-                <option value="australia">Australia</option>
-                <option value="spain">Spain</option>
+               <option value="" data-select2-id="1">Select </option>
+               			<c:forEach var="obj" items="${siteList}">
+									<option value="${obj.site_name }"  <c:if test="${UserDetails.site_name == obj.site_name }">selected</c:if>> ${obj.site_name }</option>
+						</c:forEach>
               </select>
               </div>
             </div>
@@ -217,13 +210,9 @@ License: You must have a valid license purchased only from themeforest(the above
             
             </div>
           </div>
-           
-           <div class="row">
-      <div class="col-12 text-center mt-4">
-        		<button type="button" class="btn  waves-effect waves-float waves-light re-text-bg" name="submit" value="Submit">Submit</button>
-                <a href="<%=request.getContextPath() %>/iris-usermanagement" class="btn btn-outline-secondary waves-effect">Back</a>
-      </div>
-    </div>
+           <div class="col-md-12 col-12 text-center mt-2">
+               <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Sign Up</button>
+              </div>
     
           </form>
         </div>
@@ -285,6 +274,15 @@ License: You must have a valid license purchased only from themeforest(the above
     <script src="/iris/resources/vendors/js/file-uploaders/dropzone.min.js"></script>
     <script src="/iris/resources/js/scripts/forms/form-file-uploader.min.js"></script>
 
+ <!-- BEGIN: Page Vendor JS-->
+    <script src="/iris/resources/vendors/js/ui/jquery.sticky.js"></script>
+    <script src="/iris/resources/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="/iris/resources/vendors/js/forms/validation/jquery.validate.min.js"></script>
+    <script src="/iris/resources/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+    <!-- END: Page Vendor JS-->
+    <!-- BEGIN: Page JS-->
+    <script src="/iris/resources/js/scripts/forms/form-validation.js"></script>
+    <!-- END: Page JS-->
     <!-- BEGIN: Page JS-->
     <script src="/reisp/resources/js/scripts/pages/auth-register.min.js"></script>
     <!-- END: Page JS-->
@@ -299,6 +297,71 @@ License: You must have a valid license purchased only from themeforest(the above
 	        	document.getElementById("addUserForm").submit();	
 	    	}
 	    }
+      function getCategoryFilterListWithSBUForUser() {
+    	   	 var sbu = $("#sbu").val();
+    	          if ($.trim(sbu) != "") {
+    	          	$("#categories option:not(:first)").remove();
+    	          	var myParams = { sbu: sbu};
+    	              $.ajax({
+    	                  url: "<%=request.getContextPath()%>/ajax/getCategoryFilterListWithSBUForUser",
+    	                  data: myParams, cache: false,async: false,
+    	                  success: function (data) {
+    	                      if (data.length > 0) {
+    	                          $.each(data, function (i, val) {
+    	                               $("#categories").append('<option value="' + val.category_code + '">' + $.trim(val.category_name) +'</option>');
+    	                          });
+    	                      }
+    	                  },error: function (jqXHR, exception) {
+    	      	   			      $(".page-loader").hide();
+    	         	          	  getErrorMessage(jqXHR, exception);
+    	         	     	  }
+    	              });
+    	          }
+    	      }
+    	 
+    	 function getRolesFilterListWithSBUForUser() {
+    	   	 var sbu = $("#sbu").val();
+    	          if ($.trim(sbu) != "") {
+    	          	$("#roles option:not(:first)").remove();
+    	          	var myParams = { sbu: sbu};
+    	              $.ajax({
+    	                  url: "<%=request.getContextPath()%>/ajax/getRolesFilterListWithSBUForUser",
+    	                  data: myParams, cache: false,async: false,
+    	                  success: function (data) {
+    	                      if (data.length > 0) {
+    	                          $.each(data, function (i, val) {
+    	                               $("#roles").append('<option value="' + val.role_name + '">' + $.trim(val.role_name) +'</option>');
+    	                          });
+    	                      }
+    	                  },error: function (jqXHR, exception) {
+    	      	   			      $(".page-loader").hide();
+    	         	          	  getErrorMessage(jqXHR, exception);
+    	         	     	  }
+    	              });
+    	          }
+    	      }
+    	 function getSiteFilterListWithCityForUser() {
+    	   	 var city = $("#city").val();
+    	          if ($.trim(city) != "") {
+    	          	$("#site_name option:not(:first)").remove();
+    	          	var myParams = { city: city};
+    	              $.ajax({
+    	                  url: "<%=request.getContextPath()%>/ajax/getSiteFilterListWithCityForUser",
+    	                  data: myParams, cache: false,async: false,
+    	                  success: function (data) {
+    	                      if (data.length > 0) {
+    	                          $.each(data, function (i, val) {
+    	                               $("#site_name").append('<option value="' + val.site_name + '">' + $.trim(val.site_name) +'</option>');
+    	                          });
+    	                      }
+    	                  },error: function (jqXHR, exception) {
+    	      	   			      $(".page-loader").hide();
+    	         	          	  getErrorMessage(jqXHR, exception);
+    	         	     	  }
+    	              });
+    	          }
+    	      }
+      
         var validator =	$('#addUserForm').validate({
 	    	 errorClass: "my-error-class",
 	    	 validClass: "my-valid-class",

@@ -81,4 +81,8 @@ public class UserService {
 		return dao.getAllPermissions(base_role);
 	}
 
+	public User EmailVerification(User user) throws SQLException {
+		return dao.EmailVerification(user);
+	}
+
 }
