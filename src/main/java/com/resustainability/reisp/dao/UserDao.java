@@ -268,22 +268,24 @@ public class UserDao {
 		User userDetails = null;
 		try{  
 			con = dataSource.getConnection();
-			String qry = "select [id]"
+			String qry = "SELECT um.[id]"
 					+ "      ,[user_name]"
 					+ "      ,[email_id]"
-					+ "      ,[password]"
 					+ "      ,[mobile_number]"
-					+ "      ,[sbu]"
+					+ "      ,um.[sbu],sbu_name,st.site_name,c.category_name,r.role_name"
 					+ "      ,[categories]"
-					+ "      ,[roles]"
-					+ "      ,[site_name]"
+					+ "      ,um.[roles]"
 					+ "      ,[notfilled_datadates]"
-					+ "      ,[created_by]"
-					+ "      ,[created_date]"
-					+ "      ,[modified_by]"
-					+ "      ,[modified_date] "
-					+ "from [user_management] up "
-					+ "where  up.user_name <> '' and up.status <> 'Inactive' ";
+					+ "      ,um.[status]"
+					+ "      ,um.[created_by]"
+					+ "      ,um.[created_date]"
+					+ "      ,um.[modified_by]"
+					+ "      ,um.[modified_date] from [user_management] um "
+					+ " left join site st on um.site_name = st.id   "
+					+ " left join category c on um.categories = c.category_code   "
+					+ " left join roles r on um.roles = r.id   "
+					+ " left join sbu sb on um.sbu = sb.sbu_code   "
+					+ "where um.sbu is not null  and um.status <> 'Inactive'";
 			if((!StringUtils.isEmpty(user.getEmail_id()))){
 				qry = qry + " and email_id = ? "; 
 			}
@@ -299,11 +301,11 @@ public class UserDao {
 				userDetails.setId(rs.getString("id"));
 				userDetails.setUser_name(rs.getString("user_name"));
 				userDetails.setEmail_id(rs.getString("email_id"));
-				userDetails.setRole(rs.getString("roles"));
+				userDetails.setRole(rs.getString("role_name"));
 				userDetails.setPhone(rs.getString("mobile_number"));
 				userDetails.setSite(rs.getString("site_name"));
-				userDetails.setSbu(rs.getString("sbu"));
-				userDetails.setCategory(rs.getString("categories"));
+				userDetails.setSbu(rs.getString("sbu_name"));
+				userDetails.setCategory(rs.getString("category_name"));
 				//UserLoginActions(userDetails);
 			}
 		}catch(Exception e){ 
