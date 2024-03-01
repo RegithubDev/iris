@@ -21,5 +21,21 @@ public class IrisTransactionsService {
 		return dao.uploadCollectData(obj);
 	}
 
+	public boolean uploadBMWProcessingData(Transaction obj) throws Exception{
+		return dao.uploadBMWProcessingData(obj);
+	}
+
+	public boolean uploadBMWDistributeData(Transaction obj)throws Exception{
+		return dao.uploadBMWDistributeData(obj);
+	}
+
+	public boolean uploadMSWDistributeData(Transaction obj) throws Exception{
+		return dao.uploadMSWDistributeData(obj);
+	}
+
+	public boolean uploadMSWProcessingData(Transaction obj)throws Exception{
+		return dao.uploadMSWProcessingData(obj);
+	}
+
 
 }

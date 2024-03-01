@@ -59,5 +59,182 @@ public class IrisTransactionsDao {
 		return flag;
 	}
 
+	public boolean uploadBMWProcessingData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			if(StringUtils.isEmpty(obj.getQuantity_measure_waste())) {
+				obj.setQuantity_measure_waste("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuantity_measure_incieration())) {
+				obj.setQuantity_measure_incieration("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuantity_measure_autoclave())) {
+				obj.setQuantity_measure_autoclave("MT");
+			}
+			
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [bmw_processing_table] (total_waste,total_incieration,total_autoclave,quantity_measure_waste,quantity_measure_incieration,"
+					+ "quantity_measure_autoclave,site,comments,created_by,created_date) "
+					+ "VALUES "
+					+ "(:total_waste,:total_incieration,:total_autoclave,:quantity_measure_waste,:quantity_measure_incieration,"
+					+ "	:quantity_measure_autoclave,:site,:comments,:created_by,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean uploadBMWDistributeData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			if(StringUtils.isEmpty(obj.getQuality_measure_materials())) {
+				obj.setQuality_measure_materials("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuality_measure_recylable())) {
+				obj.setQuality_measure_recylable("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuality_measure_plastics())) {
+				obj.setQuality_measure_plastics("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuality_measure_bags())) {
+				obj.setQuality_measure_bags("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuality_measure_glass())) {
+				obj.setQuality_measure_glass("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuality_measure_cardboard())) {
+				obj.setQuality_measure_cardboard("MT");
+			}
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [bmw_distribute_table] (total_materials,total_recylable,total_bags,total_glass,total_cardboard,quality_measure_materials,"
+					+ "quality_measure_recylable,quality_measure_plastics,quality_measure_bags,quality_measure_glass,quality_measure_cardboard,site,comments,date,"
+					+ "created_by,created_date) "
+					+ "VALUES "
+					+ "(:total_materials,:total_recylable,:total_bags,:total_glass,:total_cardboard,:quality_measure_materials,"
+					+ ":quality_measure_recylable,:quality_measure_plastics,:quality_measure_bags,:quality_measure_glass,:quality_measure_cardboard,:site,:comments,:date,"
+					+ ":created_by,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean uploadMSWDistributeData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			if(StringUtils.isEmpty(obj.getVendor_name_rdf_outflow())) {
+				obj.setVendor_name_rdf_outflow("MT");
+			}
+			if(StringUtils.isEmpty(obj.getVendor_name_compost_outflow())) {
+				obj.setVendor_name_compost_outflow("MT");
+			}
+			if(StringUtils.isEmpty(obj.getVendor_name_recylables_outflow())) {
+				obj.setVendor_name_recylables_outflow("MT");
+			}
+			if(StringUtils.isEmpty(obj.getVendor_name_inserts_outflow())) {
+				obj.setVendor_name_inserts_outflow("MT");
+			}
+		
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [msw_distribute_table] "
+					+ "(rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,"
+					+ "vendor_name_inserts,vendor_name_rdf_outflow,vendor_name_compost_outflow,vendor_name_recylables_outflow,vendor_name_inserts_outflow,date,site,comments,created_by,created_date) "
+					+ "VALUES "
+					+ "(:rdf,:compost,:recyclables,:inserts,:vendor_name_rdf,:vendor_name_compost,:vendor_name_recyclables,:vendor_name_inserts,:vendor_name_rdf_outflow,"
+					+ ":vendor_name_compost_outflow,:vendor_name_recylables_outflow,:vendor_name_inserts_outflow,:date,:site,:comments,:created_by,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean uploadMSWProcessingData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			if(StringUtils.isEmpty(obj.getQuantity_measure_waste())) {
+				obj.setQuantity_measure_waste("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuantity_measure_rdf())) {
+				obj.setQuantity_measure_rdf("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuantity_measure_compost())) {
+				obj.setQuantity_measure_compost("MT");
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			}
+			if(StringUtils.isEmpty(obj.getQuantity_measure_inerts())) {
+				obj.setQuantity_measure_inerts("MT");
+			}
+			if(StringUtils.isEmpty(obj.getQuantity_measure_recylabels())) {
+				obj.setQuantity_measure_recylabels("MT");
+			}
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [msw_processing_table] (total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
+					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site_name,comments,created_by,created_date) "
+					+ "VALUES "
+					+ "(:total_waste,total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
+					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site_name,:comments,:created_by,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
 	
 }

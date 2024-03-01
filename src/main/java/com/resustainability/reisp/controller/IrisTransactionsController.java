@@ -88,6 +88,111 @@ public class IrisTransactionsController {
 		return msg;
 	}
 	
+	@RequestMapping(value = "/ajax/upload-bmw-processing-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadBMWProcessingData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			//obj.setCreated_by(userId);
+			flag = service.uploadBMWProcessingData(obj);
+			if(flag == true) {
+				msg ="Collect Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "Collecting Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
 	
+	@RequestMapping(value = "/ajax/upload-bmw-distribute-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadBMWDistributeData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			//obj.setCreated_by(userId);
+			flag = service.uploadBMWDistributeData(obj);
+			if(flag == true) {
+				msg ="Collect Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "Collecting Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
+	
+	@RequestMapping(value = "/ajax/upload-msw-distribute-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadMSWDistributeData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			//obj.setCreated_by(userId);
+			flag = service.uploadMSWDistributeData(obj);
+			if(flag == true) {
+				msg ="Collect Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "Collecting Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
 
+	@RequestMapping(value = "/ajax/upload-msw-processing-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadMSWProcessingData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			//obj.setCreated_by(userId);
+			flag = service.uploadMSWProcessingData(obj);
+			if(flag == true) {
+				msg ="Collect Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "Collecting Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
 }
