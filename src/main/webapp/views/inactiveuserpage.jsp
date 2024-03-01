@@ -65,10 +65,11 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     <!-- verify email basic -->
     <div class="card mb-0 p-4">
       <div class="card-body">
-        <a href="index-2.html" class="brand-logo">
+       
          
-          <h2 class="brand-text text-primary ms-1">IRIS </h2>
-        </a>
+<div class="card-body text-center">
+          <h5 class="card-title">IRIS</h5>
+        </div>       
         
         <p  class="card-text mb-2" >
        Hai     <b>${name }!</b><br>

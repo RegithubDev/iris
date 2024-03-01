@@ -54,6 +54,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 					&& !requestURI.equals("/"+context_path+"/someone-login") && !requestURI.equals("/someone-login") 
 					&& !requestURI.equals("/"+context_path+"/access-denied") && !request.getRequestURI().equals("/access-denied")){
 			    User userData = (User) request.getSession().getAttribute("user");
+			    if( requestURI.equals("/"+context_path+"/add-user-iris")) {
+					return true;
+				}
 			    if(userData == null){
 			    	if(request.getRequestURI().contains("/"+context_path+"/")){
 			    		response.sendRedirect("/"+context_path+"/login");
