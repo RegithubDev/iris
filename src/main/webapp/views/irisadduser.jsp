@@ -174,10 +174,14 @@
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="categories" name="categories" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="1">Select Category</option>
-               			<c:forEach var="obj" items="${catList}">
-										<option value="${obj.category_code }"  <c:if test="${UserDetails.categories == obj.category_code }">selected</c:if>> ${obj.category_name }</option>
+						<c:set var="categoriesString" value="${UserDetails.categories}" />
+						<c:set var="categoriesArray" value="${fn:split(categoriesString, ',')}" />
+               			<c:forEach var="obj" items="${catList}" varStatus="index">
+<%-- 			               	  <option value="${obj.category_code }"  <c:if test="${values[index.count - 1] == obj.category_code }">selected</c:if>> ${obj.category_name }</option>
+ --%>			               	 <option value="${obj.category_code }"  <c:if test="${categoriesArray[index.count - 1] == obj.category_code }">selected</c:if>> ${obj.category_name }</option> 
 						</c:forEach>
               </select>
+
               </div>
             </div>
            <div class="mb-1 col-md-6">

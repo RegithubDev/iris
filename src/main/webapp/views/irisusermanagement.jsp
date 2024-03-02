@@ -225,7 +225,7 @@ font-size: 1rem!important;
 								<th >Email</th>
 								<th >Mobile</th>
 								<th >SBU</th>
-								<th >Categories</th>
+								<!-- <th >Categories</th> -->
 								<th >Roles</th>
 								<th >Site Name</th>
              				</tr>
@@ -541,9 +541,9 @@ font-size: 1rem!important;
 		         	{ "mData": function(data,type,row){
 		            	if($.trim(data.sbu) == ''){ return '-'; }else{ return data.sbu_name; }
 		            } },
-		            { "mData": function(data,type,row){
+		          /*   { "mData": function(data,type,row){
 		            	if($.trim(data.categories) == ''){ return '-'; }else{ return data.category_name; } 
-		            } },
+		            } }, */
 		           { "mData": function(data,type,row){
 		            	if($.trim(data.roles) == ''){ return '-'; }else{ return data.role_name; } 
 		            } },

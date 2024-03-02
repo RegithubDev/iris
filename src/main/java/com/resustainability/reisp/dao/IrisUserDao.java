@@ -404,6 +404,31 @@ public class IrisUserDao {
 		}
 		return objsList;
 	}
+
+	public boolean updateUserSelfIris(User obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [user_management] set "
+					+ "		user_name= :user_name"
+					+ "      ,mobile_number= :mobile_number,modified_date= getdate(),modified_by= :modified_by"
+					+ " where id =  '"+obj.getId()+"'";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
 	
 	
 	

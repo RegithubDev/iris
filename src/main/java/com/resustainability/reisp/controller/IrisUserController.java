@@ -117,13 +117,44 @@ public class IrisUserController {
 	public ModelAndView irisaccountinfo(@ModelAttribute User user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.irisaccountinfo);
 		try {
-			
+			String userId = (String) session.getAttribute("USER_ID");
+			user.setId(userId);
+			User userDetails = service.getUserDetails(user);
+			model.addObject("UserDetails", userDetails);
+			session.setAttribute("user", userDetails);
+			session.setAttribute("USER_NAME", userDetails.getUser_name());
+			session.setAttribute("BASE_SBU", userDetails.getSbu());
+			session.setAttribute("DEPARTMENT", userDetails.getDepartment());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return model;
 	}
 	
+	@RequestMapping(value = "/update-user-self-iris", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateUserSelfIris(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/iris-accountinfo");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setModified_by(userId);
+			obj.setId(userId);
+			flag = service.updateUserSelfIris(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "User Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Updating User is failed. Try again.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
 	
 	@RequestMapping(value = "/iris-adduser", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView irisadduser(@ModelAttribute User user, HttpSession session) {
