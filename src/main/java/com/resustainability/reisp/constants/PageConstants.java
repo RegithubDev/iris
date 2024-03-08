@@ -16,6 +16,7 @@ public class PageConstants {
 	public static final String irisaccountinfo = "irisadduser2";	
 
 	public static final String inactiveuserpage = "inactiveuserpage";	
+	public static final String noAccessPage = "noAccessPage";	
 
 	
 	

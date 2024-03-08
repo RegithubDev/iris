@@ -32,6 +32,7 @@ import com.resustainability.reisp.model.City;
 import com.resustainability.reisp.model.CityPaginationObject;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.service.IrisCityService;
+import com.resustainability.reisp.service.IrisSBUService;
 
 @Controller
 public class IrisCityController { 
@@ -44,6 +45,9 @@ public class IrisCityController {
 	@Autowired
 	IrisCityService service;
 	
+	@Autowired
+	IrisSBUService sbuService;
+	
 	@RequestMapping(value = "/iris-city", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView iriscity(@ModelAttribute City user, HttpSession session) {
 		ModelAndView model = new ModelAndView(PageConstants.iriscity);
@@ -51,6 +55,11 @@ public class IrisCityController {
 		try { 
 			List<City> objList = service.getStateList(obj);
 			model.addObject("objList", objList);
+			
+			SBU sbu = new SBU();
+			sbu.setStatus("Active");
+			List<SBU> sbuList = sbuService.getSBUFilterListForSBU(sbu);
+			model.addObject("sbuList", sbuList);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

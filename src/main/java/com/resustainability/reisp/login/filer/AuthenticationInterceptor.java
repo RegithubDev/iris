@@ -49,6 +49,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 			UrlGenerator ugObj = new UrlGenerator();
 			context_path = ugObj.getContextPath();
 			// Avoid a redirect loop for some urls
+			if(!request.getRequestURI().contains("@")){
 			if( !requestURI.equals("/"+context_path+"/") && !requestURI.equals("/"+context_path+"/login") 
 					&& !requestURI.equals("/") && !requestURI.equals("/login") 
 					&& !requestURI.equals("/"+context_path+"/someone-login") && !requestURI.equals("/someone-login") 
@@ -57,7 +58,11 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 			    if( requestURI.equals("/"+context_path+"/add-user-iris")) {
 					return true;
 				}
-			    if(userData == null){
+			    if(requestURI.contains("reone") && userData == null ) {
+			    	response.sendRedirect("/"+context_path+"/login-first");
+			    	 return false;
+			    }
+			    if(!requestURI.equals("/"+context_path+"/login-first") && userData == null){
 			    	if(request.getRequestURI().contains("/"+context_path+"/")){
 			    		response.sendRedirect("/"+context_path+"/login");
 			    	}else{
@@ -66,6 +71,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 				    return false;
 				}
 			}
+		   }
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("preHandle : " + e.getMessage());

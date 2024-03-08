@@ -217,8 +217,21 @@ public class CategoryDao {
 			String qry = "SELECT um.[category_code],category_name from [category] um  where um.sbu_code is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				qry = qry + " and  um.sbu_code = ? ";
-				arrSize++;
+				 String input = obj.getSbu_code();
+				 StringBuilder concatenated = new StringBuilder();
+				qry = qry + " and  um.sbu_code in (";
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 qry = qry + " ?,";
+						 arrSize++;
+					 }
+				    qry =  qry.trim().replaceAll(",$", "");
+					qry = qry + " )";
+				 }else {
+					 qry = qry + " ?)";
+					 arrSize++;
+				 }
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
 				qry = qry + " and  um.category_code = ? ";
@@ -232,7 +245,16 @@ public class CategoryDao {
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				pValues[i++] = obj.getSbu_code();
+				 String input = obj.getSbu_code();
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 pValues[i++] = arrObj ;
+					 }
+				
+			     }else {
+			    	 pValues[i++] = obj.getSbu_code();
+			     }
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCategory_code())) {
 				pValues[i++] = obj.getCategory_code();

@@ -350,7 +350,7 @@ font-size: 1rem!important;
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#rolesId").append('<option value="' + val.city + '">' + $.trim(val.city) +'</option>');
+                            $("#rolesId").append('<option value="' + val.city + '">' + $.trim(val.city_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -501,7 +501,7 @@ font-size: 1rem!important;
 		            	if($.trim(data.state) == ''){ return '-'; }else{ return data.state; } 
 		            } },
 		           { "mData": function(data,type,row){
-		            	if($.trim(data.city_name) == ''){ return '-'; }else{ return data.city_name; } 
+		            	if($.trim(data.city) == ''){ return '-'; }else{ return data.city_name; } 
 		            } },
 		           { "mData": function(data,type,row){
 		            	if($.trim(data.latlon) == ''){ return '-'; }else{ return data.latlon; } 

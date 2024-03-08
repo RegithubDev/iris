@@ -176,11 +176,14 @@ public class IrisUserController {
 			role.setStatus("Active");
 			List<Role> roleList = roleService.getRoleFilterListForRole(role);
 			model.addObject("roleList", roleList);
+		
 			
-			City city = new City();
-			city.setStatus("Active");
-			List<City> cityList = cityService.getCityFilterListForCity(city);
+			Site site1 = new Site();
+			site1.setStatus("Active");
+			site1.setSbu_code(obj.getSbu());
+			List<Site> cityList = siteService.getCityFilterListForSite(site1);
 			model.addObject("cityList", cityList);
+			
 			
 			Site site = new Site();
 			site.setStatus("Active");
@@ -210,6 +213,27 @@ public class IrisUserController {
 		}catch (Exception e) {
 			e.printStackTrace();
 			logger.error("getCategoryFilterListForCategory : " + e.getMessage());
+		}
+		return companiesList;
+	}
+	
+	@RequestMapping(value = "/ajax/getCitiesFilterListWithSBUForUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<City> getCitiesFilterListWithSBUForUser(@ModelAttribute City obj,HttpSession session) {
+		List<City> companiesList = null;
+		String userId = null;
+		String siteName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			obj.setSbu_code(obj.getSbu());
+			obj.setStatus("Active");
+			companiesList = cityService.getCityFilterListForCity(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getCitiesFilterListWithSBUForUser : " + e.getMessage());
 		}
 		return companiesList;
 	}
@@ -284,10 +308,13 @@ public class IrisUserController {
 			List<Role> roleList = roleService.getRoleFilterListForRole(role);
 			model.addObject("roleList", roleList);
 			
-			City city = new City();
-			city.setStatus("Active");
-			List<City> cityList = cityService.getCityFilterListForCity(city);
+
+			Site site1 = new Site();
+			site1.setStatus("Active");
+			site1.setSbu_code(UserDetails.getSbu());
+			List<Site> cityList = siteService.getCityFilterListForSite(site1);
 			model.addObject("cityList", cityList);
+			
 			
 			Site site = new Site();
 			site.setStatus("Active");

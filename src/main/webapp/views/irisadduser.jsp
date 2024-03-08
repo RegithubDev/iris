@@ -156,44 +156,67 @@
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select SBU</label>  <span class=re-text>*</span>
               <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" data-select2-id="select-department" 
-               onchange="getCategoryFilterListWithSBUForUser();getRolesFilterListWithSBUForUser();" tabindex="1" aria-hidden="true">
+              <select class="form-select select2 select2-hidden-accessible" id="sbu" name="sbu" multiple data-select2-id="select-department" 
+               onchange="getCategoryFilterListWithSBUForUser();getRolesFilterListWithSBUForUser();getCitiesFilterListWithSBUForUser();" tabindex="1" aria-hidden="true">
                 <option value="" data-select2-id="1">Select SBU</option>
-               			<c:forEach var="obj" items="${sbuList}">
-									<option value="${obj.sbu_code }"  <c:if test="${UserDetails.sbu == obj.sbu_code }">selected</c:if>>[${obj.sbu_code }] - ${obj.sbu_name }</option>
-						</c:forEach>
+                <c:set var="categoriesString" value="${UserDetails.sbu}" />
+						<c:set var="categoriesArray" value="${fn:split(categoriesString, ',')}" />
+	               			<c:forEach var="obj" items="${sbuList}" varStatus="index">
+	               			<c:if test="${!uniqueOptions.contains(option)}">
+	 		               	  <option value="${obj.sbu_code }"  
+	 		               	  	<c:forEach var="objMain" items="${categoriesArray}" varStatus="index">
+	 		               	  		<c:if test="${objMain == obj.sbu_code }">selected</c:if>
+	 		               	   	</c:forEach>
+	 		               	  >[${obj.sbu_code}] - ${obj.sbu_name }</option> 
+	 		               	  </c:if>
+							</c:forEach>
               </select>
               </div>
             </div>
           </div>
           <div class="row">
         
-           
+         
            <div class="mb-1 col-md-6">
              <label class="form-label" for="select-country">Select Category</label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="categories" name="categories" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="1">Select Category</option>
-						<c:set var="categoriesString" value="${UserDetails.categories}" />
+                
+                 <c:set var="categoriesString" value="${UserDetails.categories}" />
 						<c:set var="categoriesArray" value="${fn:split(categoriesString, ',')}" />
-               			<c:forEach var="obj" items="${catList}" varStatus="index">
-<%-- 			               	  <option value="${obj.category_code }"  <c:if test="${values[index.count - 1] == obj.category_code }">selected</c:if>> ${obj.category_name }</option>
- --%>			               	 <option value="${obj.category_code }"  <c:if test="${categoriesArray[index.count - 1] == obj.category_code }">selected</c:if>> ${obj.category_name }</option> 
-						</c:forEach>
+	               			<c:forEach var="obj" items="${catList}" varStatus="index">
+	               			<c:if test="${!uniqueOptions.contains(option)}">
+	 		               	  <option value="${obj.category_code }"  
+	 		               	  	<c:forEach var="objMain" items="${categoriesArray}" varStatus="index">
+	 		               	  		<c:if test="${objMain == obj.category_code }">selected</c:if>
+	 		               	   	</c:forEach>
+	 		               	  > ${obj.category_name }</option> 
+	 		               	  </c:if>
+							</c:forEach>
               </select>
 
               </div>
-            </div>
+            </div> 
            <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Select Role</label>  <span class=re-text>*</span>
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="roles" multiple name="roles" data-select2-id="select-role" tabindex="3" aria-hidden="true">
                 <option value="" data-select2-id="1">Select Role</option>
-              			<c:forEach var="obj" items="${roleList}">
-									<option value="${obj.id }"  <c:if test="${UserDetails.roles == obj.id }">selected</c:if>> ${obj.role_name }</option>
-						</c:forEach>
+              		<c:set var="categoriesString" value="${UserDetails.roles}" />
+						<c:set var="categoriesArray" value="${fn:split(categoriesString, ',')}" />
+	               			<c:forEach var="obj" items="${roleList}" varStatus="index">
+	               			<c:if test="${!uniqueOptions.contains(option)}">
+	 		               	  <option value="${obj.id }"  
+	 		               	  	<c:forEach var="objMain" items="${categoriesArray}" varStatus="index">
+	 		               	  		<c:if test="${objMain == obj.id }">selected</c:if>
+	 		               	   	</c:forEach>
+	 		               	  > ${obj.role_name }</option> 
+	 		               	  </c:if>
+							</c:forEach>
               </select>
               </div>
             </div> 
+             
           </div>
           <div class="row">
             <div class="mb-1 col-md-6"> 
@@ -220,12 +243,7 @@
             </div>
           
           </div>
-          
-          
-          
-          
-           <div class="row">
-            <div class="mb-1 col-md-4">
+           <div class="mb-1 col-md-4">
              <label class="form-label" for="select-status">Select Status</label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="status" name="status" 
@@ -235,13 +253,7 @@
               </select>
               </div>
             </div>
-           
-          
-          </div>
-          
-          
-          
-          
+       
           
        <div class="col-md-12 col-12 text-center mt-2">
                <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
@@ -320,9 +332,10 @@
 
  function getCategoryFilterListWithSBUForUser() {
    	 var sbu = $("#sbu").val();
+  	var string = sbu.join(",");
           if ($.trim(sbu) != "") {
           	$("#categories option:not(:first)").remove();
-          	var myParams = { sbu: sbu};
+          	var myParams = { sbu: string};
               $.ajax({
                   url: "<%=request.getContextPath()%>/ajax/getCategoryFilterListWithSBUForUser",
                   data: myParams, cache: false,async: false,
@@ -342,9 +355,11 @@
  
  function getRolesFilterListWithSBUForUser() {
    	 var sbu = $("#sbu").val();
+   	var string = sbu.join(",");
           if ($.trim(sbu) != "") {
           	$("#roles option:not(:first)").remove();
-          	var myParams = { sbu: sbu};
+          
+          	var myParams = { sbu: string};
               $.ajax({
                   url: "<%=request.getContextPath()%>/ajax/getRolesFilterListWithSBUForUser",
                   data: myParams, cache: false,async: false,
@@ -352,6 +367,29 @@
                       if (data.length > 0) {
                           $.each(data, function (i, val) {
                                $("#roles").append('<option value="' + val.id + '">' + $.trim(val.role_name) +'</option>');
+                          });
+                      }
+                  },error: function (jqXHR, exception) {
+      	   			      $(".page-loader").hide();
+         	          	  getErrorMessage(jqXHR, exception);
+         	     	  }
+              });
+          }
+      }
+ function getCitiesFilterListWithSBUForUser() {
+   	 var sbu = $("#sbu").val();
+   	var string = sbu.join(",");
+          if ($.trim(sbu) != "") {
+          	$("#city option:not(:first)").remove();
+          
+          	var myParams = { sbu: string};
+              $.ajax({
+                  url: "<%=request.getContextPath()%>/ajax/getCityFilterListForSite",
+                  data: myParams, cache: false,async: false,
+                  success: function (data) {
+                      if (data.length > 0) {
+                          $.each(data, function (i, val) {
+                               $("#city").append('<option value="' + val.city + '">' + $.trim(val.city_name) +'</option>');
                           });
                       }
                   },error: function (jqXHR, exception) {

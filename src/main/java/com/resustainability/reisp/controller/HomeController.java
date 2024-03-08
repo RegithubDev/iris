@@ -22,6 +22,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -33,8 +34,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import com.resustainability.reisp.constants.PageConstants;
+import com.resustainability.reisp.model.IRM;
 import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.model.UserPaginationObject;
+import com.resustainability.reisp.service.IrisUserService;
 import com.resustainability.reisp.service.UserService;
 
 @RestController
@@ -47,7 +50,7 @@ public class HomeController {
 	Logger logger = Logger.getLogger(HomeController.class);
 	
 	@Autowired
-	UserService service;
+	IrisUserService service;
 
 	@Value("${Login.Form.Invalid}")
 	public String invalidUserName;
@@ -75,6 +78,38 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		return model;
+	}
+	
+	@RequestMapping(value = "/reone/home", method = {RequestMethod.POST, RequestMethod.GET})
+	public List<User> home(@RequestBody User user, HttpSession session) {
+		ModelAndView model = null;
+		String userId = null;
+		String userName = null;
+		String role = null;
+		List<User> userList = null;
+		try {   
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			String email = (String) session.getAttribute("USER_EMAIL");
+			user.setRole(role);
+			user.setEmail_id(email);
+			String email_id = user.getEmail_id();
+			if(!(user.getEmail_id().contains(".com"))) {
+				user.setEmail_id(email_id+".com");
+			}
+			userList = service.getUserList(user, user.getStartIndex(), user.getOffset(), null);
+			if(role.equals("Super Admin")) {
+				 model = new ModelAndView(PageConstants.irisHOme);
+			}else if(role.equals("User")) {
+				 model = new ModelAndView(PageConstants.irisHOme);
+			}else {
+				model = new ModelAndView(PageConstants.irisHOme);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return userList;
 	}
 	
 	@RequestMapping(value = "/ajax/get-users", method = { RequestMethod.POST, RequestMethod.GET })
@@ -176,34 +211,5 @@ public class HomeController {
 		return objList;
 	}
 	
-	@RequestMapping(value = "/ajax/getDesignationFilterListInUser", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
-	@ResponseBody
-	public List<User> getDesignationFilterList(@ModelAttribute User obj) {
-		List<User> objsList = null;
-		try {
-			objsList = service.getDeptFilterList(obj);
-		}catch (Exception e) {
-			e.printStackTrace();
-			logger.error("getDesignationFilterList : " + e.getMessage());
-		}
-		return objsList;
-	}
 	
-	
-	@RequestMapping(value = "/delete-user", method = {RequestMethod.GET,RequestMethod.POST})
-	public String deleteUser(@ModelAttribute User obj,RedirectAttributes attributes){
-		try{
-			boolean flag =  service.deleteProject(obj);
-			if(flag == true) {
-				attributes.addFlashAttribute("success", "User Deleted Succesfully.");
-			}
-			else {
-				attributes.addFlashAttribute("error","Something went wrong. Try again.");
-			}
-		}catch (Exception e) {
-			logger.error("deleteUser : " + e.getMessage());
-		}
-		return "redirect:/home";
-	
-	}
 }

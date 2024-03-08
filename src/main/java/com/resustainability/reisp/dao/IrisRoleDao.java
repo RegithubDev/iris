@@ -1,6 +1,8 @@
 package com.resustainability.reisp.dao;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
@@ -252,8 +254,21 @@ public class IrisRoleDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				qry = qry + " and  um.sbu_code = ? ";
-				arrSize++;
+				 String input = obj.getSbu_code();
+				 StringBuilder concatenated = new StringBuilder();
+				qry = qry + " and  um.sbu_code in (";
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 qry = qry + " ?,";
+						 arrSize++;
+					 }
+				    qry =  qry.trim().replaceAll(",$", "");
+					qry = qry + " )";
+				 }else {
+					 qry = qry + " ?)";
+					 arrSize++;
+				 }
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				qry = qry + " and um.status = ? ";
@@ -266,7 +281,16 @@ public class IrisRoleDao {
 				pValues[i++] = obj.getRole_name();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				pValues[i++] = obj.getSbu_code();
+				 String input = obj.getSbu_code();
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 pValues[i++] = arrObj ;
+					 }
+				
+			     }else {
+			    	 pValues[i++] = obj.getSbu_code();
+			     }
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getStatus())) {
 				pValues[i++] = obj.getStatus();

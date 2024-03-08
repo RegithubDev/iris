@@ -437,7 +437,7 @@ nav {
                   success: function (data) {
                       if (data.length > 0) {
                           $.each(data, function (i, val) {
-                               $("#city").append('<option value="' + val.city_name + '">' + $.trim(val.city_name) +'</option>');
+                               $("#city").append('<option value="' + val.id + '">' + $.trim(val.city_name) +'</option>');
                           });
                       }
                   },error: function (jqXHR, exception) {

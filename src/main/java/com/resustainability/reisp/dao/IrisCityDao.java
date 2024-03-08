@@ -91,12 +91,13 @@ public class IrisCityDao {
 			String qry = "SELECT s.[id],state"
 					+ "        ,ss.[state_name]"
 					+ "      ,s.[city_name]"
-					+ "      ,s.[status]"
+					+ "      ,s.[status],s.sbu_code,sss.sbu_name"
 					+ "      ,um.user_name as [created_by]"
 					+ "      ,FORMAT (s.created_date, 'dd-MMM-yy') as [created_date]"
 					+ "      ,um1.user_name as [modified_by]"
 					+ "      ,FORMAT (s.modified_date, 'dd-MMM-yy') as [modified_date] FROM [city] s  "
 					+ "left join state ss on s.state = ss.id "
+					+ "left join sbu sss on s.sbu_code = sss.sbu_code "
 					+ " left join user_management um on s.created_by = um.id   "
 					+ " left join user_management um1 on s.modified_by = um1.id  "
 					+ "where s.id is not null  ";
@@ -247,7 +248,23 @@ public class IrisCityDao {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			String qry = "SELECT um.id,um.[city_name],city_name from [city] um  where um.city_name is not null ";
-			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				 String input = obj.getSbu_code();
+				 StringBuilder concatenated = new StringBuilder();
+				qry = qry + " and  um.sbu_code in (";
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 qry = qry + " ?,";
+						 arrSize++;
+					 }
+				    qry =  qry.trim().replaceAll(",$", "");
+					qry = qry + " )";
+				 }else {
+					 qry = qry + " ?)";
+					 arrSize++;
+				 }
+			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCity_name())) {
 				qry = qry + " and  um.city_name = ? ";
 				arrSize++;
@@ -263,6 +280,18 @@ public class IrisCityDao {
 			qry = qry + " order by um.city_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				 String input = obj.getSbu_code();
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 pValues[i++] = arrObj ;
+					 }
+				
+			     }else {
+			    	 pValues[i++] = obj.getSbu_code();
+			     }
+			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getCity_name())) {
 				pValues[i++] = obj.getCity_name();
 			}

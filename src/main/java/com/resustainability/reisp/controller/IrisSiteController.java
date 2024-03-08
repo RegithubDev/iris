@@ -198,7 +198,7 @@ public class IrisSiteController {
 			userId = (String) session.getAttribute("USER_ID");
 			siteName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			
+			obj.setSbu_code(obj.getSbu());
 			companiesList = service.getCityFilterListForSite(obj);
 		}catch (Exception e) {
 			e.printStackTrace();

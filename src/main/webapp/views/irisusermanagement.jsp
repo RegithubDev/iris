@@ -113,7 +113,7 @@ font-size: 1rem!important;
            <div class="card-body" id="filterDiv">
           <div class="row">
           
-          <div class="col-xl-2 col-md-6 col-12" style="
+        <div class="col-xl-2 col-md-6 col-12" style="
     padding-right: calc(var(--bs-gutter-x) * 0);" >
            <div class="mb-1">
               <label class="form-label" for="select2-basic">SBU</label>
@@ -122,7 +122,7 @@ font-size: 1rem!important;
                
               </select>
               </div></div>
-            </div>
+            </div> 
             <div class="col-xl-2 col-md-6 col-12" style="
     padding-right: calc(var(--bs-gutter-x) * 0);
 ">
@@ -224,9 +224,10 @@ font-size: 1rem!important;
 								<th >Name</th>
 								<th >Email</th>
 								<th >Mobile</th>
-								<th >SBU</th>
+								<!-- <th >SBU</th> -->
 								<!-- <th >Categories</th> -->
-								<th >Roles</th>
+								<!-- <th >Roles</th> -->
+								<th >Status</th>
 								<th >Site Name</th>
              				</tr>
 			            </thead>
@@ -363,7 +364,7 @@ font-size: 1rem!important;
 		var roles = $("#rolesId").val();
        if ($.trim(site_name) == "") {
        	$("#site_nameID option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+     	var myParams = {sbu: sbu, site_name: site_name, roles : roles };
            $.ajax({
                url: "<%=request.getContextPath()%>/ajax/getSiteFilterListForUser",
                data: myParams, cache: false,async: false,
@@ -387,14 +388,14 @@ font-size: 1rem!important;
 		var roles = $("#rolesId").val();
        if ($.trim(roles) == "") {
        	$("#rolesId option:not(:first)").remove();
-       	var myParams = { sbu: sbu, site_name: site_name, roles : roles };
+       	var myParams = {sbu: sbu, site_name: site_name, roles : roles };
            $.ajax({
                url: "<%=request.getContextPath()%>/ajax/getRoleFilterListForUser",
                data: myParams, cache: false,async: false,
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#rolesId").append('<option value="' + val.roles + '">' + $.trim(val.roles) +'</option>');
+                            $("#rolesId").append('<option value="' + val.roles + '">' + $.trim(val.role_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
@@ -417,7 +418,7 @@ font-size: 1rem!important;
 		var i = 1;
 		$.fn.dataTable.moment('DD-MMM-YYYY');
 		var rowLen = 0;
-		var myParams =  "sbu="+ sbu+ "&site_name="+ site_name+ "&roles="+ roles ;
+		var myParams =   "site_name="+ site_name+ "&roles="+ roles+ "&sbu="+ sbu ;
 
 		/***************************************************************************************************/
 
@@ -538,14 +539,15 @@ font-size: 1rem!important;
 		            { "mData": function(data,type,row){ 
 		            	if($.trim(data.mobile_number) == ''){ return '-'; }else{ return data.mobile_number; }
 		            } },
-		         	{ "mData": function(data,type,row){
-		            	if($.trim(data.sbu) == ''){ return '-'; }else{ return data.sbu_name; }
-		            } },
+		         
 		          /*   { "mData": function(data,type,row){
 		            	if($.trim(data.categories) == ''){ return '-'; }else{ return data.category_name; } 
 		            } }, */
-		           { "mData": function(data,type,row){
+		          /*  { "mData": function(data,type,row){
 		            	if($.trim(data.roles) == ''){ return '-'; }else{ return data.role_name; } 
+		            } }, */
+		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.status) == ''){ return '-'; }else{ return data.status; }
 		            } },
 		           { "mData": function(data,type,row){
 		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; } 

@@ -181,7 +181,7 @@ font-size: 1rem!important;
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header re-text-bg">
-                      <h4 class="modal-title text-white" id="myModalLabel18">Add SBU</h4>
+                      <h4 class="modal-title text-white" id="myModalLabel18">Add Category</h4>
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -267,7 +267,7 @@ font-size: 1rem!important;
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header re-text-bg">
-                      <h4 class="modal-title text-white" id="myModalLabel18">Add SBU</h4>
+                      <h4 class="modal-title text-white" id="myModalLabel18">Update Category</h4>
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">

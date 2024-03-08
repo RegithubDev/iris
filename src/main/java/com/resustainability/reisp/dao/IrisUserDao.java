@@ -1,6 +1,9 @@
 package com.resustainability.reisp.dao;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
@@ -111,8 +114,8 @@ public class IrisUserDao {
 					+ "      ,um.[modified_date] from [user_management] um "
 					+ " left join site st on um.site_name = st.id   "
 					+ " left join category c on um.categories = c.category_code   "
-					+ " left join roles r on um.roles = r.id   "
-					+ " left join sbu sb on um.sbu = sb.sbu_code   "
+					+ " left join roles r on CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0 "
+					+ "  left join [sbu] s on CHARINDEX(',' + CAST(s.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0 "
 					+ "where um.sbu is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
@@ -125,6 +128,10 @@ public class IrisUserDao {
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
 				qry = qry + " and um.roles = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getEmail_id())) {
+				qry = qry + " and um.email_id = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(searchParameter)) {
@@ -155,6 +162,9 @@ public class IrisUserDao {
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
 				pValues[i++] = obj.getRoles();
 			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getEmail_id())) {
+				pValues[i++] = obj.getEmail_id();
+			}
 			if(!StringUtils.isEmpty(searchParameter)) {
 				pValues[i++] = "%"+searchParameter+"%";
 				pValues[i++] = "%"+searchParameter+"%";
@@ -169,6 +179,10 @@ public class IrisUserDao {
 				pValues[i++] = offset;
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
+			Set<String> nameSet = new HashSet<>();
+			objsList = objsList.stream()
+		            .filter(e -> nameSet.add(e.getId()))
+		            .collect(Collectors.toList());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
@@ -292,22 +306,24 @@ public class IrisUserDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT [sbu],sbu_name from [user_management] um "
-					+ "left join sbu s on um.sbu = s.sbu_code where sbu is not null ";
+			String qry = "SELECT t1.sbu, STRING_AGG(t2.sbu_name, ', ') AS sbu_name "
+					+ "FROM [user_management] t1 "
+					+ "CROSS APPLY STRING_SPLIT(t1.sbu, ',') s "
+					+ "JOIN sbu t2 ON t2.sbu_code = s.value where sbu is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				qry = qry + " and  um.sbu = ? ";
+				qry = qry + " and  t1.sbu = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
-				qry = qry + " and um.site_name = ? ";
+				qry = qry + " and t1.site_name = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
-				qry = qry + " and um.roles = ? ";
+				qry = qry + " and t1.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + " group by [sbu],sbu_name order by um.sbu asc";
+			qry = qry + " GROUP BY  t1.id,t1.sbu ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
@@ -320,6 +336,10 @@ public class IrisUserDao {
 				pValues[i++] = obj.getRoles();
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
+			Set<String> nameSet = new HashSet<>();
+			objsList = objsList.stream()
+		            .filter(e -> nameSet.add(e.getSbu_name()))
+		            .collect(Collectors.toList());
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
@@ -332,7 +352,9 @@ public class IrisUserDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT site_name from [user_management] um where site_name is not null ";
+			String qry = "SELECT s.site_name from [user_management] um "
+					+ " left join site s on um.site_name = s.id "
+					+ "where um.site_name is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
 				qry = qry + " and  um.sbu = ? ";
@@ -346,7 +368,7 @@ public class IrisUserDao {
 				qry = qry + " and um.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + "group by site_name order by um.site_name asc";
+			qry = qry + "group by s.site_name order by s.site_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
@@ -371,21 +393,25 @@ public class IrisUserDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT roles from [user_management] um where roles is not null ";
+			String qry = "SELECT t1.roles, STRING_AGG(t2.role_name, ', ') AS role_name "
+					+ "FROM [user_management] t1 "
+					+ "CROSS APPLY STRING_SPLIT(t1.roles, ',') s "
+					+ "JOIN roles t2 ON t2.id = TRY_CAST(s.value AS INT)"
+					+ "where roles is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
-				qry = qry + " and  um.sbu = ? ";
+				qry = qry + " and  t1.sbu = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite_name())) {
-				qry = qry + " and um.site_name = ? ";
+				qry = qry + " and t1.site_name = ? ";
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
-				qry = qry + " and um.roles = ? ";
+				qry = qry + " and t1.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + " group by roles order by um.roles asc";
+			qry = qry + "GROUP BY t1.id, t1.roles ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {

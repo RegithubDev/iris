@@ -184,6 +184,19 @@ font-size: 1rem!important;
                     </div>
                     <div class="modal-body">
                      <form id="jquery-val-form" action="<%=request.getContextPath() %>/add-city-iris"  method="post" novalidate="novalidate">
+                      <%-- <div class="mb-1">
+			              <label class="form-label" for="sbu_code">SBU Code<span class=re-text>*</span></label>
+			               <select
+				            	class="form-select select2 select2-hidden-accessible state_edit" id="sbu_code"
+				              name="sbu_code"
+				              aria-label="Default select example"
+				            >
+				              <option value="">Select SBU</option>
+				              <c:forEach var="obj" items="${sbuList}">
+									<option value="${obj.sbu_code }" > ${obj.sbu_name }</option>
+								</c:forEach>
+				            </select>
+			            </div> --%>
                       <div class="mb-1">
 			              <label class="form-label" for="state">State</label> <span class=re-text>*</span>
 			               <select
@@ -229,6 +242,7 @@ font-size: 1rem!important;
 				                <th >#</th>
 								<th >Actions</th>
 								<th >State</th>
+								<!-- <th >SBU</th> -->
 								<th >City</th>
 								<th >Status</th>
 								 <th >Created By</th>
@@ -253,14 +267,28 @@ font-size: 1rem!important;
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header re-text-bg">
-                      <h4 class="modal-title text-white" id="myModalLabel18">Add City</h4>
+                      <h4 class="modal-title text-white" id="myModalLabel18">Update City</h4>
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                      <form id="jquery-val-form2" action="<%=request.getContextPath() %>/update-city-iris" method="post" novalidate="novalidate">
-                      <div class="mb-1">
-                       <input type="hidden" class="form-control" id="idVal" name="id">
+                     <%--  <div class="mb-1">
+                     
 			              <label class="form-label" for="sbu_code">SBU Code</label>
+			               <select
+				            	class="form-select select2 select2-hidden-accessible state_edit" id="sbu_ode_edit"
+				              name="sbu_code"
+				              aria-label="Default select example"
+				            >
+				              <option value="">Select SBU</option>
+				              <c:forEach var="obj" items="${sbuList}">
+									<option value="${obj.sbu_code }" > ${obj.sbu_name }</option>
+								</c:forEach>
+				            </select>
+			            </div> --%>
+			              <input type="hidden" class="form-control" id="idVal" name="id">
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Select State</label>
 			               <select
 				            	class="form-select select2 select2-hidden-accessible state_edit" id="state_edit"
 				              name="state"
@@ -374,7 +402,7 @@ font-size: 1rem!important;
           });
      
   });
- function getCity(id,cat_name,sbu_code,status,state){
+ function getCity(id,cat_name,cityN,status,state,sbu_code){
 	 $('#city_name_edit').val('');
 	 $('.status_edit').each(function(){
 	      $(this).find('option').removeAttr('selected');
@@ -382,10 +410,15 @@ font-size: 1rem!important;
 	 $('.state_edit').each(function(){
 	      $(this).find('option').removeAttr('selected');
 	    });
+	 $('.sbu_code_edit').each(function(){
+	      $(this).find('option').removeAttr('selected');
+	    });
       $('#idVal').val($.trim(id));
      
-      $('#updateCat #city_name_edit').val($.trim(sbu_code)).focus();
+      $('#updateCat #city_name_edit').val($.trim(cityN)).focus();
       if(status != null   && status != "undefined"){
+    	  $('.sbu_code_edit').val('"'+ sbu_code +'"');
+    	  $('.sbu_code_edit option[value="'+ sbu_code +'"]').attr('selected', true);
     	  $('.status_edit').val('"'+ status +'"');
     	  $('.status_edit option[value="'+ status +'"]').attr('selected', true);
     	  $('.state_edit').val('"'+ state +'"');
@@ -592,7 +625,7 @@ font-size: 1rem!important;
                       if($.trim(data.state_name) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var city_data = "'"+data.id+"','"+data.state_name+"','"+data.city_name+"','"+data.status+"','"+data.state+"'";
+							var city_data = "'"+data.id+"','"+data.state_name+"','"+data.city_name+"','"+data.status+"','"+data.state+"','"+data.sbu_code+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCity('+city_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteCity('+city_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
@@ -608,10 +641,11 @@ font-size: 1rem!important;
 		            { "mData": function(data,type,row){
                       if($.trim(data.state_name) == ''){ return '-'; }else{ return data.state_name ; }
 		            } },
+		           
 		         	{ "mData": function(data,type,row){
                       if($.trim(data.city_name) == ''){ return '-'; }else{ return data.city_name ; }
 		            } },
-		       
+		          
 		            { "mData": function(data,type,row){ 
 		            	if($.trim(data.status) == ''){ return '-'; }else{ return data.status; }
 		            } },

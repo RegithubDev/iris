@@ -8,9 +8,33 @@ public class User {
 	company_code,	project_code,	project_name,	status,	created_date,category_name,state_name,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
-	module_name,module_url,timePeriod,emp_id,notfilled_datadates,emp_name,categories,phone,role_name,roles,city,site,sbu,department,category,site_name,main_menu;
-	int session_count,time_period;
+	module_name,module_url,timePeriod,emp_id,notfilled_datadates,emp_name,categories,mobile,phone,role_name,roles,city,site,sbu,department,category,site_name,main_menu;
+	int session_count,time_period,startIndex,offset;
 	
+	public int getStartIndex() {
+		return startIndex;
+	}
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
 	public String getRole_name() {
 		return role_name;
 	}

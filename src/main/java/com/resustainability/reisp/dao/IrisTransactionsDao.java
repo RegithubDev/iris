@@ -42,9 +42,9 @@ public class IrisTransactionsDao {
 				obj.setQuantity_measure("MT");
 			}
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [collect_table] (sbu_code,quantity,quantity_measure,date,site_name,comments,created_by,created_date) "
+			String insertQry = "INSERT INTO [collect_table] (sbu_code,quantity,quantity_measure,date,site,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:quantity,:quantity_measure,:date,:site_name,:comments,:created_by,getdate())";
+					+ "(:sbu_code,:quantity,:quantity_measure,:date,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {
@@ -76,10 +76,10 @@ public class IrisTransactionsDao {
 			}
 			
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [bmw_processing_table] (total_waste,total_incieration,total_autoclave,quantity_measure_waste,quantity_measure_incieration,"
+			String insertQry = "INSERT INTO [bmw_processing_table] (sbu_code,total_waste,total_incieration,total_autoclave,quantity_measure_waste,quantity_measure_incieration,"
 					+ "quantity_measure_autoclave,site,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:total_waste,:total_incieration,:total_autoclave,:quantity_measure_waste,:quantity_measure_incieration,"
+					+ "(:sbu_code,:total_waste,:total_incieration,:total_autoclave,:quantity_measure_waste,:quantity_measure_incieration,"
 					+ "	:quantity_measure_autoclave,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
@@ -120,11 +120,11 @@ public class IrisTransactionsDao {
 				obj.setQuality_measure_cardboard("MT");
 			}
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [bmw_distribute_table] (total_materials,total_recylable,total_bags,total_glass,total_cardboard,quality_measure_materials,"
+			String insertQry = "INSERT INTO [bmw_distribute_table] (sbu_code,total_materials,total_recylable,total_bags,total_glass,total_cardboard,quality_measure_materials,"
 					+ "quality_measure_recylable,quality_measure_plastics,quality_measure_bags,quality_measure_glass,quality_measure_cardboard,site,comments,date,"
 					+ "created_by,created_date) "
 					+ "VALUES "
-					+ "(:total_materials,:total_recylable,:total_bags,:total_glass,:total_cardboard,:quality_measure_materials,"
+					+ "(:sbu_code,:total_materials,:total_recylable,:total_bags,:total_glass,:total_cardboard,:quality_measure_materials,"
 					+ ":quality_measure_recylable,:quality_measure_plastics,:quality_measure_bags,:quality_measure_glass,:quality_measure_cardboard,:site,:comments,:date,"
 					+ ":created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
@@ -162,10 +162,10 @@ public class IrisTransactionsDao {
 		
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String insertQry = "INSERT INTO [msw_distribute_table] "
-					+ "(rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,"
+					+ "(sbu_code,rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,"
 					+ "vendor_name_inserts,vendor_name_rdf_outflow,vendor_name_compost_outflow,vendor_name_recylables_outflow,vendor_name_inserts_outflow,date,site,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:rdf,:compost,:recyclables,:inserts,:vendor_name_rdf,:vendor_name_compost,:vendor_name_recyclables,:vendor_name_inserts,:vendor_name_rdf_outflow,"
+					+ "(:sbu_code,:rdf,:compost,:recyclables,:inserts,:vendor_name_rdf,:vendor_name_compost,:vendor_name_recyclables,:vendor_name_inserts,:vendor_name_rdf_outflow,"
 					+ ":vendor_name_compost_outflow,:vendor_name_recylables_outflow,:vendor_name_inserts_outflow,:date,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
@@ -195,20 +195,6 @@ public class IrisTransactionsDao {
 			}
 			if(StringUtils.isEmpty(obj.getQuantity_measure_compost())) {
 				obj.setQuantity_measure_compost("MT");
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			}
 			if(StringUtils.isEmpty(obj.getQuantity_measure_inerts())) {
 				obj.setQuantity_measure_inerts("MT");
@@ -217,10 +203,10 @@ public class IrisTransactionsDao {
 				obj.setQuantity_measure_recylabels("MT");
 			}
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [msw_processing_table] (total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
+			String insertQry = "INSERT INTO [msw_processing_table] (sbu_code,total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
 					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site_name,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:total_waste,total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
+					+ "(:sbu_code,:total_waste,total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
 					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site_name,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);

@@ -297,7 +297,7 @@ public class IrisSiteDao {
 				qry = qry + " and um.city = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.sbu_code asc";
+			qry = qry + " group by s.[sbu_code],sbu_name order by s.sbu_code asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
@@ -336,7 +336,7 @@ public class IrisSiteDao {
 				qry = qry + " and um.city = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.state asc";
+			qry = qry + " group by state,state_name order by um.state asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
@@ -361,7 +361,9 @@ public class IrisSiteDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT city from [site] um where city is not null ";
+			String qry = "SELECT city,c.city_name from [site] um"
+					+ " left join city c on um.city = c.id "
+					+ " where city is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
@@ -375,7 +377,7 @@ public class IrisSiteDao {
 				qry = qry + " and um.city = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by um.city asc";
+			qry = qry + " group by city,c.city_name order by um.city asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {

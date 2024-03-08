@@ -283,8 +283,9 @@ public class UserDao {
 					+ "      ,um.[modified_date] from [user_management] um "
 					+ " left join site st on um.site_name = st.id   "
 					+ " left join category c on um.categories = c.category_code   "
-					+ " left join roles r on um.roles = r.id   "
-					+ " left join sbu sb on um.sbu = sb.sbu_code   "
+					//+ " left join roles r on um.roles = r.id   "
+					+ " left join roles r on CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0 "
+					+ "  left join [sbu] s on CHARINDEX(',' + CAST(s.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0 "
 					+ "where um.sbu is not null  and um.status <> 'Inactive'";
 			if((!StringUtils.isEmpty(user.getEmail_id()))){
 				qry = qry + " and email_id = ? "; 

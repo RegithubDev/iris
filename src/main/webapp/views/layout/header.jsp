@@ -47,7 +47,7 @@
             <li class="nav-item"><a class="nav-link menu-toggle" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu ficon"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a></li>
           </ul>
           <ul class="nav navbar-nav bookmark-icons">
-          <li class="badge bg-dark">${sessionScope.BASE_SBU }</li>
+          <%-- <li class="badge bg-dark">${sessionScope.BASE_SBU }</li> --%>
            </ul>
           <ul class="nav navbar-nav">
             
@@ -60,7 +60,7 @@
           
           
           <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">${sessionScope.USER_NAME } </span><span class="fw-bolder user-status">${sessionScope.BASE_ROLE }</span></div><span class="avatar"><img class="round" src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span></a>
+              <div class="user-nav d-sm-flex d-none"><span class="user-name fw-bolder">${sessionScope.USER_NAME } </span><span class="fw-bolder user-status"></span></div><span class="avatar"><img class="round" src="../../../app-assets/images/portrait/small/avatar-s-11.jpg" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user"><a class="dropdown-item"  href="<%=request.getContextPath() %>/iris-accountinfo"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user me-50"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Profile</a>
               <div class="dropdown-divider"></div>  <a class="dropdown-item g_id_signout" href="#"  id="signout_button" ><i class="me-50" data-feather="power"></i> Logout</a>
             </div>
