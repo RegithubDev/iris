@@ -1,55 +1,79 @@
 package com.resustainability.reisp.model;
 
 public class Transaction {
-	private String id,sbu_code,quantity,quantity_measure,site_name,comments,created_by,modified_date,created_date,modified_by,
-	total_materials,total_recylable,total_bags,total_glass,total_cardboard,quality_measure_materials,quality_measure_recylable,
-	quality_measure_plastics,quality_measure_bags,quality_measure_glass,quality_measure_cardboard,site,date
-	,total_waste,total_incieration,total_autoclave,quantity_measure_waste,quantity_measure_incieration,quantity_measure_autoclave,
-	rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,vendor_name_inserts,
-	vendor_name_rdf_outflow,vendor_name_compost_outflow,vendor_name_recylables_outflow,vendor_name_inserts_outflow
-	,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_rdf,
-	quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,stock_total_waste,stock_dlf,stock_lat,
-	stock_incineration,stock_afrf,stock_total_waste_measure,stock_dlf_measure,stock_lat_measure,stock_incineration_measure,
-	stock_afrf_measure,disposal_total_waste,disposal_dlf,disposal_lat,disposal_incineration,disposal_total_waste_measure,disposal_dlf_measure,disposal_lat_measure,disposal_incineration_measure;
 
-	public String getId() {
-		return id;
+	private String id, total_materials, total_recylable, total_bags,status, total_glass, total_cardboard,site_name,
+			quality_measure_materials, quality_measure_recylable, quality_measure_plastics, quality_measure_bags,
+			quality_measure_glass, quality_measure_cardboard, site, comments, date, created_by, modified_date,
+			created_date, modified_by, total_waste, total_incieration, total_autoclave, quantity_measure_waste,
+			quantity_measure_incieration, quantity_measure_autoclave, sbu_code, quantity, quantity_measure, role,
+			department_code, department_name, rdf, compost, recyclables, inserts, vendor_name_rdf, vendor_name_compost,
+			vendor_name_recyclables, vendor_name_inserts, vendor_name_rdf_outflow, vendor_name_compost_outflow,
+			vendor_name_recylables_outflow, vendor_name_inserts_outflow, total_rdf, total_compost, total_inerts,
+			total_recylables, quantity_measure_rdf, quantity_measure_compost, quantity_measure_inerts,
+			quantity_measure_recylabels, disposal_total_waste, disposal_dlf, disposal_lat, disposal_incineration,
+			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
+			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
+			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf,tock_total_waste, stock_afrf_measure,from_date,to_date;
+
+	public String getTock_total_waste() {
+		return tock_total_waste;
 	}
 
-	public String getSbu_code() {
-		return sbu_code;
+	public void setTock_total_waste(String tock_total_waste) {
+		this.tock_total_waste = tock_total_waste;
 	}
 
-	public String getQuantity() {
-		return quantity;
+	public String getDisposal_afrf() {
+		return disposal_afrf;
 	}
 
-	public String getQuantity_measure() {
-		return quantity_measure;
+	public void setDisposal_afrf(String disposal_afrf) {
+		this.disposal_afrf = disposal_afrf;
+	}
+
+	public String getDisposal_afrf_measure() {
+		return disposal_afrf_measure;
+	}
+
+	public void setDisposal_afrf_measure(String disposal_afrf_measure) {
+		this.disposal_afrf_measure = disposal_afrf_measure;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getFrom_date() {
+		return from_date;
+	}
+
+	public String getTo_date() {
+		return to_date;
+	}
+
+	public void setFrom_date(String from_date) {
+		this.from_date = from_date;
+	}
+
+	public void setTo_date(String to_date) {
+		this.to_date = to_date;
 	}
 
 	public String getSite_name() {
 		return site_name;
 	}
 
-	public String getComments() {
-		return comments;
+	public void setSite_name(String site_name) {
+		this.site_name = site_name;
 	}
 
-	public String getCreated_by() {
-		return created_by;
-	}
-
-	public String getModified_date() {
-		return modified_date;
-	}
-
-	public String getCreated_date() {
-		return created_date;
-	}
-
-	public String getModified_by() {
-		return modified_by;
+	public String getId() {
+		return id;
 	}
 
 	public String getTotal_materials() {
@@ -100,8 +124,28 @@ public class Transaction {
 		return site;
 	}
 
+	public String getComments() {
+		return comments;
+	}
+
 	public String getDate() {
 		return date;
+	}
+
+	public String getCreated_by() {
+		return created_by;
+	}
+
+	public String getModified_date() {
+		return modified_date;
+	}
+
+	public String getCreated_date() {
+		return created_date;
+	}
+
+	public String getModified_by() {
+		return modified_by;
 	}
 
 	public String getTotal_waste() {
@@ -126,6 +170,30 @@ public class Transaction {
 
 	public String getQuantity_measure_autoclave() {
 		return quantity_measure_autoclave;
+	}
+
+	public String getSbu_code() {
+		return sbu_code;
+	}
+
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public String getQuantity_measure() {
+		return quantity_measure;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public String getDepartment_code() {
+		return department_code;
+	}
+
+	public String getDepartment_name() {
+		return department_name;
 	}
 
 	public String getRdf() {
@@ -208,6 +276,38 @@ public class Transaction {
 		return quantity_measure_recylabels;
 	}
 
+	public String getDisposal_total_waste() {
+		return disposal_total_waste;
+	}
+
+	public String getDisposal_dlf() {
+		return disposal_dlf;
+	}
+
+	public String getDisposal_lat() {
+		return disposal_lat;
+	}
+
+	public String getDisposal_incineration() {
+		return disposal_incineration;
+	}
+
+	public String getDisposal_total_waste_measure() {
+		return disposal_total_waste_measure;
+	}
+
+	public String getDisposal_dlf_measure() {
+		return disposal_dlf_measure;
+	}
+
+	public String getDisposal_lat_measure() {
+		return disposal_lat_measure;
+	}
+
+	public String getDisposal_incineration_measure() {
+		return disposal_incineration_measure;
+	}
+
 	public String getStock_total_waste() {
 		return stock_total_waste;
 	}
@@ -248,76 +348,8 @@ public class Transaction {
 		return stock_afrf_measure;
 	}
 
-	public String getDisposal_total_waste() {
-		return disposal_total_waste;
-	}
-
-	public String getDisposal_dlf() {
-		return disposal_dlf;
-	}
-
-	public String getDisposal_lat() {
-		return disposal_lat;
-	}
-
-	public String getDisposal_incineration() {
-		return disposal_incineration;
-	}
-
-	public String getDisposal_total_waste_measure() {
-		return disposal_total_waste_measure;
-	}
-
-	public String getDisposal_dlf_measure() {
-		return disposal_dlf_measure;
-	}
-
-	public String getDisposal_lat_measure() {
-		return disposal_lat_measure;
-	}
-
-	public String getDisposal_incineration_measure() {
-		return disposal_incineration_measure;
-	}
-
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public void setSbu_code(String sbu_code) {
-		this.sbu_code = sbu_code;
-	}
-
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
-	}
-
-	public void setQuantity_measure(String quantity_measure) {
-		this.quantity_measure = quantity_measure;
-	}
-
-	public void setSite_name(String site_name) {
-		this.site_name = site_name;
-	}
-
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-
-	public void setCreated_by(String created_by) {
-		this.created_by = created_by;
-	}
-
-	public void setModified_date(String modified_date) {
-		this.modified_date = modified_date;
-	}
-
-	public void setCreated_date(String created_date) {
-		this.created_date = created_date;
-	}
-
-	public void setModified_by(String modified_by) {
-		this.modified_by = modified_by;
 	}
 
 	public void setTotal_materials(String total_materials) {
@@ -368,8 +400,28 @@ public class Transaction {
 		this.site = site;
 	}
 
+	public void setComments(String comments) {
+		this.comments = comments;
+	}
+
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public void setCreated_by(String created_by) {
+		this.created_by = created_by;
+	}
+
+	public void setModified_date(String modified_date) {
+		this.modified_date = modified_date;
+	}
+
+	public void setCreated_date(String created_date) {
+		this.created_date = created_date;
+	}
+
+	public void setModified_by(String modified_by) {
+		this.modified_by = modified_by;
 	}
 
 	public void setTotal_waste(String total_waste) {
@@ -394,6 +446,30 @@ public class Transaction {
 
 	public void setQuantity_measure_autoclave(String quantity_measure_autoclave) {
 		this.quantity_measure_autoclave = quantity_measure_autoclave;
+	}
+
+	public void setSbu_code(String sbu_code) {
+		this.sbu_code = sbu_code;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+
+	public void setQuantity_measure(String quantity_measure) {
+		this.quantity_measure = quantity_measure;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public void setDepartment_code(String department_code) {
+		this.department_code = department_code;
+	}
+
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
 	}
 
 	public void setRdf(String rdf) {
@@ -476,6 +552,38 @@ public class Transaction {
 		this.quantity_measure_recylabels = quantity_measure_recylabels;
 	}
 
+	public void setDisposal_total_waste(String disposal_total_waste) {
+		this.disposal_total_waste = disposal_total_waste;
+	}
+
+	public void setDisposal_dlf(String disposal_dlf) {
+		this.disposal_dlf = disposal_dlf;
+	}
+
+	public void setDisposal_lat(String disposal_lat) {
+		this.disposal_lat = disposal_lat;
+	}
+
+	public void setDisposal_incineration(String disposal_incineration) {
+		this.disposal_incineration = disposal_incineration;
+	}
+
+	public void setDisposal_total_waste_measure(String disposal_total_waste_measure) {
+		this.disposal_total_waste_measure = disposal_total_waste_measure;
+	}
+
+	public void setDisposal_dlf_measure(String disposal_dlf_measure) {
+		this.disposal_dlf_measure = disposal_dlf_measure;
+	}
+
+	public void setDisposal_lat_measure(String disposal_lat_measure) {
+		this.disposal_lat_measure = disposal_lat_measure;
+	}
+
+	public void setDisposal_incineration_measure(String disposal_incineration_measure) {
+		this.disposal_incineration_measure = disposal_incineration_measure;
+	}
+
 	public void setStock_total_waste(String stock_total_waste) {
 		this.stock_total_waste = stock_total_waste;
 	}
@@ -515,38 +623,7 @@ public class Transaction {
 	public void setStock_afrf_measure(String stock_afrf_measure) {
 		this.stock_afrf_measure = stock_afrf_measure;
 	}
-
-	public void setDisposal_total_waste(String disposal_total_waste) {
-		this.disposal_total_waste = disposal_total_waste;
-	}
-
-	public void setDisposal_dlf(String disposal_dlf) {
-		this.disposal_dlf = disposal_dlf;
-	}
-
-	public void setDisposal_lat(String disposal_lat) {
-		this.disposal_lat = disposal_lat;
-	}
-
-	public void setDisposal_incineration(String disposal_incineration) {
-		this.disposal_incineration = disposal_incineration;
-	}
-
-	public void setDisposal_total_waste_measure(String disposal_total_waste_measure) {
-		this.disposal_total_waste_measure = disposal_total_waste_measure;
-	}
-
-	public void setDisposal_dlf_measure(String disposal_dlf_measure) {
-		this.disposal_dlf_measure = disposal_dlf_measure;
-	}
-
-	public void setDisposal_lat_measure(String disposal_lat_measure) {
-		this.disposal_lat_measure = disposal_lat_measure;
-	}
-
-	public void setDisposal_incineration_measure(String disposal_incineration_measure) {
-		this.disposal_incineration_measure = disposal_incineration_measure;
-	}
-
+	
+	
 	
 }

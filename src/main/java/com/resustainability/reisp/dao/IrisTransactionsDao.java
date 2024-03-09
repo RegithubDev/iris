@@ -76,10 +76,10 @@ public class IrisTransactionsDao {
 			}
 			
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [bmw_processing_table] (sbu_code,total_waste,total_incieration,total_autoclave,quantity_measure_waste,quantity_measure_incieration,"
+			String insertQry = "INSERT INTO [bmw_processing_table] (sbu_code,date,total_waste,total_incieration,total_autoclave,quantity_measure_waste,quantity_measure_incieration,"
 					+ "quantity_measure_autoclave,site,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:total_waste,:total_incieration,:total_autoclave,:quantity_measure_waste,:quantity_measure_incieration,"
+					+ "(:sbu_code,:date,:total_waste,:total_incieration,:total_autoclave,:quantity_measure_waste,:quantity_measure_incieration,"
 					+ "	:quantity_measure_autoclave,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
@@ -206,8 +206,60 @@ public class IrisTransactionsDao {
 			String insertQry = "INSERT INTO [msw_processing_table] (sbu_code,total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
 					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site_name,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:total_waste,total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
+					+ "(:sbu_code,:total_waste,:total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
 					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site_name,:comments,:created_by,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean uploadIWMDisposalData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [iwm_disposal_table] (sbu_code,disposal_total_waste,disposal_dlf,disposal_lat,disposal_afrf,disposal_incineration,disposal_total_waste_measure,"
+					+ "disposal_dlf_measure,disposal_lat_measure,disposal_incineration_measure,site,date,comments,created_by,created_date,disposal_afrf_measure) "
+					+ "VALUES "
+					+ "(:sbu_code,:disposal_total_waste,:disposal_dlf,:disposal_lat,:disposal_afrf,:disposal_incineration,:disposal_total_waste_measure,"
+					+ ":disposal_dlf_measure,:disposal_lat_measure,:disposal_incineration_measure,:site,:date,:comments,:created_by,getdate(),:disposal_afrf_measure)";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean uploadIWMLeftoverstockData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [iwm_leftoverstock_table] (sbu_code,stock_total_waste,stock_dlf,stock_lat,stock_incineration,stock_afrf,stock_total_waste_measure,"
+					+ "stock_dlf_measure,stock_lat_measure,stock_incineration_measure,stock_afrf_measure,site,date,comments,created_by,created_date) "
+					+ "VALUES "
+					+ "(:sbu_code,:stock_total_waste,:stock_dlf,:stock_lat,:stock_incineration,:stock_afrf,:stock_total_waste_measure"
+					+ "	,:stock_dlf_measure,:stock_lat_measure,:stock_incineration_measure,:stock_afrf_measure,:site,:date,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

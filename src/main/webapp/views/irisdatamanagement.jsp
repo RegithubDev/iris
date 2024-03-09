@@ -129,7 +129,7 @@ font-size: 1rem!important;
     padding-right: calc(var(--bs-gutter-x) * 0);" >
            <div class="mb-1">
               <label class="form-label" for="select2-basic">SBU</label>
-              <div class="position-relative" ><select class="searchable form-select " id="sbuID" data-select2-id="select2-basic1" tabindex="1" aria-hidden="true">
+              <div class="position-relative" ><select class="searchable form-select " id="sbuID" onchange="onFiltersChnage();" data-select2-id="select2-basic1" tabindex="1" aria-hidden="true">
                
               </select>
               </div></div>
@@ -185,7 +185,7 @@ font-size: 1rem!important;
 								<div >
 									<div class="card-header border-bottom p-1">
 										<div class="head-label">
-											<h6 class="mb-0"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium svglogo css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SupervisorAccountOutlinedIcon"><path d="M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12zm0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7zm.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5zm7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3zm1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32z"></path></svg> Users</h6>
+											<h6 class=""> Data Management</h6>
 										</div>
 										<div>
 					 </div>
@@ -300,6 +300,12 @@ font-size: 1rem!important;
 		window.location.href= "<%=request.getContextPath()%>/iris-datamanagement";
 }
 
+ function onFiltersChnage(){
+	    getProcessFilterList('');
+		getSitesFilterList('');
+ }
+ 
+ 
  function getSBUFilterList() {
 		var sbu_code = $("#sbuID").val();
 		var site = $("#site_nameID").val();
@@ -388,14 +394,117 @@ font-size: 1rem!important;
 		var date = $("#fp-range").val();
  	   	table = $('#datatable-collect').DataTable();
 		table.destroy();
+		
 		var i = 1;
 		$.fn.dataTable.moment('DD-MMM-YYYY');
 		var rowLen = 0;
 		var myParams =   "site="+ site+ "&department_code="+ department_code+ "&sbu_code="+ sbu_code +"&date="+ date ;
 
 		/***************************************************************************************************/
+				$('#datatable-collect tbody').empty();
 
-		$("#datatable-collect")
+		if((sbu_code == 'BMW' || sbu_code == 'IWM' || sbu_code == 'MSW') &&  department_code.trim() == 'CNT'){
+
+			var headerContent = "<thead><tr><th>S.No</th><th >Action</th><th>Waste Type</th><th>Quantity</th><th>Quantity Measure</th><th>Date</th><th>Site Name</th><th>Comments</th></tr></thead>";
+			$('#datatable-collect thead').remove();
+		    $('#datatable-collect').append(headerContent);
+		    $("#datatable-collect")
+			.DataTable(
+					{
+						"bProcessing" : true,
+						"bServerSide" : true,
+						"sort" : "position",
+						//bStateSave variable you can use to save state on client cookies: set value "true" 
+						"bStateSave" : false,
+						 stateSave: true,
+						 "fnStateSave": function (oSettings, oData) {
+						 	localStorage.setItem('MRVCDataTables', JSON.stringify(oData));
+						},
+						 "fnStateLoad": function (oSettings) {
+							return JSON.parse(localStorage.getItem('MRVCDataTables'));
+						 },
+						//Default: Page display length
+						"iDisplayLength" : 10,
+						"iData" : {
+							"start" : 52
+						},
+						//We will use below variable to track page number on server side(For more information visit: http://legacy.datatables.net/usage/options#iDisplayStart)
+						"iDisplayStart" : 0,
+						"fnDrawCallback" : function() {
+							//Get page numer on client. Please note: number start from 0 So
+							//for the first page you will see 0 second page 1 third page 2...
+							//Un-comment below alert to see page number
+							//alert("Current page number: "+this.fnPagingInfo().iPage);
+						},
+						//"sDom": 'l<"toolbar">frtip',
+						"initComplete" : function() {
+						
+						}
+						,
+						columnDefs : [ {
+							"targets" : '',
+							"orderable" : false,
+						}
+		                ],
+						"sScrollX" : "100%",
+						"sScrollXInner" : "100%",
+						"ordering":false,
+						"bScrollCollapse" : true,
+						"language" : {
+							"info" : "_START_ - _END_ of _TOTAL_",
+							paginate : {
+								next : '<i class="fa fa-angle-right"></i>', 
+								previous : '<i class="fa fa-angle-left"></i>'  
+							}
+						},
+						
+						"bDestroy" : true,
+						"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-data-management-iris?"+myParams,
+	        "aoColumns": [
+	        	 { "mData": function(data,type,row){
+                  if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
+	            } },
+					{ "mData": function(data,type,row){
+						var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+	                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
+		                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+		                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+		                +' </ul></div>' */
+		                '<div class="btn-group" role="group" aria-label="Basic example">'
+		                +' <a href="javascript:void(0);"  onclick="getUser('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+            
+/* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+*/             
+		                +'</div>'
+	            	return actions;
+	            } },
+	            { "mData": function(data,type,row){
+                  if($.trim(data.sbu_code) == ''){ return '-'; }else{ return data.sbu_code ; }
+	            } },
+	         	{ "mData": function(data,type,row){
+                  if($.trim(data.quantity) == ''){ return '-'; }else{ return data.quantity ; }
+	            } },
+	       
+	            { "mData": function(data,type,row){ 
+	            	if($.trim(data.quantity_measure) == ''){ return '-'; }else{ return data.quantity_measure; }
+	            } },
+	         
+	            { "mData": function(data,type,row){
+	            	if($.trim(data.date) == ''){ return '-'; }else{ return data.date; } 
+	            } }, 
+	            { "mData": function(data,type,row){
+	            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; } 
+	            } },
+	        	{ "mData": function(data,type,row){
+	            	if($.trim(data.comments) == ''){ return '-'; }else{ return data.comments; }
+	            } }
+	        ]
+	    });
+	     }else if(sbu_code == 'BMW' &&  department_code.trim() == 'process'){
+				var headerContent = "<thead><tr ><th>S.No</th><th >Action</th><th>Total Waste</th><th>Total Incineration</th><th>Total Autoclave</th><th>Quantity Measure Waste</th><th>Quantity Measure Incineration</th><th>Quantity Measure Autoclave</th><th>Date</th><th>Site Name</th><th>Comments</th></tr></thead>";
+				$('#datatable-collect thead').remove();
+			    $('#datatable-collect').append(headerContent);
+			    $("#datatable-collect")
 				.DataTable(
 						{
 							"bProcessing" : true,
@@ -466,27 +575,523 @@ font-size: 1rem!important;
 		            	return actions;
 		            } },
 		            { "mData": function(data,type,row){
-                      if($.trim(data.sbu_code) == ''){ return '-'; }else{ return data.sbu_code ; }
+                      if($.trim(data.total_waste) == ''){ return '-'; }else{ return data.total_waste ; }
 		            } },
 		         	{ "mData": function(data,type,row){
-                      if($.trim(data.quantity) == ''){ return '-'; }else{ return data.quantity ; }
+                      if($.trim(data.total_incieration) == ''){ return '-'; }else{ return data.total_incieration ; }
 		            } },
 		       
 		            { "mData": function(data,type,row){ 
-		            	if($.trim(data.quantity_measure) == ''){ return '-'; }else{ return data.quantity_measure; }
+		            	if($.trim(data.total_autoclave) == ''){ return '-'; }else{ return data.total_autoclave; }
 		            } },
 		         
 		            { "mData": function(data,type,row){
-		            	if($.trim(data.date) == ''){ return '-'; }else{ return data.date; } 
+		            	if($.trim(data.quantity_measure_waste) == ''){ return '-'; }else{ return data.quantity_measure_waste; } 
 		            } }, 
 		            { "mData": function(data,type,row){
-		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; } 
+		            	if($.trim(data.quantity_measure_incieration) == ''){ return '-'; }else{ return data.quantity_measure_incieration; } 
 		            } },
 		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.quantity_measure_autoclave) == ''){ return '-'; }else{ return data.quantity_measure_autoclave; }
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name ; }
+		            } },
+		       
+		            { "mData": function(data,type,row){ 
 		            	if($.trim(data.comments) == ''){ return '-'; }else{ return data.comments; }
 		            } }
 		        ]
 		    });
+		 }else if(sbu_code == 'BMW' &&  department_code.trim() == 'Dist'){
+				var headerContent = "<thead><tr ><th>S.No</th><th >Action</th><th>Total Materials</th><th>Total Recyclable</th><th>Total Plastics</th><th>Total Bags</th><th>Total Glass</th><th>Total Cardboard</th><th>Quantity Measure Materials</th><th>Quantity Measure Recyclables</th><th>Quantity Measure Plastics</th><th>Quantity Measure Bags</th><th>Quantity Measure Glass</th><th>Quantity Measure Cardboard</th><th>Date</th><th>Site Name</th><th>Comments</th></tr></thead>";
+				$('#datatable-collect thead').remove();
+			    $('#datatable-collect').append(headerContent);
+			    $("#datatable-collect")
+				.DataTable(
+						{
+							"bProcessing" : true,
+							"bServerSide" : true,
+							"sort" : "position",
+							//bStateSave variable you can use to save state on client cookies: set value "true" 
+							"bStateSave" : false,
+							 stateSave: true,
+							 "fnStateSave": function (oSettings, oData) {
+							 	localStorage.setItem('MRVCDataTables', JSON.stringify(oData));
+							},
+							 "fnStateLoad": function (oSettings) {
+								return JSON.parse(localStorage.getItem('MRVCDataTables'));
+							 },
+							//Default: Page display length
+							"iDisplayLength" : 10,
+							"iData" : {
+								"start" : 52
+							},
+							//We will use below variable to track page number on server side(For more information visit: http://legacy.datatables.net/usage/options#iDisplayStart)
+							"iDisplayStart" : 0,
+							"fnDrawCallback" : function() {
+								//Get page numer on client. Please note: number start from 0 So
+								//for the first page you will see 0 second page 1 third page 2...
+								//Un-comment below alert to see page number
+								//alert("Current page number: "+this.fnPagingInfo().iPage);
+							},
+							//"sDom": 'l<"toolbar">frtip',
+							"initComplete" : function() {
+							
+							}
+							,
+							columnDefs : [ {
+								"targets" : '',
+								"orderable" : false,
+							}
+			                ],
+							"sScrollX" : "100%",
+							"sScrollXInner" : "100%",
+							"ordering":false,
+							"bScrollCollapse" : true,
+							"language" : {
+								"info" : "_START_ - _END_ of _TOTAL_",
+								paginate : {
+									next : '<i class="fa fa-angle-right"></i>', 
+									previous : '<i class="fa fa-angle-left"></i>'  
+								}
+							},
+							
+							"bDestroy" : true,
+							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-data-management-iris?"+myParams,
+		        "aoColumns": [
+		        	 { "mData": function(data,type,row){
+                      if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
+		            } },
+						{ "mData": function(data,type,row){
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +' </ul></div>' */
+			                '<div class="btn-group" role="group" aria-label="Basic example">'
+			                +' <a href="javascript:void(0);"  onclick="getUser('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+                
+/* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+ */             
+			                +'</div>'
+		            	return actions;
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.total_materials) == ''){ return '-'; }else{ return data.total_materials ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.total_recylable) == ''){ return '-'; }else{ return data.total_recylable ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.quality_measure_plastics) == ''){ return '-'; }else{ return data.quality_measure_plastics ; }
+			        } },
+		       
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.total_bags) == ''){ return '-'; }else{ return data.total_bags; }
+		            } },
+		         
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.total_glass) == ''){ return '-'; }else{ return data.total_glass; } 
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.total_cardboard) == ''){ return '-'; }else{ return data.total_cardboard; } 
+		            } },
+		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.quality_measure_materials) == ''){ return '-'; }else{ return data.quality_measure_materials; }
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.quality_measure_recylable) == ''){ return '-'; }else{ return data.quality_measure_recylable ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.quality_measure_plastics) == ''){ return '-'; }else{ return data.quality_measure_plastics ; }
+		            } },
+		       
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.quality_measure_bags) == ''){ return '-'; }else{ return data.quality_measure_bags; }
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.quality_measure_glass) == ''){ return '-'; }else{ return data.quality_measure_glass; } 
+		            } },
+		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.quality_measure_cardboard) == ''){ return '-'; }else{ return data.quality_measure_cardboard; }
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.comments) == ''){ return '-'; }else{ return data.comments ; }
+			        } }
+		        ]
+		    });
+		 }else if(sbu_code == 'IWM' &&  department_code.trim() == 'Disp'){
+				var headerContent = "<thead><tr ><th>S.No</th><th >Action</th><th>Disposal Total Waste</th><th>Disposal Dlf</th><th>Disposal Lat</th><th>Disposal Incineration</th><th>Disposal Afrf</th><th>Disposal Total Waste Measure</th><th>Disposal Dlf Measure</th><th>Disposal Lat Measure</th><th>Disposal Incineration Measure</th><th>Disposal Afrf Measure</th><th>Date</th><th>Site Name</th><th>Comments</th></tr></thead>";
+				$('#datatable-collect thead').remove();
+			    $('#datatable-collect').append(headerContent);
+			    $("#datatable-collect")
+				.DataTable(
+						{
+							"bProcessing" : true,
+							"bServerSide" : true,
+							"sort" : "position",
+							//bStateSave variable you can use to save state on client cookies: set value "true" 
+							"bStateSave" : false,
+							 stateSave: true,
+							 "fnStateSave": function (oSettings, oData) {
+							 	localStorage.setItem('MRVCDataTables', JSON.stringify(oData));
+							},
+							 "fnStateLoad": function (oSettings) {
+								return JSON.parse(localStorage.getItem('MRVCDataTables'));
+							 },
+							//Default: Page display length
+							"iDisplayLength" : 10,
+							"iData" : {
+								"start" : 52
+							},
+							//We will use below variable to track page number on server side(For more information visit: http://legacy.datatables.net/usage/options#iDisplayStart)
+							"iDisplayStart" : 0,
+							"fnDrawCallback" : function() {
+								//Get page numer on client. Please note: number start from 0 So
+								//for the first page you will see 0 second page 1 third page 2...
+								//Un-comment below alert to see page number
+								//alert("Current page number: "+this.fnPagingInfo().iPage);
+							},
+							//"sDom": 'l<"toolbar">frtip',
+							"initComplete" : function() {
+							
+							}
+							,
+							columnDefs : [ {
+								"targets" : '',
+								"orderable" : false,
+							}
+			                ],
+							"sScrollX" : "100%",
+							"sScrollXInner" : "100%",
+							"ordering":false,
+							"bScrollCollapse" : true,
+							"language" : {
+								"info" : "_START_ - _END_ of _TOTAL_",
+								paginate : {
+									next : '<i class="fa fa-angle-right"></i>', 
+									previous : '<i class="fa fa-angle-left"></i>'  
+								}
+							},
+							
+							"bDestroy" : true,
+							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-data-management-iris?"+myParams,
+		        "aoColumns": [
+		        	 { "mData": function(data,type,row){
+                      if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
+		            } },
+						{ "mData": function(data,type,row){
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +' </ul></div>' */
+			                '<div class="btn-group" role="group" aria-label="Basic example">'
+			                +' <a href="javascript:void(0);"  onclick="getUser('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+                
+/* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+ */             
+			                +'</div>'
+		            	return actions;
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.disposal_total_waste) == ''){ return '-'; }else{ return data.disposal_total_waste ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.disposal_dlf) == ''){ return '-'; }else{ return data.disposal_dlf ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.disposal_lat) == ''){ return '-'; }else{ return data.disposal_lat ; }
+			        } },
+			        { "mData": function(data,type,row){
+	                      if($.trim(data.disposal_afrf) == ''){ return '-'; }else{ return data.disposal_afrf ; }
+			        } },
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.disposal_incineration) == ''){ return '-'; }else{ return data.disposal_incineration; }
+		            } },
+		         
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.disposal_total_waste_measure) == ''){ return '-'; }else{ return data.disposal_total_waste_measure; } 
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.disposal_dlf_measure) == ''){ return '-'; }else{ return data.disposal_dlf_measure; } 
+		            } },
+		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.disposal_lat_measure) == ''){ return '-'; }else{ return data.disposal_lat_measure; }
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.disposal_incineration_measure) == ''){ return '-'; }else{ return data.disposal_incineration_measure ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.disposal_afrf_measure) == ''){ return '-'; }else{ return data.disposal_afrf_measure ; }
+			            } },
+			            
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
+		            } },
+		       
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; }
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.comments) == ''){ return '-'; }else{ return data.comments; } 
+		            } }
+		        ]
+		    });
+		 }else if(sbu_code == 'IWM' &&  department_code.trim() == 'Los'){
+				var headerContent = "<thead><tr ><th>S.No</th><th >Action</th><th>Stock Total Waste</th><th>Stock Dlf</th><th>Stock Lat</th><th>Stock Incineration</th><th>Stock Afrf</th><th>Stock Total Waste Measure</th><th>Stock Dlf Measure</th><th>Stock Lat Measure</th><th>Stock Incineration Measure</th><th>Stock Afrf Measure</th><th>Date</th><th>Site Name</th><th>Comments</th></tr></thead>";
+				$('#datatable-collect thead').remove();
+			    $('#datatable-collect').append(headerContent);
+			    $("#datatable-collect")
+				.DataTable(
+						{
+							"bProcessing" : true,
+							"bServerSide" : true,
+							"sort" : "position",
+							//bStateSave variable you can use to save state on client cookies: set value "true" 
+							"bStateSave" : false,
+							 stateSave: true,
+							 "fnStateSave": function (oSettings, oData) {
+							 	localStorage.setItem('MRVCDataTables', JSON.stringify(oData));
+							},
+							 "fnStateLoad": function (oSettings) {
+								return JSON.parse(localStorage.getItem('MRVCDataTables'));
+							 },
+							//Default: Page display length
+							"iDisplayLength" : 10,
+							"iData" : {
+								"start" : 52
+							},
+							//We will use below variable to track page number on server side(For more information visit: http://legacy.datatables.net/usage/options#iDisplayStart)
+							"iDisplayStart" : 0,
+							"fnDrawCallback" : function() {
+								//Get page numer on client. Please note: number start from 0 So
+								//for the first page you will see 0 second page 1 third page 2...
+								//Un-comment below alert to see page number
+								//alert("Current page number: "+this.fnPagingInfo().iPage);
+							},
+							//"sDom": 'l<"toolbar">frtip',
+							"initComplete" : function() {
+							
+							}
+							,
+							columnDefs : [ {
+								"targets" : '',
+								"orderable" : false,
+							}
+			                ],
+							"sScrollX" : "100%",
+							"sScrollXInner" : "100%",
+							"ordering":false,
+							"bScrollCollapse" : true,
+							"language" : {
+								"info" : "_START_ - _END_ of _TOTAL_",
+								paginate : {
+									next : '<i class="fa fa-angle-right"></i>', 
+									previous : '<i class="fa fa-angle-left"></i>'  
+								}
+							},
+							
+							"bDestroy" : true,
+							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-data-management-iris?"+myParams,
+		        "aoColumns": [
+		        	 { "mData": function(data,type,row){
+                      if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
+		            } },
+						{ "mData": function(data,type,row){
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +' </ul></div>' */
+			                '<div class="btn-group" role="group" aria-label="Basic example">'
+			                +' <a href="javascript:void(0);"  onclick="getUser('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+                
+/* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+ */             
+			                +'</div>'
+		            	return actions;
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.stock_total_waste) == ''){ return '-'; }else{ return data.stock_total_waste ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.stock_dlf) == ''){ return '-'; }else{ return data.stock_dlf ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.stock_lat) == ''){ return '-'; }else{ return data.stock_lat ; }
+			        } },
+			        { "mData": function(data,type,row){
+	                      if($.trim(data.stock_incineration) == ''){ return '-'; }else{ return data.stock_incineration ; }
+			        } },
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.stock_afrf) == ''){ return '-'; }else{ return data.stock_afrf; }
+		            } },
+		         
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.stock_total_waste_measure) == ''){ return '-'; }else{ return data.stock_total_waste_measure; } 
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.stock_dlf_measure) == ''){ return '-'; }else{ return data.stock_dlf_measure; } 
+		            } },
+		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.stock_lat_measure) == ''){ return '-'; }else{ return data.stock_lat_measure; }
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.stock_incineration_measure) == ''){ return '-'; }else{ return data.stock_incineration_measure ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.stock_afrf_measure) == ''){ return '-'; }else{ return data.stock_afrf_measure ; }
+			            } },
+			            
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
+		            } },
+		       
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; }
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.comments) == ''){ return '-'; }else{ return data.comments; } 
+		            } }
+		        ]
+		    });
+		 }else if(sbu_code == 'MSW' &&  department_code.trim() == 'process'){
+				var headerContent = "<thead><tr ><th>S.No</th><th >Action</th><th>Total Waste</th><th>Total Rdf</th><th>Total Compost</th><th>Total Inerts</th><th>Total Recyclables</th><th>Quantity Measure Waste</th><th>Quantity Measure Rdf</th><th>Quantity Measure Compost</th><th>Quantity Measure Inerts</th><th>Quantity Measure Recyclables</th><th>Date</th><th>Site Name</th><th>Comments</th></tr></thead>";
+				$('#datatable-collect thead').remove();
+			    $('#datatable-collect').append(headerContent);
+			    $("#datatable-collect")
+				.DataTable(
+						{
+							"bProcessing" : true,
+							"bServerSide" : true,
+							"sort" : "position",
+							//bStateSave variable you can use to save state on client cookies: set value "true" 
+							"bStateSave" : false,
+							 stateSave: true,
+							 "fnStateSave": function (oSettings, oData) {
+							 	localStorage.setItem('MRVCDataTables', JSON.stringify(oData));
+							},
+							 "fnStateLoad": function (oSettings) {
+								return JSON.parse(localStorage.getItem('MRVCDataTables'));
+							 },
+							//Default: Page display length
+							"iDisplayLength" : 10,
+							"iData" : {
+								"start" : 52
+							},
+							//We will use below variable to track page number on server side(For more information visit: http://legacy.datatables.net/usage/options#iDisplayStart)
+							"iDisplayStart" : 0,
+							"fnDrawCallback" : function() {
+								//Get page numer on client. Please note: number start from 0 So
+								//for the first page you will see 0 second page 1 third page 2...
+								//Un-comment below alert to see page number
+								//alert("Current page number: "+this.fnPagingInfo().iPage);
+							},
+							//"sDom": 'l<"toolbar">frtip',
+							"initComplete" : function() {
+							
+							}
+							,
+							columnDefs : [ {
+								"targets" : '',
+								"orderable" : false,
+							}
+			                ],
+							"sScrollX" : "100%",
+							"sScrollXInner" : "100%",
+							"ordering":false,
+							"bScrollCollapse" : true,
+							"language" : {
+								"info" : "_START_ - _END_ of _TOTAL_",
+								paginate : {
+									next : '<i class="fa fa-angle-right"></i>', 
+									previous : '<i class="fa fa-angle-left"></i>'  
+								}
+							},
+							
+							"bDestroy" : true,
+							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-data-management-iris?"+myParams,
+		        "aoColumns": [
+		        	 { "mData": function(data,type,row){
+                      if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
+		            } },
+						{ "mData": function(data,type,row){
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +' </ul></div>' */
+			                '<div class="btn-group" role="group" aria-label="Basic example">'
+			                +' <a href="javascript:void(0);"  onclick="getUser('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+                
+/* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+ */             
+			                +'</div>'
+		            	return actions;
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.total_waste) == ''){ return '-'; }else{ return data.total_waste ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.total_rdf) == ''){ return '-'; }else{ return data.total_rdf ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.total_compost) == ''){ return '-'; }else{ return data.total_compost ; }
+			        } },
+			        { "mData": function(data,type,row){
+	                      if($.trim(data.total_inerts) == ''){ return '-'; }else{ return data.total_inerts ; }
+			        } },
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.total_recylables) == ''){ return '-'; }else{ return data.total_recylables; }
+		            } },
+		         
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.quantity_measure_waste) == ''){ return '-'; }else{ return data.quantity_measure_waste; } 
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.quantity_measure_rdf) == ''){ return '-'; }else{ return data.quantity_measure_rdf; } 
+		            } },
+		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.quantity_measure_compost) == ''){ return '-'; }else{ return data.quantity_measure_compost; }
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.quantity_measure_inerts) == ''){ return '-'; }else{ return data.quantity_measure_inerts ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.quantity_measure_recylabels) == ''){ return '-'; }else{ return data.quantity_measure_recylabels ; }
+			        } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
+		            } },
+		       
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; }
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.comments) == ''){ return '-'; }else{ return data.comments; } 
+		            } }
+		        ]
+		    });
+		 }else{
+			 var headerContent = '<thead><tr ><th class="text-center">No Data Available! </th></tr></thead>';
+				$('#datatable-collect thead').remove();
+			    $('#datatable-collect').append(headerContent);
+		 }
+		 
+		 
+		 
+		
 }
 
 function getErrorMessage(jqXHR, exception) {

@@ -2,7 +2,7 @@ package com.resustainability.reisp.model;
 
 public class DataManagement {
 
-	private String id, total_materials, total_recylable, total_bags, total_glass, total_cardboard,site_name,
+	private String id, total_materials, total_recylable, total_bags,status, total_glass, total_cardboard,site_name,
 			quality_measure_materials, quality_measure_recylable, quality_measure_plastics, quality_measure_bags,
 			quality_measure_glass, quality_measure_cardboard, site, comments, date, created_by, modified_date,
 			created_date, modified_by, total_waste, total_incieration, total_autoclave, quantity_measure_waste,
@@ -14,7 +14,31 @@ public class DataManagement {
 			quantity_measure_recylabels, disposal_total_waste, disposal_dlf, disposal_lat, disposal_incineration,
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
-			stock_dlf_measure, stock_lat_measure, stock_incineration_measure, stock_afrf_measure,from_date,to_date;
+			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date;
+
+	public String getDisposal_afrf() {
+		return disposal_afrf;
+	}
+
+	public void setDisposal_afrf(String disposal_afrf) {
+		this.disposal_afrf = disposal_afrf;
+	}
+
+	public String getDisposal_afrf_measure() {
+		return disposal_afrf_measure;
+	}
+
+	public void setDisposal_afrf_measure(String disposal_afrf_measure) {
+		this.disposal_afrf_measure = disposal_afrf_measure;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public String getFrom_date() {
 		return from_date;

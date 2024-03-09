@@ -142,6 +142,61 @@ public class IrisTransactionsController {
 		return msg;
 	}
 	
+	@RequestMapping(value = "/ajax/upload-iwm-disposal-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadIWMDisposalData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			//obj.setCreated_by(userId);
+			flag = service.uploadIWMDisposalData(obj);
+			if(flag == true) {
+				msg ="Collect Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "Collecting Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
+	
+	@RequestMapping(value = "/ajax/upload-iwm-leftoverstock-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadIWMLeftoverstockData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			//obj.setCreated_by(userId);
+			flag = service.uploadIWMLeftoverstockData(obj);
+			if(flag == true) {
+				msg ="Collect Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "Collecting Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
+	
+	
 	@RequestMapping(value = "/ajax/upload-msw-distribute-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String uploadMSWDistributeData(@RequestBody Transaction obj,HttpSession session) {

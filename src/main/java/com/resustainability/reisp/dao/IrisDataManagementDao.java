@@ -34,7 +34,7 @@ public class IrisDataManagementDao {
 			String qry = "SELECT um.sbu_code from [datamanagement_master] um "
 					+ "left join site s on um.sbu_code =s.sbu_code "
 					+ "left join sbu sb on um.sbu_code =sb.sbu_code "
-					+ " where um.sbu_code is not null ";
+					+ " where um.sbu_code is not null and um.status <> 'Inactive' ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
 				qry = qry + " and  um.sbu_code = ? ";
@@ -186,7 +186,7 @@ public class IrisDataManagementDao {
 							+ "      ,[quantity_measure_waste]"
 							+ "      ,[quantity_measure_incieration]"
 							+ "      ,[quantity_measure_autoclave]"
-							+ "      ,[site]"
+							+ "      ,[site]"+ "      ,[date],sss.site_name"
 							+ "      ,[comments]"
 							+ "      ,s.[created_by]"
 							+ "      ,s.[modified_date]"
@@ -250,27 +250,26 @@ public class IrisDataManagementDao {
 							+ "where s.id is not null  ";
 				}else if(obj.getDepartment_code().contains("Disp")) {
 					
-					qry = qry + "select s.[id]"
-							+ "      ,[rdf]"
-							+ "      ,[compost]"
-							+ "      ,[recyclables],s.sbu_code"
-							+ "      ,[inserts]"
-							+ "      ,[vendor_name_rdf]"
-							+ "      ,[vendor_name_compost]"
-							+ "      ,[vendor_name_recyclables]"
-							+ "      ,[vendor_name_inserts]"
-							+ "      ,[vendor_name_rdf_outflow]"
-							+ "      ,[vendor_name_compost_outflow]"
-							+ "      ,[vendor_name_recylables_outflow]"
-							+ "      ,[vendor_name_inserts_outflow]"
+					qry = qry + "select s.[id] "
+							+ "      ,s.[sbu_code] "
+							+ "      ,[disposal_total_waste] "
+							+ "      ,[disposal_dlf] "
+							+ "      ,[disposal_lat] "
+							+ "      ,[disposal_afrf] "
+							+ "      ,[disposal_incineration] "
+							+ "      ,[disposal_total_waste_measure] "
+							+ "      ,[disposal_dlf_measure] "
+							+ "      ,[disposal_lat_measure] "
+							+ "      ,[disposal_afrf_measure] "
+							+ "      ,[disposal_incineration_measure] "
+							+ "      ,s.[site] "
 							+ "      ,[date],sss.site_name"
-							+ "      ,[site]"
-							+ "      ,[comments]"
-							+ "      ,s.[created_by]"
-							+ "      ,s.[modified_date]"
-							+ "      ,s.[created_date]"
-							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[msw_distribute_table] s  "
+							+ "      ,[comments] "
+							+ "      ,s.[created_by] "
+							+ "      ,s.[modified_date] "
+							+ "      ,s.[created_date] "
+							+ "      ,s.[modified_by] "
+							+ "  FROM [IRIS].[dbo].[iwm_disposal_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -470,8 +469,8 @@ public class IrisDataManagementDao {
 				pValues[i++] = obj.getSbu_code();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date()) && !StringUtils.isEmpty(obj.getTo_date())) {
-				pValues[i++] = obj.getFrom_date();
-				pValues[i++] = obj.getTo_date();
+				pValues[i++] = obj.getFrom_date().trim();
+				pValues[i++] = obj.getTo_date().trim();
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite())) {
 				pValues[i++] = obj.getSite();
