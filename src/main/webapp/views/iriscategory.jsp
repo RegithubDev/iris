@@ -274,7 +274,7 @@ font-size: 1rem!important;
                      <form id="jquery-val-form2" action="<%=request.getContextPath() %>/update-category-iris" method="post" novalidate="novalidate">
                       <div class="mb-1">
                        <input type="hidden" class="form-control" id="id" name="id">
-			              <label class="form-label" for="sbu_code">SBU Code</label>
+			              <label class="form-label" for="sbu_code">SBU Code</label>   <span class=re-text>*</span>
 			               <select
 				            	class="form-select select2 select2-hidden-accessible sbu_code_edit" id="sbu_code_edit"
 				              name="sbu_code"
@@ -291,11 +291,11 @@ font-size: 1rem!important;
 			             <span class="badge badge-light-primary" id="category_code_edit"></span>
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="category_name">Category Name</label>
+			              <label class="form-label" for="category_name">Category Name</label>   <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="category_name_edit" name="category_name" placeholder="Category Name">
 			            </div>
 			                <div class="mb-1">
-			              <label class="form-label" for="status">Status</label>
+			              <label class="form-label" for="status">Status</label>   <span class=re-text>*</span>
 			              <div class="position-relative">
 			              <select class="form-select select2 select2-hidden-accessible status_edit" id="status_edit" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
 			                <option value="Active">Active</option>

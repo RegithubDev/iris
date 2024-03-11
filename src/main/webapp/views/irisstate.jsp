@@ -240,11 +240,11 @@ font-size: 1rem!important;
 			            </div> -->
 			            <input type="hidden" class="form-control" id="ids" name="id">
 			            <div class="mb-1">
-			              <label class="form-label" for="state_name">State Name</label>
+			              <label class="form-label" for="state_name">State Name</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="state_name_edit" name="state_name" placeholder="State Name">
 			            </div>
 			                <div class="mb-1">
-			              <label class="form-label" for="status">Status</label>
+			              <label class="form-label" for="status">Status</label>  <span class=re-text>*</span>
 			              <div class="position-relative">
 			              <select class="form-select select2 select2-hidden-accessible status_edit" id="status_edit" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
 			                <option value="Active">Active</option>

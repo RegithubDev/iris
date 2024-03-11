@@ -265,7 +265,7 @@ font-size: 1rem!important;
                     <div class="modal-body">
                      <form id="jquery-val-form" action="<%=request.getContextPath() %>/update-role-iris" method="post" novalidate="novalidate">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">SBU</label>
+			              <label class="form-label" for="sbu_code">SBU</label>  <span class=re-text>*</span>
 			              <input type="hidden" class="form-control" id="idVal" name="id" />
 			               <select
 				            	class="form-select select2 select2-hidden-accessible sbu_code_edit" id="sbu_code_edit"
@@ -279,11 +279,11 @@ font-size: 1rem!important;
 				            </select>
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="role_name">Role</label>
+			              <label class="form-label" for="role_name">Role</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="role_name_edit" name="role_name" placeholder="Role">
 			            </div>
 			                <div class="mb-1">
-			              <label class="form-label" for="status">Status</label>
+			              <label class="form-label" for="status">Status</label>  <span class=re-text>*</span>
 			              <div class="position-relative">
 			              <select class="form-select select2 select2-hidden-accessible status_edit" id="status_edit" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
 			                <option value="Active">Active</option>

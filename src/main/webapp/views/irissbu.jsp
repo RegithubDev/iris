@@ -245,11 +245,11 @@ font-size: 1rem!important;
 			             <!--  <input type="text" class="form-control" id="sbu_code_edit" name="sbu_code"  placeholder="Sbu Code"> -->
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">SBU Name</label>
+			              <label class="form-label" for="sbu_name">SBU Name</label> <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="sbu_name_edit" name="sbu_name" placeholder="Sbu Name">
 			            </div>
 			                <div class="mb-1">
-			              <label class="form-label" for="status">Status</label>
+			              <label class="form-label" for="status">Status</label> <span class=re-text>*</span>
 			              <div class="position-relative">
 			              <select class="form-select  select2-hidden-accessible status_edit" id="status_edit" name="status" data-select2-id="select-status" tabindex="-1" aria-hidden="true">
 			                <option value="Active">Active</option>

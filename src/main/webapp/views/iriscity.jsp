@@ -288,7 +288,7 @@ font-size: 1rem!important;
 			            </div> --%>
 			              <input type="hidden" class="form-control" id="idVal" name="id">
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Select State</label>
+			              <label class="form-label" for="sbu_code">Select State</label>  <span class=re-text>*</span>
 			               <select
 				            	class="form-select select2 select2-hidden-accessible state_edit" id="state_edit"
 				              name="state"
@@ -300,12 +300,12 @@ font-size: 1rem!important;
 								</c:forEach>
 				            </select>
 			            </div>
-			             <div class="mb-1">
-			              <label class="form-label" for="city_name">City Name</label>
+			             <div class="mb-1"> 
+			              <label class="form-label" for="city_name">City Name</label>   <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="city_name_edit" name="city_name" placeholder="City Name">
 			            </div>
 			                <div class="mb-1">
-			              <label class="form-label" for="status">Status</label>
+			              <label class="form-label" for="status">Status</label>  <span class=re-text>*</span>
 			              <div class="position-relative">
 			              <select class="form-select select2 select2-hidden-accessible status_edit" id="status_edit" name="status" data-select2-id="select-country" tabindex="-1" aria-hidden="true">
 			                <option value="Active">Active</option>
