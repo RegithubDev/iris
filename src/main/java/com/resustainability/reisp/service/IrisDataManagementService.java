@@ -35,5 +35,9 @@ public class IrisDataManagementService {
 	public int getTotalRecords(DataManagement obj, String searchParameter) throws Exception {
 		return dao.getTotalRecords(obj,searchParameter);
 	}
+
+	public boolean updateCollect(DataManagement obj) throws Exception {
+		return dao.updateCollect(obj);
+	}
 	
 }

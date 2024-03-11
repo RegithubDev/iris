@@ -292,7 +292,12 @@ $(function () {
 		'role_name':{
           required: true
         },
-		
+		'quantity':{
+          required: true
+        },
+		'quantity_measure':{
+          required: true
+        }
 		
 		
 		
