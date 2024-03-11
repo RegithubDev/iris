@@ -352,7 +352,7 @@ public class IrisUserDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT s.site_name from [user_management] um "
+			String qry = "SELECT s.site_name,um.site_name as id from [user_management] um "
 					+ " left join site s on um.site_name = s.id "
 					+ "where um.site_name is not null ";
 			
@@ -368,7 +368,7 @@ public class IrisUserDao {
 				qry = qry + " and um.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + "group by s.site_name order by s.site_name asc";
+			qry = qry + "group by s.site_name,um.site_name order by s.site_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {

@@ -371,7 +371,7 @@ font-size: 1rem!important;
                success: function (data) {
                    if (data.length > 0) {
                        $.each(data, function (i, val) {
-                            $("#site_nameID").append('<option value="' + val.site_name + '">' + $.trim(val.site_name) +'</option>');
+                            $("#site_nameID").append('<option value="' + val.id + '">' + $.trim(val.site_name) +'</option>');
                        });
                    }
                },error: function (jqXHR, exception) {
