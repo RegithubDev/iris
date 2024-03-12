@@ -9,7 +9,7 @@ public class DataManagement {
 			quantity_measure_incieration, quantity_measure_autoclave, sbu_code, quantity, quantity_measure, role,
 			department_code, department_name, rdf, compost, recyclables, inserts, vendor_name_rdf, vendor_name_compost,
 			vendor_name_recyclables, vendor_name_inserts, vendor_name_rdf_outflow, vendor_name_compost_outflow,
-			vendor_name_recylables_outflow, vendor_name_inserts_outflow, total_rdf, total_compost, total_inerts,
+			vendor_name_recylables_outflow, vendor_name_inserts_outflow, total_rdf, total_compost, total_inerts,total_plastic,
 			total_recylables, quantity_measure_rdf, quantity_measure_compost, quantity_measure_inerts,
 			quantity_measure_recylabels, disposal_total_waste, disposal_dlf, disposal_lat, disposal_incineration,
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
@@ -27,6 +27,14 @@ public int getOffset() {
 
 public void setStartIndex(int startIndex) {
 	this.startIndex = startIndex;
+}
+
+public String getTotal_plastic() {
+	return total_plastic;
+}
+
+public void setTotal_plastic(String total_plastic) {
+	this.total_plastic = total_plastic;
 }
 
 public void setOffset(int offset) {

@@ -120,11 +120,11 @@ public class IrisTransactionsDao {
 				obj.setQuality_measure_cardboard("MT");
 			}
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [bmw_distribute_table] (sbu_code,total_materials,total_recylable,total_bags,total_glass,total_cardboard,quality_measure_materials,"
+			String insertQry = "INSERT INTO [bmw_distribute_table] (sbu_code,total_materials,total_plastic,total_recylable,total_bags,total_glass,total_cardboard,quality_measure_materials,"
 					+ "quality_measure_recylable,quality_measure_plastics,quality_measure_bags,quality_measure_glass,quality_measure_cardboard,site,comments,date,"
 					+ "created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:total_materials,:total_recylable,:total_bags,:total_glass,:total_cardboard,:quality_measure_materials,"
+					+ "(:sbu_code,:total_materials,:total_plastic,:total_recylable,:total_bags,:total_glass,:total_cardboard,:quality_measure_materials,"
 					+ ":quality_measure_recylable,:quality_measure_plastics,:quality_measure_bags,:quality_measure_glass,:quality_measure_cardboard,:site,:comments,:date,"
 					+ ":created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 

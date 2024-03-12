@@ -205,9 +205,6 @@ font-size: 1rem!important;
           </div>
 	</section>
 	 <div class="modal-size-default d-inline-block">
-             <!--  <a type="button" class="btn btn-gradient-danger re-text-bg m-1" 
-             data-bs-toggle="modal" data-bs-target="#updatemodel"><i data-feather='user-check'></i> Update SBU</a> -->
-              <!-- Modal -->
               <div class="modal fade text-start" id="updatemodel" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
@@ -239,6 +236,401 @@ font-size: 1rem!important;
 			                </div>
 			              </div>
 			            </div>
+			            	 <div class="modal-size-default d-inline-block">
+              <div class="modal fade text-start" id="updatebmw_distribute" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Edit form</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-bmwdistribute-iris" method="post" novalidate="novalidate">
+                      <input type="hidden" class="form-control" id="id" name="id">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Materials</label>
+			              <span class="badge badge-light-primary" id="total_materials_edit"></span>
+			               <input type="text" class="form-control" id="total_materials_edit" name="total_materials"  placeholder="Total Materials"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Total Recyclable</label>
+			              <input type="text" class="form-control" id="total_recyclable_edit" name="total_recyclable" placeholder="Total Recyclable">
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Total Plastics</label>
+			              <input type="text" class="form-control" id="total_plastic_edit" name="total_plastic" placeholder="Total Plastics">
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Bags</label>
+			              <span class="badge badge-light-primary" id="total_bags_edit"></span>
+			               <input type="text" class="form-control" id="total_bags_edit" name="total_bags"  placeholder="Total Bags"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Glass</label>
+			              <span class="badge badge-light-primary" id="total_glass_edit"></span>
+			               <input type="text" class="form-control" id="total_glass_edit" name="total_glass"  placeholder="Total Glass"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Cardboard</label>
+			              <span class="badge badge-light-primary" id="total_cardboard_edit"></span>
+			               <input type="text" class="form-control" id="total_cardboard_edit" name="total_cardboard"  placeholder="Total Cardboard"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Materials</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_materials_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_materials_edit" name="quantity_measure_material"  placeholder="Quantity Measure Materials"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label>
+			              <span class="badge badge-light-primary" id="quantity_recyclables_materials_edit"></span>
+			               <input type="text" class="form-control" id="quantity_recyclables_materials_edit" name="quantity_recyclables_materials"  placeholder="Quantity Measure Materials"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Plastics</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_plastics_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_plastics_edit" name="quantity_measure_plastics"  placeholder="Quantity Measure Materials"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Bags</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_bags_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_bags_edit" name="quantity_measure_bags"  placeholder="Quantity Measure Bags"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Glass</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_glass_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_glass_edit" name="quantity_measure_glass"  placeholder="Quantity Measure Glass"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Cardboard</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_cardboard_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_cardboard_edit" name="quantity_measure_cardboard"  placeholder="Quantity Measure Cardboard"> 
+			            </div>
+			            
+			              
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit"  class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Update</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div>
+			            
+			            
+			            
+			            
+			            
+			            
+			            <div class="modal-size-default d-inline-block">
+              <div class="modal fade text-start" id="updatebmw_processing" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Edit form</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-bmwprocessing-iris" method="post" novalidate="novalidate">
+                      <input type="hidden" class="form-control" id="id" name="id">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Waste</label>
+			              <span class="badge badge-light-primary" id="total_waste_edit"></span>
+			               <input type="text" class="form-control" id="total_waste_edit" name="total_waste"  placeholder="Total Waste"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Total Incineration</label>
+			                <span class="badge badge-light-primary" id="total_incineration_edit"></span>
+			              <input type="text" class="form-control" id="total_incineration_edit" name="total_incineration" placeholder="Total Incineration">
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Total Autoclave</label>
+			                <span class="badge badge-light-primary" id="total_autoclave_edit"></span>
+			              <input type="text" class="form-control" id="total_autoclave_edit" name="total_autoclave" placeholder="Total Autoclave">
+			            </div>
+			             
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Waste</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_waste_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_waste_edit" name="quantity_measure_waste"  placeholder="Quantity Measure Waste"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Incineration</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_incineration_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_incineration_edit" name="quantity_measure_incineration"  placeholder="Quantity Measure Incineration"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Autoclave</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_autoclave_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_autoclave_edit" name="quantity_measure_autoclave"  placeholder="Quantity Measure Autoclave"> 
+			            </div>
+			             
+			              
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit"  class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Update</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div> 
+			            
+			        
+			        
+	            <div class="modal-size-default d-inline-block">
+              <div class="modal fade text-start" id="updateimw_disposal" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Edit form</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-imwdisposal-iris" method="post" novalidate="novalidate">
+                      <input type="hidden" class="form-control" id="id" name="id">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Total Waste</label>
+			              <span class="badge badge-light-primary" id="disposal_total_waste_edit"></span>
+			               <input type="text" class="form-control" id="disposal_total_waste_edit" name="disposal_total_waste"  placeholder="Disposal Total Waste"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Disposal Dlf</label>
+			                <span class="badge badge-light-primary" id="disposal_dlf_edit"></span>
+			              <input type="text" class="form-control" id="disposal_dlf_edit" name="disposal_dlf" placeholder="Disposal Dlf">
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Disposal Lat</label>
+			                <span class="badge badge-light-primary" id="disposal_lat_edit"></span>
+			              <input type="text" class="form-control" id="disposal_lat_edit" name="disposal_lat" placeholder="Disposal Lat">
+			            </div>
+			             
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Incineration</label>
+			              <span class="badge badge-light-primary" id="disposal_incineration_edit"></span>
+			               <input type="text" class="form-control" id="disposal_incineration_edit" name="disposal_incineration"  placeholder="Disposal Incineration"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Afrf</label>
+			              <span class="badge badge-light-primary" id="disposal_afrf_edit"></span>
+			               <input type="text" class="form-control" id="disposal_afrf_edit" name="disposal_afrf"  placeholder="Disposal Afrf"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Total Waste Measure</label>
+			              <span class="badge badge-light-primary" id="disposal_total_waste_measure_edit"></span>
+			               <input type="text" class="form-control" id="disposal_total_waste_measure_edit" name="disposal_total_waste_measure"  placeholder="Disposal Total Waste Measure"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Dlf Measure</label>
+			              <span class="badge badge-light-primary" id="disposal_dlf_measure_edit"></span>
+			               <input type="text" class="form-control" id="disposal_dlf_measure_edit" name="disposal_dlf_measure"  placeholder="Disposal Dlf Measure"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Lat Measure</label>
+			              <span class="badge badge-light-primary" id="disposal_lat_measure_edit"></span>
+			               <input type="text" class="form-control" id="disposal_lat_measure_edit" name="disposal_lat_measure"  placeholder="Disposal Lat Measure"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Incineration Measure</label>
+			              <span class="badge badge-light-primary" id="disposal_incineration_measure_edit"></span>
+			               <input type="text" class="form-control" id="disposal_incineration_measure_edit" name="disposal_incineration_measure"  placeholder="Disposal Incineration Measure"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Disposal Afrf Measure</label>
+			              <span class="badge badge-light-primary" id="disposal_afrf_measure_edit"></span>
+			               <input type="text" class="form-control" id="disposal_afrf_measure_edit" name="disposal_afrf_measure"  placeholder="Disposal Afrf Measure"> 
+			            </div>
+			             
+			              
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit"  class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Update</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div> 	
+			            
+			               <div class="modal-size-default d-inline-block">
+              <div class="modal fade text-start" id="updateiwm_leftover_stock" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Edit form</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-iwmleftoverstock-iris" method="post" novalidate="novalidate">
+                      <input type="hidden" class="form-control" id="id" name="id">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Total Waste</label>
+			              <span class="badge badge-light-primary" id="stock_total_waste_edit"></span>
+			               <input type="text" class="form-control" id="stock_total_waste_edit" name="stock_total_waste"  placeholder="Stock Total Waste"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Stock Dlf</label>
+			                <span class="badge badge-light-primary" id="stock_dlf_edit"></span>
+			              <input type="text" class="form-control" id="stock_dlf_edit" name="stock_dlf" placeholder="Stock Dlf">
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Stock Lat</label>
+			                <span class="badge badge-light-primary" id="stock_lat_edit"></span>
+			              <input type="text" class="form-control" id="stock_lat_edit" name="stock_lat" placeholder="Stock Lat">
+			            </div>
+			             
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Incineration</label>
+			              <span class="badge badge-light-primary" id="stock_incineration_edit"></span>
+			               <input type="text" class="form-control" id="stock_incineration_edit" name="stock_incineration"  placeholder="Stock Incineration"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Afrf</label>
+			              <span class="badge badge-light-primary" id="stock_afrf_edit"></span>
+			               <input type="text" class="form-control" id="stock_afrf_edit" name="stock_afrf"  placeholder="Stock Afrf"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Total Waste Measure</label>
+			              <span class="badge badge-light-primary" id="stock_total_waste_measure_edit"></span>
+			               <input type="text" class="form-control" id="stock_total_waste_measure_edit" name="stock_total_waste_measure"  placeholder="Stock Total Waste Measure"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Dlf Measure</label>
+			              <span class="badge badge-light-primary" id="stock_dlf_measure_edit"></span>
+			               <input type="text" class="form-control" id="stock_dlf_measure_edit" name="stock_dlf_measure"  placeholder="Stock Dlf Measure"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Lat Measure</label>
+			              <span class="badge badge-light-primary" id="stock_lat_measure_edit"></span>
+			               <input type="text" class="form-control" id="stock_lat_measure_edit" name="stock_lat_measure"  placeholder="Stock Lat Measure"> 
+			            </div>
+			              <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Incineration Measure</label>
+			              <span class="badge badge-light-primary" id="stock_incineration_measure_edit"></span>
+			               <input type="text" class="form-control" id="stock_incineration_measure_edit" name="stock_incineration_measure"  placeholder="Stock Incineration Measure"> 
+			            </div>
+			              <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Stock Afrf Measure</label>
+			              <span class="badge badge-light-primary" id="stock_afrf_measure_edit"></span>
+			               <input type="text" class="form-control" id="stock_afrf_measure_edit" name="stock_afrf_measure"  placeholder="Stock Afrf Measure"> 7
+			            </div>
+			             
+			              
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit"  class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Update</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div> 	        
+			            
+			              <div class="modal-size-default d-inline-block">
+              <div class="modal fade text-start" id="updatemsw_processing" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Edit form</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-mswprocessing-iris" method="post" novalidate="novalidate">
+                      <input type="hidden" class="form-control" id="id" name="id">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Waste</label>
+			              <span class="badge badge-light-primary" id="total_waste_edit"></span>
+			               <input type="text" class="form-control" id="total_waste_edit" name="total_waste"  placeholder="Stock Total Waste"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Total Rdf</label>
+			                <span class="badge badge-light-primary" id="total_rdf_edit"></span>
+			              <input type="text" class="form-control" id="total_rdf_edit" name="total_rdf" placeholder="Stock Dlf">
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Total Compost</label>
+			                <span class="badge badge-light-primary" id="total_compost_edit"></span>
+			              <input type="text" class="form-control" id="total_compost_edit" name="total_compost" placeholder="Stock Lat">
+			            </div>
+			             
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Inerts</label>
+			              <span class="badge badge-light-primary" id="total_inerts_edit"></span>
+			               <input type="text" class="form-control" id="total_inerts_edit" name="total_inerts"  placeholder="Stock Incineration"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Total Recyclables</label>
+			              <span class="badge badge-light-primary" id="total_recyclables_edit"></span>
+			               <input type="text" class="form-control" id="total_recyclables_edit" name="total_recyclables"  placeholder="Stock Afrf"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Waste</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_waste_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_waste_edit" name="quantity_measure_waste"  placeholder="Stock Total Waste Measure"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Rdf</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_rdf_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_rdf_edit" name="quantity_measure_rdf"  placeholder="Stock Dlf Measure"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Compost</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_compost_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_compost_edit" name="quantity_measure_compost"  placeholder="Stock Lat Measure"> 
+			            </div>
+			              <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Inerts</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_inerts_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_inerts_edit" name="quantity_measure_inerts"  placeholder="Stock Incineration Measure"> 
+			            </div>
+			              <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_recyclables_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_recyclables_edit" name="quantity_measure_recyclables"  placeholder="Stock Afrf Measure"> 
+			            </div>
+			             
+			              
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit"  class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Update</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div> 	        
+			        
+			        
+			        
+			        
+			        
+			        
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
+			            
     </div>
   </div>
 </div>
@@ -347,6 +739,138 @@ font-size: 1rem!important;
       $('#updatemodel').modal('show');
  }
 
+ function getupdatebmw_distribute(id,sbu_code,total_materials,total_recylable,total_plastic,quality_measure_plastics,
+		 total_bags,total_glass,total_cardboard,quality_measure_materials,quality_measure_recylable,
+		 quality_measure_plastics,quality_measure_bags,quality_measure_glass,quality_measure_cardboard,comments){
+	 $('#total_materials_edit').val('');
+	 $('#total_recyclable_edit').val('');
+	 $('#total_plastic_edit').val('');
+	 $('#total_bags_edit').val('');
+	 $('#total_glass_edit').val('');
+	 $('#total_cardboard_edit').val('');
+	 $('#quantity_measure_materials_edit').val('');
+	 $('#quantity_recyclables_materials_edit').val('');
+	 $('#quantity_measure_plastics_edit').val('');
+	 $('#quantity_measure_bags_edit').val('');
+	 $('#quantity_measure_glass_edit').val('');
+	 $('#quantity_measure_cardboard_edit').val('');
+	 
+      $('#id').val($.trim(id));
+      $('#updatebmw_distribute #total_materials_edit').val($.trim(total_materials)).focus();
+      $('#updatebmw_distribute #total_recyclable_edit').val($.trim(total_recylable)).focus();
+      $('#updatebmw_distribute #total_plastic_edit').val($.trim(total_plastic)).focus();
+      $('#updatebmw_distribute #total_bags_edit').val($.trim(total_bags)).focus();
+      $('#updatebmw_distribute #total_glass_edit').val($.trim(total_glass)).focus();
+      $('#updatebmw_distribute #total_cardboard_edit').val($.trim(total_cardboard)).focus();
+      $('#updatebmw_distribute #quantity_measure_materials_edit').val($.trim(quality_measure_materials)).focus();
+      $('#updatebmw_distribute #quantity_recyclables_materials_edit').val($.trim(quality_measure_recylable)).focus();
+      $('#updatebmw_distribute #quantity_measure_plastics_edit').val($.trim(quality_measure_plastics)).focus();
+      $('#updatebmw_distribute #quantity_measure_bags_edit').val($.trim(quality_measure_bags)).focus();
+      $('#updatebmw_distribute #quantity_measure_glass_edit').val($.trim(quality_measure_glass)).focus();
+      $('#updatebmw_distribute #quantity_measure_cardboard_edit').val($.trim(quality_measure_cardboard)).focus();
+
+      $('#updatebmw_distribute').modal('show');
+ }
+ 
+ function getupdatebmw_processing(id,sbu_code,total_waste,total_incieration,total_autoclave,quantity_measure_waste,quantity_measure_incieration,quantity_measure_autoclave,comments){
+	 $('#total_waste_edit').val('');
+	 $('#total_incineration_edit').val('');
+	 $('#total_autoclave_edit').val('');
+	 $('#quantity_measure_waste_edit').val('');
+	 $('#quantity_measure_incineration_edit').val('');
+	 $('#quantity_measure_autoclave_edit').val('');
+      $('#id').val($.trim(id));
+      $('#updatebmw_processing #total_waste_edit').val($.trim(total_waste)).focus();
+      $('#updatebmw_processing #total_incineration_edit').val($.trim(total_incieration)).focus();
+      $('#updatebmw_processing #total_autoclave_edit').val($.trim(total_autoclave)).focus();
+      $('#updatebmw_processing #quantity_measure_waste_edit').val($.trim(quantity_measure_waste)).focus();
+      $('#updatebmw_processing #quantity_measure_incineration_edit').val($.trim(quantity_measure_incieration)).focus();
+      $('#updatebmw_processing #quantity_measure_autoclave_edit').val($.trim(quantity_measure_autoclave)).focus();
+      
+      $('#updatebmw_processing').modal('show');
+ }
+ 
+ 
+ function getupdateimw_disposal(id,sbu_code,disposal_total_waste,disposal_dlf,disposal_lat,disposal_afrf,disposal_incineration,disposal_total_waste_measure,disposal_dlf_measure,disposal_lat_measure,disposal_incineration_measure,disposal_afrf_measure,comments){
+	 $('#disposal_total_waste_edit').val('');
+	 $('#disposal_dlf_edit').val('');
+	 $('#disposal_lat_edit').val('');
+	 $('#disposal_incineration_edit').val('');
+	 $('#disposal_afrf_edit').val('');
+	 $('#disposal_total_waste_measure_edit').val('');
+	 $('#disposal_dlf_measure_edit').val('');
+	 $('#disposal_lat_measure_edit').val('');
+	 $('#disposal_incineration_measure_edit').val('');
+	 $('#disposal_afrf_measure_edit').val('');
+      $('#id').val($.trim(id));
+      $('#updateimw_disposal #disposal_total_waste_edit').val($.trim(disposal_total_waste)).focus();
+      $('#updateimw_disposal #disposal_dlf_edit').val($.trim(disposal_dlf)).focus();
+      $('#updateimw_disposal #disposal_lat_edit').val($.trim(disposal_lat)).focus();
+      $('#updateimw_disposal #disposal_incineration_edit').val($.trim(disposal_afrf)).focus();
+      $('#updateimw_disposal #disposal_afrf_edit').val($.trim(disposal_incineration)).focus();
+      $('#updateimw_disposal #disposal_total_waste_measure_edit').val($.trim(disposal_total_waste_measure)).focus();
+      $('#updateimw_disposal #disposal_dlf_measure_edit').val($.trim(disposal_dlf_measure)).focus();
+      $('#updateimw_disposal #disposal_lat_measure_edit').val($.trim(disposal_lat_measure)).focus();
+      $('#updateimw_disposal #disposal_incineration_measure_edit').val($.trim(disposal_incineration_measure)).focus();
+      $('#updateimw_disposal #disposal_afrf_measure_edit').val($.trim(disposal_afrf_measure)).focus();
+      
+      $('#updateimw_disposal').modal('show');
+ }
+ 
+ function getupdateiwm_leftover_stock(id,sbu_code,stock_total_waste,stock_dlf,stock_lat,stock_incineration,stock_afrf,stock_total_waste_measure,stock_dlf_measure,stock_lat_measure,stock_incineration_measure,stock_afrf_measure,comments){
+	 $('#stock_total_waste_edit').val('');
+	 $('#stock_dlf_edit').val('');
+	 $('#stock_lat_edit').val('');
+	 $('#stock_incineration_edit').val('');
+	 $('#stock_afrf_edit').val('');
+	 $('#stock_total_waste_measure_edit').val('');
+	 $('#stock_dlf_measure_edit').val('');
+	 $('#stock_lat_measure_edit').val('');
+	 $('#stock_incineration_measure_edit').val('');
+	 $('#stock_afrf_measure_edit').val('');
+      $('#id').val($.trim(id));
+      $('#updateiwm_leftover_stock #stock_total_waste_edit').val($.trim(stock_total_waste)).focus();
+      $('#updateiwm_leftover_stock #stock_dlf_edit').val($.trim(stock_dlf)).focus();
+      $('#updateiwm_leftover_stock #stock_lat_edit').val($.trim(stock_lat)).focus();
+      $('#updateiwm_leftover_stock #stock_incineration_edit').val($.trim(stock_incineration)).focus();
+      $('#updateiwm_leftover_stock #stock_afrf_edit').val($.trim(stock_afrf)).focus();
+      $('#updateiwm_leftover_stock #stock_total_waste_measure_edit').val($.trim(stock_total_waste_measure)).focus();
+      $('#updateiwm_leftover_stock #stock_dlf_measure_edit').val($.trim(stock_dlf_measure)).focus();
+      $('#updateiwm_leftover_stock #stock_lat_measure_edit').val($.trim(stock_lat_measure)).focus();
+      $('#updateiwm_leftover_stock #stock_incineration_measure_edit').val($.trim(stock_incineration_measure)).focus();
+      $('#updateiwm_leftover_stock #stock_afrf_measure_edit').val($.trim(stock_afrf_measure)).focus();
+      
+      $('#updateiwm_leftover_stock').modal('show');
+ }
+ 
+ function getupdatemsw_processing(id,sbu_code,total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,quantity_measure_rdf,quantity_measure_compost,quantity_measure_recylabels,quantity_measure_inerts,comments){
+	 $('#total_waste_edit').val('');
+	 $('#total_rdf_edit').val('');
+	 $('#total_compost_edit').val('');
+	 $('#total_inerts_edit').val('');
+	 $('#total_recyclables_edit').val('');
+	 $('#quantity_measure_waste_edit').val('');
+	 $('#quantity_measure_rdf_edit').val('');
+	 $('#quantity_measure_compost_edit').val('');
+	 $('#quantity_measure_inerts_edit').val('');
+	 $('#quantity_measure_recyclables_edit').val('');
+      $('#id').val($.trim(id));
+      $('#updatemsw_processing #total_waste_edit').val($.trim(total_waste)).focus();
+      $('#updatemsw_processing #total_rdf_edit').val($.trim(total_rdf)).focus();
+      $('#updatemsw_processing #total_compost_edit').val($.trim(total_compost)).focus();
+      $('#updatemsw_processing #total_inerts_edit').val($.trim(total_inerts)).focus();
+      $('#updatemsw_processing #total_recyclables_edit').val($.trim(total_recylables)).focus();
+      $('#updatemsw_processing #quantity_measure_waste_edit').val($.trim(quantity_measure_waste)).focus();
+      $('#updatemsw_processing #quantity_measure_rdf_edit').val($.trim(quantity_measure_rdf)).focus();
+      $('#updatemsw_processing #quantity_measure_compost_edit').val($.trim(quantity_measure_compost)).focus();
+      $('#updatemsw_processing #quantity_measure_inerts_edit').val($.trim(quantity_measure_recylabels)).focus();
+      $('#updatemsw_processing #quantity_measure_recyclables_edit').val($.trim(quantity_measure_inerts)).focus();
+      
+      $('#updatemsw_processing').modal('show');
+ }
+ 
+ 
+ 
  function getSBUFilterList() {
 		var sbu_code = $("#sbuID").val();
 		var site = $("#site_nameID").val();
@@ -609,13 +1133,13 @@ font-size: 1rem!important;
                       if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.total_waste+"','"+data.total_incieration+"','"+data.total_autoclave+"','"+data.quantity_measure_waste+"','"+data.quantity_measure_incieration+"','"+data.quantity_measure_autoclave+"','"+data.date+"','"+data.comments+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getCollect('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  onclick="getupdatebmw_processing('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
 /* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
  */             
@@ -715,13 +1239,13 @@ font-size: 1rem!important;
                       if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.total_materials+"','"+data.total_recylable+"','"+data.total_plastic+"','"+data.total_bags+"','"+data.total_glass+"','"+data.total_cardboard+"','"+data.quality_measure_materials+"','"+data.quality_measure_recylable+"','"+data.quality_measure_plastics+"','"+data.quality_measure_bags+"','"+data.quality_measure_glass+"','"+data.quality_measure_cardboard+"','"+data.sbu_code+"','"+data.date+"','"+data.comments+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getCollect('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  onclick="getupdatebmw_distribute('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
 /* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
  */             
@@ -735,7 +1259,7 @@ font-size: 1rem!important;
                       if($.trim(data.total_recylable) == ''){ return '-'; }else{ return data.total_recylable ; }
 		            } },
 		            { "mData": function(data,type,row){
-	                      if($.trim(data.quality_measure_plastics) == ''){ return '-'; }else{ return data.quality_measure_plastics ; }
+	                      if($.trim(data.total_plastic) == ''){ return '-'; }else{ return data.total_plastic ; }
 			        } },
 		       
 		            { "mData": function(data,type,row){ 
@@ -839,13 +1363,13 @@ font-size: 1rem!important;
                       if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.disposal_total_waste+"','"+data.disposal_dlf+"','"+data.disposal_lat+"','"+data.disposal_afrf+"','"+data.disposal_incineration+"','"+data.disposal_total_waste_measure+"','"+data.disposal_dlf_measure+"','"+data.disposal_lat_measure+"','"+data.disposal_incineration_measure+"','"+data.disposal_afrf_measure+"','"+data.date+"','"+data.comments+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getCollect('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  onclick="getupdateimw_disposal('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
 /* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
  */             
@@ -957,13 +1481,13 @@ font-size: 1rem!important;
                       if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.stock_total_waste+"','"+data.stock_dlf+"','"+data.stock_lat+"','"+data.stock_incineration+"','"+data.stock_afrf+"','"+data.stock_total_waste_measure+"','"+data.stock_dlf_measure+"','"+data.stock_lat_measure+"','"+data.stock_incineration_measure+"','"+data.stock_afrf_measure+"','"+data.date+"','"+data.comments+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getCollect('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  onclick="getupdateiwm_leftover_stock('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
 /* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
  */             
@@ -1075,13 +1599,13 @@ font-size: 1rem!important;
                       if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.total_waste+"','"+data.total_rdf+"','"+data.total_compost+"','"+data.total_inerts+"','"+data.total_recylables+"','"+data.quantity_measure_waste+"','"+data.quantity_measure_rdf+"','"+data.quantity_measure_compost+"','"+data.quantity_measure_inerts+"','"+data.quantity_measure_recylabels+"','"+data.quantity+"','"+data.quantity+"','"+data.date+"','"+data.comments+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +' </ul></div>' */
 			                '<div class="btn-group" role="group" aria-label="Basic example">'
-			                +' <a href="javascript:void(0);"  onclick="getCollect('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+			                +' <a href="javascript:void(0);"  onclick="getupdatemsw_processing('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
                 
 /* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
  */             

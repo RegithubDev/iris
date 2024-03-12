@@ -211,7 +211,7 @@ public class IrisDataManagementDao {
 							+ "      ,[total_materials]"
 							+ "      ,[total_recylable]"
 							+ "      ,[total_bags]"
-							+ "      ,[total_glass]"
+							+ "      ,[total_glass],[total_plastic]"
 							+ "      ,[total_cardboard]"
 							+ "      ,[quality_measure_materials]"
 							+ "      ,[quality_measure_recylable]"
