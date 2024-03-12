@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -514,8 +515,10 @@ public class IrisUserController {
 			model.setViewName("redirect:/usermanagement");
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			obj.setCreated_by(userId);
-			obj.setModified_date(null);
+			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+				 obj.setCreated_by(userId);
+            }
+			
 			flag = service.addUserIris(obj);
 			if(flag == true) {
 				attributes.addFlashAttribute("success", "User Added Succesfully.");
