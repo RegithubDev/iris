@@ -75,7 +75,7 @@ public class IrisTransactionsController {
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
 			//obj.setCreated_by(userId);
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
 				obj.setCreated_by(userId);
 			}
 			flag = service.uploadCollectData(obj);
@@ -104,7 +104,7 @@ public class IrisTransactionsController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
 				obj.setCreated_by(userId);
 			}
 			flag = service.uploadBMWProcessingData(obj);
@@ -133,7 +133,7 @@ public class IrisTransactionsController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
 				obj.setCreated_by(userId);
 			}
 			flag = service.uploadBMWDistributeData(obj);
@@ -162,7 +162,7 @@ public class IrisTransactionsController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
 				obj.setCreated_by(userId);
 			}
 			flag = service.uploadIWMDisposalData(obj);
@@ -191,7 +191,7 @@ public class IrisTransactionsController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
 				obj.setCreated_by(userId);
 			}
 			flag = service.uploadIWMLeftoverstockData(obj);
@@ -221,7 +221,7 @@ public class IrisTransactionsController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
 				obj.setCreated_by(userId);
 			}
 			flag = service.uploadMSWDistributeData(obj);
@@ -250,7 +250,7 @@ public class IrisTransactionsController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
 				obj.setCreated_by(userId);
 			}
 			flag = service.uploadMSWProcessingData(obj);

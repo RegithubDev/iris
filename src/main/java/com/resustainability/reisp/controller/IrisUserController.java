@@ -515,10 +515,11 @@ public class IrisUserController {
 			model.setViewName("redirect:/usermanagement");
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			if(!StringUtils.isEmpty(obj.getCreated_by())) {
-				 obj.setCreated_by(userId);
-            }
-			
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
+				obj.setCreated_by(userId);
+			}
+			obj.setCreated_by(userId);
+			obj.setModified_date(null);
 			flag = service.addUserIris(obj);
 			if(flag == true) {
 				attributes.addFlashAttribute("success", "User Added Succesfully.");
@@ -542,7 +543,9 @@ public class IrisUserController {
 			model.setViewName("redirect:/usermanagement");
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
-			obj.setModified_by(userId);
+			if(StringUtils.isEmpty(obj.getModified_by())) {
+				obj.setModified_by(userId);
+			}
 			obj.setModified_date(null);
 			flag = service.updateUserIris(obj);
 			if(flag == true) {

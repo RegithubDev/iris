@@ -15,6 +15,23 @@ public class DataManagement {
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
 			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date;
+private int startIndex,offset;
+
+	public int getStartIndex() {
+	return startIndex;
+}
+
+public int getOffset() {
+	return offset;
+}
+
+public void setStartIndex(int startIndex) {
+	this.startIndex = startIndex;
+}
+
+public void setOffset(int offset) {
+	this.offset = offset;
+}
 
 	public String getDisposal_afrf() {
 		return disposal_afrf;

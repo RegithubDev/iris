@@ -204,10 +204,10 @@ public class IrisTransactionsDao {
 			}
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String insertQry = "INSERT INTO [msw_processing_table] (sbu_code,total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
-					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site_name,comments,created_by,created_date) "
+					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site,comments,created_by,created_date) "
 					+ "VALUES "
 					+ "(:sbu_code,:total_waste,:total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
-					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site_name,:comments,:created_by,getdate())";
+					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

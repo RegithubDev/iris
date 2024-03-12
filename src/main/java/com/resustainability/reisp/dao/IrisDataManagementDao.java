@@ -120,7 +120,7 @@ public class IrisDataManagementDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT site_name from site um "
+			String qry = "SELECT um.id,site_name from site um "
 					+ "left join datamanagement_master s on s.sbu_code = um.sbu_code "
 					+ "left join sbu sb on s.sbu_code =sb.sbu_code "
 					+ " where site_name is not null ";
@@ -137,7 +137,7 @@ public class IrisDataManagementDao {
 				qry = qry + " and s.id = ? ";
 				arrSize++;
 			}
-			qry = qry + " group by site_name ";
+			qry = qry + " group by um.id,site_name ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
@@ -467,7 +467,11 @@ public class IrisDataManagementDao {
 				qry = qry + " and s.id = ? ";
 				arrSize++;
 			}
-			qry = qry + " order by s.date asc ";
+			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
+				qry = qry + " ORDER BY s.date asc offset ? rows  fetch next ? rows only";	
+				arrSize++;
+				arrSize++;
+			}
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
@@ -479,6 +483,10 @@ public class IrisDataManagementDao {
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite())) {
 				pValues[i++] = obj.getSite();
+			}
+			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
+				pValues[i++] = startIndex;
+				pValues[i++] = offset;
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
 		} catch (Exception e) {

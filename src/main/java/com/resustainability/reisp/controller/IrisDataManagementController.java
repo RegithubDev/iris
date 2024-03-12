@@ -18,6 +18,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -87,7 +88,7 @@ public class IrisDataManagementController {
 			model.setViewName("redirect:/iris-datamanagement");
 			userId = (String) session.getAttribute("USER_ID");
 			siteName = (String) session.getAttribute("USER_NAME");
-			if(!StringUtils.isEmpty(obj.getModified_by())) {
+			if(StringUtils.isEmpty(obj.getModified_by())) {
 				obj.setModified_by(userId);
 			}
 			flag = service.updateCollect(obj);
@@ -239,6 +240,20 @@ public class IrisDataManagementController {
 			String [] dates = obj.getDate().split("to");
 			obj.setFrom_date(dates[0]);
 			obj.setTo_date(dates[1]);
+			objList = service.getDataManagementList(obj, startIndex, offset, searchParameter);
+		} catch (Exception e) {
+			logger.error("createPaginationData : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/reone/get-data-management-list", method = { RequestMethod.POST, RequestMethod.GET })
+	public List<DataManagement> createPaginationDataMobile( @RequestBody DataManagement obj) {
+		List<DataManagement> objList = null;
+		try {
+			int startIndex = obj.getStartIndex();
+			int offset = obj.getOffset();
+			String searchParameter = null;
 			objList = service.getDataManagementList(obj, startIndex, offset, searchParameter);
 		} catch (Exception e) {
 			logger.error("createPaginationData : " + e.getMessage());

@@ -406,7 +406,13 @@ font-size: 1rem!important;
 	 var sbu_code = $("#sbuID").val();
 		var site = $("#site_nameID").val();
 		var department_code = $("#department_code").val();
-		var date = $("#fp-range").val();
+		 if(sbu_code != sbu){
+			 site = "";
+			}
+		    sbu = sbu_code;
+		    
+			var date = $("#fp-range").val();
+		   if ($.trim(site) == "") {
        	$("#site_nameID option:not(:first)").remove();
        	var myParams = {sbu_code: sbu_code };
            $.ajax({
@@ -423,6 +429,7 @@ font-size: 1rem!important;
       	          	  getErrorMessage(jqXHR, exception);
       	     	  }
            });
+		}
    }
  
  function getUserList() {
