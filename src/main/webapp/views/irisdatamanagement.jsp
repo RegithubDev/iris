@@ -608,8 +608,93 @@ font-size: 1rem!important;
 			                  </div>
 			                </div>
 			              </div>
-			            </div> 	        
-			        
+			            </div> 	
+			                    
+			         <div class="modal-size-default d-inline-block">
+              <div class="modal fade text-start" id="updatemsw_distributive" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header re-text-bg">
+                      <h4 class="modal-title text-white" id="myModalLabel18">Edit form</h4>
+                      <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-mswdistributive-iris" method="post" novalidate="novalidate">
+                      <input type="hidden" class="form-control" id="id" name="id">
+                      <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Rdf</label>
+			              <span class="badge badge-light-primary" id="rdf_edit"></span>
+			               <input type="text" class="form-control" id="rdf_edit" name="rdf"  placeholder="Rdf"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Compost</label>
+			                <span class="badge badge-light-primary" id="compost_edit"></span>
+			              <input type="text" class="form-control" id="compost_edit" name="compost" placeholder="Compost">
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_name">Recyclables</label>
+			                <span class="badge badge-light-primary" id="recyclables_edit"></span>
+			              <input type="text" class="form-control" id="recyclables_edit" name="recyclables" placeholder="Recyclables">
+			            </div>
+			             
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Inerts</label>
+			              <span class="badge badge-light-primary" id="inerts_edit"></span>
+			               <input type="text" class="form-control" id="inerts_edit" name="inerts"  placeholder="Inerts"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Vendor Name Rdf</label>
+			              <span class="badge badge-light-primary" id="vendor_name_rdf_edit"></span>
+			               <input type="text" class="form-control" id="vendor_name_rdf_edit" name="vendor_name_rdf"  placeholder="Vendor Name Rdf"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Vendor Name Compost</label>
+			              <span class="badge badge-light-primary" id="vendor_name_compost_edit"></span>
+			               <input type="text" class="form-control" id="vendor_name_compost_edit" name="vendor_name_compost"  placeholder="Vendor Name Compost"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Vendor Name Recyclables</label>
+			              <span class="badge badge-light-primary" id="vendor_name_recyclables_edit"></span>
+			               <input type="text" class="form-control" id="vendor_name_recyclables_edit" name="vendor_name_recyclables"  placeholder="Vendor Name Recyclables"> 
+			            </div>
+			            <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Vendor Name Inerts</label>
+			              <span class="badge badge-light-primary" id="vendor_name_inerts_edit"></span>
+			               <input type="text" class="form-control" id="vendor_name_inerts_edit" name="vendor_name_inerts"  placeholder="Vendor Name Inerts"> 
+			            </div>
+			              <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Rdf Outflow</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_rdf_outflow_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_rdf_outflow_edit" name="quantity_measure_rdf_outflow"  placeholder="Quantity Measure Rdf Outflow"> 
+			            </div>
+			              <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Compost Outflow</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_compost_outflow_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_compost_outflow_edit" name="quantity_measure_compost_outflow"  placeholder="Quantity Measure Compost Outflow"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables Outflow</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_recyclables_outflow_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_recyclables_outflow_edit" name="quantity_measure_recyclables_outflow"  placeholder="Quantity Measure Recyclables Outflow"> 
+			            </div>
+			             <div class="mb-1">
+			              <label class="form-label" for="sbu_code">Quantity Measure Inerts Outflow</label>
+			              <span class="badge badge-light-primary" id="quantity_measure_inerts_outflow_edit"></span>
+			               <input type="text" class="form-control" id="quantity_measure_inerts_outflow_edit" name="quantity_measure_inerts_outflow"  placeholder="Quantity Measure Inerts Outflow"> 
+			            </div>
+			             
+			              
+			 				<div class="col-md-12 col-12 text-center mt-2">
+			               		<button type="submit"  class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Update</button>
+			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
+			              </div>         
+			          </form>
+			                    </div>
+			                   
+			                  </div>
+			                </div>
+			              </div>
+			            </div> 	 
 			        
 			        
 			        
@@ -868,6 +953,37 @@ font-size: 1rem!important;
       
       $('#updatemsw_processing').modal('show');
  }
+ 
+ function getupdatemsw_distributive(id,sbu_code,rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,vendor_name_inserts,vendor_name_rdf_outflow,vendor_name_compost_outflow,vendor_name_recylables_outflow,vendor_name_inserts_outflow,date,comments){
+	 $('#rdf_edit').val('');
+	 $('#compost_edit').val('');
+	 $('#recyclables_edit').val('');
+	 $('#inerts_edit').val('');
+	 $('#vendor_name_rdf_edit').val('');
+	 $('#vendor_name_compost_edit').val('');
+	 $('#vendor_name_recyclables_edit').val('');
+	 $('#vendor_name_inerts_edit').val('');
+	 $('#quantity_measure_rdf_outflow_edit').val('');
+	 $('#quantity_measure_compost_outflow_edit').val('');
+	 $('#quantity_measure_recyclables_outflow_edit').val('');
+	 $('#quantity_measure_inerts_outflow_edit').val('');
+      $('#id').val($.trim(id));
+      $('#updatemsw_distributive #rdf_edit').val($.trim(rdf)).focus();
+      $('#updatemsw_distributive #compost_edit').val($.trim(compost)).focus();
+      $('#updatemsw_distributive #recyclables_edit').val($.trim(recyclables)).focus();
+      $('#updatemsw_distributive #inerts_edit').val($.trim(inserts)).focus();
+      $('#updatemsw_distributive #vendor_name_rdf_edit').val($.trim(vendor_name_rdf)).focus();
+      $('#updatemsw_distributive #vendor_name_compost_edit').val($.trim(vendor_name_compost)).focus();
+      $('#updatemsw_distributive #vendor_name_recyclables_edit').val($.trim(vendor_name_recyclables)).focus();
+      $('#updatemsw_distributive #vendor_name_inerts_edit').val($.trim(vendor_name_inserts)).focus();
+      $('#updatemsw_distributive #quantity_measure_rdf_outflow_edit').val($.trim(vendor_name_rdf_outflow)).focus();
+      $('#updatemsw_distributive #quantity_measure_compost_outflow_edit').val($.trim(vendor_name_compost_outflow)).focus();
+      $('#updatemsw_distributive #quantity_measure_recyclables_outflow_edit').val($.trim(vendor_name_recylables_outflow)).focus();
+      $('#updatemsw_distributive #quantity_measure_inerts_outflow_edit').val($.trim(vendor_name_inserts_outflow)).focus();
+      
+      $('#updatemsw_distributive').modal('show');
+ }
+ 
  
  
  
@@ -1642,6 +1758,129 @@ font-size: 1rem!important;
 		            } },
 		            { "mData": function(data,type,row){
 	                      if($.trim(data.quantity_measure_recylabels) == ''){ return '-'; }else{ return data.quantity_measure_recylabels ; }
+			        } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
+		            } },
+		       
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.site_name) == ''){ return '-'; }else{ return data.site_name; }
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.comments) == ''){ return '-'; }else{ return data.comments; } 
+		            } }
+		        ]
+		    });
+		 }else if(sbu_code == 'MSW' &&  department_code.trim() == 'Dist'){
+				var headerContent = "<thead><tr ><th>S.No</th><th >Action</th><th>Rdf</th><th>Compost</th><th>Recyclables</th><th>Inerts</th><th>Vendor Name Rdf</th><th>Vendor Name Compost</th><th>Vendor Name Recyclables</th><th>Vendor Name Inerts</th><th>Quantity Measure Rdf Outflow</th><th>Quantity Measure Compost Outflow</th><th>Quantity Measure Recyclables Outflow</th><th>Quantity Measure Inerts Outflow</th><th>Date</th><th>Site Name</th><th>Comments</th></tr></thead>";
+				$('#datatable-collect thead').remove();
+			    $('#datatable-collect').append(headerContent);
+			    $("#datatable-collect")
+				.DataTable(
+						{
+							"bProcessing" : true,
+							"bServerSide" : true,
+							"sort" : "position",
+							//bStateSave variable you can use to save state on client cookies: set value "true" 
+							"bStateSave" : false,
+							 stateSave: true,
+							 "fnStateSave": function (oSettings, oData) {
+							 	localStorage.setItem('MRVCDataTables', JSON.stringify(oData));
+							},
+							 "fnStateLoad": function (oSettings) {
+								return JSON.parse(localStorage.getItem('MRVCDataTables'));
+							 },
+							//Default: Page display length
+							"iDisplayLength" : 10,
+							"iData" : {
+								"start" : 52
+							},
+							//We will use below variable to track page number on server side(For more information visit: http://legacy.datatables.net/usage/options#iDisplayStart)
+							"iDisplayStart" : 0,
+							"fnDrawCallback" : function() {
+								//Get page numer on client. Please note: number start from 0 So
+								//for the first page you will see 0 second page 1 third page 2...
+								//Un-comment below alert to see page number
+								//alert("Current page number: "+this.fnPagingInfo().iPage);
+							},
+							//"sDom": 'l<"toolbar">frtip',
+							"initComplete" : function() {
+							
+							}
+							,
+							columnDefs : [ {
+								"targets" : '',
+								"orderable" : false,
+							}
+			                ],
+							"sScrollX" : "100%",
+							"sScrollXInner" : "100%",
+							"ordering":false,
+							"bScrollCollapse" : true,
+							"language" : {
+								"info" : "_START_ - _END_ of _TOTAL_",
+								paginate : {
+									next : '<i class="fa fa-angle-right"></i>', 
+									previous : '<i class="fa fa-angle-left"></i>'  
+								}
+							},
+							
+							"bDestroy" : true,
+							"sAjaxSource" : "	<%=request.getContextPath()%>/ajax/get-data-management-iris?"+myParams,
+		        "aoColumns": [
+		        	 { "mData": function(data,type,row){
+                      if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
+		            } },
+						{ "mData": function(data,type,row){
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.rdf+"','"+data.compost+"','"+data.recyclables+"','"+data.inserts+"','"+data.vendor_name_rdf+"','"+data.vendor_name_compost+"','"+data.vendor_name_recyclables+"','"+data.vendor_name_inserts+"','"+data.vendor_name_rdf_outflow+"','"+data.vendor_name_compost_outflow+"','"+data.vendor_name_recylables_outflow+"','"+data.vendor_name_inserts_outflow+"','"+data.date+"','"+data.comments+"'";
+		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
+			                +' </ul></div>' */
+			                '<div class="btn-group" role="group" aria-label="Basic example">'
+			                +' <a href="javascript:void(0);"  onclick="getupdatemsw_distributive('+collect_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></a>'
+                
+/* 			                +' <a onclick="deleteUser('+user_data+');" class="btn bghover re-text btn-outline-primary waves-effect"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></a>'
+ */             
+			                +'</div>'
+		            	return actions;
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.rdf) == ''){ return '-'; }else{ return data.rdf ; }
+		            } },
+		         	{ "mData": function(data,type,row){
+                      if($.trim(data.compost) == ''){ return '-'; }else{ return data.compost ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.recyclables) == ''){ return '-'; }else{ return data.recyclables ; }
+			        } },
+			        { "mData": function(data,type,row){
+	                      if($.trim(data.inserts) == ''){ return '-'; }else{ return data.inserts ; }
+			        } },
+		            { "mData": function(data,type,row){ 
+		            	if($.trim(data.vendor_name_rdf) == ''){ return '-'; }else{ return data.vendor_name_rdf; }
+		            } },
+		         
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.vendor_name_compost) == ''){ return '-'; }else{ return data.vendor_name_compost; } 
+		            } }, 
+		            { "mData": function(data,type,row){
+		            	if($.trim(data.vendor_name_recyclables) == ''){ return '-'; }else{ return data.vendor_name_recyclables; } 
+		            } },
+		        	{ "mData": function(data,type,row){
+		            	if($.trim(data.vendor_name_inserts) == ''){ return '-'; }else{ return data.vendor_name_inserts; }
+		            } },
+		            { "mData": function(data,type,row){
+                      if($.trim(data.vendor_name_rdf_outflow) == ''){ return '-'; }else{ return data.vendor_name_rdf_outflow ; }
+		            } },
+		            { "mData": function(data,type,row){
+	                      if($.trim(data.vendor_name_compost_outflow) == ''){ return '-'; }else{ return data.vendor_name_compost_outflow ; }
+			        } },
+			        { "mData": function(data,type,row){
+	                      if($.trim(data.vendor_name_recylables_outflow) == ''){ return '-'; }else{ return data.vendor_name_recylables_outflow ; }
+			        } }, 
+			        { "mData": function(data,type,row){
+	                      if($.trim(data.vendor_name_inserts_outflow) == ''){ return '-'; }else{ return data.vendor_name_inserts_outflow ; }
 			        } },
 		         	{ "mData": function(data,type,row){
                       if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
