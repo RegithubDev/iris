@@ -824,7 +824,7 @@ font-size: 1rem!important;
       $('#updatemodel').modal('show');
  }
 
- function getupdatebmw_distribute(id,sbu_code,total_materials,total_recylable,total_plastic,quality_measure_plastics,
+ function getupdatebmw_distribute(id,sbu_code,total_materials,total_recylable,total_plastic,
 		 total_bags,total_glass,total_cardboard,quality_measure_materials,quality_measure_recylable,
 		 quality_measure_plastics,quality_measure_bags,quality_measure_glass,quality_measure_cardboard,comments){
 	 $('#total_materials_edit').val('');
@@ -954,7 +954,7 @@ font-size: 1rem!important;
       $('#updatemsw_processing').modal('show');
  }
  
- function getupdatemsw_distributive(id,sbu_code,rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,vendor_name_inserts,vendor_name_rdf_outflow,vendor_name_compost_outflow,vendor_name_recylables_outflow,vendor_name_inserts_outflow,date,comments){
+ function getupdatemsw_distributive(id,sbu_code,rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,vendor_name_inserts,vendor_name_rdf_outflow,vendor_name_compost_outflow,vendor_name_recylables_outflow,vendor_name_inserts_outflow,comments){
 	 $('#rdf_edit').val('');
 	 $('#compost_edit').val('');
 	 $('#recyclables_edit').val('');
@@ -1355,7 +1355,7 @@ font-size: 1rem!important;
                       if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.total_materials+"','"+data.total_recylable+"','"+data.total_plastic+"','"+data.total_bags+"','"+data.total_glass+"','"+data.total_cardboard+"','"+data.quality_measure_materials+"','"+data.quality_measure_recylable+"','"+data.quality_measure_plastics+"','"+data.quality_measure_bags+"','"+data.quality_measure_glass+"','"+data.quality_measure_cardboard+"','"+data.sbu_code+"','"+data.date+"','"+data.comments+"'";
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.total_materials+"','"+data.total_recylable+"','"+data.total_plastic+"','"+data.total_bags+"','"+data.total_glass+"','"+data.total_cardboard+"','"+data.quality_measure_materials+"','"+data.quality_measure_recylable+"','"+data.quality_measure_plastics+"','"+data.quality_measure_bags+"','"+data.quality_measure_glass+"','"+data.quality_measure_cardboard+"','"+data.date+"','"+data.comments+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
