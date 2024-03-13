@@ -518,7 +518,7 @@ font-size: 1rem!important;
 			              <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Stock Afrf Measure</label>
 			              <span class="badge badge-light-primary" id="stock_afrf_measure_edit"></span>
-			               <input type="text" class="form-control" id="stock_afrf_measure_edit" name="stock_afrf_measure"  placeholder="Stock Afrf Measure"> 7
+			               <input type="text" class="form-control" id="stock_afrf_measure_edit" name="stock_afrf_measure"  placeholder="Stock Afrf Measure"> 
 			            </div>
 			             
 			              
