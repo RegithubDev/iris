@@ -391,7 +391,7 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-iwmsdisposal-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-iwmdisposal-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Disposal Total Waste</label>
@@ -558,43 +558,43 @@ font-size: 1rem!important;
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_name">Total Compost</label>
 			                <span class="badge badge-light-primary" id="total_compost_edit"></span>
-			              <input type="text" class="form-control" id="total_compost_edit" name="total_compost" placeholder="Stock Lat">
+			              <input type="text" class="form-control" id="total_compost_edit" name="total_compost" placeholder="Total Compost">
 			            </div>
 			             
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Inerts</label>
 			              <span class="badge badge-light-primary" id="total_inerts_edit"></span>
-			               <input type="text" class="form-control" id="total_inerts_edit" name="total_inerts"  placeholder="Stock Incineration"> 
+			               <input type="text" class="form-control" id="total_inerts_edit" name="total_inerts"  placeholder="Total Inerts"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Recyclables</label>
 			              <span class="badge badge-light-primary" id="total_recyclables_edit"></span>
-			               <input type="text" class="form-control" id="total_recyclables_edit" name="total_recyclables"  placeholder="Stock Afrf"> 
+			               <input type="text" class="form-control" id="total_recyclables_edit" name="total_recylables"  placeholder="Total Recyclables"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Waste</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_waste_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_waste_edit" name="quantity_measure_waste"  placeholder="Stock Total Waste Measure"> 
+			               <input type="text" class="form-control" id="quantity_measure_waste_edit" name="quantity_measure_waste"  placeholder="Quantity Measure Waste"> 
 			            </div>
 			            <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Rdf</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_rdf_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_rdf_edit" name="quantity_measure_rdf"  placeholder="Stock Dlf Measure"> 
+			               <input type="text" class="form-control" id="quantity_measure_rdf_edit" name="quantity_measure_rdf"  placeholder="Quantity Measure Rdf"> 
 			            </div>
 			            <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Compost</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_compost_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_compost_edit" name="quantity_measure_compost"  placeholder="Stock Lat Measure"> 
+			               <input type="text" class="form-control" id="quantity_measure_compost_edit" name="quantity_measure_compost"  placeholder="Quantity Measure Compost"> 
 			            </div>
 			              <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Inerts</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_inerts_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_inerts_edit" name="quantity_measure_inerts"  placeholder="Stock Incineration Measure"> 
+			               <input type="text" class="form-control" id="quantity_measure_inerts_edit" name="quantity_measure_inerts"  placeholder="Quantity Measure Inerts"> 
 			            </div>
 			              <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_recyclables_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_recyclables_edit" name="quantity_measure_recyclables"  placeholder="Stock Afrf Measure"> 
+			               <input type="text" class="form-control" id="quantity_measure_recyclables_edit" name="quantity_measure_recylabels"  placeholder="Quantity Measure Recyclables"> 
 			            </div>
 			             
 			              
@@ -952,7 +952,22 @@ font-size: 1rem!important;
 	 $('#stock_lat_measure_edit').val('');
 	 $('#stock_incineration_measure_edit').val('');
 	 $('#stock_afrf_measure_edit').val('');
-      $('#id').val($.trim(id));
+	 
+	 
+	 stock_total_waste =  (stock_total_waste == 'undefined'  ) ? "" : stock_total_waste;
+	 stock_dlf =  (stock_dlf == 'undefined'  ) ? "" : stock_dlf;
+	 stock_lat =  (stock_lat == 'undefined'  ) ? "" : stock_lat; 
+	 stock_incineration	=  (stock_incineration == 'undefined'  ) ? "" : stock_incineration;
+	 stock_afrf =  (stock_afrf == 'undefined'  ) ? "" : stock_afrf;
+	 stock_total_waste_measure =  (stock_total_waste_measure == 'undefined'  ) ? "" : stock_total_waste_measure;
+	 stock_total_waste_measure =  (stock_total_waste_measure == 'undefined'  ) ? "" : stock_total_waste_measure;
+	 stock_dlf_measure =  (stock_dlf_measure == 'undefined'  ) ? "" : stock_dlf_measure;
+	 stock_lat_measure =  (stock_lat_measure == 'undefined'  ) ? "" : stock_lat_measure;
+	 stock_incineration_measure =  (stock_incineration_measure == 'undefined'  ) ? "" : stock_incineration_measure;
+	 stock_afrf_measure	=  (stock_afrf_measure == 'undefined'  ) ? "" : stock_afrf_measure;
+	 
+	 
+      $(' #updateiwm_leftover_stock #id').val($.trim(id));
       $('#updateiwm_leftover_stock #stock_total_waste_edit').val($.trim(stock_total_waste)).focus();
       $('#updateiwm_leftover_stock #stock_dlf_edit').val($.trim(stock_dlf)).focus();
       $('#updateiwm_leftover_stock #stock_lat_edit').val($.trim(stock_lat)).focus();
@@ -978,7 +993,20 @@ font-size: 1rem!important;
 	 $('#quantity_measure_compost_edit').val('');
 	 $('#quantity_measure_inerts_edit').val('');
 	 $('#quantity_measure_recyclables_edit').val('');
-      $('#id').val($.trim(id));
+	 
+	 total_waste =  (total_waste == 'undefined'  ) ? "" : total_waste;
+	 total_rdf =  (total_rdf == 'undefined'  ) ? "" : total_rdf;
+	 total_compost =  (total_compost == 'undefined'  ) ? "" : total_compost; 
+	 total_inerts	=  (total_inerts == 'undefined'  ) ? "" : total_inerts;
+	 total_recylables =  (total_recylables == 'undefined'  ) ? "" : total_recylables;
+	 quantity_measure_waste =  (quantity_measure_waste == 'undefined'  ) ? "" : quantity_measure_waste;
+	 quantity_measure_rdf =  (quantity_measure_rdf == 'undefined'  ) ? "" : quantity_measure_rdf;
+	 quantity_measure_compost =  (quantity_measure_compost == 'undefined'  ) ? "" : quantity_measure_compost;
+	 quantity_measure_recylabels =  (quantity_measure_recylabels == 'undefined'  ) ? "" : quantity_measure_recylabels;
+	 quantity_measure_inerts =  (quantity_measure_inerts == 'undefined'  ) ? "" : quantity_measure_inerts;
+	 
+	 
+      $(' #updatemsw_processing #id').val($.trim(id));
       $('#updatemsw_processing #total_waste_edit').val($.trim(total_waste)).focus();
       $('#updatemsw_processing #total_rdf_edit').val($.trim(total_rdf)).focus();
       $('#updatemsw_processing #total_compost_edit').val($.trim(total_compost)).focus();

@@ -51,5 +51,14 @@ public class IrisDataManagementService {
 	public boolean updateIwmdisposal(DataManagement obj)throws Exception {
 		return dao.updateIwmdisposal(obj);
 	}
-	
+
+	public boolean updateIwmleftoverstock(DataManagement obj) throws Exception {
+		return dao.updateIwmleftoverstock(obj);
+	}
+
+	public boolean updateMswprocessing(DataManagement obj)  throws Exception {
+		return dao.updateMswprocessing(obj);
+	}
+
+
 }

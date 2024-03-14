@@ -604,6 +604,60 @@ public class IrisDataManagementDao {
 		}
 		return flag;
 	}
+
+	public boolean updateIwmleftoverstock(DataManagement obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [iwm_leftoverstock_table] set "
+					+ "   stock_total_waste= :stock_total_waste,stock_dlf=:stock_dlf,stock_lat=:stock_lat,stock_incineration=:stock_incineration,stock_afrf=:stock_afrf,stock_total_waste_measure=:stock_total_waste_measure"
+					+ " ,stock_dlf_measure= :stock_dlf_measure,stock_lat_measure=:stock_lat_measure"
+					+ ",stock_incineration_measure=:stock_incineration_measure,stock_afrf_measure=:stock_afrf_measure"
+					+ ",modified_date= getdate(),modified_by= :modified_by"
+					+ " where id =  '"+obj.getId()+"'";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean updateMswprocessing(DataManagement obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [msw_processing_table] set "
+					+ "total_waste= :total_waste, total_rdf=:total_rdf,total_compost=:total_compost"
+					+ ",total_inerts=:total_inerts,total_recylables=:total_recylables,quantity_measure_waste=:quantity_measure_waste"
+					+ ",quantity_measure_rdf=:quantity_measure_rdf,quantity_measure_compost=:quantity_measure_compost,quantity_measure_inerts=:quantity_measure_inerts,quantity_measure_recylabels=:quantity_measure_recylabels"
+					+ ",modified_date= getdate(),modified_by= :modified_by"
+					+ " where id =  '"+obj.getId()+"'";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
 	
 	
 	
