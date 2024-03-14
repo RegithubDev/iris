@@ -367,10 +367,10 @@ public class IrisDataManagementDao {
 							+ "      ,[vendor_name_compost]"
 							+ "      ,[vendor_name_recyclables]"
 							+ "      ,[vendor_name_inserts]"
-							+ "      ,[vendor_name_rdf_outflow]"
-							+ "      ,[vendor_name_compost_outflow]"
-							+ "      ,[vendor_name_recylables_outflow]"
-							+ "      ,[vendor_name_inserts_outflow]"
+							+ "      ,[quantity_measure_rdf_outflow]"
+							+ "      ,[quantity_measure_compost_outflow]"
+							+ "      ,[quantity_measure_recyclables_outflow]"
+							+ "      ,[quantity_measure_inerts_outflow]"
 							+ "      ,[date],sss.site_name"
 							+ "      ,[site]"
 							+ "      ,[comments]"
@@ -641,8 +641,36 @@ public class IrisDataManagementDao {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String insertQry = "UPDATE [msw_processing_table] set "
 					+ "total_waste= :total_waste, total_rdf=:total_rdf,total_compost=:total_compost"
-					+ ",total_inerts=:total_inerts,total_recylables=:total_recylables,quantity_measure_waste=:quantity_measure_waste"
-					+ ",quantity_measure_rdf=:quantity_measure_rdf,quantity_measure_compost=:quantity_measure_compost,quantity_measure_inerts=:quantity_measure_inerts,quantity_measure_recylabels=:quantity_measure_recylabels"
+					+ ",total_inerts= :total_inerts,total_recylables=:total_recylables,quantity_measure_waste=:quantity_measure_waste"
+					+ ",quantity_measure_rdf= :quantity_measure_rdf,quantity_measure_compost=:quantity_measure_compost,quantity_measure_inerts=:quantity_measure_inerts,quantity_measure_recylabels=:quantity_measure_recylabels"
+					+ ",modified_date= getdate(),modified_by= :modified_by"
+					+ " where id =  '"+obj.getId()+"'";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean updateMswdistributive(DataManagement obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [msw_distribute_table] set "
+					+ "rdf= :rdf,compost=:compost,recyclables=:recyclables"
+					+ ",inserts=:inserts,vendor_name_rdf=:vendor_name_rdf,vendor_name_compost=:vendor_name_compost"
+					+ ",vendor_name_recyclables=:vendor_name_recyclables,vendor_name_inserts=:vendor_name_inserts,quantity_measure_rdf_outflow=:quantity_measure_rdf_outflow,"
+					+ "quantity_measure_compost_outflow=:quantity_measure_compost_outflow,quantity_measure_recyclables_outflow=:quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow=:quantity_measure_inerts_outflow"
 					+ ",modified_date= getdate(),modified_by= :modified_by"
 					+ " where id =  '"+obj.getId()+"'";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 

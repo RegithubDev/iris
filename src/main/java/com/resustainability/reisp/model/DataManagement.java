@@ -6,7 +6,7 @@ public class DataManagement {
 			quality_measure_materials, quality_measure_recylable, quality_measure_plastics, quality_measure_bags,
 			quality_measure_glass, quality_measure_cardboard, site, comments, date, created_by, modified_date,
 			created_date, modified_by, total_waste, total_incieration, total_autoclave, quantity_measure_waste,
-			quantity_measure_incieration, quantity_measure_autoclave, sbu_code, quantity, quantity_measure, role,
+			quantity_measure_incieration,quantity_measure_rdf_outflow,quantity_measure_compost_outflow,quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow, quantity_measure_autoclave, sbu_code, quantity, quantity_measure, role,
 			department_code, department_name, rdf, compost, recyclables, inserts, vendor_name_rdf, vendor_name_compost,
 			vendor_name_recyclables, vendor_name_inserts, vendor_name_rdf_outflow, vendor_name_compost_outflow,
 			vendor_name_recylables_outflow, vendor_name_inserts_outflow, total_rdf, total_compost, total_inerts,total_plastic,
@@ -15,6 +15,38 @@ public class DataManagement {
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
 			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date;
+public String getQuantity_measure_rdf_outflow() {
+		return quantity_measure_rdf_outflow;
+	}
+
+	public void setQuantity_measure_rdf_outflow(String quantity_measure_rdf_outflow) {
+		this.quantity_measure_rdf_outflow = quantity_measure_rdf_outflow;
+	}
+
+	public String getQuantity_measure_compost_outflow() {
+		return quantity_measure_compost_outflow;
+	}
+
+	public void setQuantity_measure_compost_outflow(String quantity_measure_compost_outflow) {
+		this.quantity_measure_compost_outflow = quantity_measure_compost_outflow;
+	}
+
+	public String getQuantity_measure_recyclables_outflow() {
+		return quantity_measure_recyclables_outflow;
+	}
+
+	public void setQuantity_measure_recyclables_outflow(String quantity_measure_recyclables_outflow) {
+		this.quantity_measure_recyclables_outflow = quantity_measure_recyclables_outflow;
+	}
+
+	public String getQuantity_measure_inerts_outflow() {
+		return quantity_measure_inerts_outflow;
+	}
+
+	public void setQuantity_measure_inerts_outflow(String quantity_measure_inerts_outflow) {
+		this.quantity_measure_inerts_outflow = quantity_measure_inerts_outflow;
+	}
+
 private int startIndex,offset;
 
 	public int getStartIndex() {

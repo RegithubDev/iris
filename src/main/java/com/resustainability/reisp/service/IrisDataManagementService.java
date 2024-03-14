@@ -60,5 +60,9 @@ public class IrisDataManagementService {
 		return dao.updateMswprocessing(obj);
 	}
 
+	public boolean updateMswdistributive(DataManagement obj) throws Exception {
+		return dao.updateMswdistributive(obj);
+	}
+
 
 }

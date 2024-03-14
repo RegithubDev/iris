@@ -640,7 +640,7 @@ font-size: 1rem!important;
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Inerts</label>
 			              <span class="badge badge-light-primary" id="inerts_edit"></span>
-			               <input type="text" class="form-control" id="inerts_edit" name="inerts"  placeholder="Inerts"> 
+			               <input type="text" class="form-control" id="inerts_edit" name="inserts"  placeholder="inserts"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Vendor Name Rdf</label>
@@ -660,7 +660,7 @@ font-size: 1rem!important;
 			            <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Vendor Name Inerts</label>
 			              <span class="badge badge-light-primary" id="vendor_name_inerts_edit"></span>
-			               <input type="text" class="form-control" id="vendor_name_inerts_edit" name="vendor_name_inerts"  placeholder="Vendor Name Inerts"> 
+			               <input type="text" class="form-control" id="vendor_name_inerts_edit" name="vendor_name_inserts"  placeholder="Vendor Name Inerts"> 
 			            </div>
 			              <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Rdf Outflow</label>
@@ -1034,7 +1034,24 @@ font-size: 1rem!important;
 	 $('#quantity_measure_compost_outflow_edit').val('');
 	 $('#quantity_measure_recyclables_outflow_edit').val('');
 	 $('#quantity_measure_inerts_outflow_edit').val('');
-      $('#id').val($.trim(id));
+	 
+	 
+	 rdf =  (rdf == 'undefined'  ) ? "" : rdf;
+	 compost =  (compost == 'undefined'  ) ? "" : compost;
+	 recyclables =  (recyclables == 'undefined'  ) ? "" : recyclables; 
+	 inserts	=  (inserts == 'undefined'  ) ? "" : inserts;
+	 vendor_name_rdf =  (vendor_name_rdf == 'undefined'  ) ? "" : vendor_name_rdf;
+	 vendor_name_compost =  (vendor_name_compost == 'undefined'  ) ? "" : vendor_name_compost;
+	 vendor_name_recyclables =  (vendor_name_recyclables == 'undefined'  ) ? "" : vendor_name_recyclables;
+	 vendor_name_inserts =  (vendor_name_inserts == 'undefined'  ) ? "" : vendor_name_inserts;
+	 vendor_name_rdf_outflow =  (vendor_name_rdf_outflow == 'undefined'  ) ? "" : vendor_name_rdf_outflow;
+	 vendor_name_compost_outflow =  (vendor_name_compost_outflow == 'undefined'  ) ? "" : vendor_name_compost_outflow;
+	 vendor_name_recylables_outflow	=  (vendor_name_recylables_outflow == 'undefined'  ) ? "" : vendor_name_recylables_outflow;
+	 vendor_name_inserts_outflow =  (vendor_name_inserts_outflow == 'undefined'  ) ? "" : vendor_name_inserts_outflow;
+
+	 
+	 
+      $('#updatemsw_distributive #id').val($.trim(id));
       $('#updatemsw_distributive #rdf_edit').val($.trim(rdf)).focus();
       $('#updatemsw_distributive #compost_edit').val($.trim(compost)).focus();
       $('#updatemsw_distributive #recyclables_edit').val($.trim(recyclables)).focus();
@@ -1899,7 +1916,7 @@ font-size: 1rem!important;
                       if($.trim(data.sbu_code) == ''){ return '-'; }else{ return i++ ; }
 		            } },
 						{ "mData": function(data,type,row){
-							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.rdf+"','"+data.compost+"','"+data.recyclables+"','"+data.inserts+"','"+data.vendor_name_rdf+"','"+data.vendor_name_compost+"','"+data.vendor_name_recyclables+"','"+data.vendor_name_inserts+"','"+data.vendor_name_rdf_outflow+"','"+data.vendor_name_compost_outflow+"','"+data.vendor_name_recylables_outflow+"','"+data.vendor_name_inserts_outflow+"','"+data.date+"','"+data.comments+"'";
+							var collect_data = "'"+data.id+"','"+data.sbu_code+"','"+data.rdf+"','"+data.compost+"','"+data.recyclables+"','"+data.inserts+"','"+data.vendor_name_rdf+"','"+data.vendor_name_compost+"','"+data.vendor_name_recyclables+"','"+data.vendor_name_inserts+"','"+data.quantity_measure_rdf_outflow+"','"+data.quantity_measure_compost_outflow+"','"+data.quantity_measure_recyclables_outflow+"','"+data.quantity_measure_inerts_outflow+"','"+data.date+"','"+data.comments+"'";
 		                    var actions = /* ' <div class=""><ul class="nav navbar-nav bookmark-icons">'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" a href="javascript:void(0);"  onclick="getCollect('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Email" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 font-medium-3 me-50"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
 			                +'<li class="nav-item d-none d-lg-block"><a class="nav-link" onclick="deleteUser('+user_data+');" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Chat" aria-label="Chat"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash font-medium-3 me-50"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>'
@@ -1938,16 +1955,16 @@ font-size: 1rem!important;
 		            	if($.trim(data.vendor_name_inserts) == ''){ return '-'; }else{ return data.vendor_name_inserts; }
 		            } },
 		            { "mData": function(data,type,row){
-                      if($.trim(data.vendor_name_rdf_outflow) == ''){ return '-'; }else{ return data.vendor_name_rdf_outflow ; }
+                      if($.trim(data.quantity_measure_rdf_outflow) == ''){ return '-'; }else{ return data.quantity_measure_rdf_outflow ; }
 		            } },
 		            { "mData": function(data,type,row){
-	                      if($.trim(data.vendor_name_compost_outflow) == ''){ return '-'; }else{ return data.vendor_name_compost_outflow ; }
+	                      if($.trim(data.quantity_measure_compost_outflow) == ''){ return '-'; }else{ return data.quantity_measure_compost_outflow ; }
 			        } },
 			        { "mData": function(data,type,row){
-	                      if($.trim(data.vendor_name_recylables_outflow) == ''){ return '-'; }else{ return data.vendor_name_recylables_outflow ; }
+	                      if($.trim(data.quantity_measure_recyclables_outflow) == ''){ return '-'; }else{ return data.quantity_measure_recyclables_outflow ; }
 			        } }, 
 			        { "mData": function(data,type,row){
-	                      if($.trim(data.vendor_name_inserts_outflow) == ''){ return '-'; }else{ return data.vendor_name_inserts_outflow ; }
+	                      if($.trim(data.quantity_measure_inerts_outflow) == ''){ return '-'; }else{ return data.quantity_measure_inerts_outflow ; }
 			        } },
 		         	{ "mData": function(data,type,row){
                       if($.trim(data.date) == ''){ return '-'; }else{ return data.date ; }
