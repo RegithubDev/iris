@@ -104,6 +104,88 @@ public class IrisDataManagementController {
 		return model;
 	}
 	
+	
+	@RequestMapping(value="/update-bmwdistribute-iris",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateBmwdistributive(@ModelAttribute DataManagement obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String siteName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/iris-datamanagement");
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			if(StringUtils.isEmpty(obj.getModified_by())) {
+				obj.setModified_by(userId);
+			}
+			flag = service.updateBmwdistributive(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Updating Record is failed. Try again.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value="/update-bmwprocessing-iris",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateBmwprocessing(@ModelAttribute DataManagement obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String siteName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/iris-datamanagement");
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			if(StringUtils.isEmpty(obj.getModified_by())) {
+				obj.setModified_by(userId);
+			}
+			flag = service.updateBmwprocessing(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Updating Record is failed. Try again.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value="/update-iwmdisposal-iris",method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView updateIwmdisposal(@ModelAttribute DataManagement obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String siteName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/iris-datamanagement");
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			if(StringUtils.isEmpty(obj.getModified_by())) {
+				obj.setModified_by(userId);
+			}
+			flag = service.updateIwmdisposal(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error","Updating Record is failed. Try again.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	
+	
+	
 	@RequestMapping(value = "/ajax/getDeptFilterListForDM", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public List<DataManagement> getDeptFilterListForDM(@ModelAttribute DataManagement obj,HttpSession session) {

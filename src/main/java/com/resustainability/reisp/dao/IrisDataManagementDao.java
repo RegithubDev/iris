@@ -525,6 +525,85 @@ public class IrisDataManagementDao {
 		}
 		return flag;
 	}
+
+	public boolean updateBmwdistributive(DataManagement obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [bmw_distribute_table] set "
+					+ "      total_materials= :total_materials,total_recylable=:total_recylable,total_plastic=:total_plastic,total_bags=:total_bags,total_glass=:total_glass,total_cardboard=:total_cardboard"
+					+ "      ,quality_measure_materials= :quality_measure_materials,quality_measure_recylable=:quality_measure_recylable"
+					+ ",quality_measure_plastics=:quality_measure_plastics,quality_measure_bags=:quality_measure_bags,quality_measure_glass=:quality_measure_glass,quality_measure_cardboard=:quality_measure_cardboard"
+					+ ",modified_date= getdate(),modified_by= :modified_by"
+					+ " where id =  '"+obj.getId()+"'";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean updateBmwprocessing(DataManagement obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [bmw_processing_table] set "
+					+ "      total_waste= :total_waste,total_incieration=:total_incieration,total_autoclave=:total_autoclave,quantity_measure_waste=:quantity_measure_waste,quantity_measure_incieration=:quantity_measure_incieration,quantity_measure_autoclave=:quantity_measure_autoclave"
+					+ ",modified_date= getdate(),modified_by= :modified_by"
+					+ " where id =  '"+obj.getId()+"'";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean updateIwmdisposal(DataManagement obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "UPDATE [iwm_disposal_table] set "
+					+ "      disposal_total_waste= :disposal_total_waste,disposal_dlf=:disposal_dlf,disposal_lat=:disposal_lat,disposal_afrf=:disposal_afrf,disposal_incineration=:disposal_incineration,disposal_total_waste_measure=:disposal_total_waste_measure"
+					+ "      ,disposal_dlf_measure= :disposal_dlf_measure,disposal_lat_measure=:disposal_lat_measure"
+					+ ",disposal_afrf_measure=:disposal_afrf_measure,disposal_incineration_measure=:disposal_incineration_measure"
+					+ ",modified_date= getdate(),modified_by= :modified_by"
+					+ " where id =  '"+obj.getId()+"'";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
 	
 	
 	

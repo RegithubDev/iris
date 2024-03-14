@@ -250,60 +250,60 @@ font-size: 1rem!important;
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Materials</label>
 			              <span class="badge badge-light-primary" id="total_materials_edit"></span>
-			               <input type="text" class="form-control" id="total_materials_edit" name="total_materials"  placeholder="Total Materials"> 
+			               <input type="number" class="form-control" id="total_materials_edit" name="total_materials"  placeholder="Total Materials"> 
 			            </div>
 			            <div class="mb-1">
 			              <label class="form-label" for="sbu_name">Total Recyclable</label>
-			              <input type="text" class="form-control" id="total_recyclable_edit" name="total_recyclable" placeholder="Total Recyclable">
+			              <input type="number" class="form-control" id="total_recyclable_edit" name="total_recylable" placeholder="Total Recyclable">
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_name">Total Plastics</label>
-			              <input type="text" class="form-control" id="total_plastic_edit" name="total_plastic" placeholder="Total Plastics">
+			              <input type="number" class="form-control" id="total_plastic_edit" name="total_plastic" placeholder="Total Plastics">
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Bags</label>
 			              <span class="badge badge-light-primary" id="total_bags_edit"></span>
-			               <input type="text" class="form-control" id="total_bags_edit" name="total_bags"  placeholder="Total Bags"> 
+			               <input type="number" class="form-control" id="total_bags_edit" name="total_bags"  placeholder="Total Bags"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Glass</label>
 			              <span class="badge badge-light-primary" id="total_glass_edit"></span>
-			               <input type="text" class="form-control" id="total_glass_edit" name="total_glass"  placeholder="Total Glass"> 
+			               <input type="number" class="form-control" id="total_glass_edit" name="total_glass"  placeholder="Total Glass"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Cardboard</label>
 			              <span class="badge badge-light-primary" id="total_cardboard_edit"></span>
-			               <input type="text" class="form-control" id="total_cardboard_edit" name="total_cardboard"  placeholder="Total Cardboard"> 
+			               <input type="number" class="form-control" id="total_cardboard_edit" name="total_cardboard"  placeholder="Total Cardboard"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Materials</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_materials_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_materials_edit" name="quantity_measure_material"  placeholder="Quantity Measure Materials"> 
+			               <input type="text" class="form-control" id="quantity_measure_materials_edit" name="quality_measure_materials"  placeholder="Quantity Measure Materials"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label>
 			              <span class="badge badge-light-primary" id="quantity_recyclables_materials_edit"></span>
-			               <input type="text" class="form-control" id="quantity_recyclables_materials_edit" name="quantity_recyclables_materials"  placeholder="Quantity Measure Materials"> 
+			               <input type="text" class="form-control" id="quantity_recyclables_materials_edit" name="quality_measure_recylable"  placeholder="Quantity Measure Materials"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Plastics</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_plastics_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_plastics_edit" name="quantity_measure_plastics"  placeholder="Quantity Measure Materials"> 
+			               <input type="text" class="form-control" id="quantity_measure_plastics_edit" name="quality_measure_plastics"  placeholder="Quantity Measure Materials"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Bags</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_bags_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_bags_edit" name="quantity_measure_bags"  placeholder="Quantity Measure Bags"> 
+			               <input type="text" class="form-control" id="quantity_measure_bags_edit" name="quality_measure_bags"  placeholder="Quantity Measure Bags"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Glass</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_glass_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_glass_edit" name="quantity_measure_glass"  placeholder="Quantity Measure Glass"> 
+			               <input type="text" class="form-control" id="quantity_measure_glass_edit" name="quality_measure_glass"  placeholder="Quantity Measure Glass"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Cardboard</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_cardboard_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_cardboard_edit" name="quantity_measure_cardboard"  placeholder="Quantity Measure Cardboard"> 
+			               <input type="text" class="form-control" id="quantity_measure_cardboard_edit" name="quality_measure_cardboard"  placeholder="Quantity Measure Cardboard"> 
 			            </div>
 			            
 			              
@@ -343,7 +343,7 @@ font-size: 1rem!important;
 			            <div class="mb-1">
 			              <label class="form-label" for="sbu_name">Total Incineration</label>
 			                <span class="badge badge-light-primary" id="total_incineration_edit"></span>
-			              <input type="text" class="form-control" id="total_incineration_edit" name="total_incineration" placeholder="Total Incineration">
+			              <input type="text" class="form-control" id="total_incineration_edit" name="total_incieration" placeholder="Total Incineration">
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_name">Total Autoclave</label>
@@ -359,7 +359,7 @@ font-size: 1rem!important;
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Incineration</label>
 			              <span class="badge badge-light-primary" id="quantity_measure_incineration_edit"></span>
-			               <input type="text" class="form-control" id="quantity_measure_incineration_edit" name="quantity_measure_incineration"  placeholder="Quantity Measure Incineration"> 
+			               <input type="text" class="form-control" id="quantity_measure_incineration_edit" name="quantity_measure_incieration"  placeholder="Quantity Measure Incineration"> 
 			            </div>
 			             <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Quantity Measure Autoclave</label>
@@ -391,7 +391,7 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-imwdisposal-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-iwmsdisposal-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Disposal Total Waste</label>
@@ -839,8 +839,20 @@ font-size: 1rem!important;
 	 $('#quantity_measure_bags_edit').val('');
 	 $('#quantity_measure_glass_edit').val('');
 	 $('#quantity_measure_cardboard_edit').val('');
-	 
-      $('#id').val($.trim(id));
+	 total_plastic =  (total_plastic == 'undefined'  ) ? "" : total_plastic;
+	 total_materials =  (total_materials == 'undefined'  ) ? "" : total_materials;
+	 total_recylable =  (total_recylable == 'undefined'  ) ? "" : total_recylable; 
+	 total_bags	=  (total_bags == 'undefined'  ) ? "" : total_bags;
+	 total_glass =  (total_glass == 'undefined'  ) ? "" : total_glass;
+	 quality_measure_materials =  (quality_measure_materials == 'undefined'  ) ? "" : quality_measure_materials;
+	 quality_measure_recylable =  (quality_measure_recylable == 'undefined'  ) ? "" : quality_measure_recylable;
+	 quality_measure_plastics =  (quality_measure_plastics == 'undefined'  ) ? "" : quality_measure_plastics;
+	 quality_measure_bags =  (quality_measure_bags == 'undefined'  ) ? "" : quality_measure_bags;
+	 quality_measure_glass =  (quality_measure_glass == 'undefined'  ) ? "" : quality_measure_glass;
+	 quality_measure_cardboard	=  (quality_measure_cardboard == 'undefined'  ) ? "" : quality_measure_cardboard;
+
+
+      $('#updatebmw_distribute #id').val($.trim(id));
       $('#updatebmw_distribute #total_materials_edit').val($.trim(total_materials)).focus();
       $('#updatebmw_distribute #total_recyclable_edit').val($.trim(total_recylable)).focus();
       $('#updatebmw_distribute #total_plastic_edit').val($.trim(total_plastic)).focus();
@@ -864,7 +876,17 @@ font-size: 1rem!important;
 	 $('#quantity_measure_waste_edit').val('');
 	 $('#quantity_measure_incineration_edit').val('');
 	 $('#quantity_measure_autoclave_edit').val('');
-      $('#id').val($.trim(id));
+	 total_waste =  (total_waste == 'undefined'  ) ? "" : total_waste;
+	 total_incieration =  (total_incieration == 'undefined'  ) ? "" : total_incieration;
+	 total_autoclave =  (total_autoclave == 'undefined'  ) ? "" : total_autoclave; 
+	 quantity_measure_waste	=  (quantity_measure_waste == 'undefined'  ) ? "" : quantity_measure_waste;
+	 quantity_measure_incieration =  (quantity_measure_incieration == 'undefined'  ) ? "" : quantity_measure_incieration;
+	 quantity_measure_autoclave =  (quantity_measure_autoclave == 'undefined'  ) ? "" : quantity_measure_autoclave;
+	 
+	 
+	 
+	 
+      $('#updatebmw_processing #id').val($.trim(id));
       $('#updatebmw_processing #total_waste_edit').val($.trim(total_waste)).focus();
       $('#updatebmw_processing #total_incineration_edit').val($.trim(total_incieration)).focus();
       $('#updatebmw_processing #total_autoclave_edit').val($.trim(total_autoclave)).focus();
@@ -887,7 +909,24 @@ font-size: 1rem!important;
 	 $('#disposal_lat_measure_edit').val('');
 	 $('#disposal_incineration_measure_edit').val('');
 	 $('#disposal_afrf_measure_edit').val('');
-      $('#id').val($.trim(id));
+	 
+	 disposal_total_waste =  (disposal_total_waste == 'undefined'  ) ? "" : disposal_total_waste;
+	 disposal_dlf =  (disposal_dlf == 'undefined'  ) ? "" : disposal_dlf;
+	 disposal_lat =  (disposal_lat == 'undefined'  ) ? "" : disposal_lat; 
+	 disposal_afrf	=  (disposal_afrf == 'undefined'  ) ? "" : disposal_afrf;
+	 disposal_incineration =  (disposal_incineration == 'undefined'  ) ? "" : disposal_incineration;
+	 disposal_total_waste_measure =  (disposal_total_waste_measure == 'undefined'  ) ? "" : disposal_total_waste_measure;
+	 disposal_dlf_measure =  (disposal_dlf_measure == 'undefined'  ) ? "" : disposal_dlf_measure; 
+	 disposal_lat_measure	=  (disposal_lat_measure == 'undefined'  ) ? "" : disposal_lat_measure;
+	 disposal_afrf_measure =  (disposal_afrf_measure == 'undefined'  ) ? "" : disposal_afrf_measure;
+	 disposal_incineration_measure =  (disposal_incineration_measure == 'undefined'  ) ? "" : disposal_incineration_measure;
+	 
+	 
+	 
+	 
+	 
+	 
+      $('#updateimw_disposal #id').val($.trim(id));
       $('#updateimw_disposal #disposal_total_waste_edit').val($.trim(disposal_total_waste)).focus();
       $('#updateimw_disposal #disposal_dlf_edit').val($.trim(disposal_dlf)).focus();
       $('#updateimw_disposal #disposal_lat_edit').val($.trim(disposal_lat)).focus();

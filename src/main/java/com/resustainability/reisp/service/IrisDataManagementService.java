@@ -39,5 +39,17 @@ public class IrisDataManagementService {
 	public boolean updateCollect(DataManagement obj) throws Exception {
 		return dao.updateCollect(obj);
 	}
+
+	public boolean updateBmwdistributive(DataManagement obj)  throws Exception {
+		return dao.updateBmwdistributive(obj);
+	}
+
+	public boolean updateBmwprocessing(DataManagement obj)throws Exception {
+		return dao.updateBmwprocessing(obj);
+	}
+
+	public boolean updateIwmdisposal(DataManagement obj)throws Exception {
+		return dao.updateIwmdisposal(obj);
+	}
 	
 }
