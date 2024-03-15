@@ -245,7 +245,7 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form3"  action="<%=request.getContextPath() %>/update-bmwdistribute-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form-distribute"  action="<%=request.getContextPath() %>/update-bmwdistribute-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Materials</label> <span class=re-text>*</span>
@@ -328,7 +328,7 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form4"  action="<%=request.getContextPath() %>/update-bmwprocessing-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form-processing"  action="<%=request.getContextPath() %>/update-bmwprocessing-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Waste</label> <span class=re-text>*</span>
@@ -374,9 +374,6 @@ font-size: 1rem!important;
 			                </div>
 			              </div>
 			            </div> 
-			            
-			        
-			        
 	            <div class="modal-size-default d-inline-block">
               <div class="modal fade text-start" id="updateimw_disposal" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -386,7 +383,7 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form5"  action="<%=request.getContextPath() %>/update-iwmdisposal-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form-iwmdisposal"  action="<%=request.getContextPath() %>/update-iwmdisposal-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Disposal Total Waste</label>  <span class=re-text>*</span> 
