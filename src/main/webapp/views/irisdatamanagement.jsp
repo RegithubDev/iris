@@ -216,12 +216,12 @@ font-size: 1rem!important;
                      <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-collect-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity</label>
+			              <label class="form-label" for="sbu_code">Quantity</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_edit"></span>
 			               <input type="text" class="form-control" id="quantity_edit" name="quantity"  placeholder="quantity"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Quantity Measure</label>
+			              <label class="form-label" for="sbu_name">Quantity Measure</label>  <span class=re-text>*</span>
 			              <input type="text" class="form-control" id="quantity_measure_edit" name="quantity_measure" placeholder="MT">
 			            </div>
 			              
@@ -245,63 +245,63 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-bmwdistribute-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form3"  action="<%=request.getContextPath() %>/update-bmwdistribute-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Materials</label>
+			              <label class="form-label" for="sbu_code">Total Materials</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_materials_edit"></span>
 			               <input type="number" class="form-control" id="total_materials_edit" name="total_materials"  placeholder="Total Materials"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Total Recyclable</label>
+			              <label class="form-label" for="sbu_name">Total Recyclable</label>  <span class=re-text>*</span>
 			              <input type="number" class="form-control" id="total_recyclable_edit" name="total_recylable" placeholder="Total Recyclable">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Total Plastics</label>
+			              <label class="form-label" for="sbu_name">Total Plastics</label>  <span class=re-text>*</span>
 			              <input type="number" class="form-control" id="total_plastic_edit" name="total_plastic" placeholder="Total Plastics">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Bags</label>
+			              <label class="form-label" for="sbu_code">Total Bags</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_bags_edit"></span>
 			               <input type="number" class="form-control" id="total_bags_edit" name="total_bags"  placeholder="Total Bags"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Glass</label>
+			              <label class="form-label" for="sbu_code">Total Glass</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_glass_edit"></span>
 			               <input type="number" class="form-control" id="total_glass_edit" name="total_glass"  placeholder="Total Glass"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Cardboard</label>
+			              <label class="form-label" for="sbu_code">Total Cardboard</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_cardboard_edit"></span>
 			               <input type="number" class="form-control" id="total_cardboard_edit" name="total_cardboard"  placeholder="Total Cardboard"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Materials</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Materials</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_materials_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_materials_edit" name="quality_measure_materials"  placeholder="Quantity Measure Materials"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_recyclables_materials_edit"></span>
 			               <input type="text" class="form-control" id="quantity_recyclables_materials_edit" name="quality_measure_recylable"  placeholder="Quantity Measure Materials"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Plastics</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Plastics</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_plastics_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_plastics_edit" name="quality_measure_plastics"  placeholder="Quantity Measure Materials"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Bags</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Bags</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_bags_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_bags_edit" name="quality_measure_bags"  placeholder="Quantity Measure Bags"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Glass</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Glass</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_glass_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_glass_edit" name="quality_measure_glass"  placeholder="Quantity Measure Glass"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Cardboard</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Cardboard</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_cardboard_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_cardboard_edit" name="quality_measure_cardboard"  placeholder="Quantity Measure Cardboard"> 
 			            </div>
@@ -318,12 +318,7 @@ font-size: 1rem!important;
 			                </div>
 			              </div>
 			            </div>
-			            
-			            
-			            
-			            
-			            
-			            
+			           
 			            <div class="modal-size-default d-inline-block">
               <div class="modal fade text-start" id="updatebmw_processing" tabindex="-1" aria-labelledby="myModalLabel18" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -333,36 +328,36 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-bmwprocessing-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form4"  action="<%=request.getContextPath() %>/update-bmwprocessing-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Waste</label>
+			              <label class="form-label" for="sbu_code">Total Waste</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_waste_edit"></span>
 			               <input type="text" class="form-control" id="total_waste_edit" name="total_waste"  placeholder="Total Waste"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Total Incineration</label>
+			              <label class="form-label" for="sbu_name">Total Incineration</label> <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="total_incineration_edit"></span>
 			              <input type="text" class="form-control" id="total_incineration_edit" name="total_incieration" placeholder="Total Incineration">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Total Autoclave</label>
+			              <label class="form-label" for="sbu_name">Total Autoclave</label> <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="total_autoclave_edit"></span>
 			              <input type="text" class="form-control" id="total_autoclave_edit" name="total_autoclave" placeholder="Total Autoclave">
 			            </div>
 			             
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Waste</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Waste</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_waste_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_waste_edit" name="quantity_measure_waste"  placeholder="Quantity Measure Waste"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Incineration</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Incineration</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_incineration_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_incineration_edit" name="quantity_measure_incieration"  placeholder="Quantity Measure Incineration"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Autoclave</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Autoclave</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_autoclave_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_autoclave_edit" name="quantity_measure_autoclave"  placeholder="Quantity Measure Autoclave"> 
 			            </div>
@@ -391,56 +386,56 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-iwmdisposal-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form5"  action="<%=request.getContextPath() %>/update-iwmdisposal-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Total Waste</label>
+			              <label class="form-label" for="sbu_code">Disposal Total Waste</label>  <span class=re-text>*</span> 
 			              <span class="badge badge-light-primary" id="disposal_total_waste_edit"></span>
 			               <input type="text" class="form-control" id="disposal_total_waste_edit" name="disposal_total_waste"  placeholder="Disposal Total Waste"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Disposal Dlf</label>
-			                <span class="badge badge-light-primary" id="disposal_dlf_edit"></span>
+			              <label class="form-label" for="sbu_name">Disposal Dlf</label>  <span class=re-text>*</span>
+			                <span class="badge badge-light-primary" id="disposal_dlf_edit"></span> 
 			              <input type="text" class="form-control" id="disposal_dlf_edit" name="disposal_dlf" placeholder="Disposal Dlf">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Disposal Lat</label>
+			              <label class="form-label" for="sbu_name">Disposal Lat</label> <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="disposal_lat_edit"></span>
 			              <input type="text" class="form-control" id="disposal_lat_edit" name="disposal_lat" placeholder="Disposal Lat">
 			            </div>
 			             
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Incineration</label>
+			              <label class="form-label" for="sbu_code">Disposal Incineration</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="disposal_incineration_edit"></span>
 			               <input type="text" class="form-control" id="disposal_incineration_edit" name="disposal_incineration"  placeholder="Disposal Incineration"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Afrf</label>
+			              <label class="form-label" for="sbu_code">Disposal Afrf</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="disposal_afrf_edit"></span>
 			               <input type="text" class="form-control" id="disposal_afrf_edit" name="disposal_afrf"  placeholder="Disposal Afrf"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Total Waste Measure</label>
+			              <label class="form-label" for="sbu_code">Disposal Total Waste Measure</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="disposal_total_waste_measure_edit"></span>
 			               <input type="text" class="form-control" id="disposal_total_waste_measure_edit" name="disposal_total_waste_measure"  placeholder="Disposal Total Waste Measure"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Dlf Measure</label>
+			              <label class="form-label" for="sbu_code">Disposal Dlf Measure</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="disposal_dlf_measure_edit"></span>
 			               <input type="text" class="form-control" id="disposal_dlf_measure_edit" name="disposal_dlf_measure"  placeholder="Disposal Dlf Measure"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Lat Measure</label>
+			              <label class="form-label" for="sbu_code">Disposal Lat Measure</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="disposal_lat_measure_edit"></span>
 			               <input type="text" class="form-control" id="disposal_lat_measure_edit" name="disposal_lat_measure"  placeholder="Disposal Lat Measure"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Incineration Measure</label>
+			              <label class="form-label" for="sbu_code">Disposal Incineration Measure</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="disposal_incineration_measure_edit"></span>
 			               <input type="text" class="form-control" id="disposal_incineration_measure_edit" name="disposal_incineration_measure"  placeholder="Disposal Incineration Measure"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Disposal Afrf Measure</label>
+			              <label class="form-label" for="sbu_code">Disposal Afrf Measure</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="disposal_afrf_measure_edit"></span>
 			               <input type="text" class="form-control" id="disposal_afrf_measure_edit" name="disposal_afrf_measure"  placeholder="Disposal Afrf Measure"> 
 			            </div>
@@ -470,28 +465,28 @@ font-size: 1rem!important;
                      <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-iwmleftoverstock-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Stock Total Waste</label>
+			              <label class="form-label" for="sbu_code">Stock Total Waste</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="stock_total_waste_edit"></span>
 			               <input type="text" class="form-control" id="stock_total_waste_edit" name="stock_total_waste"  placeholder="Stock Total Waste"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Stock Dlf</label>
+			              <label class="form-label" for="sbu_name">Stock Dlf</label>  <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="stock_dlf_edit"></span>
 			              <input type="text" class="form-control" id="stock_dlf_edit" name="stock_dlf" placeholder="Stock Dlf">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Stock Lat</label>
+			              <label class="form-label" for="sbu_name">Stock Lat</label> <span class=re-text>*</span> 
 			                <span class="badge badge-light-primary" id="stock_lat_edit"></span>
 			              <input type="text" class="form-control" id="stock_lat_edit" name="stock_lat" placeholder="Stock Lat">
 			            </div>
 			             
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Stock Incineration</label>
+			              <label class="form-label" for="sbu_code">Stock Incineration</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="stock_incineration_edit"></span>
 			               <input type="text" class="form-control" id="stock_incineration_edit" name="stock_incineration"  placeholder="Stock Incineration"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Stock Afrf</label>
+			              <label class="form-label" for="sbu_code">Stock Afrf</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="stock_afrf_edit"></span>
 			               <input type="text" class="form-control" id="stock_afrf_edit" name="stock_afrf"  placeholder="Stock Afrf"> 
 			            </div>
@@ -501,22 +496,22 @@ font-size: 1rem!important;
 			               <input type="text" class="form-control" id="stock_total_waste_measure_edit" name="stock_total_waste_measure"  placeholder="Stock Total Waste Measure"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Stock Dlf Measure</label>
+			              <label class="form-label" for="sbu_code">Stock Dlf Measure</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="stock_dlf_measure_edit"></span>
 			               <input type="text" class="form-control" id="stock_dlf_measure_edit" name="stock_dlf_measure"  placeholder="Stock Dlf Measure"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Stock Lat Measure</label>
+			              <label class="form-label" for="sbu_code">Stock Lat Measure</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="stock_lat_measure_edit"></span>
 			               <input type="text" class="form-control" id="stock_lat_measure_edit" name="stock_lat_measure"  placeholder="Stock Lat Measure"> 
 			            </div>
 			              <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Stock Incineration Measure</label>
+			              <label class="form-label" for="sbu_code">Stock Incineration Measure</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="stock_incineration_measure_edit"></span>
 			               <input type="text" class="form-control" id="stock_incineration_measure_edit" name="stock_incineration_measure"  placeholder="Stock Incineration Measure"> 
 			            </div>
 			              <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Stock Afrf Measure</label>
+			              <label class="form-label" for="sbu_code">Stock Afrf Measure</label>  <span class=re-text>*</span>  
 			              <span class="badge badge-light-primary" id="stock_afrf_measure_edit"></span>
 			               <input type="text" class="form-control" id="stock_afrf_measure_edit" name="stock_afrf_measure"  placeholder="Stock Afrf Measure"> 
 			            </div>
@@ -546,53 +541,53 @@ font-size: 1rem!important;
                      <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-mswprocessing-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Waste</label>
+			              <label class="form-label" for="sbu_code">Total Waste</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_waste_edit"></span>
 			               <input type="text" class="form-control" id="total_waste_edit" name="total_waste"  placeholder="Stock Total Waste"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Total Rdf</label>
+			              <label class="form-label" for="sbu_name">Total Rdf</label>  <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="total_rdf_edit"></span>
 			              <input type="text" class="form-control" id="total_rdf_edit" name="total_rdf" placeholder="Stock Dlf">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Total Compost</label>
+			              <label class="form-label" for="sbu_name">Total Compost</label> <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="total_compost_edit"></span>
 			              <input type="text" class="form-control" id="total_compost_edit" name="total_compost" placeholder="Total Compost">
 			            </div>
 			             
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Inerts</label>
+			              <label class="form-label" for="sbu_code">Total Inerts</label>  <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_inerts_edit"></span>
 			               <input type="text" class="form-control" id="total_inerts_edit" name="total_inerts"  placeholder="Total Inerts"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Total Recyclables</label>
+			              <label class="form-label" for="sbu_code">Total Recyclables</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="total_recyclables_edit"></span>
 			               <input type="text" class="form-control" id="total_recyclables_edit" name="total_recylables"  placeholder="Total Recyclables"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Waste</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Waste</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_waste_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_waste_edit" name="quantity_measure_waste"  placeholder="Quantity Measure Waste"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Rdf</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Rdf</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_rdf_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_rdf_edit" name="quantity_measure_rdf"  placeholder="Quantity Measure Rdf"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Compost</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Compost</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_compost_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_compost_edit" name="quantity_measure_compost"  placeholder="Quantity Measure Compost"> 
 			            </div>
 			              <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Inerts</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Inerts</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_inerts_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_inerts_edit" name="quantity_measure_inerts"  placeholder="Quantity Measure Inerts"> 
 			            </div>
 			              <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_recyclables_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_recyclables_edit" name="quantity_measure_recylabels"  placeholder="Quantity Measure Recyclables"> 
 			            </div>
@@ -622,63 +617,63 @@ font-size: 1rem!important;
                      <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-mswdistributive-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Rdf</label>
+			              <label class="form-label" for="sbu_code">Rdf</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="rdf_edit"></span>
 			               <input type="text" class="form-control" id="rdf_edit" name="rdf"  placeholder="Rdf"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Compost</label>
+			              <label class="form-label" for="sbu_name">Compost</label> <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="compost_edit"></span>
 			              <input type="text" class="form-control" id="compost_edit" name="compost" placeholder="Compost">
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_name">Recyclables</label>
+			              <label class="form-label" for="sbu_name">Recyclables</label> <span class=re-text>*</span>
 			                <span class="badge badge-light-primary" id="recyclables_edit"></span>
 			              <input type="text" class="form-control" id="recyclables_edit" name="recyclables" placeholder="Recyclables">
 			            </div>
 			             
-			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Inerts</label>
+			             <div class="mb-1"> 
+			              <label class="form-label" for="sbu_code">Inerts</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="inerts_edit"></span>
 			               <input type="text" class="form-control" id="inerts_edit" name="inserts"  placeholder="inserts"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Vendor Name Rdf</label>
+			              <label class="form-label" for="sbu_code">Vendor Name Rdf</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="vendor_name_rdf_edit"></span>
 			               <input type="text" class="form-control" id="vendor_name_rdf_edit" name="vendor_name_rdf"  placeholder="Vendor Name Rdf"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Vendor Name Compost</label>
+			              <label class="form-label" for="sbu_code">Vendor Name Compost</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="vendor_name_compost_edit"></span>
 			               <input type="text" class="form-control" id="vendor_name_compost_edit" name="vendor_name_compost"  placeholder="Vendor Name Compost"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Vendor Name Recyclables</label>
+			              <label class="form-label" for="sbu_code">Vendor Name Recyclables</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="vendor_name_recyclables_edit"></span>
 			               <input type="text" class="form-control" id="vendor_name_recyclables_edit" name="vendor_name_recyclables"  placeholder="Vendor Name Recyclables"> 
 			            </div>
 			            <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Vendor Name Inerts</label>
+			              <label class="form-label" for="sbu_code">Vendor Name Inerts</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="vendor_name_inerts_edit"></span>
 			               <input type="text" class="form-control" id="vendor_name_inerts_edit" name="vendor_name_inserts"  placeholder="Vendor Name Inerts"> 
 			            </div>
 			              <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Rdf Outflow</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Rdf Outflow</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_rdf_outflow_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_rdf_outflow_edit" name="quantity_measure_rdf_outflow"  placeholder="Quantity Measure Rdf Outflow"> 
 			            </div>
 			              <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Compost Outflow</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Compost Outflow</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_compost_outflow_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_compost_outflow_edit" name="quantity_measure_compost_outflow"  placeholder="Quantity Measure Compost Outflow"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables Outflow</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Recyclables Outflow</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_recyclables_outflow_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_recyclables_outflow_edit" name="quantity_measure_recyclables_outflow"  placeholder="Quantity Measure Recyclables Outflow"> 
 			            </div>
 			             <div class="mb-1">
-			              <label class="form-label" for="sbu_code">Quantity Measure Inerts Outflow</label>
+			              <label class="form-label" for="sbu_code">Quantity Measure Inerts Outflow</label> <span class=re-text>*</span>
 			              <span class="badge badge-light-primary" id="quantity_measure_inerts_outflow_edit"></span>
 			               <input type="text" class="form-control" id="quantity_measure_inerts_outflow_edit" name="quantity_measure_inerts_outflow"  placeholder="Quantity Measure Inerts Outflow"> 
 			            </div>
@@ -695,27 +690,7 @@ font-size: 1rem!important;
 			                </div>
 			              </div>
 			            </div> 	 
-			        
-			        
-			        
-			        
-			        
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
-			            
+			     		            
     </div>
   </div>
 </div>
@@ -818,7 +793,12 @@ font-size: 1rem!important;
  function getCollect(id,sbu_code,quantity,quantity_measure,comments){
 	 $('#quantity_edit').val('');
 	 $('#quantity_measure_edit').val('');
-      $('#id').val($.trim(id));
+	 
+	 quantity =  (quantity == 'undefined'  ) ? "" : quantity;
+	 quantity_measure =  (quantity_measure == 'undefined'  ) ? "" : quantity_measure;
+	 
+	 
+      $('#updatemodel #id').val($.trim(id));
       $('#updatemodel #quantity_edit').val($.trim(quantity)).focus();
       $('#updatemodel #quantity_measure_edit').val($.trim(quantity_measure)).focus();
       $('#updatemodel').modal('show');
