@@ -459,7 +459,7 @@ font-size: 1rem!important;
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-iwmleftoverstock-iris" method="post" novalidate="novalidate">
+                     <form id="jquery-val-form-iwmleftoverstock"  action="<%=request.getContextPath() %>/update-iwmleftoverstock-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Stock Total Waste</label>  <span class=re-text>*</span>
@@ -534,8 +534,8 @@ font-size: 1rem!important;
                       <h4 class="modal-title text-white" id="myModalLabel18">Edit form</h4>
                       <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                     <form id="jquery-val-form2"  action="<%=request.getContextPath() %>/update-mswprocessing-iris" method="post" novalidate="novalidate">
+                    <div class="modal-body"> 
+                     <form id="jquery-val-form-mswprocessing"  action="<%=request.getContextPath() %>/update-mswprocessing-iris" method="post" novalidate="novalidate">
                       <input type="hidden" class="form-control" id="id" name="id">
                       <div class="mb-1">
 			              <label class="form-label" for="sbu_code">Total Waste</label>  <span class=re-text>*</span>

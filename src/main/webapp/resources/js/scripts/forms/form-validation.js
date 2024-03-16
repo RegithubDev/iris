@@ -598,3 +598,179 @@ $(function () {
   }
 });
 
+$(function () {
+  'use strict';
+
+  var bootstrapForm = $('.needs-validation'),
+    jqForm = $('#jquery-val-form-iwmleftoverstock'),
+    picker = $('.picker'),
+    select = $('.select2');
+
+  // select2
+  select.each(function () {
+    var $this = $(this);
+    $this.wrap('<div class="position-relative"></div>');
+    $this
+      .select2({
+        placeholder: 'Select value', 
+        dropdownParent: $this.parent()
+      })
+      .change(function () {
+        $(this).valid();
+      });
+  });
+
+  // Picker
+  if (picker.length) {
+    picker.flatpickr({
+      allowInput: true,
+      onReady: function (selectedDates, dateStr, instance) {
+        if (instance.isMobile) {
+          $(instance.mobileInput).attr('step', null);
+        }
+      }
+    });
+  }
+
+  // Bootstrap Validation
+  // --------------------------------------------------------------------
+  if (bootstrapForm.length) {
+    Array.prototype.filter.call(bootstrapForm, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          form.classList.add('invalid');
+        }
+        form.classList.add('was-validated');
+        event.preventDefault();
+      });
+    });
+  }
+
+  // jQuery Validation
+  // --------------------------------------------------------------------
+  if (jqForm.length) {
+    jqForm.validate({
+      rules: {
+        'stock_total_waste': {
+          required: true
+        },
+        'stock_dlf': {
+          required: true,
+        },
+        'stock_lat': {
+          required: true
+        },
+        'stock_incineration': { 
+          required: true,
+        },
+        'stock_afrf': {
+          required: true
+        },
+        'stock_total_waste_measure': {
+          required: true
+        },
+        'stock_dlf_measure': {
+          required: true
+        },
+        'stock_lat_measure': {
+          required: true
+        },
+        'stock_incineration_measure': {
+          required: true
+        },
+        'stock_afrf_measure': {
+          required: true
+        }
+      }
+    });
+  }
+});
+
+$(function () {
+  'use strict';
+
+  var bootstrapForm = $('.needs-validation'),
+    jqForm = $('#jquery-val-form-mswprocessing'),
+    picker = $('.picker'),
+    select = $('.select2');
+
+  // select2
+  select.each(function () {
+    var $this = $(this);  
+    $this.wrap('<div class="position-relative"></div>');
+    $this
+      .select2({
+        placeholder: 'Select value', 
+        dropdownParent: $this.parent()
+      })
+      .change(function () {
+        $(this).valid();
+      });
+  });
+
+  // Picker
+  if (picker.length) {
+    picker.flatpickr({
+      allowInput: true,
+      onReady: function (selectedDates, dateStr, instance) {
+        if (instance.isMobile) {
+          $(instance.mobileInput).attr('step', null);
+        }
+      }
+    });
+  }
+
+  // Bootstrap Validation
+  // --------------------------------------------------------------------
+  if (bootstrapForm.length) {
+    Array.prototype.filter.call(bootstrapForm, function (form) {
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          form.classList.add('invalid');
+        }
+        form.classList.add('was-validated');
+        event.preventDefault();
+      });
+    });
+  }
+
+  // jQuery Validation
+  // --------------------------------------------------------------------
+  if (jqForm.length) {
+    jqForm.validate({
+      rules: {
+        'total_waste': {
+          required: true
+        },
+        'total_rdf': {
+          required: true,
+        },
+        'total_compost': {
+          required: true
+        },
+        'total_inerts': { 
+          required: true,
+        },
+        'total_recylables': {
+          required: true
+        },
+        'quantity_measure_waste': {
+          required: true
+        },
+        'quantity_measure_rdf': {
+          required: true
+        },
+        'quantity_measure_compost': {
+          required: true
+        },
+        'quantity_measure_inerts': {
+          required: true
+        },
+        'quantity_measure_recylabels': {
+          required: true
+        }
+      }
+    });
+  }
+});
+
