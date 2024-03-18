@@ -17,6 +17,7 @@ public class PageConstants {
 
 	public static final String inactiveuserpage = "inactiveuserpage";	
 	public static final String noAccessPage = "noAccessPage";	
+	public static final String poweBI_DB = "poweBI_DB";
 
 	
 	

@@ -67,12 +67,10 @@ public class HomeController {
 			userId = (String) session.getAttribute("USER_ID");
 			userName = (String) session.getAttribute("USER_NAME");
 			role = (String) session.getAttribute("BASE_ROLE");
-			if(role.equals("Super Admin")) {
+			if(role.equals("ROLE_ADMIN")) {
 				 model = new ModelAndView(PageConstants.irisHOme);
-			}else if(role.equals("User")) {
-				 model = new ModelAndView(PageConstants.irisHOme);
-			}else {
-				model = new ModelAndView(PageConstants.irisHOme);
+			}else if(role.equals("ROLE_MANAGEMENT-USER")) {
+				 model = new ModelAndView(PageConstants.poweBI_DB);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -99,12 +97,10 @@ public class HomeController {
 				user.setEmail_id(email_id+".com");
 			}
 			userList = service.getUserList(user, user.getStartIndex(), user.getOffset(), null);
-			if(role.equals("Super Admin")) {
+			if(role.equals("ROLE_ADMIN")) {
 				 model = new ModelAndView(PageConstants.irisHOme);
-			}else if(role.equals("User")) {
-				 model = new ModelAndView(PageConstants.irisHOme);
-			}else {
-				model = new ModelAndView(PageConstants.irisHOme);
+			}else if(role.equals("ROLE_MANAGEMENT-USER")) {
+				 model = new ModelAndView(PageConstants.poweBI_DB);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

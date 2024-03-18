@@ -58,10 +58,10 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 			    if( requestURI.equals("/"+context_path+"/add-user-iris")) {
 					return true;
 				}
-			    if(requestURI.contains("reone") && userData == null ) {
-			    	response.sendRedirect("/"+context_path+"/login-first");
-			    	 return false;
-			    }
+			   // if(requestURI.contains("reone") && userData == null ) {
+			   // 	response.sendRedirect("/"+context_path+"/login-first");
+			 //  	 return false;
+			  //  }
 			    if(!requestURI.equals("/"+context_path+"/login-first") && userData == null){
 			    	if(request.getRequestURI().contains("/"+context_path+"/")){
 			    		response.sendRedirect("/"+context_path+"/login");
