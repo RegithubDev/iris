@@ -86,22 +86,12 @@ public class HomeController {
 		String role = null;
 		List<User> userList = null;
 		try {   
-			userId = (String) session.getAttribute("USER_ID");
-			userName = (String) session.getAttribute("USER_NAME");
-			role = (String) session.getAttribute("BASE_ROLE");
-			String email = (String) session.getAttribute("USER_EMAIL");
-			user.setRole(role);
-			user.setEmail_id(email);
+			
 			String email_id = user.getEmail_id();
 			if(!(user.getEmail_id().contains(".com"))) {
 				user.setEmail_id(email_id+".com");
 			}
 			userList = service.getUserList(user, user.getStartIndex(), user.getOffset(), null);
-			if(role.equals("ROLE_ADMIN")) {
-				 model = new ModelAndView(PageConstants.irisHOme);
-			}else if(role.equals("ROLE_MANAGEMENT-USER")) {
-				 model = new ModelAndView(PageConstants.poweBI_DB);
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
