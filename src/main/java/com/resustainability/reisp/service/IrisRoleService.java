@@ -49,4 +49,8 @@ public class IrisRoleService {
 	public List<Role> getSBUList(Role obj) throws Exception {
 		return dao.getSBUList(obj);
 	}
+
+	public List<Role> getRolesAthenticationForMobile(Role obj) throws Exception {
+		return dao.getRolesAthenticationForMobile(obj);
+	}
 }

@@ -180,7 +180,7 @@
            <div class="mb-1 col-md-6">
              <label class="form-label" for="select-country">Select Category</label>  <span class=re-text>*</span>
               <div class="position-relative">
-              <select class="form-select select2 select2-hidden-accessible" id="categories" name="categories" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
+              <select class="form-select select2 select2-hidden-accessible" onchange="checkSBUHeadAndMakeCityAndSiteMultiple(this.value);" id="categories" name="categories" data-select2-id="Select-City" multiple="" tabindex="4" aria-hidden="true">
                 <option value="" data-select2-id="1">Select Category</option>
                 
                  <c:set var="categoriesString" value="${UserDetails.categories}" />
@@ -220,14 +220,15 @@
           </div>
           <div class="row">
             <div class="mb-1 col-md-6"> 
-             <label class="form-label" for="select-country">Select City</label>  <span class=re-text>*</span>
+             <label class="form-label" for="select-country">Select City </label>  <span class=re-text>*</span>
               <div class="position-relative">
               <select class="form-select select2 select2-hidden-accessible" id="city" name="city" 
-               onchange="getSiteFilterListWithCityForUser();" data-select2-id="Select-City" tabindex="4" aria-hidden="true">
-                <option value="" data-select2-id="2">Select </option>
-               			<c:forEach var="obj" items="${cityList}">
-									<option value="${obj.id }"  <c:if test="${UserDetails.city == obj.id }">selected</c:if>>${obj.city_name }</option>
+               onchange="getSiteFilterListWithCityForUser();" >
+                <option value="" >Select </option>
+                	    <c:forEach var="obj" items="${cityList}">
+									<option value="${obj.id }"  <c:if test="${UserDetails.city == obj.id }">selected</c:if>> ${obj.city_name }</option>
 						</c:forEach>
+               		
               </select>
               </div>
             </div>
@@ -323,13 +324,26 @@
         <script src="/iris/resources/js/scripts/forms/pickers/form-pickers.min.js"></script>
     <script>
  $(window).on('load',  function(){
-    	
+	 	getCitiesFilterListWithSBUForUserOnLoad();
         if (feather) {
           feather.replace({ width: 14, height: 14 });
         }
       })
        document.getElementById("currentYear").innerHTML = new Date().getFullYear();
 
+ function checkSBUHeadAndMakeCityAndSiteMultiple(categories) {
+     // Check if the selected value contains 'SBUHead'
+     if (categories.indexOf('SBUHead') !== -1) {
+         // If it does, add the 'multiple' attribute
+         $('#city').attr('multiple', 'multiple');
+         $('#categories').removeAttr('multiple');
+     } else {
+         // If not, remove the 'multiple' attribute
+         $('#city').removeAttr('multiple');
+         $('#categories').attr('multiple', 'multiple');
+     }
+ }
+ 
  function getCategoryFilterListWithSBUForUser() {
    	 var sbu = $("#sbu").val();
   	var string = sbu.join(",");
@@ -399,6 +413,39 @@
               });
           }
       }
+ 
+ function getCitiesFilterListWithSBUForUserOnLoad() {
+   	 var sbu = $("#sbu").val();
+   	var string = sbu.join(",");
+   	var tag = ''
+   	var city = '';
+          	$("#city option:not(:first)").remove();
+          if('${UserDetails.city}' != ''){
+        	  city = '${UserDetails.city}';
+			}
+          	var myParams = { sbu: string};
+              $.ajax({
+                  url: "<%=request.getContextPath()%>/ajax/getCityFilterListForSite",
+                  data: myParams, cache: false,async: false,
+                  success: function (data) {
+                      if (data.length > 0) {
+                          $.each(data, function (i, val) {
+							  if(city == val.city){
+								  tag = 'selected';
+								  $("#city").append('<option value="' + val.city + '" '+tag+'>' + $.trim(val.city_name) +'</option>');
+							  }else{
+								  $("#city").append('<option value="' + val.city + '" >' + $.trim(val.city_name) +'</option>');
+							  }
+                              
+                          });
+                      }
+                  },error: function (jqXHR, exception) {
+      	   			      $(".page-loader").hide();
+         	          	  getErrorMessage(jqXHR, exception);
+         	     	  }
+              });
+      }
+ 
  function getSiteFilterListWithCityForUser() {
    	 var city = $("#city").val();
           if ($.trim(city) != "") {

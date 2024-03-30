@@ -464,14 +464,19 @@ public class IrisDataManagementDao {
 				arrSize++;arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite())) {
-				qry = qry + " and s.id = ? ";
+				qry = qry + " and sss.id = ? ";
 				arrSize++;
 			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getIsMobile())) {
+				qry = qry + " AND CAST(s.created_date AS DATE) >= DATEADD(DAY, -7, CAST(GETDATE() AS DATE)) ";	
+			}
+			
 			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
 				qry = qry + " ORDER BY s.date asc offset ? rows  fetch next ? rows only";	
 				arrSize++;
 				arrSize++;
 			}
+			
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {

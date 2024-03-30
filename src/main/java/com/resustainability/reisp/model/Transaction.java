@@ -14,7 +14,40 @@ public class Transaction {
 			quantity_measure_recylabels, disposal_total_waste, disposal_dlf, disposal_lat, disposal_incineration,
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,total_plastic,
-			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf,tock_total_waste, stock_afrf_measure,from_date,to_date;
+			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf,tock_total_waste, stock_afrf_measure,from_date,to_date,
+			quantity_measure_rdf_outflow,quantity_measure_compost_outflow,quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow;
+
+	public String getQuantity_measure_rdf_outflow() {
+		return quantity_measure_rdf_outflow;
+	}
+
+	public String getQuantity_measure_compost_outflow() {
+		return quantity_measure_compost_outflow;
+	}
+
+	public String getQuantity_measure_recyclables_outflow() {
+		return quantity_measure_recyclables_outflow;
+	}
+
+	public String getQuantity_measure_inerts_outflow() {
+		return quantity_measure_inerts_outflow;
+	}
+
+	public void setQuantity_measure_rdf_outflow(String quantity_measure_rdf_outflow) {
+		this.quantity_measure_rdf_outflow = quantity_measure_rdf_outflow;
+	}
+
+	public void setQuantity_measure_compost_outflow(String quantity_measure_compost_outflow) {
+		this.quantity_measure_compost_outflow = quantity_measure_compost_outflow;
+	}
+
+	public void setQuantity_measure_recyclables_outflow(String quantity_measure_recyclables_outflow) {
+		this.quantity_measure_recyclables_outflow = quantity_measure_recyclables_outflow;
+	}
+
+	public void setQuantity_measure_inerts_outflow(String quantity_measure_inerts_outflow) {
+		this.quantity_measure_inerts_outflow = quantity_measure_inerts_outflow;
+	}
 
 	public String getTotal_plastic() {
 		return total_plastic;

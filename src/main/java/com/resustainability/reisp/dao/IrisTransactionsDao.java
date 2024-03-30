@@ -163,10 +163,10 @@ public class IrisTransactionsDao {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String insertQry = "INSERT INTO [msw_distribute_table] "
 					+ "(sbu_code,rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,"
-					+ "vendor_name_inserts,vendor_name_rdf_outflow,vendor_name_compost_outflow,vendor_name_recylables_outflow,vendor_name_inserts_outflow,date,site,comments,created_by,created_date) "
+					+ "vendor_name_inserts,quantity_measure_rdf_outflow,quantity_measure_compost_outflow,quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow,date,site,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:rdf,:compost,:recyclables,:inserts,:vendor_name_rdf,:vendor_name_compost,:vendor_name_recyclables,:vendor_name_inserts,:vendor_name_rdf_outflow,"
-					+ ":vendor_name_compost_outflow,:vendor_name_recylables_outflow,:vendor_name_inserts_outflow,:date,:site,:comments,:created_by,getdate())";
+					+ "(:sbu_code,:rdf,:compost,:recyclables,:inserts,:vendor_name_rdf,:vendor_name_compost,:vendor_name_recyclables,:vendor_name_inserts,:quantity_measure_rdf_outflow,"
+					+ ":quantity_measure_compost_outflow,:quantity_measure_recyclables_outflow,:quantity_measure_inerts_outflow,:date,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

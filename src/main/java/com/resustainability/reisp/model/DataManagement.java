@@ -14,7 +14,16 @@ public class DataManagement {
 			quantity_measure_recylabels, disposal_total_waste, disposal_dlf, disposal_lat, disposal_incineration,
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
-			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date;
+			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile;
+	
+public String getIsMobile() {
+		return isMobile;
+	}
+
+	public void setIsMobile(String isMobile) {
+		this.isMobile = isMobile;
+	}
+
 public String getQuantity_measure_rdf_outflow() {
 		return quantity_measure_rdf_outflow;
 	}

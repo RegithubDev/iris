@@ -99,24 +99,48 @@ public class IrisUserDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT um.[id]"
-					+ "      ,[user_name]"
-					+ "      ,[email_id]"
-					+ "      ,[mobile_number]"
-					+ "      ,um.[sbu],sbu_name,st.site_name,c.category_name,r.role_name"
-					+ "      ,[categories]"
-					+ "      ,um.[roles]"
-					+ "      ,[notfilled_datadates]"
-					+ "      ,um.[status]"
-					+ "      ,um.[created_by]"
-					+ "      ,um.[created_date]"
-					+ "      ,um.[modified_by]"
-					+ "      ,um.[modified_date] from [user_management] um "
-					+ " left join site st on um.site_name = st.id   "
-					+ " left join category c on um.categories = c.category_code   "
-					+ " left join roles r on CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0 "
-					+ "  left join [sbu] s on CHARINDEX(',' + CAST(s.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0 "
-					+ "where um.sbu is not null ";
+			String qry = "SELECT    "
+					+ "    um.[id], um.[id] as user_id ,  "
+					+ "    [user_name],   "
+					+ "    [email_id],[categories],   "
+					+ "    [mobile_number],um.[sbu],   "
+					+ "    (   "
+					+ "        SELECT STRING_AGG( dsn.sbu_name, ',')   "
+					+ "        FROM sbu dsn   "
+					+ "        WHERE CHARINDEX(',' + CAST(dsn.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0   "
+					+ "    ) AS sbu_name,   "
+					+ "    (   "
+					+ "        SELECT STRING_AGG( c.category_name, ',')   "
+					+ "        FROM category c   "
+					+ "        WHERE CHARINDEX(',' + CAST(c.category_code AS VARCHAR) + ',', ',' + um.categories + ',') > 0   "
+					+ "    ) AS category_name,   "
+					+ "    st.site_name,   "
+					+ "   "
+					+ "		 (   "
+					+ "        SELECT STRING_AGG( r.role_name, ',')   "
+					+ "        FROM roles r   "
+					+ "        WHERE CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0   "
+					+ "    ) AS role_name,   "
+					+ "   "
+					+ "	um.[roles],   "
+					+ "    [notfilled_datadates],   "
+					+ "    um.[status],   "
+					+ "    um.[created_by],   "
+					+ "    um.[created_date],   "
+					+ "    um.[modified_by],   "
+					+ "    um.[modified_date]   "
+					+ "FROM    "
+					+ "    [user_management] um   "
+					+ "LEFT JOIN    "
+					+ "    site st ON um.site_name = st.id   "
+					+ "LEFT JOIN    "
+					+ "	 category c ON CHARINDEX(',' + CAST(c.category_code AS VARCHAR) + ',', ',' + um.categories + ',') > 0   "
+					+ "LEFT JOIN    "
+					+ "    roles r ON CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0   "
+					+ "LEFT JOIN    "
+					+ "    [sbu] s ON CHARINDEX(',' + CAST(s.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0   "
+					+ "WHERE    "
+					+ "    um.sbu IS NOT NULL ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
 				qry = qry + " and  um.sbu = ? ";
@@ -147,7 +171,9 @@ public class IrisUserDao {
 				arrSize++;
 			}	
 			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
-				qry = qry + " ORDER BY um.user_name asc offset ? rows  fetch next ? rows only";	
+				qry = qry + " GROUP BY  "
+						+ "    um.id, [user_name], [email_id], [mobile_number], st.site_name, [notfilled_datadates],  "
+						+ "    um.status, um.created_by, um.created_date, um.modified_by, um.modified_date,um.[sbu],[categories],um.[roles] ORDER BY um.user_name asc offset ? rows  fetch next ? rows only";	
 				arrSize++;
 				arrSize++;
 			}
@@ -179,10 +205,10 @@ public class IrisUserDao {
 				pValues[i++] = offset;
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));	
-			Set<String> nameSet = new HashSet<>();
-			objsList = objsList.stream()
-		            .filter(e -> nameSet.add(e.getId()))
-		            .collect(Collectors.toList());
+			/*
+			 * Set<String> nameSet = new HashSet<>(); objsList = objsList.stream() .filter(e
+			 * -> nameSet.add(e.getId())) .collect(Collectors.toList());
+			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);

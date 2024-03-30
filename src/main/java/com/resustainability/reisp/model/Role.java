@@ -3,13 +3,21 @@ package com.resustainability.reisp.model;
 public class Role {
 
 	private String id
-    ,sbu_code
+    ,sbu_code,roles
     ,role_name
     ,status
     ,created_by
     ,modified_date
     ,created_date
     ,modified_by,sbu,sbu_name;
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
 
 	public String getId() {
 		return id;

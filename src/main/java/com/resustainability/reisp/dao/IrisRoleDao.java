@@ -406,6 +406,59 @@ public class IrisRoleDao {
 		return objsList;
 	}
 
+	public List<Role> getRolesAthenticationForMobile(Role obj) throws Exception {
+		List<Role> objsList = null;
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "SELECT id,sbu_code,role_name from [roles] um where status <> 'Inactive' ";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				qry = qry + " and  um.sbu_code = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				 String input = obj.getRoles();
+				qry = qry + " and  um.id in(  ";
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 qry = qry + " ?,";
+						 arrSize++;
+					 }
+				    qry =  qry.trim().replaceAll(",$", "");
+					qry = qry + " )";
+				 }else {
+					 qry = qry + " ?)";
+					 arrSize++;
+				 }
+			}
+			qry = qry + " order by um.role_name asc";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getRoles())) {
+				 String input = obj.getRoles();
+				 if (input.contains(",")) {
+					 String [] arr = input.split(",");
+					 for(String arrObj : arr) {
+						 pValues[i++] = arrObj ;
+					 }
+				
+			     }else {
+			    	 pValues[i++] = obj.getRoles();
+			     }
+			}
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<Role>(Role.class));	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
 	
 	}
 
