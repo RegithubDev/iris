@@ -109,10 +109,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadBMWProcessingData(obj);
 			if(flag == true) {
-				msg ="Collect Data Uploaded Succesfully.";
+				msg ="BMW Processing Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "Collecting Data failed. Try again.";
+				msg = "BMW Processing Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -138,10 +138,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadBMWDistributeData(obj);
 			if(flag == true) {
-				msg ="Collect Data Uploaded Succesfully.";
+				msg ="BMW Distribute Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "Collecting Data failed. Try again.";
+				msg = "BMW Distribute Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -167,10 +167,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadIWMDisposalData(obj);
 			if(flag == true) {
-				msg ="Collect Data Uploaded Succesfully.";
+				msg ="IWM Disposal Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "Collecting Data failed. Try again.";
+				msg = "IWM Disposal Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -196,10 +196,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadIWMLeftoverstockData(obj);
 			if(flag == true) {
-				msg ="Collect Data Uploaded Succesfully.";
+				msg ="IWM Leftoverstock Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "Collecting Data failed. Try again.";
+				msg = "IWM Leftoverstock Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -226,10 +226,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadMSWDistributeData(obj);
 			if(flag == true) {
-				msg ="Collect Data Uploaded Succesfully.";
+				msg ="MSW Distribute Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "Collecting Data failed. Try again.";
+				msg = "MSW Distribute Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -255,10 +255,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadMSWProcessingData(obj);
 			if(flag == true) {
-				msg ="Collect Data Uploaded Succesfully.";
+				msg ="BMW Processing Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "Collecting Data failed. Try again.";
+				msg = "BMW Processing Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
