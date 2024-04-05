@@ -2,6 +2,8 @@ package com.resustainability.reisp.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.sql.DataSource;
 
@@ -739,6 +741,7 @@ public class IrisDataManagementDao {
 		List<DataManagement> objsList2 = null;
 		List<DataManagement> objsList3 = null;
 		List<DataManagement> finalList = new ArrayList<>();
+		 List<DataManagement> combinedList = new ArrayList<>();
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
@@ -786,7 +789,7 @@ public class IrisDataManagementDao {
 				
 						arrSize = 0;
 						qry = "";
-						 qry = "SELECT ,[sbu_code]"
+						 qry = "SELECT [sbu_code]"
 						 		+ "      ,[total_materials]"
 						 		+ "      ,[total_recylable]"
 						 		+ "      ,[total_plastic]"
@@ -798,14 +801,14 @@ public class IrisDataManagementDao {
 						 		+ "      ,[quality_measure_plastics]"
 						 		+ "      ,[quality_measure_bags]"
 						 		+ "      ,[quality_measure_glass]"
-						 		+ "      ,[quality_measure_cardboard]"
+						 		+ "      ,[quality_measure_cardboard] "
 						 		+ "from bmw_distribute_table where sbu_code is not null  ";
 						 if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
 								qry = qry + " and date = ? ";
 								arrSize++;
 							}
 						 qry = qry + " GROUP BY "
-						 		+ " ,[sbu_code]"
+						 		+ " [sbu_code]"
 						 		+ "      ,[total_materials]"
 						 		+ "      ,[total_recylable]"
 						 		+ "      ,[total_plastic]"
@@ -828,6 +831,20 @@ public class IrisDataManagementDao {
 							finalList.addAll(objsList1);
 							finalList.addAll(objsList2);
 							finalList.addAll(objsList3);
+					        int maxSize = Math.max(objsList1.size(), objsList2.size());
+					        
+							
+						        for (int l = 0; l < maxSize; l++) {
+						            DataManagement obj1 = l < objsList1.size() ? objsList1.get(l) : null;
+						            DataManagement obj2 = l < objsList2.size() ? objsList2.get(l) : null;
+						            combinedList.add(mergeObjects(obj1, obj2));
+						        }
+						        int maxSize2 = Math.max(combinedList.size(), objsList3.size());
+						        for (int l = 0; l < maxSize2; l++) {
+						            DataManagement obj1 = l < combinedList.size() ? combinedList.get(l) : null;
+						            DataManagement obj2 = l < objsList3.size() ? objsList3.get(l) : null;
+						            combinedList.add(mergeObjects(obj1, obj2));
+						        }
 			}
 			
 			
@@ -835,9 +852,11 @@ public class IrisDataManagementDao {
 			e.printStackTrace();
 			throw new Exception(e);
 		}
-		return finalList;
+		return combinedList;
 	}
 	
-	
+	 private static DataManagement mergeObjects(DataManagement obj1, DataManagement obj2) {
+	        return obj1 != null ? obj1 : obj2;
+	    }
 	
 }
