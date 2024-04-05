@@ -31,6 +31,7 @@ import com.google.gson.GsonBuilder;
 import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.DataManagement;
 import com.resustainability.reisp.model.DataManagementObject;
+import com.resustainability.reisp.model.Role;
 import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.DataManagement;
 import com.resustainability.reisp.model.User;
@@ -409,7 +410,7 @@ public class IrisDataManagementController {
 	}
 	
 	@RequestMapping(value = "/reone/get-data-management-list", method = { RequestMethod.POST, RequestMethod.GET })
-	public List<DataManagement> createPaginationDataMobile( @RequestBody DataManagement obj) {
+	public List<DataManagement> dataManagement( @RequestBody DataManagement obj) {
 		List<DataManagement> objList = null;
 		try {
 			int startIndex = obj.getStartIndex();
@@ -417,8 +418,42 @@ public class IrisDataManagementController {
 			String searchParameter = null;
 			objList = service.getDataManagementList(obj, startIndex, offset, searchParameter);
 		} catch (Exception e) {
-			logger.error("createPaginationData : " + e.getMessage());
+			logger.error("getDataManagementList : " + e.getMessage());
 		}
 		return objList;
+	}
+	
+	@RequestMapping(value = "/reone/get-history-by-date", method = { RequestMethod.POST, RequestMethod.GET })
+	public List<DataManagement> history( @RequestBody DataManagement obj) {
+		List<DataManagement> objList = null;
+		try {
+			int startIndex = obj.getStartIndex();
+			int offset = obj.getOffset();
+			String searchParameter = null;
+			objList = service.getDataHistoryList(obj);
+		} catch (Exception e) {
+			logger.error("getDataHistoryList : " + e.getMessage());
+		}
+		return objList;
+	}
+	
+	@RequestMapping(value = "/reone/ajax/getDataFromDates", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<DataManagement> getDataFromDates(@RequestBody DataManagement obj,HttpSession session) {
+		List<DataManagement> companiesList = null;
+		String userId = null;
+		String siteName = null;
+		String role = null;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			siteName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			
+			companiesList = service.getDataFromDates(obj);
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("getDataFromDates : " + e.getMessage());
+		}
+		return companiesList;
 	}
 }

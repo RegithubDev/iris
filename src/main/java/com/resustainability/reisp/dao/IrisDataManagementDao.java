@@ -1,5 +1,6 @@
 package com.resustainability.reisp.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -690,6 +691,151 @@ public class IrisDataManagementDao {
 			throw new Exception(e);
 		}
 		return flag;
+	}
+
+	public List<DataManagement> getDataHistoryList(DataManagement obj) throws Exception {
+		List<DataManagement> objsList = null;
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "SELECT  convert(varchar, date, 101) as date  "
+					+ "FROM (  "
+					+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[collect_table]  "
+					+ "    UNION  "
+					+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[bmw_processing_table]  "
+					+ "    UNION  "
+					+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[bmw_distribute_table]  "
+					+ ") AS all_dates where date is not null  ";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				qry = qry + " and  sbu_code = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date())) {
+				qry = qry + " and date between  ? and  ? ";
+				arrSize++;
+				arrSize++;
+			}
+			qry = qry + " GROUP BY date order by date desc ";
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
+				pValues[i++] = obj.getSbu_code();
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date())) {
+				pValues[i++] = obj.getFrom_date();
+				pValues[i++] = obj.getTo_date();
+			}
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;
+	}
+
+	public List<DataManagement> getDataFromDates(DataManagement obj) throws Exception {
+		List<DataManagement> objsList1 = null;
+		List<DataManagement> objsList2 = null;
+		List<DataManagement> objsList3 = null;
+		List<DataManagement> finalList = new ArrayList<>();
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code()) && obj.getSbu_code().equals("BMW")) {
+				 qry = "SELECT sbu_code,quantity,quantity_measure from collect_table where sbu_code is not null  ";
+				 if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) { 
+						qry = qry + " and date = ? ";
+						arrSize++;
+					}
+				 qry = qry + " GROUP BY sbu_code,quantity,quantity_measure  ";
+				 Object[] pValues = new Object[arrSize];
+					int i = 0;
+					if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
+						pValues[i++] = obj.getDate();
+					}
+					objsList1 = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
+					arrSize = 0;
+					qry = "";
+					 qry = "SELECT sbu_code"
+					 		+ "      ,total_waste"
+					 		+ "      ,total_incieration"
+					 		+ "      ,total_autoclave"
+					 		+ "      ,quantity_measure_waste"
+					 		+ "      ,quantity_measure_incieration"
+					 		+ "      ,quantity_measure_autoclave from bmw_processing_table where sbu_code is not null  ";
+					 if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
+							qry = qry + " and date = ? ";
+							arrSize++;
+						}
+					 qry = qry + " GROUP BY sbu_code"
+					 		+ ",total_waste"
+					 		+ ",total_incieration"
+					 		+ ",total_autoclave"
+					 		+ ",quantity_measure_waste"
+					 		+ ",quantity_measure_incieration"
+					 		+ ",quantity_measure_autoclave ";
+					 Object[] pValues1 = new Object[arrSize];
+						int j = 0;
+						if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
+							pValues1[j++] = obj.getDate();
+						}
+						objsList2 = jdbcTemplate.query( qry,pValues1, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
+				
+						arrSize = 0;
+						qry = "";
+						 qry = "SELECT ,[sbu_code]"
+						 		+ "      ,[total_materials]"
+						 		+ "      ,[total_recylable]"
+						 		+ "      ,[total_plastic]"
+						 		+ "      ,[total_bags]"
+						 		+ "      ,[total_glass]"
+						 		+ "      ,[total_cardboard]"
+						 		+ "      ,[quality_measure_materials]"
+						 		+ "      ,[quality_measure_recylable]"
+						 		+ "      ,[quality_measure_plastics]"
+						 		+ "      ,[quality_measure_bags]"
+						 		+ "      ,[quality_measure_glass]"
+						 		+ "      ,[quality_measure_cardboard]"
+						 		+ "from bmw_distribute_table where sbu_code is not null  ";
+						 if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
+								qry = qry + " and date = ? ";
+								arrSize++;
+							}
+						 qry = qry + " GROUP BY "
+						 		+ " ,[sbu_code]"
+						 		+ "      ,[total_materials]"
+						 		+ "      ,[total_recylable]"
+						 		+ "      ,[total_plastic]"
+						 		+ "      ,[total_bags]"
+						 		+ "      ,[total_glass]"
+						 		+ "      ,[total_cardboard]"
+						 		+ "      ,[quality_measure_materials]"
+						 		+ "      ,[quality_measure_recylable]"
+						 		+ "      ,[quality_measure_plastics]"
+						 		+ "      ,[quality_measure_bags]"
+						 		+ "      ,[quality_measure_glass]"
+						 		+ "      ,[quality_measure_cardboard] ";
+						 Object[] pValues2 = new Object[arrSize];
+							int k = 0;
+							if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
+								pValues2[k++] = obj.getDate();
+							}
+							objsList3 = jdbcTemplate.query( qry,pValues2, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
+			
+							finalList.addAll(objsList1);
+							finalList.addAll(objsList2);
+							finalList.addAll(objsList3);
+			}
+			
+			
+			} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return finalList;
 	}
 	
 	
