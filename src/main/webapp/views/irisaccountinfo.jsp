@@ -121,30 +121,7 @@
         <h4 class="card-title">Profile Details</h4>
       </div>
       <div class="card-body py-2 my-25">
-        <!-- header section -->
-  <!--       <div class="d-flex">
-          <a href="#" class="me-25">
-            <img
-              src="/iris/resources//images/portrait/small/avatar-s-11.jpg"
-              id="account-upload-img"
-              class="uploadedAvatar rounded me-50"
-              alt="profile image"
-              height="100"
-              width="100"
-            />
-          </a>
-          upload and reset button
-          <div class="d-flex align-items-end mt-75 ms-1">
-            <div>
-              <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75">Upload</label>
-              <input type="file" id="account-upload" hidden accept="image/*" />
-              <button type="button" id="account-reset" class="btn btn-sm btn-outline-secondary mb-75">Reset</button>
-              <p class="mb-0">Allowed file types: png, jpg, jpeg.</p>
-            </div>
-          </div>
-          / upload and reset button
-        </div> -->
-        <!--/ header section -->
+       
 
         <!-- form -->
         <form id="jquery-val-form" class="validate-form mt-2 pt-50" action="<%=request.getContextPath() %>/update-user-self-iris"  method="post" novalidate="novalidate" >
