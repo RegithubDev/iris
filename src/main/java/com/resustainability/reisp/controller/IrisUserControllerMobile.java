@@ -136,28 +136,25 @@ public class IrisUserControllerMobile {
 	}
 	
 	@RequestMapping(value = "/update-user-self-iris", method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView updateUserSelfIris(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+	public String updateUserSelfIris(@RequestBody User obj,RedirectAttributes attributes,HttpSession session) {
 		boolean flag = false;
-		String userId = null;
-		String userName = null;
-		ModelAndView model = new ModelAndView();
+		String msg = "";
 		try {
-			model.setViewName("redirect:/iris-accountinfo");
-			userId = (String) session.getAttribute("USER_ID");
-			userName = (String) session.getAttribute("USER_NAME");
-			obj.setModified_by(userId);
-			obj.setId(userId);
+			obj.setModified_by(obj.getId());
+			obj.setId(obj.getId());
 			flag = service.updateUserSelfIris(obj);
 			if(flag == true) {
 				attributes.addFlashAttribute("success", "User Updated Succesfully.");
+				msg = "User Updated Succesfully.";
 			}
 			else {
 				attributes.addFlashAttribute("error","Updating User is failed. Try again.");
+				msg = "Updating User is failed. Try again.";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return model;
+		return msg;
 	}
 	
 	@RequestMapping(value = "/iris-adduser", method = {RequestMethod.POST, RequestMethod.GET})
@@ -537,26 +534,29 @@ public class IrisUserControllerMobile {
 	}
 	
 	@RequestMapping(value = "/update-user-iris", method = {RequestMethod.GET,RequestMethod.POST})
-	public String updateUserIris(@RequestBody User obj,RedirectAttributes attributes,HttpSession session) {
+	public ModelAndView updateUserIris(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
 		boolean flag = false;
 		String userId = null;
 		String userName = null;
-		String msg = "";
 		ModelAndView model = new ModelAndView();
 		try {
-		    obj.setModified_by(obj.getId());
+			model.setViewName("redirect:/usermanagement");
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			if(StringUtils.isEmpty(obj.getModified_by())) {
+				obj.setModified_by(userId);
+			}
+			obj.setModified_date(null);
 			flag = service.updateUserIris(obj);
 			if(flag == true) {
 				attributes.addFlashAttribute("success", "User Updated Succesfully.");
-				msg = "User Updated Succesfully.";
 			}
 			else {
 				attributes.addFlashAttribute("error","Updating User is failed. Try again.");
-				msg = "Updating User is failed. Try again.";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return msg;
+		return model;
 	}
 }
