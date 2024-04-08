@@ -101,7 +101,7 @@ public class IrisUserDao {
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			String qry = "SELECT    "
 					+ "    um.[id], um.[id] as user_id ,  "
-					+ "    [user_name],   "
+					+ "    [user_name], st.id as site_id,   "
 					+ "    [email_id],[categories],   "
 					+ "    [mobile_number],um.[sbu],   "
 					+ "    (   "
@@ -172,7 +172,7 @@ public class IrisUserDao {
 			}	
 			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
 				qry = qry + " GROUP BY  "
-						+ "    um.id, [user_name], [email_id], [mobile_number], st.site_name, [notfilled_datadates],  "
+						+ "    um.id, [user_name], [email_id], [mobile_number], st.site_name,st.id, [notfilled_datadates],  "
 						+ "    um.status, um.created_by, um.created_date, um.modified_by, um.modified_date,um.[sbu],[categories],um.[roles] ORDER BY um.user_name asc offset ? rows  fetch next ? rows only";	
 				arrSize++;
 				arrSize++;

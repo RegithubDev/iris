@@ -5,12 +5,20 @@ import org.springframework.web.multipart.MultipartFile;
 public class User {
 
 	private String user_id,user_name,user_role,user_session_id,minutes,gToken,reporting_to,reporting_to_id,profileImg,current_project,id,	last_login_date_time,totalCount,password,email_id,mobile_number,user_name_new,designation_new,email_new,contact_number,totalUers,count,
-	company_code,	project_code,	project_name,	status,	created_date,category_name,state_name,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
+	company_code,	project_code,site_id,	project_name,	status,	created_date,category_name,state_name,	created_by,	modified_date,	modified_by,all_users,active_users,inActive_users,
 	location_code,	location_name,	company_name,module_id,	module_type,role,p_add,p_view,p_edit,p_approvals,p_reports,p_dashboards,p_auto_email,
 	base_sbu,base_project,base_role,message,sbu_name,end_date,days,hours,last_login,	user_login_time,base_department,	user_logout_time,device_type,device_type_no,
 	module_name,module_url,timePeriod,emp_id,notfilled_datadates,emp_name,categories,mobile,phone,role_name,roles,city,site,sbu,department,category,site_name,main_menu;
 	int session_count,time_period,startIndex,offset;
 	
+	public String getSite_id() {
+		return site_id;
+	}
+
+	public void setSite_id(String site_id) {
+		this.site_id = site_id;
+	}
+
 	public int getStartIndex() {
 		return startIndex;
 	}
