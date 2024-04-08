@@ -423,7 +423,7 @@ public class IrisDataManagementController {
 		return objList;
 	}
 	
-	@RequestMapping(value = "/reone/get-history-by-date", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/reone/get-history-by-dates", method = { RequestMethod.POST, RequestMethod.GET })
 	public List<DataManagement> history( @RequestBody DataManagement obj) {
 		List<DataManagement> objList = null;
 		try {
@@ -432,10 +432,11 @@ public class IrisDataManagementController {
 			String searchParameter = null;
 			objList = service.getDataHistoryList(obj);
 		} catch (Exception e) {
-			logger.error("getDataHistoryList : " + e.getMessage());
+			logger.error("getDataManagementList : " + e.getMessage());
 		}
 		return objList;
 	}
+	
 	
 	@RequestMapping(value = "/reone/ajax/getDataFromDates", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
