@@ -1,6 +1,9 @@
 package com.resustainability.reisp.dao;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -828,20 +831,18 @@ public class IrisDataManagementDao {
 							}
 							objsList3 = jdbcTemplate.query( qry,pValues2, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
 			
-							finalList.addAll(objsList1);
-							finalList.addAll(objsList2);
-							finalList.addAll(objsList3);
 					        int maxSize = Math.max(objsList1.size(), objsList2.size());
 					        
 							
 						        for (int l = 0; l < maxSize; l++) {
 						            DataManagement obj1 = l < objsList1.size() ? objsList1.get(l) : null;
 						            DataManagement obj2 = l < objsList2.size() ? objsList2.get(l) : null;
-						            combinedList.add(mergeObjects(obj1, obj2));
+						            finalList.add(mergeObjects(obj1, obj2));
 						        }
-						        int maxSize2 = Math.max(combinedList.size(), objsList3.size());
+						        
+						        int maxSize2 = Math.max(finalList.size(), objsList3.size());
 						        for (int l = 0; l < maxSize2; l++) {
-						            DataManagement obj1 = l < combinedList.size() ? combinedList.get(l) : null;
+						            DataManagement obj1 = l < finalList.size() ? finalList.get(l) : null;
 						            DataManagement obj2 = l < objsList3.size() ? objsList3.get(l) : null;
 						            combinedList.add(mergeObjects(obj1, obj2));
 						        }
@@ -855,8 +856,33 @@ public class IrisDataManagementDao {
 		return combinedList;
 	}
 	
-	 private static DataManagement mergeObjects(DataManagement obj1, DataManagement obj2) {
-	        return obj1 != null ? obj1 : obj2;
-	    }
+    public static <T> T mergeObjects(T obj1, T obj2) throws IllegalAccessException, InstantiationException {
+        Class<?> clazz = obj1.getClass();
+        T result = (T) clazz.newInstance();
+
+        Field[] fields = clazz.getDeclaredFields();
+        Arrays.stream(fields)
+                .filter(field -> {
+                    try {
+                        // Allow access to private fields
+                        field.setAccessible(true);
+                        // Filter fields which are not null in obj1 or obj2
+                        return field.get(obj1) != null || field.get(obj2) != null;
+                    } catch (IllegalAccessException e) {
+                        return false;
+                    }
+                })
+                .forEach(field -> {
+                    try {
+                        // Take value from obj2 if not null, otherwise from obj1
+                        Object value = field.get(obj2) != null ? field.get(obj2) : field.get(obj1);
+                        field.set(result, value);
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+        return result;
+    }
 	
 }

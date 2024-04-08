@@ -17,10 +17,6 @@ public class DataManagement {
 			stock_dlf_measure, stock_lat_measure,mergedValue, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile;
 
 
-public void setMergedValue(String mergedValue) {
-	this.mergedValue = mergedValue;
-}
-
 public String getIsMobile() {
 		return isMobile;
 	}
