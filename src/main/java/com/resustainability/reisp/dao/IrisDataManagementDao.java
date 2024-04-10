@@ -474,7 +474,7 @@ public class IrisDataManagementDao {
 				arrSize++;
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getIsMobile())) {
-				qry = qry + " AND CAST(s.created_date AS DATE) >= DATEADD(DAY, -7, CAST(GETDATE() AS DATE)) ";	
+				qry = qry + " AND CAST(s.date AS DATE) >= DATEADD(DAY, -7, CAST(GETDATE() AS DATE)) ";	
 			}
 			
 			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
@@ -499,7 +499,84 @@ public class IrisDataManagementDao {
 				pValues[i++] = startIndex;
 				pValues[i++] = offset;
 			}
-			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
+			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));
+			
+		    	if(obj.getSbu_code().equals("BMW")) {
+					if(obj.getDepartment_code().contains("CNT")){
+						double sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getQuantity());
+			                sum += value;
+			            }
+			            double sum2 = sum;
+						objsList.forEach(obj1 -> obj1.setQuantity_sum(obj1.getQuantity_sum() +sum2));
+					}else if(obj.getDepartment_code().contains("process")) {
+						double sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_waste());
+			                sum += value;
+			            }
+			            double sum3 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_waste_sum(obj1.getTotal_waste_sum() +sum3));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_incieration());
+			                sum += value;
+			            }
+			            double sum4 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_incieration_sum(obj1.getTotal_incieration_sum() +sum4));
+					
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_autoclave());
+			                sum += value;
+			            }
+			            double sum5 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_autoclave_sum(obj1.getTotal_autoclave_sum() +sum5));
+					
+					}else if(obj.getDepartment_code().contains("Dist")) {
+						double sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_materials());
+			                sum += value;
+			            }
+			            double sum3 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_materials_sum(obj1.getTotal_materials_sum() +sum3));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_recylable());
+			                sum += value;
+			            }
+			            double sum4 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_recylable_sum(obj1.getTotal_recylable_sum() +sum4));
+					
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_plastic());
+			                sum += value;
+			            }
+			            double sum5 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_plastic_sum(obj1.getTotal_plastic_sum() +sum5));
+					
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_bags());
+			                sum += value;
+			            }
+			            double sum6 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_bags_sum(obj1.getTotal_bags_sum() +sum6));
+					
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_glass());
+			                sum += value;
+			            }
+			            double sum7 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_glass_sum(obj1.getTotal_glass_sum() +sum7));
+					}
+				}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);

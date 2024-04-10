@@ -16,6 +16,96 @@ public class DataManagement {
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
 			stock_dlf_measure, stock_lat_measure,mergedValue, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile;
 
+	private double quantity_sum,total_materials_sum, total_recylable_sum, total_bags_sum,total_glass_sum,total_cardboard_sum,
+	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum;
+
+public double getTotal_plastic_sum() {
+		return total_plastic_sum;
+	}
+
+	public void setTotal_plastic_sum(double total_plastic_sum) {
+		this.total_plastic_sum = total_plastic_sum;
+	}
+
+public String getMergedValue() {
+		return mergedValue;
+	}
+
+	public double getQuantity_sum() {
+		return quantity_sum;
+	}
+
+	public double getTotal_materials_sum() {
+		return total_materials_sum;
+	}
+
+	public double getTotal_recylable_sum() {
+		return total_recylable_sum;
+	}
+
+	public double getTotal_bags_sum() {
+		return total_bags_sum;
+	}
+
+	public double getTotal_glass_sum() {
+		return total_glass_sum;
+	}
+
+	public double getTotal_cardboard_sum() {
+		return total_cardboard_sum;
+	}
+
+	public double getTotal_waste_sum() {
+		return total_waste_sum;
+	}
+
+	public double getTotal_incieration_sum() {
+		return total_incieration_sum;
+	}
+
+	public double getTotal_autoclave_sum() {
+		return total_autoclave_sum;
+	}
+
+	public void setMergedValue(String mergedValue) {
+		this.mergedValue = mergedValue;
+	}
+
+	public void setQuantity_sum(double quantity_sum) {
+		this.quantity_sum = quantity_sum;
+	}
+
+	public void setTotal_materials_sum(double total_materials_sum) {
+		this.total_materials_sum = total_materials_sum;
+	}
+
+	public void setTotal_recylable_sum(double total_recylable_sum) {
+		this.total_recylable_sum = total_recylable_sum;
+	}
+
+	public void setTotal_bags_sum(double total_bags_sum) {
+		this.total_bags_sum = total_bags_sum;
+	}
+
+	public void setTotal_glass_sum(double total_glass_sum) {
+		this.total_glass_sum = total_glass_sum;
+	}
+
+	public void setTotal_cardboard_sum(double total_cardboard_sum) {
+		this.total_cardboard_sum = total_cardboard_sum;
+	}
+
+	public void setTotal_waste_sum(double total_waste_sum) {
+		this.total_waste_sum = total_waste_sum;
+	}
+
+	public void setTotal_incieration_sum(double total_incieration_sum) {
+		this.total_incieration_sum = total_incieration_sum;
+	}
+
+	public void setTotal_autoclave_sum(double total_autoclave_sum) {
+		this.total_autoclave_sum = total_autoclave_sum;
+	}
 
 public String getIsMobile() {
 		return isMobile;
