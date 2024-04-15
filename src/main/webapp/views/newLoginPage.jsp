@@ -91,7 +91,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
                   <p class="card-text mb-2">Please sign-in to your account and start the adventure</p>
                 
                    <div id="g_id_onload" 
-					     data-client_id="180023549420-57imk7usicj28m4489imvf0spmk3v7l7.apps.googleusercontent.com"
+					     data-client_id="180023549420-4araucipo8cil4matp902f64cte57md9.apps.googleusercontent.com"
 					     data-context="use"
 					     data-ux_mode="popup"
 					     data-callback="handleCredentialResponse"

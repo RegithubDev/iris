@@ -3,6 +3,23 @@ package com.resustainability.reisp.model;
 public class Site {
 
 private String id,state,city,sbu_code,sbu,site_name,status,created_by,city_name,latlon,state_name,modified_date,created_date,idVal,modified_by,sbu_name;
+private int startIndex,offset;
+
+public int getStartIndex() {
+	return startIndex;
+}
+
+public int getOffset() {
+	return offset;
+}
+
+public void setStartIndex(int startIndex) {
+	this.startIndex = startIndex;
+}
+
+public void setOffset(int offset) {
+	this.offset = offset;
+}
 
 public String getCity_name() {
 	return city_name;
