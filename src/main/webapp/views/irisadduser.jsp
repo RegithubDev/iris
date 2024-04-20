@@ -218,7 +218,7 @@
             </div> 
              
           </div>
-          <div class="row">
+          <div class="row" id="hideme">
             <div class="mb-1 col-md-6"> 
              <label class="form-label" for="select-country">Select City </label>  <span class=re-text>*</span>
               <div class="position-relative">
@@ -254,7 +254,6 @@
               </select>
               </div>
             </div>
-       
           
        <div class="col-md-12 col-12 text-center mt-2">
                <button type="submit" class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Submit</button>
@@ -325,6 +324,7 @@
     <script>
  $(window).on('load',  function(){
 	 	getCitiesFilterListWithSBUForUserOnLoad();
+	 	checkSBUHeadAndMakeCityAndSiteMultiple('${UserDetails.categories}');
         if (feather) {
           feather.replace({ width: 14, height: 14 });
         }
@@ -335,12 +335,9 @@
      // Check if the selected value contains 'SBUHead'
      if (categories.indexOf('SBUHead') !== -1) {
          // If it does, add the 'multiple' attribute
-         $('#city').attr('multiple', 'multiple');
-         $('#categories').removeAttr('multiple');
+         $('#hideme').hide();
      } else {
-         // If not, remove the 'multiple' attribute
-         $('#city').removeAttr('multiple');
-         $('#categories').attr('multiple', 'multiple');
+    	 $('#hideme').show();
      }
  }
  
