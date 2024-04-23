@@ -36,6 +36,12 @@
     <version>8.5.0</version> <!-- or the version corresponding to your Tomcat installation -->
 </dependency>
 
+<dependency>
+    <groupId>org.apache.tomcat</groupId>
+    <artifactId>tomcat-jdbc</artifactId>
+    <version>7.0.29</version>
+    <scope>provided</scope>
+</dependency>
     <dependency>
      <groupId>com.google.api-client</groupId>
      <artifactId>google-api-client</artifactId>
