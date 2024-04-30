@@ -42,7 +42,22 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="/iris/resources//assets/css/style.css">
     <!-- END: Custom CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
+   /* Style the download link */
+        .download-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Style the icon */
+        .download-link i {
+            margin-right: 5px;
+        }
 td{
 font-size: 1rem!important;
 }
@@ -89,7 +104,7 @@ font-size: 1rem!important;
 <!--/ Basic table -->
 
 <!-- Complex Headers -->
-<div class="content-header row">
+<!-- <div class="content-header row">
           <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
               <div class="col-12">
@@ -109,7 +124,122 @@ font-size: 1rem!important;
               
             </div>
           </div>
+        </div> -->
+        
+        <div class="content-header row">
+          <div class="content-header-left col-md-9 col-12 mb-2">
+            <div class="row breadcrumbs-top">
+              <div class="col-12">
+                <h2 class="content-header-title float-start mb-0">Data Management
+
+</h2>
+                <div class="breadcrumb-wrapper">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a>Data Management
+
+</a>
+                    </li>
+                   
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-header-right text-md-end col-md-3 col-12 d-md-block d-none">
+    <button type="button" class="btn btn-outline-primary waves-effect" data-bs-toggle="modal" data-bs-target="#inlineForm">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <path fill="none" d="M0 0h24v24H0z"/>
+  <path d="M12 2L2 14h4v8h12v-8h4L12 2zm2 12V8h-2v6H8l4 4 4-4h-3z"/>
+</svg>
+
+    </button>
+</div>
         </div>
+ <section id="form-and-scrolling-components">
+  <div class="demo-inline-spacing">
+            <div class="form-modal-ex">
+              <!-- Button trigger modal -->
+             
+              <!-- Modal -->
+              <div class="modal fade text-start" id="inlineForm" tabindex="-1" aria-labelledby="myModalLabel33" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel33">File Upload</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                   <div class="row" style="
+    margin-bottom: -35px;
+">
+            <!-- Basic -->
+            <div class="col-md-6 mb-1 p-2" >
+              <label class="form-label" for="select2-basic">Department</label>
+													<div class="position-relative" >
+														<select
+															class="select2 form-select select2-hidden-accessible"
+															id="Department">
+															<option value="CA" >California</option>
+															<option value="NV" >Nevada</option>
+															<option value="OR" >Oregon</option>
+														</select> 
+													</div>
+												</div>
+
+            <!-- Nested -->
+            <div class="col-md-6 mb-1 p-2" >
+              <label class="form-label" for="select2-nested">Category</label>
+													<div class="position-relative" >
+														<select
+															class="select2 form-select select2-hidden-accessible"
+															id=Category>
+                                                            <option value="CA" >California</option>
+															<option value="NV" >Nevada</option>
+															<option value="OR" >Oregon</option>
+														</select>
+													</div>
+												</div>
+
+           
+          </div>
+          <div class="row" >
+            
+            <div class="col-md-6 mb-1 p-2" >
+              <label class="form-label" for="select2-basic">Upload</label>
+										  <input type="file" name="file" id="file">		
+												</div>
+
+            <!-- Nested -->
+            <div class="col-md-6 mb-1 p-2" >
+              <label class="form-label" for="select2-nested">Download Templete</label>
+													       
+                
+    <a href="iris/" download class="download-link">
+        <i class="fas fa-download"></i> Template
+    </a>
+												</div>
+
+           
+          </div>
+           
+      
+     
+    <div class="d-flex justify-content-center">
+          
+          <button class="btn btn-primary btn-next waves-effect waves-float waves-light">
+            <span class="align-middle d-sm-inline-block d-none">SUBMIT</span>
+          </button>
+        </div>                  
+                 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            
+            
+          </div>
+</section>
 <section id="complex-header-datatable">
           <div class="content-wrapper container-xxl p-0">
          <!--    <div class="content-header row">
@@ -1991,6 +2121,7 @@ function getErrorMessage(jqXHR, exception) {
         link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-light.min.css';
         link.rel = 'stylesheet';document.getElementsByTagName( 'head' )[0].appendChild( link );
       </script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
       <script async>hljs.initHighlightingOnLoad();</script>
   
