@@ -473,7 +473,7 @@ public class IrisDataManagementDao {
 				qry = qry + " and sss.id = ? ";
 				arrSize++;
 			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getIsMobile())) {
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getIsMobile()) && StringUtils.isEmpty(obj.getFrom_date()) && StringUtils.isEmpty(obj.getTo_date())) {
 				qry = qry + " AND CAST(s.date AS DATE) >= DATEADD(DAY, -7, CAST(GETDATE() AS DATE)) ";	
 			}
 			
@@ -575,6 +575,14 @@ public class IrisDataManagementDao {
 			            }
 			            double sum7 = sum;
 						objsList.forEach(obj1 -> obj1.setTotal_glass_sum(obj1.getTotal_glass_sum() +sum7));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_cardboard());
+			                sum += value;
+			            }
+			            double sum8 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_cardboard_sum(obj1.getTotal_cardboard_sum() +sum8));
 					}
 				}
 		} catch (Exception e) {
