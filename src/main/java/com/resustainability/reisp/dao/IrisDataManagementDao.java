@@ -922,7 +922,15 @@ public class IrisDataManagementDao {
 						        for (int l = 0; l < maxSize; l++) {
 						            DataManagement obj1 = l < objsList1.size() ? objsList1.get(l) : null;
 						            DataManagement obj2 = l < objsList2.size() ? objsList2.get(l) : null;
-						            finalList.add(mergeObjects(obj1, obj2));
+						            if(obj1 == null && obj2 == null) {
+						            	 finalList.add(null);
+						            }else if(obj1 == null) {
+						            	 finalList.add(obj2);
+						            }else if(obj2 == null) {
+						            	 finalList.add(obj1);
+						            }else  if(obj1 != null && obj2 != null) {
+						            	 finalList.add(mergeObjects(obj1, obj2));
+						            }
 						        }
 						        
 						        int maxSize2 = Math.max(finalList.size(), objsList3.size());
@@ -930,6 +938,15 @@ public class IrisDataManagementDao {
 						            DataManagement obj1 = l < finalList.size() ? finalList.get(l) : null;
 						            DataManagement obj2 = l < objsList3.size() ? objsList3.get(l) : null;
 						            combinedList.add(mergeObjects(obj1, obj2));
+						            if(obj1 == null && obj2 == null) {
+						            	combinedList.add(null);
+						            }else if(obj1 == null) {
+						            	combinedList.add(obj2);
+						            }else if(obj2 == null) {
+						            	combinedList.add(obj1);
+						            }else  if(obj1 != null && obj2 != null) {
+						            	combinedList.add(mergeObjects(obj1, obj2));
+						            }
 						        }
 			}
 			
