@@ -2113,9 +2113,7 @@ function getErrorMessage(jqXHR, exception) {
 	    }
 	    console.log(msg);
 }
-		
-	
-    </script>
+	</script>
      <script async>
         var link = document.createElement( 'link' );
         link.href = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-cave-light.min.css';
@@ -2124,8 +2122,4 @@ function getErrorMessage(jqXHR, exception) {
          <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
       <script async>hljs.initHighlightingOnLoad();</script>
-  
-  
-
-
  </html>
