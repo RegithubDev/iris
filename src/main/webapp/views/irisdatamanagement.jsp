@@ -807,15 +807,14 @@ font-size: 1rem!important;
 			 				<div class="col-md-12 col-12 text-center mt-2">
 			               		<button type="submit"  class="btn btn-primary waves-effect waves-float waves-light" name="submit" >Update</button>
 			                		<a  data-bs-dismiss="modal" class="btn btn-dark waves-effect waves-float waves-light" >Close</a>
-			              </div>         
-			          </form>
+			                </div>         
+			                 </form>
 			                    </div>
 			                   
 			                  </div>
 			                </div>
 			              </div>
 			            </div> 	 
-			     		            
     </div>
   </div>
 </div>
@@ -2087,11 +2086,7 @@ font-size: 1rem!important;
 			 var headerContent = '<thead><tr ><th class="text-center">No Data Available! </th></tr></thead>';
 				$('#datatable-collect thead').remove();
 			    $('#datatable-collect').append(headerContent);
-		 }
-		 
-		 
-		 
-		
+		 }		
 }
 
 function getErrorMessage(jqXHR, exception) {
