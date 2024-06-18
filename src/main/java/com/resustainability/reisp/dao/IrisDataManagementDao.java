@@ -393,7 +393,7 @@ public class IrisDataManagementDao {
 				}else if(obj.getDepartment_code().contains("Wte")) {
 					
 					qry = qry + "select s.[id]"
-							+ "      ,s.[sbu_code]"
+							+ "      ,s.[sbu_code],"
 							+ "     [rdf_receipt] "
 							+ "      ,[rdf_combusted] "
 							+ "      ,[ash_generated] "
@@ -615,7 +615,7 @@ public class IrisDataManagementDao {
 						objsList.forEach(obj1 -> obj1.setTotal_cardboard_sum(obj1.getTotal_cardboard_sum() +sum8));
 					}
 				}else if(obj.getSbu_code().equals("MSW")) {
-					if(obj.getDepartment_code().contains("process")){
+					if(obj.getDepartment_code().contains("CNT")){
 						double sum = 0.0;
 			            for (DataManagement obj1 : objsList) {
 			                double value = Double.parseDouble(obj1.getQuantity());
@@ -623,33 +623,163 @@ public class IrisDataManagementDao {
 			            }
 			            double sum2 = sum;
 						objsList.forEach(obj1 -> obj1.setQuantity_sum(obj1.getQuantity_sum() +sum2));
-					}else if(obj.getDepartment_code().contains("process")) {
+					}else if(obj.getDepartment_code().contains("Dist")) {
 						double sum = 0.0;
 			            for (DataManagement obj1 : objsList) {
-			                double value = Double.parseDouble(obj1.getTotal_waste());
+			                double value = Double.parseDouble(obj1.getRdf());
 			                sum += value;
 			            }
 			            double sum3 = sum;
-						objsList.forEach(obj1 -> obj1.setTotal_waste_sum(obj1.getTotal_waste_sum() +sum3));
+						objsList.forEach(obj1 -> obj1.setRdf_sum(obj1.getRdf_sum() +sum3));
 						
 						sum = 0.0;
 			            for (DataManagement obj1 : objsList) {
-			                double value = Double.parseDouble(obj1.getTotal_incieration());
+			                double value = Double.parseDouble(obj1.getCompost());
 			                sum += value;
 			            }
 			            double sum4 = sum;
-						objsList.forEach(obj1 -> obj1.setTotal_incieration_sum(obj1.getTotal_incieration_sum() +sum4));
+						objsList.forEach(obj1 -> obj1.setCompost_sum(obj1.getCompost_sum() +sum4));
 					
 						sum = 0.0;
 			            for (DataManagement obj1 : objsList) {
-			                double value = Double.parseDouble(obj1.getTotal_autoclave());
+			                double value = Double.parseDouble(obj1.getRecyclables());
+			                sum += value;
+			            }
+			            double sum6 = sum;
+						objsList.forEach(obj1 -> obj1.setRecyclables_sum(obj1.getRecyclables_sum() +sum6));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getInserts());
+			                sum += value;
+			            }
+			            double sum7 = sum;
+						objsList.forEach(obj1 -> obj1.setInserts_sum(obj1.getInserts_sum() +sum7));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getVendor_name_rdf());
+			                sum += value;
+			            }
+			            double sum8 = sum;
+						objsList.forEach(obj1 -> obj1.setVendor_name_rdf_sum(obj1.getVendor_name_rdf_sum() +sum8));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getVendor_name_compost());
+			                sum += value;
+			            }
+			            double sum9 = sum;
+						objsList.forEach(obj1 -> obj1.setVendor_name_compost_sum(obj1.getVendor_name_compost_sum() +sum9));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getVendor_name_recyclables());
+			                sum += value;
+			            }
+			            double sum0 = sum;
+						objsList.forEach(obj1 -> obj1.setVendor_name_recyclables_sum(obj1.getVendor_name_recyclables_sum() +sum0));
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getVendor_name_inserts());
+			                sum += value;
+			            }
+			            double sum00 = sum;
+						objsList.forEach(obj1 -> obj1.setVendor_name_inserts_sum(obj1.getVendor_name_inserts_sum() +sum00));
+					}else if(obj.getDepartment_code().contains("process")) {
+						double sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_rdf());
+			                sum += value;
+			            }
+			            double sum3 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_rdf_sum(obj1.getTotal_rdf_sum() +sum3));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_compost());
+			                sum += value;
+			            }
+			            double sum4 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_compost_sum(obj1.getTotal_compost_sum() +sum4));
+					
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_inerts());
 			                sum += value;
 			            }
 			            double sum5 = sum;
-						objsList.forEach(obj1 -> obj1.setTotal_autoclave_sum(obj1.getTotal_autoclave_sum() +sum5));
-					}
+						objsList.forEach(obj1 -> obj1.setTotal_inerts_sum(obj1.getTotal_inerts_sum() +sum5));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_recylables());
+			                sum += value;
+			            }
+			            double sum6 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_recylables_sum(obj1.getTotal_recylables_sum() +sum6));
+						
+						
+					}else if(obj.getDepartment_code().contains("Wte")) {
+						double sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getRdf_receipt());
+			                sum += value;
+			            }
+			            double sum7 = sum;
+						objsList.forEach(obj1 -> obj1.setRdf_receipt_sum(obj1.getRdf_receipt_sum() +sum7));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getRdf_combusted());
+			                sum += value;
+			            }
+			            double sum8 = sum;
+						objsList.forEach(obj1 -> obj1.setRdf_combusted_sum(obj1.getRdf_combusted_sum() +sum8));
 					
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getAsh_generated());
+			                sum += value;
+			            }
+			            double sum5 = sum;
+						objsList.forEach(obj1 -> obj1.setAsh_generated_sum(obj1.getAsh_generated_sum() +sum5));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getSteam_generation());
+			                sum += value;
+			            }
+			            double sum6 = sum;
+						objsList.forEach(obj1 -> obj1.setSteam_generation_sum(obj1.getSteam_generation_sum() +sum6));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getPower_produced());
+			                sum += value;
+			            }
+			            double sum71 = sum;
+						objsList.forEach(obj1 -> obj1.setPower_produced_sum(obj1.getPower_produced_sum() +sum71));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getPower_export());
+			                sum += value;
+			            }
+			            double sum81 = sum;
+						objsList.forEach(obj1 -> obj1.setPower_export_sum(obj1.getPower_export_sum() +sum81));
+						
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getAuxiliary_consumption());
+			                sum += value;
+			            }
+			            double sum811 = sum;
+						objsList.forEach(obj1 -> obj1.setAuxiliary_consumption_sum(obj1.getAuxiliary_consumption_sum() +sum811));
+					}
 				}
+				
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception(e);
