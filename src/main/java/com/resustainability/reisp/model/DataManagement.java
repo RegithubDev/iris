@@ -14,10 +14,123 @@ public class DataManagement {
 			quantity_measure_recylabels, disposal_total_waste, disposal_dlf, disposal_lat, disposal_incineration,
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
-			stock_dlf_measure, stock_lat_measure,mergedValue, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile;
+			stock_dlf_measure, stock_lat_measure,mergedValue, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile,rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted
+			,quantity_measure_ash_generated,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption;
 
 	private double quantity_sum,total_materials_sum, total_recylable_sum, total_bags_sum,total_glass_sum,total_cardboard_sum,
 	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum;
+
+public String getRdf_receipt() {
+		return rdf_receipt;
+	}
+
+	public void setRdf_receipt(String rdf_receipt) {
+		this.rdf_receipt = rdf_receipt;
+	}
+
+	public String getRdf_combusted() {
+		return rdf_combusted;
+	}
+
+	public void setRdf_combusted(String rdf_combusted) {
+		this.rdf_combusted = rdf_combusted;
+	}
+
+	public String getAsh_generated() {
+		return ash_generated;
+	}
+
+	public void setAsh_generated(String ash_generated) {
+		this.ash_generated = ash_generated;
+	}
+
+	public String getSteam_generation() {
+		return steam_generation;
+	}
+
+	public void setSteam_generation(String steam_generation) {
+		this.steam_generation = steam_generation;
+	}
+
+	public String getPower_produced() {
+		return power_produced;
+	}
+
+	public void setPower_produced(String power_produced) {
+		this.power_produced = power_produced;
+	}
+
+	public String getPower_export() {
+		return power_export;
+	}
+
+	public void setPower_export(String power_export) {
+		this.power_export = power_export;
+	}
+
+	public String getAuxiliary_consumption() {
+		return auxiliary_consumption;
+	}
+
+	public void setAuxiliary_consumption(String auxiliary_consumption) {
+		this.auxiliary_consumption = auxiliary_consumption;
+	}
+
+	public String getQuantity_measure_rdf_receipt() {
+		return quantity_measure_rdf_receipt;
+	}
+
+	public void setQuantity_measure_rdf_receipt(String quantity_measure_rdf_receipt) {
+		this.quantity_measure_rdf_receipt = quantity_measure_rdf_receipt;
+	}
+
+	public String getQuantity_measure_rdf_combusted() {
+		return quantity_measure_rdf_combusted;
+	}
+
+	public void setQuantity_measure_rdf_combusted(String quantity_measure_rdf_combusted) {
+		this.quantity_measure_rdf_combusted = quantity_measure_rdf_combusted;
+	}
+
+	public String getQuantity_measure_ash_generated() {
+		return quantity_measure_ash_generated;
+	}
+
+	public void setQuantity_measure_ash_generated(String quantity_measure_ash_generated) {
+		this.quantity_measure_ash_generated = quantity_measure_ash_generated;
+	}
+
+	public String getQuantity_measure_steam_generation() {
+		return quantity_measure_steam_generation;
+	}
+
+	public void setQuantity_measure_steam_generation(String quantity_measure_steam_generation) {
+		this.quantity_measure_steam_generation = quantity_measure_steam_generation;
+	}
+
+	public String getQuantity_measure_power_produced() {
+		return quantity_measure_power_produced;
+	}
+
+	public void setQuantity_measure_power_produced(String quantity_measure_power_produced) {
+		this.quantity_measure_power_produced = quantity_measure_power_produced;
+	}
+
+	public String getQuantity_measure_power_export() {
+		return quantity_measure_power_export;
+	}
+
+	public void setQuantity_measure_power_export(String quantity_measure_power_export) {
+		this.quantity_measure_power_export = quantity_measure_power_export;
+	}
+
+	public String getQuantity_measure_auxiliary_consumption() {
+		return quantity_measure_auxiliary_consumption;
+	}
+
+	public void setQuantity_measure_auxiliary_consumption(String quantity_measure_auxiliary_consumption) {
+		this.quantity_measure_auxiliary_consumption = quantity_measure_auxiliary_consumption;
+	}
 
 public double getTotal_plastic_sum() {
 		return total_plastic_sum;

@@ -255,10 +255,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadMSWProcessingData(obj);
 			if(flag == true) {
-				msg ="BMW Processing Data Uploaded Succesfully.";
+				msg ="MSW Wte Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "BMW Processing Data failed. Try again.";
+				msg = "MSW Processing Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

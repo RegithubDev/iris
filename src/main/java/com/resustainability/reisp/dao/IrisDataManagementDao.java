@@ -614,6 +614,41 @@ public class IrisDataManagementDao {
 			            double sum8 = sum;
 						objsList.forEach(obj1 -> obj1.setTotal_cardboard_sum(obj1.getTotal_cardboard_sum() +sum8));
 					}
+				}else if(obj.getSbu_code().equals("MSW")) {
+					if(obj.getDepartment_code().contains("process")){
+						double sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getQuantity());
+			                sum += value;
+			            }
+			            double sum2 = sum;
+						objsList.forEach(obj1 -> obj1.setQuantity_sum(obj1.getQuantity_sum() +sum2));
+					}else if(obj.getDepartment_code().contains("process")) {
+						double sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_waste());
+			                sum += value;
+			            }
+			            double sum3 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_waste_sum(obj1.getTotal_waste_sum() +sum3));
+						
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_incieration());
+			                sum += value;
+			            }
+			            double sum4 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_incieration_sum(obj1.getTotal_incieration_sum() +sum4));
+					
+						sum = 0.0;
+			            for (DataManagement obj1 : objsList) {
+			                double value = Double.parseDouble(obj1.getTotal_autoclave());
+			                sum += value;
+			            }
+			            double sum5 = sum;
+						objsList.forEach(obj1 -> obj1.setTotal_autoclave_sum(obj1.getTotal_autoclave_sum() +sum5));
+					}
+					
 				}
 		} catch (Exception e) {
 			e.printStackTrace();
