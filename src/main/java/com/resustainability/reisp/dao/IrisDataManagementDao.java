@@ -390,6 +390,36 @@ public class IrisDataManagementDao {
 							+ " left join user_management um on s.created_by = um.id   "
 							+ " left join user_management um1 on s.modified_by = um1.id  "
 							+ "where s.id is not null  ";
+				}else if(obj.getDepartment_code().contains("Wte")) {
+					
+					qry = qry + "select s.[id]"
+							+ "      ,s.[sbu_code]"
+							+ "     [rdf_receipt] "
+							+ "      ,[rdf_combusted] "
+							+ "      ,[ash_generated] "
+							+ "      ,[steam_generation] "
+							+ "      ,[power_produced] "
+							+ "      ,[power_export] "
+							+ "      ,[auxiliary_consumption] "
+							+ "      ,[quantity_measure_rdf_receipt] "
+							+ "      ,[quantity_measure_rdf_combusted] "
+							+ "      ,[quantity_measure_ash_generated] "
+							+ "      ,[quantity_measure_steam_generation] "
+							+ "      ,[quantity_measure_power_produced] "
+							+ "      ,[quantity_measure_power_export] "
+							+ "      ,[quantity_measure_auxiliary_consumption]"
+							+ "      ,[site]"
+							+ "      ,[comments]"
+							+ "      ,s.[created_by]"
+							+ "      ,s.[modified_date]"
+							+ "      ,s.[created_date]"
+							+ "      ,s.[modified_by]"
+							+ "  FROM [IRIS].[dbo].[msw_wte_table] s  "
+							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
+							+ " left join site sss on s.site = sss.id   "
+							+ " left join user_management um on s.created_by = um.id   "
+							+ " left join user_management um1 on s.modified_by = um1.id  "
+							+ "where s.id is not null  ";
 				}
 				
 				
