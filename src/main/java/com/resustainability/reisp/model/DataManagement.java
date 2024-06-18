@@ -24,7 +24,97 @@ public class DataManagement {
     ,steam_generation_sum
     ,power_produced_sum
     ,power_export_sum
-    ,auxiliary_consumption_sum;
+    ,auxiliary_consumption_sum,disposal_total_waste_sum
+    ,disposal_dlf_sum
+    ,disposal_lat_sum
+    ,disposal_afrf_sum
+    ,disposal_incineration_sum ,
+    
+    stock_total_waste_sum
+    ,stock_dlf_sum
+    ,stock_lat_sum
+    ,stock_incineration_sum
+    ,stock_afrf_sum;
+
+public double getDisposal_total_waste_sum() {
+		return disposal_total_waste_sum;
+	}
+
+	public void setDisposal_total_waste_sum(double disposal_total_waste_sum) {
+		this.disposal_total_waste_sum = disposal_total_waste_sum;
+	}
+
+	public double getDisposal_dlf_sum() {
+		return disposal_dlf_sum;
+	}
+
+	public void setDisposal_dlf_sum(double disposal_dlf_sum) {
+		this.disposal_dlf_sum = disposal_dlf_sum;
+	}
+
+	public double getDisposal_lat_sum() {
+		return disposal_lat_sum;
+	}
+
+	public void setDisposal_lat_sum(double disposal_lat_sum) {
+		this.disposal_lat_sum = disposal_lat_sum;
+	}
+
+	public double getDisposal_afrf_sum() {
+		return disposal_afrf_sum;
+	}
+
+	public void setDisposal_afrf_sum(double disposal_afrf_sum) {
+		this.disposal_afrf_sum = disposal_afrf_sum;
+	}
+
+	public double getDisposal_incineration_sum() {
+		return disposal_incineration_sum;
+	}
+
+	public void setDisposal_incineration_sum(double disposal_incineration_sum) {
+		this.disposal_incineration_sum = disposal_incineration_sum;
+	}
+
+	public double getStock_total_waste_sum() {
+		return stock_total_waste_sum;
+	}
+
+	public void setStock_total_waste_sum(double stock_total_waste_sum) {
+		this.stock_total_waste_sum = stock_total_waste_sum;
+	}
+
+	public double getStock_dlf_sum() {
+		return stock_dlf_sum;
+	}
+
+	public void setStock_dlf_sum(double stock_dlf_sum) {
+		this.stock_dlf_sum = stock_dlf_sum;
+	}
+
+	public double getStock_lat_sum() {
+		return stock_lat_sum;
+	}
+
+	public void setStock_lat_sum(double stock_lat_sum) {
+		this.stock_lat_sum = stock_lat_sum;
+	}
+
+	public double getStock_incineration_sum() {
+		return stock_incineration_sum;
+	}
+
+	public void setStock_incineration_sum(double stock_incineration_sum) {
+		this.stock_incineration_sum = stock_incineration_sum;
+	}
+
+	public double getStock_afrf_sum() {
+		return stock_afrf_sum;
+	}
+
+	public void setStock_afrf_sum(double stock_afrf_sum) {
+		this.stock_afrf_sum = stock_afrf_sum;
+	}
 
 public double getRdf_sum() {
 		return rdf_sum;
