@@ -209,7 +209,7 @@ public class IrisTransactionsController {
 	}
 	
 	
-	@RequestMapping(value = "/ajax/upload-msw-distribute-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/ajax/upload-msw-pnd-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String uploadMSWDistributeData(@RequestBody Transaction obj,HttpSession session) {
 		String userId = null;
@@ -238,7 +238,7 @@ public class IrisTransactionsController {
 		return msg;
 	}
 
-	@RequestMapping(value = "/ajax/upload-msw-processing-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/ajax/upload-msw-wte-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String uploadMSWProcessingData(@RequestBody Transaction obj,HttpSession session) {
 		String userId = null;

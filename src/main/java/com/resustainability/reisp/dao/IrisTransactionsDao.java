@@ -147,18 +147,6 @@ public class IrisTransactionsDao {
 		TransactionDefinition def = new DefaultTransactionDefinition();
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
-			if(StringUtils.isEmpty(obj.getVendor_name_rdf_outflow())) {
-				obj.setVendor_name_rdf_outflow("MT");
-			}
-			if(StringUtils.isEmpty(obj.getVendor_name_compost_outflow())) {
-				obj.setVendor_name_compost_outflow("MT");
-			}
-			if(StringUtils.isEmpty(obj.getVendor_name_recylables_outflow())) {
-				obj.setVendor_name_recylables_outflow("MT");
-			}
-			if(StringUtils.isEmpty(obj.getVendor_name_inserts_outflow())) {
-				obj.setVendor_name_inserts_outflow("MT");
-			}
 		
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 			String insertQry = "INSERT INTO [msw_distribute_table] "
@@ -169,6 +157,16 @@ public class IrisTransactionsDao {
 					+ ":quantity_measure_compost_outflow,:quantity_measure_recyclables_outflow,:quantity_measure_inerts_outflow,:date,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			String insertQry2 = "INSERT INTO [msw_processing_table] (sbu_code,total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
+					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site,comments,created_by,created_date) "
+					+ "VALUES "
+					+ "(:sbu_code,:total_waste,:total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
+					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site,:comments,:created_by,getdate())";
+			paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry2, paramSource);
 			if(count > 0) {
 				flag = true;
 			}
@@ -187,27 +185,12 @@ public class IrisTransactionsDao {
 		TransactionDefinition def = new DefaultTransactionDefinition();
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
-			if(StringUtils.isEmpty(obj.getQuantity_measure_waste())) {
-				obj.setQuantity_measure_waste("MT");
-			}
-			if(StringUtils.isEmpty(obj.getQuantity_measure_rdf())) {
-				obj.setQuantity_measure_rdf("MT");
-			}
-			if(StringUtils.isEmpty(obj.getQuantity_measure_compost())) {
-				obj.setQuantity_measure_compost("MT");
-			}
-			if(StringUtils.isEmpty(obj.getQuantity_measure_inerts())) {
-				obj.setQuantity_measure_inerts("MT");
-			}
-			if(StringUtils.isEmpty(obj.getQuantity_measure_recylabels())) {
-				obj.setQuantity_measure_recylabels("MT");
-			}
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [msw_processing_table] (sbu_code,total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
-					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site,comments,created_by,created_date) "
+			String insertQry = "INSERT INTO [msw_wte_table] (sbu_code,rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted "
+					+ "			,quantity_measure_ash_generated,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption,date,site,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:total_waste,:total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
-					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site,:comments,:created_by,getdate())";
+					+ "(:sbu_code,:rdf_receipt,:rdf_combusted,:ash_generated,:steam_generation,:power_produced,:power_export,:auxiliary_consumption,:quantity_measure_rdf_receipt,:quantity_measure_rdf_combusted "
+					+ "			,:quantity_measure_ash_generated,:quantity_measure_steam_generation,:quantity_measure_power_produced,:quantity_measure_power_export,:quantity_measure_auxiliary_consumption,:date,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

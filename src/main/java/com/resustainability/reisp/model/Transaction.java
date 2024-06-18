@@ -15,7 +15,121 @@ public class Transaction {
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,total_plastic,
 			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf,tock_total_waste, stock_afrf_measure,from_date,to_date,
-			quantity_measure_rdf_outflow,quantity_measure_compost_outflow,quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow;
+			quantity_measure_rdf_outflow,quantity_measure_compost_outflow,quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow,
+			rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted
+			,quantity_measure_ash_generated,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption;
+
+	public String getRdf_receipt() {
+		return rdf_receipt;
+	}
+
+	public void setRdf_receipt(String rdf_receipt) {
+		this.rdf_receipt = rdf_receipt;
+	}
+
+	public String getRdf_combusted() {
+		return rdf_combusted;
+	}
+
+	public void setRdf_combusted(String rdf_combusted) {
+		this.rdf_combusted = rdf_combusted;
+	}
+
+	public String getAsh_generated() {
+		return ash_generated;
+	}
+
+	public void setAsh_generated(String ash_generated) {
+		this.ash_generated = ash_generated;
+	}
+
+	public String getSteam_generation() {
+		return steam_generation;
+	}
+
+	public void setSteam_generation(String steam_generation) {
+		this.steam_generation = steam_generation;
+	}
+
+	public String getPower_produced() {
+		return power_produced;
+	}
+
+	public void setPower_produced(String power_produced) {
+		this.power_produced = power_produced;
+	}
+
+	public String getPower_export() {
+		return power_export;
+	}
+
+	public void setPower_export(String power_export) {
+		this.power_export = power_export;
+	}
+
+	public String getAuxiliary_consumption() {
+		return auxiliary_consumption;
+	}
+
+	public void setAuxiliary_consumption(String auxiliary_consumption) {
+		this.auxiliary_consumption = auxiliary_consumption;
+	}
+
+	public String getQuantity_measure_rdf_receipt() {
+		return quantity_measure_rdf_receipt;
+	}
+
+	public void setQuantity_measure_rdf_receipt(String quantity_measure_rdf_receipt) {
+		this.quantity_measure_rdf_receipt = quantity_measure_rdf_receipt;
+	}
+
+	public String getQuantity_measure_rdf_combusted() {
+		return quantity_measure_rdf_combusted;
+	}
+
+	public void setQuantity_measure_rdf_combusted(String quantity_measure_rdf_combusted) {
+		this.quantity_measure_rdf_combusted = quantity_measure_rdf_combusted;
+	}
+
+	public String getQuantity_measure_ash_generated() {
+		return quantity_measure_ash_generated;
+	}
+
+	public void setQuantity_measure_ash_generated(String quantity_measure_ash_generated) {
+		this.quantity_measure_ash_generated = quantity_measure_ash_generated;
+	}
+
+	public String getQuantity_measure_steam_generation() {
+		return quantity_measure_steam_generation;
+	}
+
+	public void setQuantity_measure_steam_generation(String quantity_measure_steam_generation) {
+		this.quantity_measure_steam_generation = quantity_measure_steam_generation;
+	}
+
+	public String getQuantity_measure_power_produced() {
+		return quantity_measure_power_produced;
+	}
+
+	public void setQuantity_measure_power_produced(String quantity_measure_power_produced) {
+		this.quantity_measure_power_produced = quantity_measure_power_produced;
+	}
+
+	public String getQuantity_measure_power_export() {
+		return quantity_measure_power_export;
+	}
+
+	public void setQuantity_measure_power_export(String quantity_measure_power_export) {
+		this.quantity_measure_power_export = quantity_measure_power_export;
+	}
+
+	public String getQuantity_measure_auxiliary_consumption() {
+		return quantity_measure_auxiliary_consumption;
+	}
+
+	public void setQuantity_measure_auxiliary_consumption(String quantity_measure_auxiliary_consumption) {
+		this.quantity_measure_auxiliary_consumption = quantity_measure_auxiliary_consumption;
+	}
 
 	public String getQuantity_measure_rdf_outflow() {
 		return quantity_measure_rdf_outflow;
