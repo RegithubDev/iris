@@ -15,10 +15,168 @@ public class DataManagement {
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
 			stock_dlf_measure, stock_lat_measure,mergedValue, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile,rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted
-			,quantity_measure_ash_generated,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption;
+			,quantity_measure_ash_generated,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption
+			;
 
 	private double quantity_sum,total_materials_sum, total_recylable_sum, total_bags_sum,total_glass_sum,total_cardboard_sum,
-	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum;
+	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum,rdf_sum,compost_sum,recyclables_sum,inserts_sum,vendor_name_rdf_sum,vendor_name_compost_sum,vendor_name_recyclables_sum,vendor_name_inserts_sum,total_rdf_sum,total_compost_sum,total_inerts_sum,total_recylables_sum,rdf_receipt_sum ,rdf_combusted_sum
+    ,ash_generated_sum
+    ,steam_generation_sum
+    ,power_produced_sum
+    ,power_export_sum
+    ,auxiliary_consumption_sum;
+
+public double getRdf_sum() {
+		return rdf_sum;
+	}
+
+	public void setRdf_sum(double rdf_sum) {
+		this.rdf_sum = rdf_sum;
+	}
+
+	public double getCompost_sum() {
+		return compost_sum;
+	}
+
+	public void setCompost_sum(double compost_sum) {
+		this.compost_sum = compost_sum;
+	}
+
+	public double getRecyclables_sum() {
+		return recyclables_sum;
+	}
+
+	public void setRecyclables_sum(double recyclables_sum) {
+		this.recyclables_sum = recyclables_sum;
+	}
+
+	public double getInserts_sum() {
+		return inserts_sum;
+	}
+
+	public void setInserts_sum(double inserts_sum) {
+		this.inserts_sum = inserts_sum;
+	}
+
+	public double getVendor_name_rdf_sum() {
+		return vendor_name_rdf_sum;
+	}
+
+	public void setVendor_name_rdf_sum(double vendor_name_rdf_sum) {
+		this.vendor_name_rdf_sum = vendor_name_rdf_sum;
+	}
+
+	public double getVendor_name_compost_sum() {
+		return vendor_name_compost_sum;
+	}
+
+	public void setVendor_name_compost_sum(double vendor_name_compost_sum) {
+		this.vendor_name_compost_sum = vendor_name_compost_sum;
+	}
+
+	public double getVendor_name_recyclables_sum() {
+		return vendor_name_recyclables_sum;
+	}
+
+	public void setVendor_name_recyclables_sum(double vendor_name_recyclables_sum) {
+		this.vendor_name_recyclables_sum = vendor_name_recyclables_sum;
+	}
+
+	public double getVendor_name_inserts_sum() {
+		return vendor_name_inserts_sum;
+	}
+
+	public void setVendor_name_inserts_sum(double vendor_name_inserts_sum) {
+		this.vendor_name_inserts_sum = vendor_name_inserts_sum;
+	}
+
+	public double getTotal_rdf_sum() {
+		return total_rdf_sum;
+	}
+
+	public void setTotal_rdf_sum(double total_rdf_sum) {
+		this.total_rdf_sum = total_rdf_sum;
+	}
+
+	public double getTotal_compost_sum() {
+		return total_compost_sum;
+	}
+
+	public void setTotal_compost_sum(double total_compost_sum) {
+		this.total_compost_sum = total_compost_sum;
+	}
+
+	public double getTotal_inerts_sum() {
+		return total_inerts_sum;
+	}
+
+	public void setTotal_inerts_sum(double total_inerts_sum) {
+		this.total_inerts_sum = total_inerts_sum;
+	}
+
+	public double getTotal_recylables_sum() {
+		return total_recylables_sum;
+	}
+
+	public void setTotal_recylables_sum(double total_recylables_sum) {
+		this.total_recylables_sum = total_recylables_sum;
+	}
+
+	public double getRdf_receipt_sum() {
+		return rdf_receipt_sum;
+	}
+
+	public void setRdf_receipt_sum(double rdf_receipt_sum) {
+		this.rdf_receipt_sum = rdf_receipt_sum;
+	}
+
+	public double getRdf_combusted_sum() {
+		return rdf_combusted_sum;
+	}
+
+	public void setRdf_combusted_sum(double rdf_combusted_sum) {
+		this.rdf_combusted_sum = rdf_combusted_sum;
+	}
+
+	public double getAsh_generated_sum() {
+		return ash_generated_sum;
+	}
+
+	public void setAsh_generated_sum(double ash_generated_sum) {
+		this.ash_generated_sum = ash_generated_sum;
+	}
+
+	public double getSteam_generation_sum() {
+		return steam_generation_sum;
+	}
+
+	public void setSteam_generation_sum(double steam_generation_sum) {
+		this.steam_generation_sum = steam_generation_sum;
+	}
+
+	public double getPower_produced_sum() {
+		return power_produced_sum;
+	}
+
+	public void setPower_produced_sum(double power_produced_sum) {
+		this.power_produced_sum = power_produced_sum;
+	}
+
+	public double getPower_export_sum() {
+		return power_export_sum;
+	}
+
+	public void setPower_export_sum(double power_export_sum) {
+		this.power_export_sum = power_export_sum;
+	}
+
+	public double getAuxiliary_consumption_sum() {
+		return auxiliary_consumption_sum;
+	}
+
+	public void setAuxiliary_consumption_sum(double auxiliary_consumption_sum) {
+		this.auxiliary_consumption_sum = auxiliary_consumption_sum;
+	}
 
 public String getRdf_receipt() {
 		return rdf_receipt;
