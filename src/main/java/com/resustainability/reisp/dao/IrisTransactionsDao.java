@@ -186,10 +186,10 @@ public class IrisTransactionsDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [msw_wte_table] (sbu_code,rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted "
+			String insertQry = "INSERT INTO [msw_wte_table] (plant_load_factor,plant_generation_capacity,bottom_ash,fly_ash,sbu_code,rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted "
 					+ "			,quantity_measure_ash_generated,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption,date,site,comments,created_by,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:rdf_receipt,:rdf_combusted,:ash_generated,:steam_generation,:power_produced,:power_export,:auxiliary_consumption,:quantity_measure_rdf_receipt,:quantity_measure_rdf_combusted "
+					+ "(:plant_load_factor,:plant_generation_capacity,:bottom_ash,:fly_ash,:sbu_code,:rdf_receipt,:rdf_combusted,:ash_generated,:steam_generation,:power_produced,:power_export,:auxiliary_consumption,:quantity_measure_rdf_receipt,:quantity_measure_rdf_combusted "
 					+ "			,:quantity_measure_ash_generated,:quantity_measure_steam_generation,:quantity_measure_power_produced,:quantity_measure_power_export,:quantity_measure_auxiliary_consumption,:date,:site,:comments,:created_by,getdate())";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);

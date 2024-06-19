@@ -226,10 +226,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadMSWDistributeData(obj);
 			if(flag == true) {
-				msg ="MSW Distribute Data Uploaded Succesfully.";
+				msg ="MSW Processing & Distribute Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "MSW Distribute Data failed. Try again.";
+				msg = "MSW Processing & Distribute Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -258,7 +258,7 @@ public class IrisTransactionsController {
 				msg ="MSW Wte Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "MSW Processing Data failed. Try again.";
+				msg = "MSW Wte Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

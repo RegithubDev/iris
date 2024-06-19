@@ -17,7 +17,39 @@ public class Transaction {
 			stock_dlf_measure, stock_lat_measure, stock_incineration_measure,disposal_afrf_measure,disposal_afrf,tock_total_waste, stock_afrf_measure,from_date,to_date,
 			quantity_measure_rdf_outflow,quantity_measure_compost_outflow,quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow,
 			rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted
-			,quantity_measure_ash_generated,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption;
+			,quantity_measure_ash_generated,plant_load_factor,plant_generation_capacity,bottom_ash,fly_ash,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption;
+
+	public String getPlant_load_factor() {
+		return plant_load_factor;
+	}
+
+	public void setPlant_load_factor(String plant_load_factor) {
+		this.plant_load_factor = plant_load_factor;
+	}
+
+	public String getPlant_generation_capacity() {
+		return plant_generation_capacity;
+	}
+
+	public void setPlant_generation_capacity(String plant_generation_capacity) {
+		this.plant_generation_capacity = plant_generation_capacity;
+	}
+
+	public String getBottom_ash() {
+		return bottom_ash;
+	}
+
+	public void setBottom_ash(String bottom_ash) {
+		this.bottom_ash = bottom_ash;
+	}
+
+	public String getFly_ash() {
+		return fly_ash;
+	}
+
+	public void setFly_ash(String fly_ash) {
+		this.fly_ash = fly_ash;
+	}
 
 	public String getRdf_receipt() {
 		return rdf_receipt;
