@@ -15,8 +15,30 @@ public class DataManagement {
 			disposal_total_waste_measure, disposal_dlf_measure, disposal_lat_measure, disposal_incineration_measure,
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
 			stock_dlf_measure, stock_lat_measure,mergedValue, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile,rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted
-			,plant_load_factor,quantity_measure_ash_generated,plant_generation_capacity,bottom_ash,fly_ash,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption
-			;
+			,plant_load_factor,quantity_measure_ash_generated,recyclable_to_recycle_unit,plant_generation_capacity,bottom_ash,fly_ash,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption
+,rdf_to_WTE  ,closing_stock_total_waste
+,closing_stock_dlf
+,closing_stock_lat
+,closing_stock_incineration
+,closing_stock_afrf,
+
+receipt_total_waste
+,receipt_dlf
+,receipt_lat
+,receipt_incineration
+,receipt_afrf
+,incineration_to_afrf
+
+
+,recycling_qty_inc
+,recycling_qty_afrf
+,recycling_qty_total
+
+,opening_stock_total_waste
+,opening_stock_dlf
+,opening_stock_lat
+,opening_stock_incineration
+,opening_stock_afrf;
 
 	private double quantity_sum,total_materials_sum, total_recylable_sum, total_bags_sum,total_glass_sum,total_cardboard_sum,
 	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum,rdf_sum,compost_sum,recyclables_sum,inserts_sum,vendor_name_rdf_sum,vendor_name_compost_sum,vendor_name_recyclables_sum,vendor_name_inserts_sum,total_rdf_sum,total_compost_sum,total_inerts_sum,total_recylables_sum,rdf_receipt_sum ,rdf_combusted_sum
@@ -24,17 +46,370 @@ public class DataManagement {
     ,steam_generation_sum
     ,power_produced_sum
     ,power_export_sum
-    ,auxiliary_consumption_sum,disposal_total_waste_sum
+    ,auxiliary_consumption_sum,
+    disposal_total_waste_sum
     ,disposal_dlf_sum
     ,disposal_lat_sum
     ,disposal_afrf_sum
-    ,disposal_incineration_sum ,
-    
+    ,disposal_incineration_sum 
+    ,incineration_to_afrf_sum
+    ,recycling_qty_inc_sum
+    ,recycling_qty_afrf_sum
+    ,recycling_qty_total_sum
+    ,
     stock_total_waste_sum
     ,stock_dlf_sum
     ,stock_lat_sum
     ,stock_incineration_sum
-    ,stock_afrf_sum,plant_generation_capacity_sum,bottom_ash_sum,fly_ash_sum,plant_load_factor_sum;
+    ,stock_afrf_sum,plant_generation_capacity_sum,bottom_ash_sum,fly_ash_sum,plant_load_factor_sum,rdf_to_WTE_sum
+    
+    ,closing_stock_total_waste_sum
+    ,closing_stock_dlf_sum
+    ,closing_stock_lat_sum
+    ,closing_stock_incineration_sum
+    ,closing_stock_afrf_sum,
+    
+    
+    receipt_total_waste_sum
+    ,receipt_dlf_sum
+    ,receipt_lat_sum
+    ,receipt_incineration_sum
+    ,receipt_afrf_sum
+    
+    
+    ,opening_stock_total_waste_sum
+    ,opening_stock_dlf_sum
+    ,opening_stock_lat_sum
+    ,opening_stock_incineration_sum
+    ,opening_stock_afrf_sum;
+
+public String getReceipt_total_waste() {
+		return receipt_total_waste;
+	}
+
+	public void setReceipt_total_waste(String receipt_total_waste) {
+		this.receipt_total_waste = receipt_total_waste;
+	}
+
+	public String getReceipt_dlf() {
+		return receipt_dlf;
+	}
+
+	public void setReceipt_dlf(String receipt_dlf) {
+		this.receipt_dlf = receipt_dlf;
+	}
+
+	public String getReceipt_lat() {
+		return receipt_lat;
+	}
+
+	public void setReceipt_lat(String receipt_lat) {
+		this.receipt_lat = receipt_lat;
+	}
+
+	public String getReceipt_incineration() {
+		return receipt_incineration;
+	}
+
+	public void setReceipt_incineration(String receipt_incineration) {
+		this.receipt_incineration = receipt_incineration;
+	}
+
+	public String getReceipt_afrf() {
+		return receipt_afrf;
+	}
+
+	public void setReceipt_afrf(String receipt_afrf) {
+		this.receipt_afrf = receipt_afrf;
+	}
+
+	public String getIncineration_to_afrf() {
+		return incineration_to_afrf;
+	}
+
+	public void setIncineration_to_afrf(String incineration_to_afrf) {
+		this.incineration_to_afrf = incineration_to_afrf;
+	}
+
+	public String getRecycling_qty_inc() {
+		return recycling_qty_inc;
+	}
+
+	public void setRecycling_qty_inc(String recycling_qty_inc) {
+		this.recycling_qty_inc = recycling_qty_inc;
+	}
+
+	public String getRecycling_qty_afrf() {
+		return recycling_qty_afrf;
+	}
+
+	public void setRecycling_qty_afrf(String recycling_qty_afrf) {
+		this.recycling_qty_afrf = recycling_qty_afrf;
+	}
+
+	public String getRecycling_qty_total() {
+		return recycling_qty_total;
+	}
+
+	public void setRecycling_qty_total(String recycling_qty_total) {
+		this.recycling_qty_total = recycling_qty_total;
+	}
+
+	public String getOpening_stock_total_waste() {
+		return opening_stock_total_waste;
+	}
+
+	public void setOpening_stock_total_waste(String opening_stock_total_waste) {
+		this.opening_stock_total_waste = opening_stock_total_waste;
+	}
+
+	public String getOpening_stock_dlf() {
+		return opening_stock_dlf;
+	}
+
+	public void setOpening_stock_dlf(String opening_stock_dlf) {
+		this.opening_stock_dlf = opening_stock_dlf;
+	}
+
+	public String getOpening_stock_lat() {
+		return opening_stock_lat;
+	}
+
+	public void setOpening_stock_lat(String opening_stock_lat) {
+		this.opening_stock_lat = opening_stock_lat;
+	}
+
+	public String getOpening_stock_incineration() {
+		return opening_stock_incineration;
+	}
+
+	public void setOpening_stock_incineration(String opening_stock_incineration) {
+		this.opening_stock_incineration = opening_stock_incineration;
+	}
+
+	public String getOpening_stock_afrf() {
+		return opening_stock_afrf;
+	}
+
+	public void setOpening_stock_afrf(String opening_stock_afrf) {
+		this.opening_stock_afrf = opening_stock_afrf;
+	}
+
+	public double getReceipt_total_waste_sum() {
+		return receipt_total_waste_sum;
+	}
+
+	public void setReceipt_total_waste_sum(double receipt_total_waste_sum) {
+		this.receipt_total_waste_sum = receipt_total_waste_sum;
+	}
+
+	public double getReceipt_dlf_sum() {
+		return receipt_dlf_sum;
+	}
+
+	public void setReceipt_dlf_sum(double receipt_dlf_sum) {
+		this.receipt_dlf_sum = receipt_dlf_sum;
+	}
+
+	public double getReceipt_lat_sum() {
+		return receipt_lat_sum;
+	}
+
+	public void setReceipt_lat_sum(double receipt_lat_sum) {
+		this.receipt_lat_sum = receipt_lat_sum;
+	}
+
+	public double getReceipt_incineration_sum() {
+		return receipt_incineration_sum;
+	}
+
+	public void setReceipt_incineration_sum(double receipt_incineration_sum) {
+		this.receipt_incineration_sum = receipt_incineration_sum;
+	}
+
+	public double getReceipt_afrf_sum() {
+		return receipt_afrf_sum;
+	}
+
+	public void setReceipt_afrf_sum(double receipt_afrf_sum) {
+		this.receipt_afrf_sum = receipt_afrf_sum;
+	}
+
+	public double getIncineration_to_afrf_sum() {
+		return incineration_to_afrf_sum;
+	}
+
+	public void setIncineration_to_afrf_sum(double incineration_to_afrf_sum) {
+		this.incineration_to_afrf_sum = incineration_to_afrf_sum;
+	}
+
+	public double getRecycling_qty_inc_sum() {
+		return recycling_qty_inc_sum;
+	}
+
+	public void setRecycling_qty_inc_sum(double recycling_qty_inc_sum) {
+		this.recycling_qty_inc_sum = recycling_qty_inc_sum;
+	}
+
+	public double getRecycling_qty_afrf_sum() {
+		return recycling_qty_afrf_sum;
+	}
+
+	public void setRecycling_qty_afrf_sum(double recycling_qty_afrf_sum) {
+		this.recycling_qty_afrf_sum = recycling_qty_afrf_sum;
+	}
+
+	public double getRecycling_qty_total_sum() {
+		return recycling_qty_total_sum;
+	}
+
+	public void setRecycling_qty_total_sum(double recycling_qty_total_sum) {
+		this.recycling_qty_total_sum = recycling_qty_total_sum;
+	}
+
+	public double getOpening_stock_total_waste_sum() {
+		return opening_stock_total_waste_sum;
+	}
+
+	public void setOpening_stock_total_waste_sum(double opening_stock_total_waste_sum) {
+		this.opening_stock_total_waste_sum = opening_stock_total_waste_sum;
+	}
+
+	public double getOpening_stock_dlf_sum() {
+		return opening_stock_dlf_sum;
+	}
+
+	public void setOpening_stock_dlf_sum(double opening_stock_dlf_sum) {
+		this.opening_stock_dlf_sum = opening_stock_dlf_sum;
+	}
+
+	public double getOpening_stock_lat_sum() {
+		return opening_stock_lat_sum;
+	}
+
+	public void setOpening_stock_lat_sum(double opening_stock_lat_sum) {
+		this.opening_stock_lat_sum = opening_stock_lat_sum;
+	}
+
+	public double getOpening_stock_incineration_sum() {
+		return opening_stock_incineration_sum;
+	}
+
+	public void setOpening_stock_incineration_sum(double opening_stock_incineration_sum) {
+		this.opening_stock_incineration_sum = opening_stock_incineration_sum;
+	}
+
+	public double getOpening_stock_afrf_sum() {
+		return opening_stock_afrf_sum;
+	}
+
+	public void setOpening_stock_afrf_sum(double opening_stock_afrf_sum) {
+		this.opening_stock_afrf_sum = opening_stock_afrf_sum;
+	}
+
+public String getClosing_stock_total_waste() {
+		return closing_stock_total_waste;
+	}
+
+	public void setClosing_stock_total_waste(String closing_stock_total_waste) {
+		this.closing_stock_total_waste = closing_stock_total_waste;
+	}
+
+	public String getClosing_stock_dlf() {
+		return closing_stock_dlf;
+	}
+
+	public void setClosing_stock_dlf(String closing_stock_dlf) {
+		this.closing_stock_dlf = closing_stock_dlf;
+	}
+
+	public String getClosing_stock_lat() {
+		return closing_stock_lat;
+	}
+
+	public void setClosing_stock_lat(String closing_stock_lat) {
+		this.closing_stock_lat = closing_stock_lat;
+	}
+
+	public String getClosing_stock_incineration() {
+		return closing_stock_incineration;
+	}
+
+	public void setClosing_stock_incineration(String closing_stock_incineration) {
+		this.closing_stock_incineration = closing_stock_incineration;
+	}
+
+	public String getClosing_stock_afrf() {
+		return closing_stock_afrf;
+	}
+
+	public void setClosing_stock_afrf(String closing_stock_afrf) {
+		this.closing_stock_afrf = closing_stock_afrf;
+	}
+
+	public double getClosing_stock_total_waste_sum() {
+		return closing_stock_total_waste_sum;
+	}
+
+	public void setClosing_stock_total_waste_sum(double closing_stock_total_waste_sum) {
+		this.closing_stock_total_waste_sum = closing_stock_total_waste_sum;
+	}
+
+	public double getClosing_stock_dlf_sum() {
+		return closing_stock_dlf_sum;
+	}
+
+	public void setClosing_stock_dlf_sum(double closing_stock_dlf_sum) {
+		this.closing_stock_dlf_sum = closing_stock_dlf_sum;
+	}
+
+	public double getClosing_stock_lat_sum() {
+		return closing_stock_lat_sum;
+	}
+
+	public void setClosing_stock_lat_sum(double closing_stock_lat_sum) {
+		this.closing_stock_lat_sum = closing_stock_lat_sum;
+	}
+
+	public double getClosing_stock_incineration_sum() {
+		return closing_stock_incineration_sum;
+	}
+
+	public void setClosing_stock_incineration_sum(double closing_stock_incineration_sum) {
+		this.closing_stock_incineration_sum = closing_stock_incineration_sum;
+	}
+
+	public double getClosing_stock_afrf_sum() {
+		return closing_stock_afrf_sum;
+	}
+
+	public void setClosing_stock_afrf_sum(double closing_stock_afrf_sum) {
+		this.closing_stock_afrf_sum = closing_stock_afrf_sum;
+	}
+
+public String getRecyclable_to_recycle_unit() {
+		return recyclable_to_recycle_unit;
+	}
+
+	public void setRecyclable_to_recycle_unit(String recyclable_to_recycle_unit) {
+		this.recyclable_to_recycle_unit = recyclable_to_recycle_unit;
+	}
+
+public String getRdf_to_WTE() {
+		return rdf_to_WTE;
+	}
+
+	public void setRdf_to_WTE(String rdf_to_WTE) {
+		this.rdf_to_WTE = rdf_to_WTE;
+	}
+
+	public double getRdf_to_WTE_sum() {
+		return rdf_to_WTE_sum;
+	}
+
+	public void setRdf_to_WTE_sum(double rdf_to_WTE_sum) {
+		this.rdf_to_WTE_sum = rdf_to_WTE_sum;
+	}
 
 public String getPlant_load_factor() {
 		return plant_load_factor;

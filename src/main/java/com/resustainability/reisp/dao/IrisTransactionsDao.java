@@ -149,22 +149,42 @@ public class IrisTransactionsDao {
 		try {
 		
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [msw_distribute_table] "
-					+ "(sbu_code,rdf,compost,recyclables,inserts,vendor_name_rdf,vendor_name_compost,vendor_name_recyclables,"
-					+ "vendor_name_inserts,quantity_measure_rdf_outflow,quantity_measure_compost_outflow,quantity_measure_recyclables_outflow,quantity_measure_inerts_outflow,date,site,comments,created_by,created_date) "
+			String insertQry = "INSERT INTO[msw_distribute_table] ( "
+	                + "sbu_code, rdf, compost, recyclables, inserts, vendor_name_rdf, vendor_name_compost "
+	                + ",vendor_name_recyclables, vendor_name_inserts, quantity_measure_rdf_outflow, quantity_measure_compost_outflow "
+	                + ",quantity_measure_recyclables_outflow, quantity_measure_inerts_outflow, date, site, comments, created_by "
+	                + ", created_date, rdf_to_WTE, recyclable_to_recycle_unit, total_waste, total_rdf "
+	                + ",total_compost, total_inerts, total_recylables, quantity_measure_waste, quantity_measure_rdf, quantity_measure_compost "
+	                + ",quantity_measure_inerts, quantity_measure_recylabels) "
 					+ "VALUES "
-					+ "(:sbu_code,:rdf,:compost,:recyclables,:inserts,:vendor_name_rdf,:vendor_name_compost,:vendor_name_recyclables,:vendor_name_inserts,:quantity_measure_rdf_outflow,"
-					+ ":quantity_measure_compost_outflow,:quantity_measure_recyclables_outflow,:quantity_measure_inerts_outflow,:date,:site,:comments,:created_by,getdate())";
+				       + "(:sbu_code,  :rdf,  :compost,  :recyclables,  :inserts,  :vendor_name_rdf,  :vendor_name_compost "
+		                + ", :vendor_name_recyclables,  :vendor_name_inserts,  :quantity_measure_rdf_outflow,  :quantity_measure_compost_outflow "
+		                + ", :quantity_measure_recyclables_outflow,  :quantity_measure_inerts_outflow,  :date,  :site,  :comments,  :created_by "
+		                + ", getdate(),  :rdf_to_WTE,  :recyclable_to_recycle_unit,  :total_waste,  :total_rdf "
+		                + ", :total_compost,  :total_inerts,  :total_recylables,  :quantity_measure_waste,  :quantity_measure_rdf,  :quantity_measure_compost "
+		                + ", :quantity_measure_inerts,  :quantity_measure_recylabels) ";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {
 				flag = true;
 			}
-			String insertQry2 = "INSERT INTO [msw_processing_table] (sbu_code,total_waste,total_rdf,total_compost,total_inerts,total_recylables,quantity_measure_waste,"
-					+ "quantity_measure_rdf,quantity_measure_compost,quantity_measure_inerts,quantity_measure_recylabels,date,site,comments,created_by,created_date) "
+		    String insertQry2 = "INSERT INTO msw_processing_table ( "
+	                + "sbu_code, total_waste, total_rdf, total_compost, total_inerts, total_recylables, "
+	                + "quantity_measure_waste, quantity_measure_rdf, quantity_measure_compost, quantity_measure_inerts, "
+	                + "quantity_measure_recylabels, date, site, comments, created_by, created_date, "
+	                + " rdf_to_WTE, rdf, compost, recyclable_to_recycle_unit, recyclables, inserts, "
+	                + "vendor_name_rdf, vendor_name_compost, vendor_name_recyclables, vendor_name_inserts, "
+	                + "quantity_measure_rdf_outflow, quantity_measure_compost_outflow, quantity_measure_recyclables_outflow, "
+	                + "quantity_measure_inerts_outflow) "
 					+ "VALUES "
-					+ "(:sbu_code,:total_waste,:total_rdf,:total_compost,:total_inerts,:total_recylables,:quantity_measure_waste,:quantity_measure_rdf,:quantity_measure_compost,"
-					+ ":quantity_measure_inerts,:quantity_measure_recylabels,:date,:site,:comments,:created_by,getdate())";
+				    + "(:sbu_code,  :total_waste,  :total_rdf,  :total_compost,  :total_inerts,  :total_recylables,  "
+	                + ":quantity_measure_waste,  :quantity_measure_rdf,  :quantity_measure_compost,  :quantity_measure_inerts,  "
+	                + ":quantity_measure_recylabels,  :date,  :site,  :comments,  :created_by,  getdate(),  "
+	                + " :rdf_to_WTE,  :rdf,  :compost,  :recyclable_to_recycle_unit,  :recyclables,  :inserts,  "
+	                + ":vendor_name_rdf,  :vendor_name_compost,  :vendor_name_recyclables,  :vendor_name_inserts,  "
+	                + ":quantity_measure_rdf_outflow,  :quantity_measure_compost_outflow,  :quantity_measure_recyclables_outflow,  "
+	                + ":quantity_measure_inerts_outflow) ";
+	    
 			paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry2, paramSource);
 			if(count > 0) {
@@ -212,11 +232,37 @@ public class IrisTransactionsDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [iwm_disposal_table] (sbu_code,disposal_total_waste,disposal_dlf,disposal_lat,disposal_afrf,disposal_incineration,disposal_total_waste_measure,"
-					+ "disposal_dlf_measure,disposal_lat_measure,disposal_incineration_measure,site,date,comments,created_by,created_date,disposal_afrf_measure) "
+			String insertQry = "INSERT INTO [iwm_disposal_table] (sbu_code "
+					+ "      ,disposal_total_waste "
+					+ "      ,disposal_dlf "
+					+ "      ,disposal_lat "
+					+ "      ,disposal_incineration "
+					+ "      ,disposal_afrf "
+					+ "      ,incineration_to_afrf "
+					+ "      ,recycling_qty_inc "
+					+ "      ,recycling_qty_afrf "
+					+ "      ,recycling_qty_total "
+					+ "      ,site "
+					+ "      ,date "
+					+ "      ,comments "
+					+ "      ,created_by "
+					+ "      ,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:disposal_total_waste,:disposal_dlf,:disposal_lat,:disposal_afrf,:disposal_incineration,:disposal_total_waste_measure,"
-					+ ":disposal_dlf_measure,:disposal_lat_measure,:disposal_incineration_measure,:site,:date,:comments,:created_by,getdate(),:disposal_afrf_measure)";
+					+ "(:sbu_code "
+					+ "      ,:disposal_total_waste "
+					+ "      ,:disposal_dlf "
+					+ "      ,:disposal_lat "
+					+ "      ,:disposal_incineration "
+					+ "      ,:disposal_afrf "
+					+ "      ,:incineration_to_afrf "
+					+ "      ,:recycling_qty_inc "
+					+ "      ,:recycling_qty_afrf "
+					+ "      ,:recycling_qty_total "
+					+ "      ,:site "
+					+ "      ,:date "
+					+ "      ,:comments "
+					+ "      ,:created_by "
+					+ "      ,getdate() )";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {
@@ -238,11 +284,115 @@ public class IrisTransactionsDao {
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
 			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
-			String insertQry = "INSERT INTO [iwm_leftoverstock_table] (sbu_code,stock_total_waste,stock_dlf,stock_lat,stock_incineration,stock_afrf,stock_total_waste_measure,"
-					+ "stock_dlf_measure,stock_lat_measure,stock_incineration_measure,stock_afrf_measure,site,date,comments,created_by,created_date) "
+			String insertQry = "INSERT INTO [iwm_receipt] (sbu_code,receipt_total_waste "
+					+ "      ,receipt_dlf "
+					+ "      ,receipt_lat "
+					+ "      ,receipt_incineration "
+					+ "      ,receipt_afrf "
+					+ "      ,incineration_to_afrf "
+					+ "      ,site "
+					+ "      ,date "
+					+ "      ,comments "
+					+ "      ,created_by "
+					+ "      ,created_date) "
 					+ "VALUES "
-					+ "(:sbu_code,:stock_total_waste,:stock_dlf,:stock_lat,:stock_incineration,:stock_afrf,:stock_total_waste_measure"
-					+ "	,:stock_dlf_measure,:stock_lat_measure,:stock_incineration_measure,:stock_afrf_measure,:site,:date,:comments,:created_by,getdate())";
+					+ "(:sbu_code,:receipt_total_waste "
+					+ "      ,:receipt_dlf "
+					+ "      ,:receipt_lat "
+					+ "      ,:receipt_incineration "
+					+ "      ,:receipt_afrf "
+					+ "      ,:incineration_to_afrf "
+					+ "      ,:site "
+					+ "      ,:date "
+					+ "      ,:comments "
+					+ "      ,:created_by "
+					+ "      ,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean uploadIWMOpenData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [iwm_opening_stock_table] (sbu_code,opening_stock_total_waste "
+					+ "      ,opening_stock_dlf "
+					+ "      ,opening_stock_lat "
+					+ "      ,opening_stock_incineration "
+					+ "      ,opening_stock_afrf "
+					+ "      ,site "
+					+ "      ,date "
+					+ "      ,comments "
+					+ "      ,created_by "
+					+ "      ,created_date) "
+					+ "VALUES "
+					+ "(:sbu_code,:opening_stock_total_waste "
+					+ "      ,:opening_stock_dlf "
+					+ "      ,:opening_stock_lat "
+					+ "      ,:opening_stock_incineration "
+					+ "      ,:opening_stock_afrf "
+					+ "      ,:site "
+					+ "      ,:date "
+					+ "      ,:comments "
+					+ "      ,:created_by "
+					+ "      ,getdate())";
+			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+			if(count > 0) {
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
+	}
+
+	public boolean uploadIWMCloseData(Transaction obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String insertQry = "INSERT INTO [iwm_closing_stock_table] (sbu_code "
+					+ "      ,closing_stock_total_waste "
+					+ "      ,closing_stock_dlf "
+					+ "      ,closing_stock_lat "
+					+ "      ,closing_stock_incineration "
+					+ "      ,closing_stock_afrf "
+					+ "      ,site "
+					+ "      ,date "
+					+ "      ,comments "
+					+ "      ,created_by "
+					+ "      ,created_date ) "
+					+ "VALUES "
+					+ "(:sbu_code "
+					+ "      ,:closing_stock_total_waste "
+					+ "      ,:closing_stock_dlf "
+					+ "      ,:closing_stock_lat "
+					+ "      ,:closing_stock_incineration "
+					+ "      ,:closing_stock_afrf "
+					+ "      ,:site "
+					+ "      ,:date "
+					+ "      ,:comments "
+					+ "      ,:created_by "
+					+ "      ,getdate() )";
 			BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
 		    count = namedParamJdbcTemplate.update(insertQry, paramSource);
 			if(count > 0) {

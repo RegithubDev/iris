@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.resustainability.reisp.dao.IrisDataManagementDao;
 import com.resustainability.reisp.model.DataManagement;
+import com.resustainability.reisp.model.DateModel;
 import com.resustainability.reisp.model.Role;
 
 
@@ -65,7 +66,7 @@ public class IrisDataManagementService {
 		return dao.updateMswdistributive(obj);
 	}
 
-	public List<DataManagement> getDataHistoryList(DataManagement obj) throws Exception {
+	public List<DateModel> getDataHistoryList(DataManagement obj) throws Exception {
 		return dao.getDataHistoryList(obj);
 	}
 

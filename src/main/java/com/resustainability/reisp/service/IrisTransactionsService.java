@@ -45,5 +45,13 @@ public class IrisTransactionsService {
 		return dao.uploadIWMLeftoverstockData(obj);
 	}
 
+	public boolean uploadIWMOpenData(Transaction obj)  throws Exception{
+		return dao.uploadIWMOpenData(obj);
+	}
+
+	public boolean uploadIWMCloseData(Transaction obj)  throws Exception{
+		return dao.uploadIWMCloseData(obj);
+	}
+
 
 }

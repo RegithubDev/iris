@@ -31,6 +31,7 @@ import com.google.gson.GsonBuilder;
 import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.DataManagement;
 import com.resustainability.reisp.model.DataManagementObject;
+import com.resustainability.reisp.model.DateModel;
 import com.resustainability.reisp.model.Role;
 import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.DataManagement;
@@ -424,8 +425,8 @@ public class IrisDataManagementController {
 	}
 	
 	@RequestMapping(value = "/reone/get-history-by-dates", method = { RequestMethod.POST, RequestMethod.GET })
-	public List<DataManagement> history( @RequestBody DataManagement obj) {
-		List<DataManagement> objList = null;
+	public List<DateModel> history( @RequestBody DataManagement obj) {
+		List<DateModel> objList = null;
 		try {
 			int startIndex = obj.getStartIndex();
 			int offset = obj.getOffset();

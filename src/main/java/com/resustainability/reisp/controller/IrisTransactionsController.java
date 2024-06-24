@@ -179,7 +179,7 @@ public class IrisTransactionsController {
 		return msg;
 	}
 	
-	@RequestMapping(value = "/ajax/upload-iwm-leftoverstock-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/ajax/upload-iwm-receipt-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String uploadIWMLeftoverstockData(@RequestBody Transaction obj,HttpSession session) {
 		String userId = null;
@@ -196,10 +196,10 @@ public class IrisTransactionsController {
 			}
 			flag = service.uploadIWMLeftoverstockData(obj);
 			if(flag == true) {
-				msg ="IWM Leftoverstock Data Uploaded Succesfully.";
+				msg ="IWM Receipt Data Uploaded Succesfully.";
 			}
 			else {
-				msg = "IWM Leftoverstock Data failed. Try again.";
+				msg = "IWM Receipt Data failed. Try again.";
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -208,6 +208,63 @@ public class IrisTransactionsController {
 		return msg;
 	}
 	
+	@RequestMapping(value = "/ajax/upload-iwm-open-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadIWMOpenData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
+				obj.setCreated_by(userId);
+			}
+			flag = service.uploadIWMOpenData(obj);
+			if(flag == true) {
+				msg ="IWM Opening Stock Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "IWM Opening Stock Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
+	
+	@RequestMapping(value = "/ajax/upload-iwm-close-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String uploadIWMCloseData(@RequestBody Transaction obj,HttpSession session) {
+		String userId = null;
+		String userName = null;
+		String role = null;
+		String msg = null;
+		boolean flag = false;
+		try {
+			userId = (String) session.getAttribute("USER_ID");
+			userName = (String) session.getAttribute("USER_NAME");
+			role = (String) session.getAttribute("BASE_ROLE");
+			if(StringUtils.isEmpty(obj.getCreated_by())) {
+				obj.setCreated_by(userId);
+			}
+			flag = service.uploadIWMCloseData(obj);
+			if(flag == true) {
+				msg ="IWM Closing Stock Data Uploaded Succesfully.";
+			}
+			else {
+				msg = "IWM Closing Stock Data failed. Try again.";
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			logger.error("uploadCollectData : " + e.getMessage());
+		}
+		return msg;
+	}
 	
 	@RequestMapping(value = "/ajax/upload-msw-pnd-data", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
