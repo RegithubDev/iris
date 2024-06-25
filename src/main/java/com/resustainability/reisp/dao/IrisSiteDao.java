@@ -443,8 +443,21 @@ public class IrisSiteDao {
 					+ "where um.id is not null  ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				qry = qry + " and  s.sbu_code = ? ";
-				arrSize++;
+				if(obj.getSbu_code().contains(",")) {
+					qry = qry + " and  s.sbu_code in( ? ";
+					arrSize++;
+					
+					String [] sbu = obj.getSbu_code().split(",");
+					for(int i = 1; i< sbu.length ; i++) {
+						qry = qry + ",?";
+						arrSize++;
+					}
+					qry = qry + ")";
+				}else {
+					qry = qry + " and  s.sbu_code = ? ";
+					arrSize++;
+				}
+			
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getState())) {
 				qry = qry + " and s.state = ? ";
@@ -457,7 +470,16 @@ public class IrisSiteDao {
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				pValues[i++] = obj.getSbu_code();
+				if(obj.getSbu_code().contains(",")) {
+					String [] sbu = obj.getSbu_code().split(",");
+					for(String sbuLoop : sbu) {
+						pValues[i++] = sbuLoop;
+						arrSize++;
+					}
+				}else {
+					pValues[i++] = obj.getSbu_code();
+				}
+				
 			}
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getState())) {
 				pValues[i++] = obj.getState();

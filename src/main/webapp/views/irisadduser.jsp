@@ -234,11 +234,23 @@
             </div>
             <div class="mb-1 col-md-6">
             <label class="form-label" for="select-country">Site Name</label>  <span class=re-text>*</span>  
-              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="site_name" name="site_name" data-select2-id="select-site" tabindex="5" aria-hidden="true">
+              <div class="position-relative"><select class="form-select select2 select2-hidden-accessible" id="site_name" multiple name="site_name" data-select2-id="select-site" tabindex="5" aria-hidden="true">
                 <option value="" data-select2-id="1">Select </option>
-               			<c:forEach var="obj" items="${siteList}">
+                	<c:set var="categoriesString" value="${UserDetails.site_name}" />
+						<c:set var="categoriesArray" value="${fn:split(categoriesString, ',')}" />
+	               			<c:forEach var="obj" items="${siteList}" varStatus="index">
+	               			<c:if test="${!uniqueOptions.contains(option)}">
+	 		               	  <option value="${obj.id }"  
+	 		               	  	<c:forEach var="objMain" items="${categoriesArray}" varStatus="index">
+	 		               	  		<c:if test="${objMain == obj.id }">selected</c:if>
+	 		               	   	</c:forEach>
+	 		               	  > ${obj.site_name }</option> 
+	 		               	  </c:if>
+							</c:forEach>
+							
+               		<%-- 	<c:forEach var="obj" items="${siteList}">
 									<option value="${obj.id }"  <c:if test="${UserDetails.site_name == obj.id }">selected</c:if>> ${obj.site_name }</option>
-						</c:forEach>
+						</c:forEach> --%>
               </select>
               </div>
             </div>
@@ -363,7 +375,25 @@
               });
           }
       }
- 
+ function getErrorMessage(jqXHR, exception) {
+	    var msg = '';
+	    if (jqXHR.status === 0) {
+	        msg = 'Not connect.\n Verify Network.';
+	    } else if (jqXHR.status == 404) {
+	        msg = 'Requested page not found. [404]';
+	    } else if (jqXHR.status == 500) {
+	        msg = 'Internal Server Error [500].';
+	    } else if (exception === 'parsererror') {
+	        msg = 'Requested JSON parse failed.';
+	    } else if (exception === 'timeout') {
+	        msg = 'Time out error.';
+	    } else if (exception === 'abort') {
+	        msg = 'Ajax request aborted.';
+	    } else {
+	        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+	    }
+	    console.log(msg);
+}
  function getRolesFilterListWithSBUForUser() {
    	 var sbu = $("#sbu").val();
    	var string = sbu.join(",");
@@ -445,9 +475,11 @@
  
  function getSiteFilterListWithCityForUser() {
    	 var city = $("#city").val();
-          if ($.trim(city) != "") {
+   	 var sbu = $("#sbu").val();
+   	var string = sbu.join(",");
+          if ($.trim(city) != "" && $.trim(sbu) != "") {
           	$("#site_name option:not(:first)").remove();
-          	var myParams = { city: city};
+          	var myParams = { city: city, sbu_code : string};
               $.ajax({
                   url: "<%=request.getContextPath()%>/ajax/getSiteFilterListWithCityForUser",
                   data: myParams, cache: false,async: false,

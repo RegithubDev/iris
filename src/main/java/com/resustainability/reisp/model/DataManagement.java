@@ -41,7 +41,7 @@ receipt_total_waste
 ,opening_stock_afrf;
 
 	private double quantity_sum,total_materials_sum, total_recylable_sum, total_bags_sum,total_glass_sum,total_cardboard_sum,
-	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum,rdf_sum,compost_sum,recyclables_sum,inserts_sum,vendor_name_rdf_sum,vendor_name_compost_sum,vendor_name_recyclables_sum,vendor_name_inserts_sum,total_rdf_sum,total_compost_sum,total_inerts_sum,total_recylables_sum,rdf_receipt_sum ,rdf_combusted_sum
+	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum,rdf_sum,compost_sum,recyclables_sum,inserts_sum,total_rdf_sum,total_compost_sum,total_inerts_sum,total_recylables_sum,rdf_receipt_sum ,rdf_combusted_sum
     ,ash_generated_sum
     ,steam_generation_sum
     ,power_produced_sum
@@ -585,38 +585,6 @@ public double getRdf_sum() {
 
 	public void setInserts_sum(double inserts_sum) {
 		this.inserts_sum = inserts_sum;
-	}
-
-	public double getVendor_name_rdf_sum() {
-		return vendor_name_rdf_sum;
-	}
-
-	public void setVendor_name_rdf_sum(double vendor_name_rdf_sum) {
-		this.vendor_name_rdf_sum = vendor_name_rdf_sum;
-	}
-
-	public double getVendor_name_compost_sum() {
-		return vendor_name_compost_sum;
-	}
-
-	public void setVendor_name_compost_sum(double vendor_name_compost_sum) {
-		this.vendor_name_compost_sum = vendor_name_compost_sum;
-	}
-
-	public double getVendor_name_recyclables_sum() {
-		return vendor_name_recyclables_sum;
-	}
-
-	public void setVendor_name_recyclables_sum(double vendor_name_recyclables_sum) {
-		this.vendor_name_recyclables_sum = vendor_name_recyclables_sum;
-	}
-
-	public double getVendor_name_inserts_sum() {
-		return vendor_name_inserts_sum;
-	}
-
-	public void setVendor_name_inserts_sum(double vendor_name_inserts_sum) {
-		this.vendor_name_inserts_sum = vendor_name_inserts_sum;
 	}
 
 	public double getTotal_rdf_sum() {

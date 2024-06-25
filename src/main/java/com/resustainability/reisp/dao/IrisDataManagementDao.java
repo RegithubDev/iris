@@ -705,36 +705,7 @@ public class IrisDataManagementDao {
 			            double sum7 = sum;
 						objsList.forEach(obj1 -> obj1.setInserts_sum(obj1.getInserts_sum() +sum7));
 						
-						sum = 0.0;
-			            for (DataManagement obj1 : objsList) {
-			                double value = Double.parseDouble(obj1.getVendor_name_rdf());
-			                sum += value;
-			            }
-			            double sum8 = sum;
-						objsList.forEach(obj1 -> obj1.setVendor_name_rdf_sum(obj1.getVendor_name_rdf_sum() +sum8));
-						
-						sum = 0.0;
-			            for (DataManagement obj1 : objsList) {
-			                double value = Double.parseDouble(obj1.getVendor_name_compost());
-			                sum += value;
-			            }
-			            double sum9 = sum;
-						objsList.forEach(obj1 -> obj1.setVendor_name_compost_sum(obj1.getVendor_name_compost_sum() +sum9));
-						
-						sum = 0.0;
-			            for (DataManagement obj1 : objsList) {
-			                double value = Double.parseDouble(obj1.getVendor_name_recyclables());
-			                sum += value;
-			            }
-			            double sum0 = sum;
-						objsList.forEach(obj1 -> obj1.setVendor_name_recyclables_sum(obj1.getVendor_name_recyclables_sum() +sum0));
-						sum = 0.0;
-			            for (DataManagement obj1 : objsList) {
-			                double value = Double.parseDouble(obj1.getVendor_name_inserts());
-			                sum += value;
-			            }
-			            double sum00 = sum;
-						objsList.forEach(obj1 -> obj1.setVendor_name_inserts_sum(obj1.getVendor_name_inserts_sum() +sum00));
+					
 					}else if(obj.getDepartment_code().contains("process")) {
 						double sum = 0.0;
 			            for (DataManagement obj1 : objsList) {

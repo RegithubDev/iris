@@ -281,7 +281,7 @@ public class UserDao {
 					+ "      ,um.[created_date]"
 					+ "      ,um.[modified_by]"
 					+ "      ,um.[modified_date] from [user_management] um "
-					+ " left join site st on um.site_name = st.id   "
+					+ " left join site st on CHARINDEX(',' + CAST(st.id AS VARCHAR) + ',', ',' + um.site_name + ',') > 0 "
 					+ " left join category c on um.categories = c.category_code   "
 					//+ " left join roles r on um.roles = r.id   "
 					+ " left join roles r on CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0 "

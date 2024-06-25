@@ -100,45 +100,42 @@ public class IrisUserDao {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
 			String qry = "SELECT    "
-					+ "    um.[id], um.[id] as user_id ,  "
-					+ "    [user_name], st.id as site_id,   "
-					+ "    [email_id],[categories],   "
-					+ "    [mobile_number],um.[sbu],   "
-					+ "    (   "
-					+ "        SELECT STRING_AGG( dsn.sbu_name, ',')   "
-					+ "        FROM sbu dsn   "
-					+ "        WHERE CHARINDEX(',' + CAST(dsn.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0   "
-					+ "    ) AS sbu_name,   "
-					+ "    (   "
-					+ "        SELECT STRING_AGG( c.category_name, ',')   "
-					+ "        FROM category c   "
-					+ "        WHERE CHARINDEX(',' + CAST(c.category_code AS VARCHAR) + ',', ',' + um.categories + ',') > 0   "
-					+ "    ) AS category_name,   "
-					+ "    st.site_name,   "
-					+ "   "
-					+ "		 (   "
-					+ "        SELECT STRING_AGG( r.role_name, ',')   "
-					+ "        FROM roles r   "
-					+ "        WHERE CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0   "
-					+ "    ) AS role_name,   "
-					+ "   "
-					+ "	um.[roles],   "
-					+ "    [notfilled_datadates],   "
-					+ "    um.[status],   "
-					+ "    um.[created_by],   "
-					+ "    um.[created_date],   "
-					+ "    um.[modified_by],   "
+					+ "     um.[id], "
+					+ "    um.[id] AS user_id,um.site_name as site_id,um.categories as categories, "
+					+ "    [user_name], "
+					+ "    ( "
+					+ "        SELECT STRING_AGG(sts.site_name, ',') "
+					+ "        FROM site sts "
+					+ "        WHERE CHARINDEX(',' + CAST(sts.id AS VARCHAR) + ',', ',' + um.site_name + ',') > 0 "
+					+ "    ) AS site_name, "
+					+ "    [email_id], "
+					+ "    ( "
+					+ "        SELECT STRING_AGG(c.category_name, ',') "
+					+ "        FROM category c "
+					+ "        WHERE CHARINDEX(',' + CAST(c.category_code AS VARCHAR) + ',', ',' + um.categories + ',') > 0 "
+					+ "    ) AS category_name, "
+					+ "    [mobile_number], "
+					+ "    um.[sbu], "
+					+ "    ( "
+					+ "        SELECT STRING_AGG(dsn.sbu_name, ',') "
+					+ "        FROM sbu dsn "
+					+ "        WHERE CHARINDEX(',' + CAST(dsn.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0 "
+					+ "    ) AS sbu_name, "
+					+ "    ( "
+					+ "        SELECT STRING_AGG(r.role_name, ',') "
+					+ "        FROM roles r "
+					+ "        WHERE CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0 "
+					+ "    ) AS role_name, "
+					+ "    um.[roles], "
+					+ "    [notfilled_datadates], "
+					+ "    um.[status], "
+					+ "    um.[created_by], "
+					+ "    um.[created_date], "
+					+ "    um.[modified_by], "
 					+ "    um.[modified_date]   "
 					+ "FROM    "
 					+ "    [user_management] um   "
-					+ "LEFT JOIN    "
-					+ "    site st ON um.site_name = st.id   "
-					+ "LEFT JOIN    "
-					+ "	 category c ON CHARINDEX(',' + CAST(c.category_code AS VARCHAR) + ',', ',' + um.categories + ',') > 0   "
-					+ "LEFT JOIN    "
-					+ "    roles r ON CHARINDEX(',' + CAST(r.id AS VARCHAR) + ',', ',' + um.roles + ',') > 0   "
-					+ "LEFT JOIN    "
-					+ "    [sbu] s ON CHARINDEX(',' + CAST(s.sbu_code AS VARCHAR) + ',', ',' + um.sbu + ',') > 0   "
+			
 					+ "WHERE    "
 					+ "    um.sbu IS NOT NULL ";
 			
@@ -171,9 +168,22 @@ public class IrisUserDao {
 				arrSize++;
 			}	
 			if(!StringUtils.isEmpty(startIndex) && !StringUtils.isEmpty(offset)) {
-				qry = qry + " GROUP BY  "
-						+ "    um.id, [user_name], [email_id], [mobile_number], st.site_name,st.id, [notfilled_datadates],  "
-						+ "    um.status, um.created_by, um.created_date, um.modified_by, um.modified_date,um.[sbu],[categories],um.[roles] ORDER BY um.user_name asc offset ? rows  fetch next ? rows only";	
+				qry = qry + "GROUP BY "
+						+ "    um.id, "
+						+ "    [user_name], "
+						+ "    [email_id], "
+						+ "    [mobile_number], "
+						+ "    [notfilled_datadates], "
+						+ "    um.status, "
+						+ "    um.created_by, "
+						+ "    um.created_date, "
+						+ "    um.modified_by, "
+						+ "    um.modified_date, "
+						+ "    um.[sbu] "
+						+ "	, um.site_name, "
+						+ "    [categories], "
+						+ "    um.[roles] "
+						+ " ORDER BY um.user_name asc offset ? rows  fetch next ? rows only";	
 				arrSize++;
 				arrSize++;
 			}
@@ -378,8 +388,8 @@ public class IrisUserDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT s.site_name,um.site_name as id from [user_management] um "
-					+ " left join site s on um.site_name = s.id "
+			String qry = "SELECT st.site_name,st.id from [user_management] um "
+					+ " left join site st on CHARINDEX(',' + CAST(st.id AS VARCHAR) + ',', ',' + um.site_name + ',') > 0 "
 					+ "where um.site_name is not null ";
 			
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
@@ -394,7 +404,7 @@ public class IrisUserDao {
 				qry = qry + " and um.roles = ? ";
 				arrSize++;
 			}
-			qry = qry + "group by s.site_name,um.site_name order by s.site_name asc";
+			qry = qry + "group by st.site_name,st.id order by st.site_name asc";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu())) {
