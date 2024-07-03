@@ -24,6 +24,8 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import org.springframework.util.StringUtils;
 
+import com.resustainability.reisp.common.DayBeforeDate;
+import com.resustainability.reisp.model.DashBoardWeighBridge;
 import com.resustainability.reisp.model.DataManagement;
 import com.resustainability.reisp.model.DateModel;
 import com.resustainability.reisp.model.DataManagement;
@@ -185,7 +187,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[collect_table] s  "
+							+ "  FROM [collect_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join user_management um on s.created_by = um.id   "
 							+ " left join site sss on s.site = sss.id   "
@@ -206,7 +208,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[bmw_processing_table] s  "
+							+ "  FROM [bmw_processing_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -235,7 +237,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[bmw_distribute_table] s  "
+							+ "  FROM [bmw_distribute_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -259,7 +261,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[iwm_receipt] s  "
+							+ "  FROM [iwm_receipt] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -285,7 +287,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date] "
 							+ "      ,s.[created_date] "
 							+ "      ,s.[modified_by] "
-							+ "  FROM [IRIS].[dbo].[iwm_disposal_table] s  "
+							+ "  FROM [iwm_disposal_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -308,7 +310,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[iwm_opening_stock_table] s  "
+							+ "  FROM [iwm_opening_stock_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -330,7 +332,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[iwm_closing_stock_table] s  "
+							+ "  FROM [iwm_closing_stock_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -350,7 +352,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[collect_table] s  "
+							+ "  FROM [collect_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -391,7 +393,7 @@ public class IrisDataManagementDao {
 							+ "      ,[quantity_measure_compost_outflow] "
 							+ "      ,[quantity_measure_recyclables_outflow] "
 							+ "      ,[quantity_measure_inerts_outflow]"
-							+ "  FROM [IRIS].[dbo].[msw_processing_table] s  "
+							+ "  FROM [msw_processing_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -433,7 +435,7 @@ public class IrisDataManagementDao {
 							+ "      ,[quantity_measure_compost] "
 							+ "      ,[quantity_measure_inerts] "
 							+ "      ,[quantity_measure_recylabels]"
-							+ "  FROM [IRIS].[dbo].[msw_distribute_table] s  "
+							+ "  FROM [msw_distribute_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -464,7 +466,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by],plant_generation_capacity,bottom_ash,fly_ash,plant_load_factor  "
-							+ "  FROM [IRIS].[dbo].[msw_wte_table] s  "
+							+ "  FROM [msw_wte_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -486,7 +488,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[collect_table] s  "
+							+ "  FROM [collect_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -509,7 +511,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[collect_table] s  "
+							+ "  FROM [collect_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -530,7 +532,7 @@ public class IrisDataManagementDao {
 							+ "      ,s.[modified_date]"
 							+ "      ,s.[created_date]"
 							+ "      ,s.[modified_by]"
-							+ "  FROM [IRIS].[dbo].[collect_table] s  "
+							+ "  FROM [collect_table] s  "
 							+ "left join sbu ss on s.sbu_code = ss.sbu_code "
 							+ " left join site sss on s.site = sss.id   "
 							+ " left join user_management um on s.created_by = um.id   "
@@ -1245,57 +1247,98 @@ public class IrisDataManagementDao {
 		try {
 			int arrSize = 0;
 			jdbcTemplate = new JdbcTemplate(dataSource);
-			String qry = "SELECT  convert(varchar, date, 101) as date  "
-					+ "FROM (  ";
+			String qry = "SELECT  "
+					+ "    convert(varchar, date, 101) as date,  "
+					+ "    table_name,  "
+					+ "    sbu_code from (";
 					if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code()) && obj.getSbu_code().equals("BMW")) {
-						qry = qry + "    SELECT date,sbu_code FROM [IRIS].[dbo].[collect_table]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[bmw_processing_table]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[bmw_distribute_table]  "
-								+ ""
-								+ ") AS all_dates where date is not null  ";
+						qry = qry + "  SELECT  convert(varchar, date, 101) as date, 'bmw_collect' as table_name, sbu_code  "
+								+ "FROM  [collect_table]  "
+								+ "WHERE  date IS NOT NULL  AND sbu_code = 'BMW' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT convert(varchar, date, 101) as date,'bmw_processing' as table_name, sbu_code  "
+								+ "FROM  [bmw_processing_table]  "
+								+ "WHERE date IS NOT NULL  AND sbu_code = 'BMW' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT convert(varchar, date, 101) as date,'bmw_distribute' as table_name,sbu_code  "
+								+ "FROM  [bmw_distribute_table]  "
+								+ "WHERE  date IS NOT NULL  AND sbu_code = 'BMW' ) AS combined_tables";
 						
 					}else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code()) && obj.getSbu_code().equals("MSW")) {
-						qry = qry + "    SELECT date,sbu_code FROM [IRIS].[dbo].[collect_table]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[msw_distribute_table]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[msw_processing_table]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[msw_wte_table]  "
-								+ ""
-								+ ") AS all_dates where date is not null  ";
+						qry = qry + "  SELECT  convert(varchar, date, 101) as date, 'msw_collect' as table_name, sbu_code  "
+								+ "FROM  [collect_table]  "
+								+ "WHERE  date IS NOT NULL  AND sbu_code = 'MSW' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT convert(varchar, date, 101) as date,'msw_distribute' as table_name, sbu_code  "
+								+ "FROM  [msw_distribute_table]  "
+								+ "WHERE date IS NOT NULL  AND sbu_code = 'MSW' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT convert(varchar, date, 101) as date,'msw_processing' as table_name, sbu_code  "
+								+ "FROM  [msw_processing_table]  "
+								+ "WHERE date IS NOT NULL  AND sbu_code = 'MSW' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT convert(varchar, date, 101) as date,'msw_wte' as table_name,sbu_code  "
+								+ "FROM  [msw_wte_table]  "
+								+ "WHERE  date IS NOT NULL  AND sbu_code = 'MSW' ) AS combined_tables";
 					}else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code()) && obj.getSbu_code().equals("IWM")) {
-						qry = qry + "    SELECT date,sbu_code FROM [IRIS].[dbo].[iwm_disposal_table]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[iwm_receipt]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[iwm_opening_stock_table]  "
-								+ "    UNION  "
-								+ "    SELECT date,sbu_code FROM [IRIS].[dbo].[iwm_closing_stock_table]  "
-								+ ""
-								+ ") AS all_dates where date is not null  ";
+						
+						qry = qry + " SELECT  date, 'iwm_disposal' as table_name, sbu_code  "
+								+ "FROM  [iwm_disposal_table]  "
+								+ "WHERE  date IS NOT NULL  AND sbu_code = 'IWM' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT date,'iwm_receipt' as table_name, sbu_code  "
+								+ "FROM  [iwm_receipt]  "
+								+ "WHERE date IS NOT NULL  AND sbu_code = 'IWM' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT date,'iwm_opening_stock' as table_name, sbu_code  "
+								+ "FROM  [iwm_opening_stock_table]  "
+								+ "WHERE date IS NOT NULL  AND sbu_code = 'IWM' "
+								+ " "
+								+ "UNION "
+								+ " "
+								+ "SELECT convert(varchar, date, 101) as date,'iwm_closing_stock' as table_name,sbu_code  "
+								+ "FROM  [iwm_closing_stock_table]  "
+								+ "WHERE  date IS NOT NULL  AND sbu_code = 'IWM' ) AS combined_tables WHERE  date IS NOT NULL  ";
 					}
 				
-			
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				qry = qry + " and  sbu_code = ? ";
-				arrSize++;
-			}
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date())) {
+	
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date())  && !StringUtils.isEmpty(obj.getTo_date())) {
 				qry = qry + " and date between  ? and  ? ";
 				arrSize++;
 				arrSize++;
+			}else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date())) {
+				qry = qry + " and date =  ? =";
+				arrSize++;
+			}else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getTo_date())) {
+				qry = qry + " and date =  ? =";
+				arrSize++;
+			}else {
+				qry = qry + " AND date >= DATEADD(day, -7, GETDATE())";
 			}
-			qry = qry + " GROUP BY date order by date desc ";
+			qry = qry + " order by date desc ";
 			Object[] pValues = new Object[arrSize];
 			int i = 0;
-			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSbu_code())) {
-				pValues[i++] = obj.getSbu_code();
-			}
+
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date())) {
 				pValues[i++] = obj.getFrom_date();
+				pValues[i++] = obj.getTo_date();
+			}else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getFrom_date())) {
+				pValues[i++] = obj.getFrom_date();
+			}else if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getTo_date())) {
 				pValues[i++] = obj.getTo_date();
 			}
 			objsList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<DateModel>(DateModel.class));	
@@ -1421,7 +1464,7 @@ public class IrisDataManagementDao {
 						        for (int l = 0; l < maxSize2; l++) {
 						            DataManagement obj1 = l < finalList.size() ? finalList.get(l) : null;
 						            DataManagement obj2 = l < objsList3.size() ? objsList3.get(l) : null;
-						            combinedList.add(mergeObjects(obj1, obj2));
+						           // combinedList.add(mergeObjects(obj1, obj2));
 						            if(obj1 == null && obj2 == null) {
 						            	combinedList.add(null);
 						            }else if(obj1 == null) {
@@ -1687,7 +1730,7 @@ public class IrisDataManagementDao {
 					        for (int l = 0; l < maxSize2; l++) {
 					            DataManagement obj1 = l < finalList.size() ? finalList.get(l) : null;
 					            DataManagement obj2 = l < objsList3.size() ? objsList3.get(l) : null;
-					            combinedList.add(mergeObjects(obj1, obj2));
+					           // combinedList.add(mergeObjects(obj1, obj2));
 					            if(obj1 == null && obj2 == null) {
 					            	combinedList.add(null);
 					            }else if(obj1 == null) {
@@ -1703,7 +1746,7 @@ public class IrisDataManagementDao {
 					        for (int l = 0; l < maxSize3; l++) {
 					            DataManagement obj1 = l < combinedList.size() ? combinedList.get(l) : null;
 					            DataManagement obj2 = l < objsList4.size() ? objsList4.get(l) : null;
-					            LastList.add(mergeObjects(obj1, obj2));
+					           // LastList.add(mergeObjects(obj1, obj2));
 					            if(obj1 == null && obj2 == null) {
 					            	LastList.add(null);
 					            }else if(obj1 == null) {
@@ -1942,7 +1985,7 @@ public class IrisDataManagementDao {
 					        for (int l = 0; l < maxSize2; l++) {
 					            DataManagement obj1 = l < finalList.size() ? finalList.get(l) : null;
 					            DataManagement obj2 = l < objsList3.size() ? objsList3.get(l) : null;
-					            combinedList.add(mergeObjects(obj1, obj2));
+					          //  combinedList.add(mergeObjects(obj1, obj2));
 					            if(obj1 == null && obj2 == null) {
 					            	combinedList.add(null);
 					            }else if(obj1 == null) {
@@ -2004,5 +2047,335 @@ public class IrisDataManagementDao {
 
         return result;
     }
+
+	public List<DataManagement> findDataExistOrNot(DataManagement obj) throws Exception {
+		List<DataManagement> oSList = null;
+		List<DataManagement> objsList = null;
+		try {
+			int arrSize = 0;
+			jdbcTemplate = new JdbcTemplate(dataSource);
+			String qry = "SELECT  [id] "
+					+ "      ,[sbu_code] "
+					+ "      ,[closing_stock_total_waste] "
+					+ "      ,[closing_stock_dlf] "
+					+ "      ,[closing_stock_lat] "
+					+ "      ,[closing_stock_incineration] "
+					+ "      ,[closing_stock_afrf] "
+					+ "      ,[site] "
+					+ "      ,[date] "
+					+ "      ,[comments] "
+					+ "      ,[created_by] "
+					+ "      ,[modified_date] "
+					+ "      ,[created_date] "
+					+ "      ,[modified_by] "
+					+ "  FROM [iwm_closing_stock_table] s where sbu_code is not null ";
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
+				qry = qry + " and  s.date = ? ";
+				arrSize++;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite())) {
+				qry = qry + " and  s.site = ? ";
+				arrSize++;
+			}
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getDate())) {
+				String date = DayBeforeDate.converDateY(obj.getDate());
+				pValues[i++] = date;
+			}
+			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getSite())) {
+				pValues[i++] = obj.getSite();
+			}
+			if(!StringUtils.isEmpty(obj) && StringUtils.isEmpty(obj.getDate())) {
+				qry = qry + " order by  s.date desc ";
+			}
+			
+			oSList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));	
+
+			if(oSList.size() > 0) {
+				
+			//	String date = DayBeforeDate.converDateY(obj.getDate());
+				qry =  "WITH CombinedData AS ( "
+						+ "    SELECT "
+						+ "        r.[id] AS receipt_id, "
+						+ "        r.[sbu_code] AS receipt_sbu_code, "
+						+ "        r.[receipt_total_waste], "
+						+ "        r.[receipt_dlf], "
+						+ "        r.[receipt_lat], "
+						+ "        r.[receipt_incineration], "
+						+ "        r.[receipt_afrf], "
+						+ "        r.[incineration_to_afrf] AS receipt_incineration_to_afrf, "
+						+ "        r.[site] AS receipt_site, "
+						+ "        r.[date] AS receipt_date, "
+						+ "        r.[comments] AS receipt_comments, "
+						+ "        r.[created_by] AS receipt_created_by, "
+						+ "        r.[modified_date] AS receipt_modified_date, "
+						+ "        r.[created_date] AS receipt_created_date, "
+						+ "        r.[modified_by] AS receipt_modified_by, "
+						+ "        d.[id] AS disposal_id, "
+						+ "        d.[sbu_code] AS disposal_sbu_code, "
+						+ "        d.[disposal_total_waste], "
+						+ "        d.[disposal_dlf], "
+						+ "        d.[disposal_lat], "
+						+ "        d.[disposal_incineration], "
+						+ "        d.[disposal_afrf], "
+						+ "        d.[incineration_to_afrf] AS disposal_incineration_to_afrf, "
+						+ "        d.[recycling_qty_inc], "
+						+ "        d.[recycling_qty_afrf], "
+						+ "        d.[recycling_qty_total], "
+						+ "        d.[site] AS disposal_site, "
+						+ "        d.[date] AS disposal_date, "
+						+ "        d.[comments] AS disposal_comments, "
+						+ "        d.[created_by] AS disposal_created_by, "
+						+ "        d.[modified_date] AS disposal_modified_date, "
+						+ "        d.[created_date] AS disposal_created_date, "
+						+ "        d.[modified_by] AS disposal_modified_by "
+						+ "    FROM "
+						+ "        [IRIS].[dbo].[iwm_receipt] r "
+						+ "    FULL OUTER JOIN "
+						+ "        [IRIS].[dbo].[iwm_disposal_table] d "
+						+ "    ON "
+						+ "        r.[date] = d.[date] "
+						+ "        AND r.[site] = d.[site] "
+						+ "        AND r.[sbu_code] = d.[sbu_code] "
+						+ "    WHERE "
+						//+ "        (r.[date] = '"+obj.getDate()+"' OR d.[date] = '"+obj.getDate()+"') "
+						+ "         (r.[site] = '"+obj.getSite()+"' OR d.[site] = '"+obj.getSite()+"') "
+						+ "        AND (r.[sbu_code] = '"+obj.getSbu_code()+"' OR d.[sbu_code] = '"+obj.getSbu_code()+"') "
+						+ ") "
+						+ "SELECT "
+						+ "    COALESCE(receipt_date, disposal_date) AS [date], "
+						+ "    CASE "
+						+ "        WHEN receipt_id IS NULL AND disposal_id IS NOT NULL THEN 'Data missing in IWM Receipt' "
+						+ "        WHEN disposal_id IS NULL AND receipt_id IS NOT NULL THEN 'Data missing in IWM Disposal' "
+						+ "        WHEN receipt_id IS NULL AND disposal_id IS NULL THEN 'No data submitted for the date' "
+						+ "        ELSE 'Data exists in both tables' "
+						+ "    END AS status, "
+						+ "    receipt_id, "
+						+ "    receipt_sbu_code as sbu_code, "
+						+ "    receipt_total_waste, "
+						+ "    receipt_dlf, "
+						+ "    receipt_lat, "
+						+ "    receipt_incineration, "
+						+ "    receipt_afrf, "
+						+ "    receipt_incineration_to_afrf, "
+						+ "    receipt_site as site, "
+						+ "    receipt_comments, "
+						+ "    receipt_created_by, "
+						+ "    receipt_modified_date, "
+						+ "    receipt_created_date, "
+						+ "    receipt_modified_by, "
+						+ "    disposal_id, "
+						+ "    disposal_sbu_code, "
+						+ "    disposal_total_waste, "
+						+ "    disposal_dlf, "
+						+ "    disposal_lat, "
+						+ "    disposal_incineration, "
+						+ "    disposal_afrf, "
+						+ "    disposal_incineration_to_afrf, "
+						+ "    recycling_qty_inc, "
+						+ "    recycling_qty_afrf, "
+						+ "    recycling_qty_total, "
+						+ "    disposal_site, "
+						+ "    disposal_comments, "
+						+ "    disposal_created_by, "
+						+ "    disposal_modified_date, "
+						+ "    disposal_created_date, "
+						+ "    disposal_modified_by "
+						+ "FROM "
+						+ "    CombinedData "
+						+ "ORDER BY "
+						+ "    [date] desc; "
+						+ "";
+				objsList = jdbcTemplate.query( qry, new BeanPropertyRowMapper<DataManagement>(DataManagement.class));
+				if(oSList.get(0).getDate().equals(objsList.get(0).getDate())) {
+					oSList.get(0).setStatus("openS");
+					
+
+					String OS_DLF_val = oSList.get(0).getClosing_stock_dlf();
+					String OS_lat_val = oSList.get(0).getClosing_stock_lat();
+					String OS_INC_val = oSList.get(0).getClosing_stock_incineration();
+					String OS_AFRF_val = oSList.get(0).getClosing_stock_afrf();
+					
+					oSList.get(0).setOpening_stock_total_waste(Double.toString(Double.parseDouble(OS_DLF_val)
+							+Double.parseDouble(OS_lat_val)+
+							Double.parseDouble(OS_INC_val)+
+							Double.parseDouble(OS_AFRF_val)));
+					oSList.get(0).setOpening_stock_dlf(Double.toString(Double.parseDouble(OS_DLF_val)));
+					oSList.get(0).setOpening_stock_lat(Double.toString(Double.parseDouble(OS_lat_val)));
+					oSList.get(0).setOpening_stock_incineration(Double.toString(Double.parseDouble(OS_INC_val)));
+					oSList.get(0).setOpening_stock_afrf(Double.toString(Double.parseDouble(OS_AFRF_val)));
+					oSList.get(0).setDate(DayBeforeDate.converDate(oSList.get(0).getDate()));
+					return oSList;
+				}
+				if(objsList.size() == 0 && oSList.size() != 0) {
+					oSList.get(0).setStatus("openS");
+				
+
+					String OS_DLF_val = oSList.get(0).getClosing_stock_dlf();
+					String OS_lat_val = oSList.get(0).getClosing_stock_lat();
+					String OS_INC_val = oSList.get(0).getClosing_stock_incineration();
+					String OS_AFRF_val = oSList.get(0).getClosing_stock_afrf();
+					
+					oSList.get(0).setOpening_stock_total_waste(Double.toString(Double.parseDouble(OS_DLF_val)
+							+Double.parseDouble(OS_lat_val)+
+							Double.parseDouble(OS_INC_val)+
+							Double.parseDouble(OS_AFRF_val)));
+					oSList.get(0).setOpening_stock_dlf(Double.toString(Double.parseDouble(OS_DLF_val)));
+					oSList.get(0).setOpening_stock_lat(Double.toString(Double.parseDouble(OS_lat_val)));
+					oSList.get(0).setOpening_stock_incineration(Double.toString(Double.parseDouble(OS_INC_val)));
+					oSList.get(0).setOpening_stock_afrf(Double.toString(Double.parseDouble(OS_AFRF_val)));
+					
+					obj.setOpening_stock_total_waste(Double.toString(Double.parseDouble(OS_DLF_val)
+							+Double.parseDouble(OS_lat_val)+
+							Double.parseDouble(OS_INC_val)+
+							Double.parseDouble(OS_AFRF_val)));
+					obj.setOpening_stock_dlf(Double.toString(Double.parseDouble(OS_DLF_val)));
+					obj.setOpening_stock_lat(Double.toString(Double.parseDouble(OS_lat_val)));
+					obj.setOpening_stock_incineration(Double.toString(Double.parseDouble(OS_INC_val)));
+					obj.setOpening_stock_afrf(Double.toString(Double.parseDouble(OS_AFRF_val)));
+					obj.setDate(oSList.get(0).getDate());
+					
+					NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+					String insertQry = "MERGE INTO [iwm_opening_stock_table] AS target "
+							+ "USING ( "
+							+ "    SELECT  "
+							+ "        :sbu_code AS sbu_code, "
+							+ "        :opening_stock_total_waste AS opening_stock_total_waste, "
+							+ "        :opening_stock_dlf AS opening_stock_dlf, "
+							+ "        :opening_stock_lat AS opening_stock_lat, "
+							+ "        :opening_stock_incineration AS opening_stock_incineration, "
+							+ "        :opening_stock_afrf AS opening_stock_afrf, "
+							+ "        :site AS site, "
+							+ "        DATEADD(day, 0, :date) AS [date], "
+							+ "        :created_by AS created_by, "
+							+ "        GETDATE() AS created_date "
+							+ ") AS source "
+							+ "ON ( "
+							+ "    target.sbu_code = source.sbu_code  "
+							+ "    AND target.site = source.site  "
+							+ "    AND target.[date] = source.[date] "
+							+ ") "
+							+ "WHEN MATCHED THEN "
+							+ "    UPDATE SET "
+							+ "        target.modified_date = getdate() "
+							+ "WHEN NOT MATCHED THEN "
+							+ "    INSERT (sbu_code, opening_stock_total_waste, opening_stock_dlf, opening_stock_lat, opening_stock_incineration, opening_stock_afrf, site, [date], created_by, created_date) "
+							+ "    VALUES (source.sbu_code, source.opening_stock_total_waste, source.opening_stock_dlf, source.opening_stock_lat, source.opening_stock_incineration, source.opening_stock_afrf, source.site, source.[date], source.created_by, source.created_date); "
+							+ "";
+					BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		 
+				    namedParamJdbcTemplate.update(insertQry, paramSource);
+					return oSList;
+				}else {
+			
+					String status = objsList.get(0).getStatus();
+					if(status.contains("Data missing")) {
+						return objsList;
+					}
+					String OS_DLF_val = oSList.get(0).getClosing_stock_dlf();
+					String OS_lat_val = oSList.get(0).getClosing_stock_lat();
+					String OS_INC_val = oSList.get(0).getClosing_stock_incineration();
+					String OS_AFRF_val = oSList.get(0).getClosing_stock_afrf();
+					
+					Double CS_DLF_val = (Double.parseDouble(OS_DLF_val) + Double.parseDouble(objsList.get(0).getReceipt_dlf())) - (Double.parseDouble(objsList.get(0).getDisposal_dlf()));
+					System.out.println(Double.parseDouble(objsList.get(0).getReceipt_dlf()));System.out.println(Double.parseDouble(objsList.get(0).getDisposal_dlf()));
+					Double CS_lat_val = (Double.parseDouble(OS_lat_val) + Double.parseDouble(objsList.get(0).getReceipt_lat())) - (Double.parseDouble(objsList.get(0).getDisposal_lat()));
+					System.out.println(Double.parseDouble(objsList.get(0).getReceipt_lat()));System.out.println(Double.parseDouble(objsList.get(0).getDisposal_lat()));
+					Double CS_INC_val = (Double.parseDouble(OS_INC_val) + Double.parseDouble(objsList.get(0).getReceipt_incineration())) 
+							- (Double.parseDouble(objsList.get(0).getDisposal_incineration()) +Double.parseDouble(objsList.get(0).getDisposal_incineration_to_afrf()) +Double.parseDouble(objsList.get(0).getRecycling_qty_inc()));
+				
+					Double CS_AFRF_val = (Double.parseDouble(OS_AFRF_val) + Double.parseDouble(objsList.get(0).getReceipt_afrf()) + Double.parseDouble(objsList.get(0).getReceipt_incineration_to_afrf() )) 
+							- (Double.parseDouble(objsList.get(0).getDisposal_afrf()) +Double.parseDouble(objsList.get(0).getRecycling_qty_afrf()));
+					
+					
+					Double total = CS_DLF_val+CS_lat_val+CS_INC_val+CS_AFRF_val;
+					objsList.get(0).setOpening_stock_total_waste(Double.toString(total) );
+					objsList.get(0).setOpening_stock_dlf(Double.toString(CS_DLF_val));
+					objsList.get(0).setOpening_stock_lat(Double.toString(CS_lat_val));
+					objsList.get(0).setOpening_stock_incineration(Double.toString(CS_INC_val));
+					objsList.get(0).setOpening_stock_afrf(Double.toString(CS_AFRF_val));
+					objsList.get(0).setDate(DayBeforeDate.converDate((objsList.get(0).getDate())));
+					
+					obj.setClosing_stock_total_waste(Double.toString(total));
+					obj.setClosing_stock_dlf(Double.toString(CS_DLF_val));
+					obj.setClosing_stock_lat(Double.toString(CS_lat_val));
+					obj.setClosing_stock_incineration(Double.toString(CS_INC_val));
+					obj.setClosing_stock_afrf(Double.toString(CS_AFRF_val));
+					obj.setDate(DayBeforeDate.converDateY((objsList.get(0).getDate())));
+					
+					NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+					String insertQry = "MERGE INTO [iwm_opening_stock_table] AS target "
+							+ "USING ( "
+							+ "    SELECT  "
+							+ "        :sbu_code AS sbu_code, "
+							+ "        :opening_stock_total_waste AS opening_stock_total_waste, "
+							+ "        :opening_stock_dlf AS opening_stock_dlf, "
+							+ "        :opening_stock_lat AS opening_stock_lat, "
+							+ "        :opening_stock_incineration AS opening_stock_incineration, "
+							+ "        :opening_stock_afrf AS opening_stock_afrf, "
+							+ "        :site AS site, "
+							+ "        DATEADD(day, 0, :date) AS [date], "
+							+ "        DATEADD(day, 0, :date) AS [date_OS], "
+							+ "        :created_by AS created_by, "
+							+ "        GETDATE() AS created_date "
+							+ ") AS source "
+							+ "ON ( "
+							+ "    target.sbu_code = source.sbu_code  "
+							+ "    AND target.site = source.site  "
+							+ "    AND target.[date] = source.[date_OS] "
+							+ ") "
+							+ "WHEN MATCHED THEN "
+							+ "    UPDATE SET "
+							+ "        target.modified_date = getdate() "
+							+ "WHEN NOT MATCHED THEN "
+							+ "    INSERT (sbu_code, opening_stock_total_waste, opening_stock_dlf, opening_stock_lat, opening_stock_incineration, opening_stock_afrf, site, [date], created_by, created_date) "
+							+ "    VALUES (source.sbu_code, source.opening_stock_total_waste, source.opening_stock_dlf, source.opening_stock_lat, source.opening_stock_incineration, source.opening_stock_afrf, source.site, source.[date], source.created_by, source.created_date); "
+							+ "";
+					BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(objsList.get(0));		 
+				    namedParamJdbcTemplate.update(insertQry, paramSource);
+				    
+				     namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+					 insertQry = "MERGE INTO [iwm_closing_stock_table] AS target "
+					 		+ "USING ( "
+					 		+ "    SELECT "
+					 		+ "        :sbu_code AS sbu_code, "
+					 		+ "        :closing_stock_total_waste AS closing_stock_total_waste, "
+					 		+ "        :closing_stock_dlf AS closing_stock_dlf, "
+					 		+ "        :closing_stock_lat AS closing_stock_lat, "
+					 		+ "        :closing_stock_incineration AS closing_stock_incineration, "
+					 		+ "        :closing_stock_afrf AS closing_stock_afrf, "
+					 		+ "        :site AS site, "
+					 		+ "        :date AS [date], "
+					 		+ "        DATEADD(day, 0, :date) AS [date_OS], "
+					 		+ "        :comments AS comments, "
+					 		+ "        :created_by AS created_by, "
+					 		+ "        GETDATE() AS created_date "
+					 		+ ") AS source "
+					 		+ "ON ( "
+					 		+ "    target.sbu_code = source.sbu_code  "
+					 		+ "    AND target.site = source.site  "
+					 		+ "    AND target.[date] = source.[date_OS] "
+					 		+ ") "
+					 		+ "WHEN MATCHED THEN "
+					 		+ "    UPDATE SET "
+					 		+ "        target.modified_date = getdate() "
+					 		+ "WHEN NOT MATCHED THEN "
+					 		+ "    INSERT (sbu_code, closing_stock_total_waste, closing_stock_dlf, closing_stock_lat, closing_stock_incineration, closing_stock_afrf, site, [date], comments, created_by, created_date) "
+					 		+ "    VALUES (source.sbu_code, source.closing_stock_total_waste, source.closing_stock_dlf, source.closing_stock_lat, source.closing_stock_incineration, source.closing_stock_afrf, source.site, source.[date], source.comments, source.created_by, source.created_date); "
+					 		+ "";
+					 paramSource = new BeanPropertySqlParameterSource(obj);		 
+				     namedParamJdbcTemplate.update(insertQry, paramSource);
+				
+				}
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return objsList;	
+	}
 	
 }

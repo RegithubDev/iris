@@ -2,8 +2,13 @@ package com.resustainability.reisp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +20,7 @@ import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,9 +32,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.resustainability.reisp.common.DayBeforeDate;
 import com.resustainability.reisp.constants.PageConstants;
+import com.resustainability.reisp.model.BMW;
+import com.resustainability.reisp.model.BrainBox;
+import com.resustainability.reisp.model.DashBoardWeighBridge;
 import com.resustainability.reisp.model.DataManagement;
 import com.resustainability.reisp.model.DataManagementObject;
 import com.resustainability.reisp.model.DateModel;
@@ -36,6 +49,7 @@ import com.resustainability.reisp.model.Role;
 import com.resustainability.reisp.model.SBU;
 import com.resustainability.reisp.model.DataManagement;
 import com.resustainability.reisp.model.User;
+import com.resustainability.reisp.model.IWMDate;
 import com.resustainability.reisp.service.IrisDataManagementService;
 
 @RestController
@@ -458,4 +472,95 @@ public class IrisDataManagementController {
 		}
 		return companiesList;
 	}
+	
+	@RequestMapping(value = "/reone/ajax/findDataExistOrNot", method = {RequestMethod.GET,RequestMethod.POST},produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@JsonProperty
+	public String findDataExistOrNot(  @RequestBody DataManagement obj1,HttpSession session,HttpServletResponse response , Errors filterErrors) throws JsonProcessingException {
+		List<IWMDate> companiesList = null;
+		 String json = null;
+		 HashMap<String, String> data = new HashMap<String, String>();
+		 ObjectMapper objectMapper = new ObjectMapper(); 
+		 try {
+			    if (true) {
+			        String ids = "";
+			        LocalDate currentDate = LocalDate.now();
+			        String date = currentDate.toString();
+			        date = date.replaceAll("-", "");
+			        String unique = date;
+			        String id = null;
+			        boolean handsUp = true;
+			        // int count = service.getCountOfBMWSummeryRecords(bmw);
+			        if (handsUp) {
+			            List<DataManagement> objsList = service.findDataExistOrNot(obj1);
+			            if (objsList != null && !objsList.isEmpty()) {
+			                if (objsList.get(0).getStatus().contains("Data missing")) {
+			                    data = new HashMap<String, String>();
+			                    data.put("OK", objsList.get(0).getStatus() + " for the Date :" + obj1.getDate());
+			                    json = objectMapper.writeValueAsString(data);
+			                } else {
+			                	 DataManagement obj = objsList.get(0); // Get the first element from the list
+
+			                     // Create a map to hold the JSON response
+			                     // Create a LinkedHashMap to hold the main JSON response
+			                     Map<String, Object> mainData = new LinkedHashMap<>();
+
+			                     // Create another LinkedHashMap for the nested data
+			                     Map<String, Object> nestedData = new LinkedHashMap<>();
+			                     nestedData.put("Sbu Code", obj.getSbu_code());
+			                     nestedData.put("Opening_stock Total Waste", obj.getOpening_stock_total_waste());
+			                     nestedData.put("Opening_stock DLF", obj.getOpening_stock_dlf());
+			                     nestedData.put("Opening_stock LAT", obj.getOpening_stock_lat());
+			                     nestedData.put("Opening_stock Incineration", obj.getOpening_stock_incineration());
+			                     nestedData.put("Opening_stock AFRF", obj.getOpening_stock_afrf());
+			                     nestedData.put("Site", obj.getSite());
+			                 	 String dateY = DayBeforeDate.converDateY(obj.getDate());
+			                 	 String dateOS = obj.getDate();
+			                     nestedData.put("OS Date", dateOS);
+			                     nestedData.put("CS Date", dateY);
+			                  
+			                     // Put the nested data into the main data map under the key "Data"
+			                     mainData.put("Opening Stock", nestedData);
+			                    json = objectMapper.writeValueAsString(mainData);
+			                }
+			            } else {
+			                data = new HashMap<String, String>();
+			                data.put("Opps", "No Opening Stock Data Found! ");
+			                json = objectMapper.writeValueAsString(data);
+			            }
+			        } else {
+			            companiesList = new ArrayList<IWMDate>(1);
+			        }
+			    } else {
+			        data = new HashMap<String, String>();
+			        companiesList = new ArrayList<IWMDate>(1);
+			    }
+			} catch (Exception e) {
+			    e.printStackTrace();
+			    System.out.println(e.getMessage());
+			    if ("Index 0 out of bounds for length 0".contentEquals(e.getMessage())) {
+			        data = new HashMap<String, String>();
+			        data.put("500", "Please enter User Name and Password!");
+			        json = objectMapper.writeValueAsString(data);
+			    } else if ("Conversion failed when converting the".contentEquals(e.getMessage())) {
+			        data = new HashMap<String, String>();
+			        data.put("500", "" + e.getMessage() + "");
+			        json = objectMapper.writeValueAsString(data);
+			    } else {
+			        data = new HashMap<String, String>();
+			        data.put("500", getStackTraceAsString(e));
+			        json = objectMapper.writeValueAsString(data);
+			    }
+			    logger.error("getBMWList : " + e.getMessage());
+			}
+			return json;
+
+	}
+	
+	public static String getStackTraceAsString(Throwable throwable) {
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        throwable.printStackTrace(pw);
+        return sw.toString();
+    }
 }

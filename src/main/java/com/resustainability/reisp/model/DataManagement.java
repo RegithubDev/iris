@@ -16,7 +16,7 @@ public class DataManagement {
 			stock_total_waste, stock_dlf, stock_lat, stock_incineration, stock_afrf, stock_total_waste_measure,
 			stock_dlf_measure, stock_lat_measure,mergedValue, stock_incineration_measure,disposal_afrf_measure,disposal_afrf, stock_afrf_measure,from_date,to_date,isMobile,rdf_receipt,rdf_combusted,ash_generated,steam_generation,power_produced,power_export,auxiliary_consumption,quantity_measure_rdf_receipt,quantity_measure_rdf_combusted
 			,plant_load_factor,quantity_measure_ash_generated,recyclable_to_recycle_unit,plant_generation_capacity,bottom_ash,fly_ash,quantity_measure_steam_generation,quantity_measure_power_produced,quantity_measure_power_export,quantity_measure_auxiliary_consumption
-,rdf_to_WTE  ,closing_stock_total_waste
+,rdf_to_WTE  ,closing_stock_total_waste,disposal_incineration_to_afrf
 ,closing_stock_dlf
 ,closing_stock_lat
 ,closing_stock_incineration
@@ -38,7 +38,23 @@ receipt_total_waste
 ,opening_stock_dlf
 ,opening_stock_lat
 ,opening_stock_incineration
-,opening_stock_afrf;
+,opening_stock_afrf
+		,receipt_incineration_to_afrf
+		,receipt_site
+		,receipt_comments
+		,receipt_created_by
+		,receipt_modified_date
+		,receipt_created_date
+		,receipt_modified_by
+		,disposal_id
+		,disposal_sbu_code
+		
+		,disposal_site
+		,disposal_comments
+		,disposal_created_by
+		,disposal_modified_date
+		,disposal_created_date
+		,disposal_modified_by ;
 
 	private double quantity_sum,total_materials_sum, total_recylable_sum, total_bags_sum,total_glass_sum,total_cardboard_sum,
 	total_waste_sum,total_incieration_sum,total_autoclave_sum,total_plastic_sum,rdf_sum,compost_sum,recyclables_sum,inserts_sum,total_rdf_sum,total_compost_sum,total_inerts_sum,total_recylables_sum,rdf_receipt_sum ,rdf_combusted_sum
@@ -82,6 +98,134 @@ receipt_total_waste
     ,opening_stock_lat_sum
     ,opening_stock_incineration_sum
     ,opening_stock_afrf_sum;
+
+public String getDisposal_incineration_to_afrf() {
+		return disposal_incineration_to_afrf;
+	}
+
+	public void setDisposal_incineration_to_afrf(String disposal_incineration_to_afrf) {
+		this.disposal_incineration_to_afrf = disposal_incineration_to_afrf;
+	}
+
+	public String getReceipt_incineration_to_afrf() {
+		return receipt_incineration_to_afrf;
+	}
+
+	public void setReceipt_incineration_to_afrf(String receipt_incineration_to_afrf) {
+		this.receipt_incineration_to_afrf = receipt_incineration_to_afrf;
+	}
+
+	public String getReceipt_site() {
+		return receipt_site;
+	}
+
+	public void setReceipt_site(String receipt_site) {
+		this.receipt_site = receipt_site;
+	}
+
+	public String getReceipt_comments() {
+		return receipt_comments;
+	}
+
+	public void setReceipt_comments(String receipt_comments) {
+		this.receipt_comments = receipt_comments;
+	}
+
+	public String getReceipt_created_by() {
+		return receipt_created_by;
+	}
+
+	public void setReceipt_created_by(String receipt_created_by) {
+		this.receipt_created_by = receipt_created_by;
+	}
+
+	public String getReceipt_modified_date() {
+		return receipt_modified_date;
+	}
+
+	public void setReceipt_modified_date(String receipt_modified_date) {
+		this.receipt_modified_date = receipt_modified_date;
+	}
+
+	public String getReceipt_created_date() {
+		return receipt_created_date;
+	}
+
+	public void setReceipt_created_date(String receipt_created_date) {
+		this.receipt_created_date = receipt_created_date;
+	}
+
+	public String getReceipt_modified_by() {
+		return receipt_modified_by;
+	}
+
+	public void setReceipt_modified_by(String receipt_modified_by) {
+		this.receipt_modified_by = receipt_modified_by;
+	}
+
+	public String getDisposal_id() {
+		return disposal_id;
+	}
+
+	public void setDisposal_id(String disposal_id) {
+		this.disposal_id = disposal_id;
+	}
+
+	public String getDisposal_sbu_code() {
+		return disposal_sbu_code;
+	}
+
+	public void setDisposal_sbu_code(String disposal_sbu_code) {
+		this.disposal_sbu_code = disposal_sbu_code;
+	}
+
+	public String getDisposal_site() {
+		return disposal_site;
+	}
+
+	public void setDisposal_site(String disposal_site) {
+		this.disposal_site = disposal_site;
+	}
+
+	public String getDisposal_comments() {
+		return disposal_comments;
+	}
+
+	public void setDisposal_comments(String disposal_comments) {
+		this.disposal_comments = disposal_comments;
+	}
+
+	public String getDisposal_created_by() {
+		return disposal_created_by;
+	}
+
+	public void setDisposal_created_by(String disposal_created_by) {
+		this.disposal_created_by = disposal_created_by;
+	}
+
+	public String getDisposal_modified_date() {
+		return disposal_modified_date;
+	}
+
+	public void setDisposal_modified_date(String disposal_modified_date) {
+		this.disposal_modified_date = disposal_modified_date;
+	}
+
+	public String getDisposal_created_date() {
+		return disposal_created_date;
+	}
+
+	public void setDisposal_created_date(String disposal_created_date) {
+		this.disposal_created_date = disposal_created_date;
+	}
+
+	public String getDisposal_modified_by() {
+		return disposal_modified_by;
+	}
+
+	public void setDisposal_modified_by(String disposal_modified_by) {
+		this.disposal_modified_by = disposal_modified_by;
+	}
 
 public String getReceipt_total_waste() {
 		return receipt_total_waste;

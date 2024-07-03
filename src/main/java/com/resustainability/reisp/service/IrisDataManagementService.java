@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.resustainability.reisp.dao.IrisDataManagementDao;
+import com.resustainability.reisp.model.DashBoardWeighBridge;
 import com.resustainability.reisp.model.DataManagement;
 import com.resustainability.reisp.model.DateModel;
 import com.resustainability.reisp.model.Role;
@@ -72,6 +73,10 @@ public class IrisDataManagementService {
 
 	public List<DataManagement> getDataFromDates(DataManagement obj)throws Exception {
 		return dao.getDataFromDates(obj);
+	}
+
+	public List<DataManagement> findDataExistOrNot(DataManagement obj) throws Exception {
+		return dao.findDataExistOrNot(obj);
 	}
 
 
